@@ -1,3 +1,9 @@
+/staticfiles
+/node_modules
+/build
+/coverage
+
+
 # OS generated files #
 ######################
 .DS_Store
@@ -16,15 +22,11 @@ migrations/
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
 /.pnp
 .pnp.js
 .eslintcache
-# testing
-/coverage
 
-# production
-/build
+package-lock.json
 
 # misc
 .DS_Store
