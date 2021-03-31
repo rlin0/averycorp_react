@@ -1,14 +1,13 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from "react"
+import axios from "axios"
 
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [loggedInUser, setLoggedInUser] = useState(localStorage.getItem("username"));
-  const [incorrect, setIncorrect] = useState(false);
+const Login = ({ login }) => {
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [incorrect, setIncorrect] = useState(false)
 
   const handleSubmit = async e => {
-    e.preventDefault();
+    e.preventDefault()
     axios.get("/api/login/", {
       params: {
         username: username,
@@ -16,12 +15,7 @@ const Login = () => {
       }})
       .then(response => {
         if (response.data.success) {
-          // set the state of the user
-          console.log(response.data.user)
-          setLoggedInUser(response.data.user.username)
-          // store the user in localStorage
-          localStorage.setItem('username', username)
-
+          login(response.data.user.username)
         }
         else {
           setIncorrect(true)
@@ -30,25 +24,7 @@ const Login = () => {
       })
       .catch(err => {
         console.error(err)
-      });
-  };
-
-  const handleLogout = () => {
-    setUsername("");
-    setPassword("");
-    setLoggedInUser(null);
-    setIncorrect(false);
-    localStorage.clear();
-  };
-
-  // if there's a user show the message below
-  if (loggedInUser !== null) {
-    return (
-      <div>
-        <div>{loggedInUser} is logged in</div>
-        <button onClick={handleLogout}>logout</button>
-      </div>
-    )
+      })
   }
 
   // if there's no user, show the login form
@@ -71,7 +47,7 @@ const Login = () => {
       </div>
       <button type="submit">Login</button>
     </form>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
