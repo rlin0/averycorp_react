@@ -1,7 +1,7 @@
-import React from "react"
+import React, { Component } from 'react'
 import myVideo from "./lemon.mp4"
 
-class CityIntroScene extends React.Component {
+export default class CityIntroScene extends Component {
   render() {
     return (
       <video autoPlay onEnded={this.props.next}>
@@ -10,4 +10,3 @@ class CityIntroScene extends React.Component {
     )
   }
 }
-export default CityIntroScene

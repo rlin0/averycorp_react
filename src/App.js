@@ -1,14 +1,15 @@
-import './App.css'
+import React, { Component } from 'react'
 import Header from './components/Header'
-import React from "react"
 import Login from './components/Login'
 import CityIntroScene from './components/CityIntroScene'
 import axios from "axios"
+import { BrowserRouter, Route } from "react-router-dom"
+import Map from './components/Map'
 
-class App extends React.Component {
+export default class App extends Component {
   constructor(props) {
     super(props)
-    
+
     this.state = {
       progress: null,
       username: localStorage.getItem("username"),
@@ -20,13 +21,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`/api/profile/${this.state.userId}/`)
-      .then(res => {
-        this.setState({ progress: res.data.progress })
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    if (this.state.userId !== null) {
+      axios.get(`/api/profile/${this.state.userId}/`)
+        .then(res => {
+          this.setState({ progress: res.data.progress })
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
   }
 
   login = (username, userId) => {
@@ -70,24 +73,26 @@ class App extends React.Component {
       case 0:
         return <CityIntroScene next={this.next} />
       default:
-        return <p>next act/puzzle</p>
+        return <p>next puzzle here</p>
     }
   }
 
   render() {
-    if (this.userId === null) {
+    if (this.state.userId === null) {
       return (
         <Login login={this.login} />
       )
     }
     return (
-      <div>
-        <Header username={this.state.username} logout={this.logout} />
-        {this.app()}
-      </div>
+      <BrowserRouter>
+        <div>
+          <Header username={this.state.username} logout={this.logout} />
+          <Route exact path="/map" component={Map} />
+          {this.app()}
+        </div>
+      </BrowserRouter>
+
     )
   }
 
 }
-
-export default App
