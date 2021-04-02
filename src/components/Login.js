@@ -1,53 +1,62 @@
-import React, { useState } from "react"
+import React from "react"
 import axios from "axios"
 
-const Login = ({ login }) => {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [incorrect, setIncorrect] = useState(false)
+class Login extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      username: "",
+      password: "",
+      incorrect: false
+    }
 
-  const handleSubmit = async e => {
+  }
+
+  handleSubmit = async e => {
     e.preventDefault()
     axios.get("/api/login/", {
       params: {
-        username: username,
-        password: password
-      }})
-      .then(response => {
-        if (response.data.success) {
-          login(response.data.user.username)
+        username: this.state.username,
+        password: this.state.password
+      }
+    })
+      .then(res => {
+        if (res.data.success) {
+          this.props.login(res.data.user.username, res.data.user.id)
         }
         else {
-          setIncorrect(true)
+          this.setState({ incorrect: true })
         }
-        console.log(response.data)
+        console.log(res.data)
       })
       .catch(err => {
         console.error(err)
       })
   }
 
-  // if there's no user, show the login form
-  return (
-    <form onSubmit={handleSubmit}>
-      <div>{incorrect && <p>Incorrect login!</p>}</div>
-      <label htmlFor="username">Username: </label>
-      <input
-        type="text"
-        value={username}
-        onChange={({ target }) => setUsername(target.value)}
-      />
-      <div>
-        <label htmlFor="password">Password: </label>
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div>{this.state.incorrect && <p>Incorrect login!</p>}</div>
+        <label htmlFor="username">Username: </label>
         <input
-          type="password"
-          value={password}
-          onChange={({ target }) => setPassword(target.value)}
+          type="text"
+          value={this.state.username}
+          onChange={({ target }) => this.setState({ username: target.value })}
         />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-  )
+        <div>
+          <label htmlFor="password">Password: </label>
+          <input
+            type="password"
+            value={this.state.password}
+            onChange={({ target }) => this.setState({ password: target.value })}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    )
+  }
+
 }
 
 export default Login

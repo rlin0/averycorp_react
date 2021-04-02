@@ -10,6 +10,9 @@ class ProfileView(viewsets.ModelViewSet):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
 
+    def perform_update(self, serializer):
+        serializer.save()
+
 
 class TeamView(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
@@ -30,6 +33,7 @@ def login(request):
         return JsonResponse({
             'success': True,
             'user': {
+                'id': res.id,
                 'username': username,
                 'team': res.team.name if res.team else None,
                 'role': res.role.name if res.role else None

@@ -5,8 +5,8 @@ from .models import Profile, Team, Role
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('username', 'password', 'first_name', 'last_name', 'team',
-                  'role')
+        fields = ('id', 'username', 'password', 'first_name', 'last_name',
+                  'team', 'role', 'progress')
 
 
 class TeamSerializer(serializers.ModelSerializer):

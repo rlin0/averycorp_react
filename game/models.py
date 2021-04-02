@@ -17,6 +17,7 @@ class Profile(models.Model):
                              on_delete=models.SET_NULL,
                              blank=True,
                              null=True)
+    progress = models.IntegerField(default=0)
 
     def __str__(self):
         """String for representing the Model object."""
