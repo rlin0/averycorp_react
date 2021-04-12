@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Login from './components/Login'
 import CityIntroScene from './components/CityIntroScene'
 import axios from "axios"
-import { BrowserRouter, Route } from "react-router-dom"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Map from './components/Map'
 
 export default class App extends Component {
@@ -13,7 +13,7 @@ export default class App extends Component {
     this.state = {
       progress: null,
       username: localStorage.getItem("username"),
-      userId: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId"),
     }
     this.login = this.login.bind(this)
     this.logout = this.logout.bind(this)
@@ -64,8 +64,6 @@ export default class App extends Component {
     })
   }
 
-
-
   app = () => {
     switch (this.state.progress) {
       case null:
@@ -87,8 +85,12 @@ export default class App extends Component {
       <BrowserRouter>
         <div>
           <Header username={this.state.username} logout={this.logout} />
-          <Route exact path="/map" component={Map} />
-          {this.app()}
+          <Switch>
+            <Route exact path="/">
+              {this.app()}
+            </Route>
+            <Route exact path="/map" component={Map} />
+          </Switch>
         </div>
       </BrowserRouter>
 
