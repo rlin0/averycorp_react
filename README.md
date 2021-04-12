@@ -27,9 +27,9 @@ password: password
 
 You will need two terminals pointed to the frontend and backend directories to start the servers for this application.
 
-1. Run this command to start the backend server in the `backend` directory: \
+1. Run this command to start the backend server in the root directory: \
    `python manage.py runserver`
-2. Run this command to start the frontend development server in the `frontend` directory (This will start the frontend on the adddress [localhost:3000](http://localhost:3000)): \
+2. Run this command to start the frontend development server in the `src` directory (This will start the frontend on the adddress [localhost:3000](http://localhost:3000)): \
    `npm start`
 
 ## Development workflow
@@ -51,3 +51,4 @@ Use `git commit --amend` liberally
 - https://dev.to/mdrhmn/deploying-react-django-app-using-heroku-2gfa
 - React Tutorial: https://reactjs.org/tutorial/tutorial.html
 - React Docs: https://reactjs.org/docs/hello-world.html
+- React Router (for link/page navigation): https://reactrouter.com/web/guides/quick-start
