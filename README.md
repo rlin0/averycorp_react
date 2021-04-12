@@ -9,6 +9,10 @@ Login info:\
 username: admin\
 password: password
 
+Login for the site:
+username: jassboi\
+password: password
+
 ## Requirements
 * Python3
 
@@ -23,9 +27,9 @@ password: password
 ## Run the application
 You will need two terminals pointed to the frontend and backend directories to start the servers for this application.
 
-1. Run this command to start the backend server in the `backend` directory: \
+1. Run this command to start the backend server in the base directory: \
 `python manage.py runserver`
-2. Run this command to start the frontend development server in the `frontend` directory (This will start the frontend on the adddress [localhost:3000](http://localhost:3000)): \
+2. Run this command to start the frontend development server in the base directory (This will start the frontend on the adddress [localhost:3000](http://localhost:3000)): \
 `npm start`
 
 
