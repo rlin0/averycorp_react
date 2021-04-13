@@ -55,4 +55,5 @@ Use `git commit --amend` liberally
 - https://dev.to/mdrhmn/deploying-react-django-app-using-heroku-2gfa
 - React Tutorial: https://reactjs.org/tutorial/tutorial.html
 - React Docs: https://reactjs.org/docs/hello-world.html
-- React Router (for link/page navigation): https://reactrouter.com/web/guides/quick-start
+- React Router (for link/page navigation): https://reactrouter.com/web/api/
+- Material UI: https://material-ui.com

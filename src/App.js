@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './components/Login';
 import CityIntroScene from './components/CityIntroScene';
-import axios from 'axios';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Map from './components/Map';
+import EscapeRoom from './components/EscapeRoom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import AVERYCORP_THEME from './components/Theme';
 
 import './App.css';
+import { Container } from '@material-ui/core';
 
 export default class App extends Component {
   constructor(props) {
@@ -89,17 +93,18 @@ export default class App extends Component {
       return <Login login={this.login} />;
     }
     return (
+      <ThemeProvider theme={AVERYCORP_THEME}>
       <BrowserRouter>
         <div id="App">
           <Header username={this.state.username} logout={this.logout} />
           <Switch>
-            <Route exact path="/">
-              {this.app()}
-            </Route>
-            <Route exact path="/map" component={Map} />
+            <Route exact path="/"> {this.app()} </Route>
+            <Route exact path="/map"><Map /></Route>
+            <Route path="/escaperoom"><EscapeRoom /></Route>
           </Switch>
         </div>
       </BrowserRouter>
+    </ThemeProvider>
     );
   }
 }
