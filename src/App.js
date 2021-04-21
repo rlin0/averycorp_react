@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header';
 import Login from './components/Login';
 import CityIntroScene from './components/CityIntroScene';
+import Act1 from './components/Act1';
+import Profile from './components/Profile';
 import Map from './components/Map';
 import EscapeRoom from './components/EscapeRoom';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -94,17 +96,19 @@ export default class App extends Component {
     }
     return (
       <ThemeProvider theme={AVERYCORP_THEME}>
-      <BrowserRouter>
-        <div id="App">
-          <Header username={this.state.username} logout={this.logout} />
-          <Switch>
-            <Route exact path="/"> {this.app()} </Route>
-            <Route exact path="/map"><Map /></Route>
-            <Route path="/escaperoom"><EscapeRoom /></Route>
-          </Switch>
-        </div>
-      </BrowserRouter>
-    </ThemeProvider>
+        <BrowserRouter>
+          <div id="App">
+            <Header username={this.state.username} logout={this.logout} />
+            <Switch>
+              <Route exact path="/"> {this.app()} </Route>
+              <Route exact path="/map"><Map /></Route>
+              <Route path="/escaperoom"><EscapeRoom /></Route>
+              <Route path="/act1"><Act1 username={this.state.username} /></Route>
+              <Route path="/profile"><Profile username={this.state.username} /></Route>
+            </Switch>
+          </div>
+        </BrowserRouter>
+      </ThemeProvider>
     );
   }
 }

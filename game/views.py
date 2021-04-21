@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer
-from .models import Profile, Team, Role
+from .models import Profile, Team, Role, MadLib
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -40,4 +40,49 @@ def login(request):
             }
         })
     except Profile.DoesNotExist:
+        return JsonResponse({'success': False})
+
+
+@api_view(['POST'])
+def post_madlib(request):
+    try:
+        username = request.data.get('username')
+        m = MadLib.objects.get(profile_from=Profile.objects.get(
+            username=username))
+        m.fields = request.data.get('fields')
+        m.save()
+        return JsonResponse({
+            'success': True,
+        })
+    except:
+        return JsonResponse({'success': False})
+
+
+@api_view(['GET'])
+def get_madlib_prompt(request):
+    try:
+        username = request.query_params.get('username')
+        m = MadLib.objects.get(profile_from=Profile.objects.get(
+            username=username))
+        return JsonResponse({
+            'success': True,
+            'prompts': m.type_id.prompts,
+        })
+    except:
+        return JsonResponse({'success': False})
+
+
+@api_view(['GET'])
+def get_madlib(request):
+    try:
+        username = request.query_params.get('username')
+        m = MadLib.objects.get(profile_to=Profile.objects.get(
+            username=username))
+
+        return JsonResponse({
+            'success': True,
+            'fields': m.fields,
+            'text': m.type_id.text,
+        })
+    except:
         return JsonResponse({'success': False})

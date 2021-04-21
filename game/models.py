@@ -44,3 +44,31 @@ class Role(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.name
+
+
+class MadLib(models.Model):
+    id = models.AutoField(primary_key=True)
+    profile_from = models.ForeignKey('Profile',
+                                     on_delete=models.SET_NULL,
+                                     related_name='profile_from',
+                                     blank=True,
+                                     null=True)
+    profile_to = models.ForeignKey('Profile',
+                                   on_delete=models.SET_NULL,
+                                   related_name='profile_to',
+                                   blank=True,
+                                   null=True)
+    # Comma separated for each field
+    fields = models.CharField(max_length=350, blank=True, null=True)
+    type_id = models.ForeignKey('MadLibTypes',
+                                on_delete=models.SET_NULL,
+                                blank=True,
+                                null=True)
+
+
+class MadLibTypes(models.Model):
+    id = models.AutoField(primary_key=True)
+    # instructions for field
+    prompts = models.CharField(max_length=350, blank=True, null=True)
+    # Text where * is for each field
+    text = models.CharField(max_length=600, blank=True, null=True)
