@@ -7,6 +7,7 @@ import CityIntroScene from './components/CityIntroScene';
 import Act1 from './components/Act1';
 import Profile from './components/Profile';
 import Map from './components/Map';
+import Puzzle from './components/Puzzle';
 import EscapeRoom from './components/EscapeRoom';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AVERYCORP_THEME from './components/Theme';
@@ -86,7 +87,7 @@ export default class App extends Component {
       case 0:
         return <CityIntroScene next={this.next} />;
       default:
-        return <p>next puzzle here</p>;
+        return <p>next stage here</p>;
     }
   };
 
@@ -103,8 +104,9 @@ export default class App extends Component {
               <Route exact path="/"> {this.app()} </Route>
               <Route exact path="/map"><Map /></Route>
               <Route path="/escaperoom"><EscapeRoom /></Route>
-              <Route path="/act1"><Act1 username={this.state.username} /></Route>
-              <Route path="/profile"><Profile username={this.state.username} /></Route>
+              <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
+              <Route path="/profile"><Profile userId={this.state.userId} /></Route>
+              <Route path="/puzzle"><Puzzle puzzleId="1" userId={this.state.userId} /></Route>
             </Switch>
           </div>
         </BrowserRouter>

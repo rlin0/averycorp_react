@@ -65,7 +65,7 @@ class Act1 extends Component {
         axios
             .get('/api/madlib/get_prompt', {
                 params: {
-                    username: this.props.username
+                    userId: this.props.userId
                 }
             })
             .then((res) => {

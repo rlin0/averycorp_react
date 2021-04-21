@@ -35,7 +35,7 @@ export default class Map extends Component {
                 <img src={img} alt="map" useMap="#map" />
                 <map name="map">
                     <area alt="" title="close" href="/" coords="531,32,500,6" />
-                    <area alt="stadium is large" title="stadium" href="" coords="241,115,353,168" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                    <area alt="stadium is large" title="stadium" href="/puzzle" coords="241,115,353,168" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
                     <area alt="boat role" title="boat" href="" coords="29,218,126,278" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
                 </map>
                 <h3>{this.state.name}</h3>

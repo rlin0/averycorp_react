@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 router.register(r'profile', views.ProfileView, 'profile')
 router.register(r'team', views.TeamView, 'team')
 router.register(r'role', views.RoleView, 'role')
+router.register(r'puzzle', views.PuzzleView, 'puzzle')
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
@@ -16,5 +17,7 @@ urlpatterns = [
     path(r'api/madlib/post', views.post_madlib),
     path(r'api/madlib/get_prompt', views.get_madlib_prompt),
     path(r'api/madlib/get', views.get_madlib),
+    path(r'api/puzzle/get_solved', views.get_solved),
+    path(r'api/puzzle/submit_answer', views.submit_answer),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

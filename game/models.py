@@ -28,8 +28,8 @@ class Team(models.Model):
     """Model representing a team."""
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
-    puzzle_id = models.IntegerField(
-        default=0, help_text='id of puzzle team is currently on')
+    puzzles_done = models.IntegerField(
+        default=0, help_text='kth bit in binary represents if puzzle k solved')
 
     def __str__(self):
         """String for representing the Model object."""
@@ -40,6 +40,17 @@ class Role(models.Model):
     """Model representing a role."""
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=20, unique=True)
+
+    def __str__(self):
+        """String for representing the Model object."""
+        return self.name
+
+
+class Puzzle(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20, unique=True)
+    answer = models.CharField(max_length=50)
+    link = models.CharField(max_length=150)
 
     def __str__(self):
         """String for representing the Model object."""

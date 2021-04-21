@@ -20,7 +20,7 @@ class Profile extends Component {
         axios
             .get('/api/madlib/get', {
                 params: {
-                    username: this.props.username
+                    userId: this.props.userId
                 }
             })
             .then((res) => {
