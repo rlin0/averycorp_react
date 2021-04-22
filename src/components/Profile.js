@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Button, Icon, Typography, TextField } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
 import axios from 'axios';
 
 class Profile extends Component {

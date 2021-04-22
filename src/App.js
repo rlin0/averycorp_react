@@ -13,7 +13,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import AVERYCORP_THEME from './components/Theme';
 
 import './App.css';
-import { Container } from '@material-ui/core';
 
 export default class App extends Component {
   constructor(props) {

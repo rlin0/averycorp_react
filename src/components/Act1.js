@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Button, Icon, Typography, TextField } from '@material-ui/core';
+import { Button, Typography, TextField } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 
@@ -36,7 +36,7 @@ class Act1 extends Component {
         if (lst.every(this.valid)) {
             alert('valid text: ' + lst.join())
             axios
-                .post('/api/madlib/post', { username: this.props.username, fields: lst.join() })
+                .post('/api/madlib/post', { userId: this.props.userId, fields: lst.join() })
                 .then((res) => {
                     if (res.data.success) {
                         console.log('success');
