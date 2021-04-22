@@ -73,7 +73,7 @@ class Puzzle extends Component {
             });
     }
 
-
+    render
 
     render() {
         if (this.state.name === null) return (
@@ -86,23 +86,26 @@ class Puzzle extends Component {
             <>
                 <CssBaseline />
                 <Typography variant="h3"> {this.state.name} </Typography>
-                <iframe src={this.state.link} width="640" height="480"></iframe>;
+                <iframe src={this.state.link} width="640" height="480"></iframe>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
-
-                    <TextField
-                        label="Answer"
-                        onChange={({ target }) => this.setState({ answer: target.value })}
-                    />
-                    {!this.state.solved &&
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                        >
-                            Submit
-                    </Button>}
+                    {this.state.solved ? (
+                        <p>Solved!</p>
+                    ) : (
+                        <>
+                            <TextField
+                                label="Answer"
+                                onChange={({ target }) => this.setState({ answer: target.value })}
+                            />
+                            <Button
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                            >
+                                Submit
+                        </Button>
+                        </>
+                    )}
                 </form>
-                {this.state.solved && <p>Solved!</p>}
             </>
         )
     };

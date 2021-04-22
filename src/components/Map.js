@@ -9,8 +9,6 @@ export default class Map extends Component {
             name: null,
             desc: null,
         }
-        this.handleMouseEnter = this.handleMouseEnter.bind(this)
-        this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }
 
     handleMouseEnter = (e) => {

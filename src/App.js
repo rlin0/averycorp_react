@@ -23,9 +23,6 @@ export default class App extends Component {
       username: localStorage.getItem('username'),
       userId: localStorage.getItem('userId'),
     };
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
-    this.next = this.next.bind(this);
   }
 
   componentDidMount() {
