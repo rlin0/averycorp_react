@@ -57,6 +57,13 @@ class Puzzle(models.Model):
         return self.name
 
 
+class PuzzleSubmission(models.Model):
+    id = models.AutoField(primary_key=True)
+    puzzle = models.ForeignKey('Puzzle', on_delete=models.CASCADE)
+    team = models.ForeignKey('Team', on_delete=models.CASCADE)
+    ts = models.DateTimeField(auto_now=True)
+
+
 class MadLib(models.Model):
     id = models.AutoField(primary_key=True)
     profile_from = models.ForeignKey('Profile',

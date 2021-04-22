@@ -62,8 +62,9 @@ class Puzzle extends Component {
             })
             .then((res) => {
                 if (res.data.success) {
-                    if (res.data.correct) this.setState({ solved: true })
-                    else alert("incorrect!");
+                    if (res.data.msg === "correct") this.setState({ solved: true })
+                    else if (res.data.msg === "incorrect") alert("incorrect! Try again in 5 minutes");
+                    else if (res.data.msg === "later") alert("You are allowed 1 guess per 5 minutes! Try again later");
                 }
                 console.log(res)
             })

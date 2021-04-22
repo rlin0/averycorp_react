@@ -1,9 +1,11 @@
 from rest_framework import viewsets
 from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer
-from .models import Profile, Team, Role, MadLib, Puzzle
+from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from datetime import timedelta
+from django.utils import timezone
 
 
 class ProfileView(viewsets.ModelViewSet):
@@ -99,16 +101,23 @@ def submit_answer(request):
         user_id = int(request.data.get('userId'))
         puzzle_id = int(request.data.get('puzzleId'))
         answer = request.data.get('answer')
-        Puzzle.objects.get(id=puzzle_id, answer=answer)
         t = Profile.objects.get(id=user_id).team
-        print(t.name)
-        # Set bit to true
-        t.puzzles_done = t.puzzles_done | (1 << (puzzle_id - 1))
-        t.save()
-        return JsonResponse({'success': True, 'correct': True})
-    except Profile.DoesNotExist:
-        return JsonResponse({'success': True, 'correct': False})
-    except:
+        p, created = PuzzleSubmission.objects.get_or_create(
+            puzzle=Puzzle.objects.get(id=puzzle_id),
+            team=Team.objects.get(id=t.id))
+        # TODO: set period limit
+        if not created and timezone.now() - p.ts < timedelta(minutes=0):
+            return JsonResponse({'success': True, 'msg': 'later'})
+        p.save()
+        if Puzzle.objects.filter(id=puzzle_id, answer=answer).exists():
+            # Set bit to true
+            t.puzzles_done = t.puzzles_done | (1 << (puzzle_id - 1))
+            t.save()
+            return JsonResponse({'success': True, 'msg': 'correct'})
+        else:
+            return JsonResponse({'success': True, 'msg': 'incorrect'})
+    except Exception as e:
+        print(e)
         return JsonResponse({'success': False})
 
 
