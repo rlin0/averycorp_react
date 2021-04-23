@@ -73,8 +73,6 @@ class Puzzle extends Component {
             });
     }
 
-    render
-
     render() {
         if (this.state.name === null) return (
             <>

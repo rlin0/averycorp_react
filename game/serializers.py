@@ -12,7 +12,7 @@ class ProfileSerializer(serializers.ModelSerializer):
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('id', 'name', 'puzzle_id')
+        fields = ('id', 'name', 'puzzles_done')
 
 
 class RoleSerializer(serializers.ModelSerializer):

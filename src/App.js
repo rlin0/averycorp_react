@@ -22,6 +22,7 @@ export default class App extends Component {
       progress: null,
       username: localStorage.getItem('username'),
       userId: localStorage.getItem('userId'),
+      teamId: localStorage.getItem('teamId'),
     };
   }
 
@@ -38,14 +39,16 @@ export default class App extends Component {
     }
   }
 
-  login = (username, userId) => {
+  login = (username, userId, teamId) => {
     this.setState({
       username: username,
       userId: userId,
+      teamId: teamId
     });
     // store the user in localStorage
     localStorage.setItem('username', this.state.username);
     localStorage.setItem('userId', this.state.userId);
+    localStorage.setItem('teamId', this.state.teamId);
   };
 
   logout = () => {
@@ -98,7 +101,7 @@ export default class App extends Component {
             <Header username={this.state.username} logout={this.logout} />
             <Switch>
               <Route exact path="/"> {this.app()} </Route>
-              <Route exact path="/map"><Map /></Route>
+              <Route exact path="/map"><Map teamId={this.state.teamId} /></Route>
               <Route path="/escaperoom"><EscapeRoom /></Route>
               <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
               <Route path="/profile"><Profile userId={this.state.userId} /></Route>

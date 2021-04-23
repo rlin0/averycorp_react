@@ -43,7 +43,7 @@ def login(request):
             'user': {
                 'id': res.id,
                 'username': username,
-                'team': res.team.name if res.team else None,
+                'teamId': res.team.id if res.team else None,
                 'role': res.role.name if res.role else None
             }
         })

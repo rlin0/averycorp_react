@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import img from '../images/map.png';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import axios from 'axios';
 
 export default class Map extends Component {
     constructor(props) {
@@ -8,21 +9,43 @@ export default class Map extends Component {
         this.state = {
             name: null,
             desc: null,
+            solved_puzzles: 0,
+            solved: 0
         }
     }
 
+    componentDidMount() {
+        this.getSolvedPuzzles();
+    }
+
     handleMouseEnter = (e) => {
+        const id = parseInt(e.target.getAttribute("alt"))
         this.setState({
             name: e.target.getAttribute("title"),
-            desc: e.target.getAttribute("alt")
+            desc: e.target.getAttribute("alt"),
+            solved: this.state.solved_puzzles & (1 << (id - 1))
         })
     }
 
     handleMouseLeave = (e) => {
         this.setState({
             name: null,
-            desc: null
+            desc: null,
+            solved: 0
         })
+    }
+
+    getSolvedPuzzles = () => {
+        axios
+            .get(`/api/team/${this.props.teamId}/`)
+            .then((res) => {
+                this.setState({
+                    solved_puzzles: parseInt(res.data.puzzles_done),
+                });
+            })
+            .catch((err) => {
+                console.error(err);
+            });
     }
 
     render() {
@@ -33,13 +56,17 @@ export default class Map extends Component {
                 <img src={img} alt="map" useMap="#map" />
                 <map name="map">
                     <area alt="" title="close" href="/" coords="531,32,500,6" />
-                    <area alt="stadium is large" title="stadium" href="/puzzle" coords="241,115,353,168" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
-                    <area alt="boat role" title="boat" href="" coords="29,218,126,278" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                    <area alt="1" title="stadium" href="/puzzle" coords="241,115,353,168" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
+                    <area alt="2" title="boat" href="" coords="29,218,126,278" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} />
                 </map>
                 <h3>{this.state.name}</h3>
                 <p>{this.state.desc}</p>
+                {this.state.solved === 1 ? (
+                    <p>Solved!</p>
+                ) : (
+                    <p> Not solved</p>
+                )}
             </>
-
         )
     }
 }

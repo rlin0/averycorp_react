@@ -22,7 +22,7 @@ export default class Login extends Component {
       })
       .then((res) => {
         if (res.data.success) {
-          if (res.data.loggedIn) this.props.login(res.data.user.username, res.data.user.id);
+          if (res.data.loggedIn) this.props.login(res.data.user.username, res.data.user.id, res.data.user.teamId);
           else this.setState({ incorrect: true });
         } else console.error(res.data);
       })
