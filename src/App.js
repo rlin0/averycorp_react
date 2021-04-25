@@ -91,24 +91,26 @@ export default class App extends Component {
   };
 
   render() {
-    if (this.state.userId === null) {
-      return <Login login={this.login} />;
-    }
+
     return (
       <ThemeProvider theme={AVERYCORP_THEME}>
-        <BrowserRouter>
-          <div id="App">
-            <Header username={this.state.username} logout={this.logout} />
-            <Switch>
-              <Route exact path="/"> {this.app()} </Route>
-              <Route exact path="/map"><Map teamId={this.state.teamId} /></Route>
-              <Route path="/escaperoom"><Main /></Route>
-              <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
-              <Route path="/profile"><Profile userId={this.state.userId} /></Route>
-              <Route path="/puzzle"><Puzzle puzzleId="1" userId={this.state.userId} /></Route>
-            </Switch>
-          </div>
-        </BrowserRouter>
+        {this.state.userId === null ? (
+          <Login login={this.login} />
+        ) : (
+          <BrowserRouter>
+            <div id="App">
+              <Header username={this.state.username} logout={this.logout} />
+              <Switch>
+                <Route exact path="/"> {this.app()} </Route>
+                <Route exact path="/map"><Map teamId={this.state.teamId} /></Route>
+                <Route path="/escaperoom"><Main /></Route>
+                <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
+                <Route path="/profile"><Profile userId={this.state.userId} /></Route>
+                <Route path="/puzzle"><Puzzle puzzleId="1" userId={this.state.userId} /></Route>
+              </Switch>
+            </div>
+          </BrowserRouter>
+        )}
       </ThemeProvider>
     );
   }

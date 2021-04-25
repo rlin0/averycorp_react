@@ -5,7 +5,7 @@ This is a functional component style REACT app using Django REST API for the bac
 Currently deploying on Heroku
 Site: https://averycorp.herokuapp.com
 
-Admin: https://averycorp.herokuapp.com/admin \
+Admin: https://averycorp.herokuapp.com/admin/ \
 Login info:\
 username: admin\
 password: password
