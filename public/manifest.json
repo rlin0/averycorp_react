@@ -1,8 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-  ],
+  "short_name": "AveryCorp",
+  "name": "fugma",
+  "icons": [],
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#000000",

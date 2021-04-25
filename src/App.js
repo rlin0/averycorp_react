@@ -8,7 +8,7 @@ import Act1 from './components/Act1';
 import Profile from './components/Profile';
 import Map from './components/Map';
 import Puzzle from './components/Puzzle';
-import EscapeRoom from './components/EscapeRoom';
+import Main from './components/EscapeRoom/Main';
 import { ThemeProvider } from '@material-ui/core/styles';
 import AVERYCORP_THEME from './components/Theme';
 
@@ -102,7 +102,7 @@ export default class App extends Component {
             <Switch>
               <Route exact path="/"> {this.app()} </Route>
               <Route exact path="/map"><Map teamId={this.state.teamId} /></Route>
-              <Route path="/escaperoom"><EscapeRoom /></Route>
+              <Route path="/escaperoom"><Main /></Route>
               <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
               <Route path="/profile"><Profile userId={this.state.userId} /></Route>
               <Route path="/puzzle"><Puzzle puzzleId="1" userId={this.state.userId} /></Route>
