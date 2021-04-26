@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import ThemeProvider from '@material-ui/styles/ThemeProvider';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,7 +9,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import AVERYCORP_THEME from './Theme';
 import { ListItemLink } from './Links';
 
 const menuLinks = [
@@ -39,21 +37,15 @@ const menuLinks = [
 export default class Header extends Component {
   render() {
     return (
-      <ThemeProvider theme={AVERYCORP_THEME}>
-        <AppBar position="static">
-          <Toolbar>
-            <SideBar />
-            <Typography variant="h6">
-              Welcome,
-              {' '}
-              {this.props.username}
-            </Typography>
-            <Button color="inherit" onClick={this.props.logout}>
-              Logout
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
+      <AppBar position="static">
+        <Toolbar>
+          <SideBar />
+          <Typography variant="h6">Welcome, {this.props.username}</Typography>
+          <Button color="inherit" onClick={this.props.logout}>
+            Logout
+          </Button>
+        </Toolbar>
+      </AppBar>
     );
   }
 }
@@ -75,7 +67,10 @@ function SideBar() {
   });
 
   const toggleDrawer = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
       return;
     }
 

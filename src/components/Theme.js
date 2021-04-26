@@ -9,6 +9,24 @@ import {
   yellow,
   grey,
 } from '@material-ui/core/colors';
+import OCRA from '../fonts/OcrA.ttf';
+import BabaPro from '../fonts/BabaPro-Bold.ttf';
+
+const ocra = {
+  fontFamily: 'OCRA',
+  src: `
+    local('OCRA'),
+    url(${OCRA}) format('truetype')
+  `,
+};
+
+const babapro = {
+  fontFamily: 'BabaPro',
+  src: `
+    local('BabaPro-Bold'),
+    url(${BabaPro}) format('truetype')
+  `,
+};
 
 // This is still tentative!!!
 const AVERYCORP_THEME = createMuiTheme({
@@ -25,11 +43,33 @@ const AVERYCORP_THEME = createMuiTheme({
       primary: '#f5f',
     },
   },
+  typography: {
+    fontFamily: [
+      'OCRA',
+      'Consolas',
+      'Menlo',
+      'Monaco',
+      'monospace',
+      'Roboto',
+      '"Segoe UI"',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
   // style of Material-UI components
   overrides: {
     MuiTypography: {
       root: {
         flexGrow: 1,
+      },
+    },
+    MuiCssBaseline: {
+      '@global': {
+        '@font-face': [ocra],
       },
     },
   },
