@@ -6,10 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import { ListItemLink } from './Links';
+import { ReactComponent as AverycorpLogo } from '../../images/logo_A_fill_w.svg';
 
 const menuLinks = [
   {
@@ -41,6 +43,11 @@ export default class Header extends Component {
         <Toolbar>
           <SideBar />
           <Typography variant="h6">Welcome, {this.props.username}</Typography>
+          <SvgIcon
+            component={AverycorpLogo}
+            fontSize="large"
+            viewBox="0 -50 240 240"
+          />
           <Button color="inherit" onClick={this.props.logout}>
             Logout
           </Button>

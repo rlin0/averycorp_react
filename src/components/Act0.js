@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Button, Typography, TextField } from '@material-ui/core';
 import DialogueBox from './UI/DialogueBox';
 import text from '../text/sampleText';
 

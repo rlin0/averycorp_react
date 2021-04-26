@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexGrow: 1,
   },
+  textBox: {
+    border: '2px solid white',
+  },
 }));
 
 // textbox at bottom of screen for advanceable dialogue
@@ -30,7 +33,7 @@ export default function DialogueBox(props) {
   const classes = useStyles();
   const { data } = props;
   const [textIdx, setTextIdx] = React.useState(0); // index for advancing dialogue
-  const [letterIdx, setLetterIdx] = React.useState(0); // index for animating text
+  const [letterIdx, setLetterIdx] = React.useState(1); // index for animating text
 
   // animate text with typewriter effect
   React.useEffect(() => {
@@ -54,7 +57,7 @@ export default function DialogueBox(props) {
         (e.key === 'Space' || e.key === 'Enter' || e.key === 'KeyF'))
     ) {
       setTextIdx((prev) => prev + 1);
-      setLetterIdx(0);
+      setLetterIdx(1);
     }
   };
 
@@ -74,36 +77,38 @@ export default function DialogueBox(props) {
   return (
     textIdx < data.text.length && (
       <>
-        {getImage(data.backgroundImage[textIdx])}
+        {data.BGImage && getImage(data.BGImage[textIdx])}
         <Container
           maxWidth="xl"
           style={{
             position: 'fixed',
             bottom: '2%',
+            left: '5%',
+            width: '90%',
           }}
         >
-          <Card
-            square={true}
-            onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work
-            raised={true}
-            style={{
-              border: '2px solid white',
-            }}
-          >
-            <CardContent style={{ display: 'flex' }}>
-              <div className={classes.animatedText}>
-                {data.text[textIdx].substring(0, letterIdx)}
-              </div>
-              <IconButton
-                onClick={advanceDialogue}
-                edge="end"
-                color="inherit"
-                size="small"
-              >
-                <NextIcon />
-              </IconButton>
-            </CardContent>
-          </Card>
+          <div>
+            <Card
+              square={true}
+              onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work
+              raised={true}
+              className={classes.textBox}
+            >
+              <CardContent style={{ display: 'flex' }}>
+                <div className={classes.animatedText}>
+                  {data.text[textIdx].substring(0, letterIdx)}
+                </div>
+                <IconButton
+                  onClick={advanceDialogue}
+                  edge="end"
+                  color="inherit"
+                  size="small"
+                >
+                  <NextIcon />
+                </IconButton>
+              </CardContent>
+            </Card>
+          </div>
         </Container>
       </>
     )
