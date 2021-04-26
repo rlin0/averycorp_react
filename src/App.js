@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/UI/Header';
 import Login from './components/Login';
 import CityIntroScene from './components/CityIntroScene';
+import Act0 from './components/Act0';
 import Act1 from './components/Act1';
 import Profile from './components/Profile';
 import Map from './components/Map';
@@ -13,6 +14,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import AVERYCORP_THEME from './components/Theme';
 
 import './App.css';
+import { CssBaseline } from '@material-ui/core';
 
 export default class App extends Component {
   constructor(props) {
@@ -43,7 +45,7 @@ export default class App extends Component {
     this.setState({
       username: username,
       userId: userId,
-      teamId: teamId
+      teamId: teamId,
     });
     // store the user in localStorage
     localStorage.setItem('username', this.state.username);
@@ -91,25 +93,43 @@ export default class App extends Component {
   };
 
   render() {
-
     return (
       <ThemeProvider theme={AVERYCORP_THEME}>
         {this.state.userId === null ? (
           <Login login={this.login} />
         ) : (
-          <BrowserRouter>
-            <div id="App">
-              <Header username={this.state.username} logout={this.logout} />
-              <Switch>
-                <Route exact path="/"> {this.app()} </Route>
-                <Route exact path="/map"><Map teamId={this.state.teamId} /></Route>
-                <Route path="/escaperoom"><Main /></Route>
-                <Route path="/act1"><Act1 userId={this.state.userId} /></Route>
-                <Route path="/profile"><Profile userId={this.state.userId} /></Route>
-                <Route path="/puzzle"><Puzzle puzzleId="1" userId={this.state.userId} /></Route>
-              </Switch>
-            </div>
-          </BrowserRouter>
+          <>
+            <CssBaseline />
+            <BrowserRouter>
+              <div id="App">
+                <Header username={this.state.username} logout={this.logout} />
+                <Switch>
+                  <Route exact path="/">
+                    {' '}
+                    {this.app()}{' '}
+                  </Route>
+                  <Route exact path="/map">
+                    <Map teamId={this.state.teamId} />
+                  </Route>
+                  <Route path="/escaperoom">
+                    <Main />
+                  </Route>
+                  <Route path="/act0">
+                    <Act0 userId={this.state.userId} />
+                  </Route>
+                  <Route path="/act1">
+                    <Act1 userId={this.state.userId} />
+                  </Route>
+                  <Route path="/profile">
+                    <Profile userId={this.state.userId} />
+                  </Route>
+                  <Route path="/puzzle">
+                    <Puzzle puzzleId="1" userId={this.state.userId} />
+                  </Route>
+                </Switch>
+              </div>
+            </BrowserRouter>
+          </>
         )}
       </ThemeProvider>
     );
