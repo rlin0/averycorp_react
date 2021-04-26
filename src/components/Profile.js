@@ -50,14 +50,14 @@ class Profile extends Component {
         if (this.state.bio === undefined) return (
             <>
                 <CssBaseline />
-                <p>No bio yet :(</p>
+                <Typography>No bio yet :(</Typography>
             </>
         )
         return (
             <>
                 <CssBaseline />
                 <Typography variant="h3"> Bio </Typography>
-                {this.state.bio}
+                <Typography>{this.state.bio}</Typography>
             </>
         );
     }

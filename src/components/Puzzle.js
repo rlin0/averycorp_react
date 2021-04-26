@@ -87,7 +87,7 @@ class Puzzle extends Component {
                 <iframe src={this.state.link} width="640" height="480"></iframe>
                 <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
                     {this.state.solved ? (
-                        <p>Solved!</p>
+                        <Typography>Solved!</Typography>
                     ) : (
                         <>
                             <TextField

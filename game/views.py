@@ -133,3 +133,22 @@ def get_solved(request):
         })
     except:
         return JsonResponse({'success': False})
+
+
+######################## Escape Room API's ################################
+@api_view(['POST'])
+def mechanics_unlock_closet(request):
+    try:
+        team_id = int(request.data.get('teamId'))
+        return JsonResponse({'success': True, 'msg': 'correct'})
+    except:
+        return JsonResponse({'success': False})
+
+
+@api_view(['GET'])
+def mechanics_get_unlocked(request):
+    try:
+        team_id = int(request.query_params.get('teamId'))
+        return JsonResponse({'success': True, 'unlocked': False})
+    except:
+        return JsonResponse({'success': False})
