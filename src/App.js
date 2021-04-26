@@ -103,35 +103,38 @@ export default class App extends Component {
           <>
             <CssBaseline />
             <BrowserRouter>
-              <div id="App">
-                <Header username={this.state.username} logout={this.logout} />
-                <Switch>
-                  <Route exact path="/">
-                    {' '}
-                    {this.app()}{' '}
-                  </Route>
-                  <Route exact path="/map">
-                    <Map teamId={this.state.teamId} />
-                  </Route>
-                  <Route path="/escaperoom">
-                    <Main />
-                  </Route>
-                  <Route path="/act0">
-                    <Act0 userId={this.state.userId} />
-                  </Route>
-                  <Route path="/act1">
-                    <Act1 userId={this.state.userId} />
-                  </Route>
-                  <Route path="/profile">
-                    <Profile userId={this.state.userId} />
-                  </Route>
-                  <Route path="/puzzle">
-                    <Puzzle puzzleId="1" userId={this.state.userId} />
-                  </Route>
-                  <Route exact path="/escaperoom/mechanics">
-                    <Mechanics teamId={this.state.teamId} />
-                  </Route>
-                </Switch>
+              <div class="terminal">
+                <div class="app">
+                  <Header username={this.state.username} logout={this.logout} />
+                  <Switch>
+                    <Route exact path="/">
+                      {' '}
+                      {this.app()}{' '}
+                    </Route>
+                    <Route exact path="/map">
+                      <Map teamId={this.state.teamId} />
+                    </Route>
+                    <Route path="/escaperoom">
+                      <Main />
+                    </Route>
+                    <Route path="/act0">
+                      <Act0 userId={this.state.userId} />
+                    </Route>
+                    <Route path="/act1">
+                      <Act1 userId={this.state.userId} />
+                    </Route>
+                    <Route path="/profile">
+                      <Profile userId={this.state.userId} />
+                    </Route>
+                    <Route path="/puzzle">
+                      <Puzzle puzzleId="1" userId={this.state.userId} />
+                    </Route>
+                    <Route exact path="/escaperoom/mechanics">
+                      <Mechanics teamId={this.state.teamId} />
+                    </Route>
+                  </Switch>
+                </div>
+                <div class="scanline"></div>
               </div>
             </BrowserRouter>
           </>
