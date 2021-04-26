@@ -7,45 +7,50 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { NavLink as RouterLink } from 'react-router-dom';
 
-// usage: <ButtonLink buttonText={text} to={path}> </ButtonLink>
+// usage: <ButtonLink buttonText={text} to={path} /ButtonLink>
 export function ButtonLink(props) {
-  const { buttonText, to } = props;
+  const { buttonText, to, ...other } = props;
 
   const renderLink = React.useMemo(
-    () => React.forwardRef((itemProps, ref) => <RouterLink to={to} ref={ref} {...itemProps} />),
-    [to],
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <RouterLink to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
   );
 
   return (
-    <Button color="primary" component={renderLink}>
+    <Button color="primary" component={renderLink} {...other}>
       {buttonText}
     </Button>
   );
 }
 
-// usage: <LinkRouter linkText={text} to={path}> </LinkRouter>
+// usage: <LinkRouter linkText={text} to={path} /LinkRouter>
 export function LinkRouter(props) {
   const { linkText, to } = props;
 
   const renderLink = React.useMemo(
-    () => React.forwardRef((itemProps, ref) => <RouterLink to={to} ref={ref} {...itemProps} />),
-    [to],
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <RouterLink to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
   );
 
-  return (
-    <Link component={renderLink}>
-      {linkText}
-    </Link>
-  );
+  return <Link component={renderLink}>{linkText}</Link>;
 }
 
-// usage: <ListItemLink primary={text} to={path}> </ListItemLink>
+// usage: <ListItemLink primary={text} to={path} /ListItemLink>
 export function ListItemLink(props) {
   const { icon, primary, to } = props;
 
   const renderLink = React.useMemo(
-    () => React.forwardRef((itemProps, ref) => <RouterLink to={to} ref={ref} {...itemProps} />),
-    [to],
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <RouterLink to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
   );
 
   return (

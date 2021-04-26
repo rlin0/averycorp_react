@@ -21,6 +21,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexGrow: 1,
   },
+  textContainer: {
+    position: 'fixed',
+    bottom: '2%',
+    left: '5%',
+    width: '90%',
+  },
   textBox: {
     border: '2px solid white',
   },
@@ -78,21 +84,14 @@ export default function DialogueBox(props) {
     textIdx < data.text.length && (
       <>
         {data.BGImage && getImage(data.BGImage[textIdx])}
-        <Container
-          maxWidth="xl"
-          style={{
-            position: 'fixed',
-            bottom: '2%',
-            left: '5%',
-            width: '90%',
-          }}
-        >
+        <Container maxWidth="xl" className={classes.textContainer}>
           <div>
             <Card
               square={true}
               onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work
               raised={true}
               className={classes.textBox}
+              tabIndex={-1}
             >
               <CardContent style={{ display: 'flex' }}>
                 <div className={classes.animatedText}>

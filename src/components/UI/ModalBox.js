@@ -1,4 +1,101 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogTitle from '@material-ui/core/DialogTitle';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogContentText from '@material-ui/core/DialogContentText';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
+import Typography from '@material-ui/core/Typography';
+import { ButtonLink } from './Links';
 
-//medium modal box for displaying important info such as puzzle desc
-export default class ModalBox extends Component {}
+const styles = (theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(2),
+  },
+  closeButton: {
+    position: 'absolute',
+    right: theme.spacing(1),
+    top: theme.spacing(1),
+    color: theme.palette.grey[500],
+  },
+});
+
+const DialogTitle = withStyles(styles)((props) => {
+  const { children, classes, onClose, ...other } = props;
+  return (
+    <MuiDialogTitle disableTypography className={classes.root} {...other}>
+      <Typography variant="h6">{children}</Typography>
+      {onClose ? (
+        <IconButton
+          aria-label="close"
+          className={classes.closeButton}
+          onClick={onClose}
+        >
+          <CloseIcon />
+        </IconButton>
+      ) : null}
+    </MuiDialogTitle>
+  );
+});
+
+const DialogContent = withStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+}))(MuiDialogContent);
+
+const DialogActions = withStyles((theme) => ({
+  root: {
+    margin: 0,
+    padding: theme.spacing(1),
+  },
+}))(MuiDialogActions);
+
+// medium modal box for displaying important info such as puzzle desc
+// you can optionally include a path so the button directs you to a new page (otherwise it just closes the modal)
+// usage: <ModalBox title="Puzzle Title" text="This is some info about your puzzle." buttonText="GO" buttonTo={path} />
+export default function ModalBox(props) {
+  const { title, text, buttonText, buttonTo } = props;
+  const [open, setOpen] = React.useState(true);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    <div>
+      <Dialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        {title && (
+          <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            {title}
+          </DialogTitle>
+        )}
+        <DialogContent dividers>
+          <MuiDialogContentText>{text}</MuiDialogContentText>
+        </DialogContent>
+        <DialogActions style={{ justifyContent: 'center' }}>
+          {buttonTo ? (
+            <ButtonLink
+              autoFocus
+              color="primary"
+              buttonText={buttonText ? buttonText : 'GO'}
+              to={buttonTo}
+            />
+          ) : (
+            <Button autoFocus onClick={handleClose} color="primary">
+              {buttonText ? buttonText : 'OK'}
+            </Button>
+          )}
+        </DialogActions>
+      </Dialog>
+    </div>
+  );
+}

@@ -73,6 +73,7 @@ const AVERYCORP_THEME = createMuiTheme({
     MuiTypography: {
       root: {
         flexGrow: 1,
+        whiteSpace: 'pre-wrap',
       },
     },
     MuiCssBaseline: {
