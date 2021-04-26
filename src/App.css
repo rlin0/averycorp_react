@@ -1,8 +1,75 @@
-#App {
+/* #App {
   font-family: sans-serif;
   height: 100vh;
   background-image: url(./images/BG_neon_glitch.JPG);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+} */
+
+/* terminal scan line
+http://www.scpwiki.com/scp-style-resource
+*/
+
+div.app {
+  position: relative;
+  z-index: 1000;
+  height: 100vh;
+  background-image: url(./images/logo_neon_purple.svg);
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
+
+div.terminal {
+  height: 100vh;
+  background-color: #314;
+  /* black shadow at the top of the terminal */
+  background-image: radial-gradient(
+    ellipse 1000% 100% at 50% 90%,
+    transparent,
+    #121
+  );
+  background-position: center;
+  display: block;
+  /* shadow around the terminal */
+  box-shadow: inset 0 0 10em 1em rgba(0, 0, 0, 0.5);
+  /* prevents scanline from forming a scrollwheel */
+  overflow: hidden;
+}
+
+div.scanline {
+  margin-top: -40%;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation: scan 12s linear 0s infinite; /* You may need to change this. If the bar goes by too quickly, increase 5s. */
+  animation: scan 12s linear 0s infinite; /* Same as above */
+  background: linear-gradient(
+    to bottom,
+    rgba(82, 56, 112, 0),
+    rgba(82, 56, 112, 0.3)
+  ) !important;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes scan {
+  from {
+    transform: translateY(-2500%);
+  }
+  to {
+    transform: translateY(2500%);
+  } /* You may need to change this depending on the length of your terminal. If the scanline stops halfway, increase the second number.*/
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-2500%);
+  }
+  to {
+    transform: translateY(2500%);
+  } /* Same as above.*/
 }
