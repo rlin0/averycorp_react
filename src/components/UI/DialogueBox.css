@@ -1,0 +1,12 @@
+#textBox {
+  border-style: solid;
+  border-width: 3;
+  -moz-border-image: url(../../images/yellow_message_frame_v1.png) 20 / 20 / 20
+    stretch;
+  -webkit-border-image: url(../../images/yellow_message_frame_v1.png) 20 / 20 /
+    20 stretch;
+  -o-border-image: url(../../images/yellow_message_frame_v1.png) 20 / 20 / 20
+    stretch;
+  border-image: url(../../images/yellow_message_frame_v1.png) 20 3 3 3 / 20% 3%
+    3% 3% / 10 1 1 0;
+}

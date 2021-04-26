@@ -1,14 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import {
-  red,
-  pink,
-  purple,
-  deepPurple,
-  blue,
-  green,
-  yellow,
-  grey,
-} from '@material-ui/core/colors';
+import { purple, green } from '@material-ui/core/colors';
 import OCRA from '../fonts/OcrA.ttf';
 import BabaPro from '../fonts/BabaPro-Bold.ttf';
 
@@ -37,10 +28,27 @@ const AVERYCORP_THEME = createMuiTheme({
       main: purple.A700,
     },
     secondary: {
-      main: pink[600],
+      main: '#ed1f8f',
+    },
+    error: {
+      main: '#ed2924',
+    },
+    warning: {
+      main: '#fccd09',
+    },
+    info: {
+      main: '#6fccdc',
+    },
+    success: {
+      main: green.A400,
     },
     text: {
-      primary: '#f5f',
+      primary: purple.A100,
+      secondary: purple.A200,
+    },
+    background: {
+      default: '#252525',
+      paper: '#353535',
     },
   },
   typography: {
@@ -65,6 +73,7 @@ const AVERYCORP_THEME = createMuiTheme({
     MuiTypography: {
       root: {
         flexGrow: 1,
+        whiteSpace: 'pre-wrap',
       },
     },
     MuiCssBaseline: {

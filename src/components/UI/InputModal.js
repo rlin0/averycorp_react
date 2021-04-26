@@ -1,6 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
@@ -55,11 +56,11 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-// medium modal box for displaying important info such as puzzle desc
-// you can optionally include a path so the button directs you to a new page (otherwise it just closes the modal)
-// usage: <ModalBox title="Puzzle Title" text="This is some info about your puzzle." buttonText="GO" buttonTo={path} />
-export default function ModalBox(props) {
-  const { title, text, buttonText, buttonTo } = props;
+// like ModalBox but allows user to input info
+// usage: <InputModal title="Input Form" text="You must enter a password to proceed." formLabel="password"/>
+// TODO: add backend support so submit button does something
+export default function InputModal(props) {
+  const { title, text, formLabel } = props;
   const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
@@ -78,22 +79,21 @@ export default function ModalBox(props) {
             {title}
           </DialogTitle>
         )}
-        <DialogContent dividers>
+        <DialogContent>
           <MuiDialogContentText>{text}</MuiDialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            id="form"
+            label={formLabel}
+            type="text"
+            fullWidth
+          />
         </DialogContent>
         <DialogActions style={{ justifyContent: 'center' }}>
-          {buttonTo ? (
-            <ButtonLink
-              autoFocus
-              color="primary"
-              buttonText={buttonText ? buttonText : 'GO'}
-              to={buttonTo}
-            />
-          ) : (
-            <Button autoFocus onClick={handleClose} color="primary">
-              {buttonText ? buttonText : 'OK'}
-            </Button>
-          )}
+          <Button autoFocus onClick={handleClose} color="primary">
+            Submit
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

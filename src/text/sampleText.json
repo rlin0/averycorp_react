@@ -6,11 +6,12 @@
       "This is part 3 of the dialogue. Sometimes dialogues can get kind of long. I'm going to keep writing in this text box to see how much text we can handle displaying. I wonder if it will overflow or just resize the box.",
       "This is the last text snippet. Advancing should close the text box."
     ],
-    "backgroundImage": [
-      "MainRoom.png",
-      "MainRoom.png",
-      "MainRoom.png",
-      "MainRoom.png"
+    "BGImage": ["MainRoom.png", "MainRoom.png", "MainRoom.png", "MainRoom.png"]
+  },
+  "sampleDialogueNoBG": {
+    "text": [
+      "This is a sample dialogue. The background image should just be the website background.",
+      "You can accomplish this by leaving out the 'backgroundImage' field in the JSON file."
     ]
   }
 }
