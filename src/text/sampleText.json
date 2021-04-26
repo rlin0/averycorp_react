@@ -1,0 +1,16 @@
+{
+  "sampleDialogue": {
+    "text": [
+      "This is a sample dialogue. Click to advance.",
+      "This is part 2 of the sample dialogue. Hopefully you can see this.",
+      "This is part 3 of the dialogue. Sometimes dialogues can get kind of long. I'm going to keep writing in this text box to see how much text we can handle displaying. I wonder if it will overflow or just resize the box.",
+      "This is the last text snippet. Advancing should close the text box."
+    ],
+    "backgroundImage": [
+      "MainRoom.png",
+      "MainRoom.png",
+      "MainRoom.png",
+      "MainRoom.png"
+    ]
+  }
+}
