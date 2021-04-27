@@ -1,9 +1,8 @@
 const Img = {
-    objectFit: "cover",
-    width: "100%",
+  objectFit: 'cover',
+  width: '100%'
 }
 
-
 export const styles = {
-    Img: Img,
+  Img
 }

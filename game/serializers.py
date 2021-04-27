@@ -25,3 +25,10 @@ class PuzzleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Puzzle
         fields = ('id', 'name', 'link', 'answer')
+
+
+class InventorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Puzzle
+        fields = ('id', 'user', 'matches', 'wrench', 'usb', 'soup', 'knife',
+                  'paperclip', 'inkwell')

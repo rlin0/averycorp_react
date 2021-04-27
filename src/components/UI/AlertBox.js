@@ -1,21 +1,21 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import React from 'react'
+import Button from '@material-ui/core/Button'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 // small popup alert
 // usage: <AlertBox text="This is an alert." />
 // <AlertBox title="Optional" text="WARNING" buttonText="Optional"/>
-export default function AlertBox(props) {
-  const { title, text, buttonText } = props;
-  const [open, setOpen] = React.useState(true);
+export default function AlertBox (props) {
+  const { title, text, buttonText } = props
+  const [open, setOpen] = React.useState(true)
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   return (
     <div>
@@ -33,14 +33,14 @@ export default function AlertBox(props) {
         </DialogContent>
         <DialogActions
           style={{
-            justifyContent: 'center',
+            justifyContent: 'center'
           }}
         >
           <Button onClick={handleClose} color="primary" autoFocus>
-            {buttonText ? buttonText : 'OK'}
+            {buttonText || 'OK'}
           </Button>
         </DialogActions>
       </Dialog>
     </div>
-  );
+  )
 }

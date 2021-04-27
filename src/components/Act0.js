@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import DialogueBox from './UI/DialogueBox';
-import AlertBox from './UI/AlertBox';
-import ModalBox from './UI/ModalBox';
-import ExpositionBox from './UI/ExpositionBox';
-import InputModal from './UI/InputModal';
-import text from '../text/sampleText';
+import React, { Component } from 'react'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import DialogueBox from './UI/DialogueBox'
+import AlertBox from './UI/AlertBox'
+import ModalBox from './UI/ModalBox'
+import ExpositionBox from './UI/ExpositionBox'
+import InputModal from './UI/InputModal'
+import text from '../text/sampleText'
 
 class Act0 extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       fields: [null, null, null],
-      prompts: undefined,
-    };
+      prompts: undefined
+    }
   }
 
-  render() {
+  render () {
     return (
       <>
         <CssBaseline />
@@ -39,7 +39,7 @@ class Act0 extends Component {
         /> */}
         <DialogueBox data={text.sampleDialogue} />
       </>
-    );
+    )
   }
 }
-export default Act0;
+export default Act0

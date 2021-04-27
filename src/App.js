@@ -11,12 +11,14 @@ import Map from './components/Map';
 import Puzzle from './components/Puzzle';
 import Main from './components/EscapeRoom/Main';
 import Mechanics from './components/EscapeRoom/Mechanics';
+import ER from './components/EscapeRoom/Base';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import AVERYCORP_THEME from './components/Theme';
 
 import './App.css';
 import { CssBaseline } from '@material-ui/core';
+
 
 export default class App extends Component {
   constructor(props) {
@@ -114,24 +116,26 @@ export default class App extends Component {
                     <Route exact path="/map">
                       <Map teamId={this.state.teamId} />
                     </Route>
-                    <Route path="/escaperoom">
-                      <Main />
-                    </Route>
-                    <Route path="/act0">
+                    <Route exact path="/act0">
                       <Act0 userId={this.state.userId} />
                     </Route>
-                    <Route path="/act1">
+                    <Route exact path="/act1">
                       <Act1 userId={this.state.userId} />
                     </Route>
-                    <Route path="/profile">
+                    <Route exact path="/profile">
                       <Profile userId={this.state.userId} />
                     </Route>
-                    <Route path="/puzzle">
+                    <Route exact path="/puzzle">
                       <Puzzle puzzleId="1" userId={this.state.userId} />
                     </Route>
-                    <Route exact path="/escaperoom/mechanics">
-                      <Mechanics teamId={this.state.teamId} />
+
+                    <Route exact path="/escaperoom">
+                      <ER comp={Main} userId={this.state.userId} />
                     </Route>
+                    <Route exact path="/escaperoom/mechanics">
+                      <ER comp={Mechanics} userId={this.state.userId} teamId={this.state.teamId} />
+                    </Route>
+
                   </Switch>
                 </div>
                 <div class="scanline"></div>

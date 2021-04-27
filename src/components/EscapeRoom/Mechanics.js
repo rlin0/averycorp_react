@@ -39,7 +39,7 @@ export default class Mechanics extends Component {
 
     lockedCloset = () => {
         return (<div>
-            <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+            <Button variant="outlined" onClick={this.handleClickOpen}>
                 picture of lock
             </Button>
             <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
@@ -64,15 +64,14 @@ export default class Mechanics extends Component {
                         }
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleClose}>
                             Close
                     </Button>
-                        <Button type="submit" color="primary">
+                        <Button type="submit">
                             Submit
                     </Button>
                     </DialogActions>
                 </form>
-
             </Dialog>
         </div>)
     }

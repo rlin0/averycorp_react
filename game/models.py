@@ -90,3 +90,15 @@ class MadLibTypes(models.Model):
     prompts = models.CharField(max_length=350, blank=True, null=True)
     # Text where * is for each field
     text = models.CharField(max_length=600, blank=True, null=True)
+
+
+class Inventory(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    matches = models.BooleanField(default=False)
+    wrench = models.BooleanField(default=False)
+    usb = models.BooleanField(default=False)
+    soup = models.BooleanField(default=False)
+    knife = models.BooleanField(default=False)
+    paperclip = models.BooleanField(default=False)
+    inkwell = models.BooleanField(default=False)

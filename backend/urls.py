@@ -9,6 +9,7 @@ router.register(r'profile', views.ProfileView, 'profile')
 router.register(r'team', views.TeamView, 'team')
 router.register(r'role', views.RoleView, 'role')
 router.register(r'puzzle', views.PuzzleView, 'puzzle')
+router.register(r'inventory', views.InventoryView, 'inventory')
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),

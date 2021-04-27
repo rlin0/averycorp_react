@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer
-from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission
+from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer, InventorySerializer
+from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission, Inventory
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -29,6 +29,11 @@ class RoleView(viewsets.ModelViewSet):
 class PuzzleView(viewsets.ModelViewSet):
     serializer_class = PuzzleSerializer
     queryset = Puzzle.objects.all()
+
+
+class InventoryView(viewsets.ModelViewSet):
+    serializer_class = InventorySerializer
+    queryset = Inventory.objects.all()
 
 
 @api_view(['GET'])
