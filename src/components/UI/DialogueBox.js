@@ -1,41 +1,41 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import Container from '@material-ui/core/Container'
-import CardContent from '@material-ui/core/CardContent'
-import Typography from '@material-ui/core/Typography'
-import IconButton from '@material-ui/core/IconButton'
-import NextIcon from '@material-ui/icons/NavigateNext'
+import React from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import Card from "@material-ui/core/Card"
+import Container from "@material-ui/core/Container"
+import CardContent from "@material-ui/core/CardContent"
+import Typography from "@material-ui/core/Typography"
+import IconButton from "@material-ui/core/IconButton"
+import NextIcon from "@material-ui/icons/NavigateNext"
 
 const useStyles = makeStyles((theme) => ({
   bgImage: {
-    display: 'block',
-    position: 'relative',
-    width: '80%',
-    height: 'auto',
-    margin: 'auto'
+    display: "block",
+    position: "relative",
+    width: "80%",
+    height: "auto",
+    margin: "auto",
   },
   animatedText: {
     ...theme.typography.body1,
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(1),
-    flexGrow: 1
+    flexGrow: 1,
   },
   textContainer: {
-    position: 'fixed',
-    bottom: '2%',
-    left: '5%',
-    width: '90%'
+    position: "fixed",
+    bottom: "2%",
+    left: "5%",
+    width: "90%",
   },
   textBox: {
-    border: '2px solid white'
-  }
+    border: "2px solid white",
+  },
 }))
 
 // textbox at bottom of screen for advanceable dialogue
 // usage: <DialogueBox data={text.sampleDialogue} />
 // see sampleText.json for examples of format
-export default function DialogueBox (props) {
+export default function DialogueBox(props) {
   const classes = useStyles()
   const { data } = props
   const [textIdx, setTextIdx] = React.useState(0) // index for advancing dialogue
@@ -46,7 +46,8 @@ export default function DialogueBox (props) {
     if (
       textIdx === data.text.length ||
       letterIdx === data.text[textIdx].length + 1
-    ) return
+    )
+      return
 
     const timeout = setTimeout(() => {
       setLetterIdx((prev) => prev + 1)
@@ -57,9 +58,9 @@ export default function DialogueBox (props) {
 
   const advanceDialogue = (e) => {
     if (
-      e.type === 'click' ||
-      (e.type === 'keydown' &&
-        (e.key === 'Space' || e.key === 'Enter' || e.key === 'KeyF'))
+      e.type === "click" ||
+      (e.type === "keydown" &&
+        (e.key === "Space" || e.key === "Enter" || e.key === "KeyF"))
     ) {
       setTextIdx((prev) => prev + 1)
       setLetterIdx(1)
@@ -90,7 +91,7 @@ export default function DialogueBox (props) {
               className={classes.textBox}
               tabIndex={-1}
             >
-              <CardContent style={{ display: 'flex' }}>
+              <CardContent style={{ display: "flex" }}>
                 <div className={classes.animatedText}>
                   {data.text[textIdx].substring(0, letterIdx)}
                 </div>

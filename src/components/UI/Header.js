@@ -1,43 +1,43 @@
-import React, { Component } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import SvgIcon from '@material-ui/core/SvgIcon'
-import Drawer from '@material-ui/core/Drawer'
-import List from '@material-ui/core/List'
-import Divider from '@material-ui/core/Divider'
-import { ListItemLink } from './Links'
-import { ReactComponent as AverycorpLogo } from '../../images/logo_A_fill_w.svg'
+import React, { Component } from "react"
+import { makeStyles } from "@material-ui/core/styles"
+import AppBar from "@material-ui/core/AppBar"
+import Toolbar from "@material-ui/core/Toolbar"
+import Typography from "@material-ui/core/Typography"
+import Button from "@material-ui/core/Button"
+import IconButton from "@material-ui/core/IconButton"
+import MenuIcon from "@material-ui/icons/Menu"
+import SvgIcon from "@material-ui/core/SvgIcon"
+import Drawer from "@material-ui/core/Drawer"
+import List from "@material-ui/core/List"
+import Divider from "@material-ui/core/Divider"
+import { ListItemLink } from "./Links"
+import { ReactComponent as AverycorpLogo } from "../../images/logo_A_fill_w.svg"
 
 const menuLinks = [
   {
-    label: 'act 0',
-    link: '/act0'
+    label: "act 0",
+    link: "/act0",
   },
   {
-    label: 'act 1',
-    link: '/act1'
+    label: "act 1",
+    link: "/act1",
   },
   {
-    label: 'map',
-    link: '/map'
+    label: "map",
+    link: "/map",
   },
   {
-    label: 'escape room',
-    link: '/escaperoom'
+    label: "escape room",
+    link: "/er",
   },
   {
-    label: 'act 4',
-    link: '/act4'
-  }
+    label: "act 4",
+    link: "/act4",
+  },
 ]
 
 export default class Header extends Component {
-  render () {
+  render() {
     return (
       <AppBar position="static">
         <Toolbar>
@@ -63,23 +63,23 @@ export default class Header extends Component {
 // source: https://material-ui.com/components/drawers/#temporary-drawer
 const useStyles = makeStyles((theme) => ({
   list: {
-    width: 250
+    width: 250,
   },
   menuButton: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 }))
 
-function SideBar () {
+function SideBar() {
   const classes = useStyles()
   const [state, setState] = React.useState({
-    isOpen: false
+    isOpen: false,
   })
 
   const toggleDrawer = (open) => (event) => {
     if (
-      event.type === 'keydown' &&
-      (event.key === 'Tab' || event.key === 'Shift')
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
     ) {
       return
     }

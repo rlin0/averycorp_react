@@ -93,8 +93,9 @@ class MadLibTypes(models.Model):
 
 
 class Inventory(models.Model):
-    id = models.AutoField(primary_key=True)
-    user = models.ForeignKey('Profile', on_delete=models.CASCADE)
+    user = models.OneToOneField(Profile,
+                                primary_key=True,
+                                on_delete=models.CASCADE)
     matches = models.BooleanField(default=False)
     wrench = models.BooleanField(default=False)
     usb = models.BooleanField(default=False)

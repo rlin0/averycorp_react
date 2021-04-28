@@ -1,39 +1,36 @@
-import React from 'react'
-import { withStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import TextField from '@material-ui/core/TextField'
-import Dialog from '@material-ui/core/Dialog'
-import MuiDialogTitle from '@material-ui/core/DialogTitle'
-import MuiDialogContent from '@material-ui/core/DialogContent'
-import MuiDialogContentText from '@material-ui/core/DialogContentText'
-import MuiDialogActions from '@material-ui/core/DialogActions'
-import IconButton from '@material-ui/core/IconButton'
-import CloseIcon from '@material-ui/icons/Close'
-import Typography from '@material-ui/core/Typography'
-import { ButtonLink } from './Links'
+import React from "react"
+import { withStyles } from "@material-ui/core/styles"
+import Button from "@material-ui/core/Button"
+import TextField from "@material-ui/core/TextField"
+import Dialog from "@material-ui/core/Dialog"
+import MuiDialogTitle from "@material-ui/core/DialogTitle"
+import MuiDialogContent from "@material-ui/core/DialogContent"
+import MuiDialogContentText from "@material-ui/core/DialogContentText"
+import MuiDialogActions from "@material-ui/core/DialogActions"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
+import Typography from "@material-ui/core/Typography"
+import { ButtonLink } from "./Links"
 
 const styles = (theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   closeButton: {
-    position: 'absolute',
+    position: "absolute",
     right: theme.spacing(1),
     top: theme.spacing(1),
-    color: theme.palette.grey[500]
-  }
+    color: theme.palette.grey[500],
+  },
 })
 
 const DialogTitle = withStyles(styles)((props) => {
-  const {
-    children, classes, onClose, ...other
-  } = props
+  const { children, classes, onClose, ...other } = props
   return (
     <MuiDialogTitle disableTypography className={classes.root} {...other}>
       <Typography variant="h6">{children}</Typography>
-      {onClose
-        ? (
+      {onClose ? (
         <IconButton
           aria-label="close"
           className={classes.closeButton}
@@ -41,29 +38,28 @@ const DialogTitle = withStyles(styles)((props) => {
         >
           <CloseIcon />
         </IconButton>
-          )
-        : null}
+      ) : null}
     </MuiDialogTitle>
   )
 })
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2)
-  }
+    padding: theme.spacing(2),
+  },
 }))(MuiDialogContent)
 
 const DialogActions = withStyles((theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(1)
-  }
+    padding: theme.spacing(1),
+  },
 }))(MuiDialogActions)
 
 // like ModalBox but allows user to input info
 // usage: <InputModal title="Input Form" text="You must enter a password to proceed." formLabel="password"/>
 // TODO: add backend support so submit button does something
-export default function InputModal (props) {
+export default function InputModal(props) {
   const { title, text, formLabel } = props
   const [open, setOpen] = React.useState(true)
 
@@ -94,7 +90,7 @@ export default function InputModal (props) {
             fullWidth
           />
         </DialogContent>
-        <DialogActions style={{ justifyContent: 'center' }}>
+        <DialogActions style={{ justifyContent: "center" }}>
           <Button autoFocus onClick={handleClose} color="primary">
             Submit
           </Button>

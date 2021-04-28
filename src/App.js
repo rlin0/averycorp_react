@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Header from './components/UI/Header';
-import Login from './components/Login';
-import CityIntroScene from './components/CityIntroScene';
-import Act0 from './components/Act0';
-import Act1 from './components/Act1';
-import Profile from './components/Profile';
-import Map from './components/Map';
-import Puzzle from './components/Puzzle';
-import Main from './components/EscapeRoom/Main';
-import Mechanics from './components/EscapeRoom/Mechanics';
-import ER from './components/EscapeRoom/Base';
+import React, { Component } from "react"
+import axios from "axios"
+import { BrowserRouter, Route, Switch } from "react-router-dom"
+import Header from "./components/UI/Header"
+import Login from "./components/Login"
+import CityIntroScene from "./components/CityIntroScene"
+import Act0 from "./components/Act0"
+import Act1 from "./components/Act1"
+import Profile from "./components/Profile"
+import Map from "./components/Map"
+import Puzzle from "./components/Puzzle"
+import Main from "./components/EscapeRoom/Main"
+import Mechanics from "./components/EscapeRoom/Mechanics"
+import ER from "./components/EscapeRoom/Base"
+import Lockers from "./components/EscapeRoom/Lockers"
 
-import { ThemeProvider } from '@material-ui/core/styles';
-import AVERYCORP_THEME from './components/Theme';
+import { ThemeProvider } from "@material-ui/core/styles"
+import AVERYCORP_THEME from "./components/Theme"
 
-import './App.css';
-import { CssBaseline } from '@material-ui/core';
-
+import "./App.css"
+import { CssBaseline } from "@material-ui/core"
 
 export default class App extends Component {
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       progress: null,
-      username: localStorage.getItem('username'),
-      userId: localStorage.getItem('userId'),
-      teamId: localStorage.getItem('teamId'),
-    };
+      username: localStorage.getItem("username"),
+      userId: localStorage.getItem("userId"),
+      teamId: localStorage.getItem("teamId"),
+    }
   }
 
   componentDidMount() {
@@ -37,11 +37,11 @@ export default class App extends Component {
       axios
         .get(`/api/profile/${this.state.userId}/`)
         .then((res) => {
-          this.setState({ progress: res.data.progress });
+          this.setState({ progress: res.data.progress })
         })
         .catch((err) => {
-          console.log(err);
-        });
+          console.log(err)
+        })
     }
   }
 
@@ -50,20 +50,20 @@ export default class App extends Component {
       username: username,
       userId: userId,
       teamId: teamId,
-    });
+    })
     // store the user in localStorage
-    localStorage.setItem('username', this.state.username);
-    localStorage.setItem('userId', this.state.userId);
-    localStorage.setItem('teamId', this.state.teamId);
-  };
+    localStorage.setItem("username", this.state.username)
+    localStorage.setItem("userId", this.state.userId)
+    localStorage.setItem("teamId", this.state.teamId)
+  }
 
   logout = () => {
     this.setState({
       username: null,
       userId: null,
-    });
-    localStorage.clear();
-  };
+    })
+    localStorage.clear()
+  }
 
   next = () => {
     this.setState(
@@ -76,25 +76,25 @@ export default class App extends Component {
             progress: this.state.progress,
           })
           .then((res) => {
-            console.log(res);
+            console.log(res)
           })
           .catch((err) => {
-            console.log(err.response);
-          });
+            console.log(err.response)
+          })
       }
-    );
-  };
+    )
+  }
 
   app = () => {
     switch (this.state.progress) {
       case null:
-        return <p>Loading</p>;
+        return <p>Loading</p>
       case 0:
-        return <CityIntroScene next={this.next} />;
+        return <CityIntroScene next={this.next} />
       default:
-        return <p>next stage here</p>;
+        return <p>next stage here</p>
     }
-  };
+  }
 
   render() {
     return (
@@ -105,13 +105,13 @@ export default class App extends Component {
           <>
             <CssBaseline />
             <BrowserRouter>
-              <div class="terminal">
-                <div class="app">
+              <div className="terminal">
+                <div className="app">
                   <Header username={this.state.username} logout={this.logout} />
                   <Switch>
                     <Route exact path="/">
-                      {' '}
-                      {this.app()}{' '}
+                      {" "}
+                      {this.app()}{" "}
                     </Route>
                     <Route exact path="/map">
                       <Map teamId={this.state.teamId} />
@@ -129,21 +129,35 @@ export default class App extends Component {
                       <Puzzle puzzleId="1" userId={this.state.userId} />
                     </Route>
 
-                    <Route exact path="/escaperoom">
-                      <ER comp={Main} userId={this.state.userId} />
+                    <Route exact path="/er">
+                      <ER
+                        comp={Main}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
                     </Route>
-                    <Route exact path="/escaperoom/mechanics">
-                      <ER comp={Mechanics} userId={this.state.userId} teamId={this.state.teamId} />
+                    <Route exact path="/er/mechanics">
+                      <ER
+                        comp={Mechanics}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
                     </Route>
-
+                    <Route exact path="/er/lockers">
+                      <ER
+                        comp={Lockers}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
                   </Switch>
                 </div>
-                <div class="scanline"></div>
+                <div className="scanline"></div>
               </div>
             </BrowserRouter>
           </>
         )}
       </ThemeProvider>
-    );
+    )
   }
 }

@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { Component } from "react"
+import axios from "axios"
 
 export default class Login extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
       incorrect: false,
-    };
+    }
   }
 
   handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     axios
-      .get('/api/login/', {
+      .get("/api/login/", {
         params: {
           username: this.state.username,
           password: this.state.password,
@@ -22,14 +22,19 @@ export default class Login extends Component {
       })
       .then((res) => {
         if (res.data.success) {
-          if (res.data.loggedIn) this.props.login(res.data.user.username, res.data.user.id, res.data.user.teamId);
-          else this.setState({ incorrect: true });
-        } else console.error(res.data);
+          if (res.data.loggedIn)
+            this.props.login(
+              res.data.user.username,
+              res.data.user.id,
+              res.data.user.teamId
+            )
+          else this.setState({ incorrect: true })
+        } else console.error(res.data)
       })
       .catch((err) => {
-        console.error(err);
-      });
-  };
+        console.error(err)
+      })
+  }
 
   render() {
     return (
@@ -51,6 +56,6 @@ export default class Login extends Component {
         </div>
         <button type="submit">Login</button>
       </form>
-    );
+    )
   }
 }
