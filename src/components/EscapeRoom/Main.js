@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import CssBaseline from "@material-ui/core/CssBaseline"
 import { Button, Typography, TextField } from "@material-ui/core"
-import img from "../../images/MainRoom.png"
 import { styles } from "../../styles"
 
 export default class Main extends Component {
@@ -17,7 +16,7 @@ export default class Main extends Component {
             width: "100%",
           }}
         >
-          <img src={img} width="100%" />
+          <img src="MainRoom.png" width="100%" />
           <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
             <input
               type="text"

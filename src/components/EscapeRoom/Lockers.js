@@ -15,7 +15,6 @@ export default class Lockers extends Component {
   render() {
     return (
       <>
-        <CssBaseline />
         <Typography variant="h1"> Escape Room Here! </Typography>
         {!this.props.matches && (
           <img src="#" alt="matches" onClick={this.onClick} />

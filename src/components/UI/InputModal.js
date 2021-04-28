@@ -12,7 +12,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import Typography from "@material-ui/core/Typography"
 import { ButtonLink } from "./Links"
 
-const styles = (theme) => ({
+export const styles = (theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),

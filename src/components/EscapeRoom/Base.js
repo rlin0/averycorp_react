@@ -8,10 +8,12 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogContentText,
   DialogTitle,
+  IconButton,
 } from "@material-ui/core"
 import axios from "axios"
+import CloseIcon from "@material-ui/icons/Close"
+import { styles } from "../UI/InputModal"
 
 const Style = {
   position: "fixed",
@@ -35,6 +37,7 @@ export default class ER extends Component {
     this.state = {
       open: false,
       selected: null,
+      equipped: null,
 
       // items
       matches: false,
@@ -61,15 +64,6 @@ export default class ER extends Component {
             [e]: res.data[e],
           })
         )
-        // this.setState({
-        //     matches: res.data.matches,
-        //     wrench: res.data.wrenches,
-        //     usb: res.data.usb,
-        //     soup: res.data.soup,
-        //     knife: res.data.knife,
-        //     paperclip: res.data.paperclip,
-        //     inkwell: res.data.inkwell
-        // });
       })
       .catch((err) => {
         console.error(err)
@@ -96,8 +90,6 @@ export default class ER extends Component {
   }
 
   pickUp = (it) => {
-    console.log("sfds", it)
-    this.getItems()
     axios
       .patch(`/api/inventory/${this.props.userId}/`, {
         [it]: true,
@@ -111,6 +103,48 @@ export default class ER extends Component {
       .catch((err) => {
         console.error(err)
       })
+  }
+
+  validSelected = () => {
+    if (this.state.selected === null) {
+      alert("Please select an item!")
+      return false
+    }
+    return true
+  }
+
+  remove = () => {
+    if (!this.validSelected()) {
+      return
+    }
+    axios
+      .patch(`/api/inventory/${this.props.userId}/`, {
+        [this.state.selected]: false,
+      })
+      .then((res) => {
+        console.log("success")
+        this.setState({
+          [this.state.selected]: false,
+          open: false,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  equip = () => {
+    if (!this.validSelected()) {
+      return
+    }
+    this.setState({ equipped: this.state.selected, open: false })
+  }
+
+  unequip = () => {
+    if (!this.validSelected()) {
+      return
+    }
+    this.setState({ equipped: null, open: false })
   }
 
   renderItems = () => {
@@ -151,8 +185,12 @@ export default class ER extends Component {
 
   render() {
     const Comp = this.props.comp
+    const cursorStyle = {
+      cursor: `url(${this.state.equipped}_cursor.png), auto`,
+    }
+
     return (
-      <>
+      <div style={cursorStyle}>
         <CssBaseline />
         <Comp
           {...this.props}
@@ -170,6 +208,13 @@ export default class ER extends Component {
         >
           <DialogTitle id="form-dialog-title" style={{ textAlign: "center" }}>
             Inventory
+            <IconButton
+              aria-label="close"
+              style={styles.closeButton}
+              onClick={this.handleClose}
+            >
+              <CloseIcon />
+            </IconButton>
           </DialogTitle>
           <DialogContent>
             <Grid container style={{ flexGrow: "1" }}>
@@ -177,11 +222,12 @@ export default class ER extends Component {
             </Grid>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose}>Close</Button>
-            <Button>Select</Button>
+            <Button onClick={this.remove}>Remove</Button>
+            <Button onClick={this.equip}>Equip</Button>
+            <Button onClick={this.unequip}>Unequip</Button>
           </DialogActions>
         </Dialog>
-      </>
+      </div>
     )
   }
 }
