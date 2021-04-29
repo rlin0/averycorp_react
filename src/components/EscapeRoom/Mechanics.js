@@ -178,21 +178,12 @@ export default class Mechanics extends Component {
   render() {
     return (
       <>
-        <CssBaseline />
-        <div
-          style={{
-            float: "left",
-            position: "relative",
-            width: "100%",
-          }}
-        >
-          <img src="/media/MechanicsRoom.png" width="100%" />
-          {this.state.closetUnlocked
-            ? this.unlockedCloset()
-            : this.lockedCloset()}
+        <img src="/media/MechanicsRoom.png" width="100%" />
+        {this.state.closetUnlocked
+          ? this.unlockedCloset()
+          : this.lockedCloset()}
 
-          {this.state.vaseBroken ? this.brokenVase() : this.vase()}
-        </div>
+        {this.state.vaseBroken ? this.brokenVase() : this.vase()}
       </>
     )
   }

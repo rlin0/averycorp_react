@@ -192,12 +192,20 @@ export default class ER extends Component {
     return (
       <div style={cursorStyle}>
         <CssBaseline />
-        <Comp
-          {...this.props}
-          selected={this.state.selected}
-          {...this.state}
-          pickUp={this.pickUp}
-        />
+        <div
+          style={{
+            float: "left",
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <Comp
+            {...this.props}
+            selected={this.state.selected}
+            {...this.state}
+            pickUp={this.pickUp}
+          />
+        </div>
         <Button style={Style} onClick={this.handleClickOpen}>
           Inventory
         </Button>
