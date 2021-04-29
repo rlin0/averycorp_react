@@ -186,7 +186,7 @@ export default class ER extends Component {
   render() {
     const Comp = this.props.comp
     const cursorStyle = {
-      cursor: `url(${this.state.equipped}_cursor.png), auto`,
+      cursor: `url(/media/${this.state.equipped}_cursor.png), auto`,
     }
 
     return (

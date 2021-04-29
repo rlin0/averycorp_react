@@ -11,23 +11,27 @@ import {
   DialogTitle,
 } from "@material-ui/core"
 import axios from "axios"
+import styles from "./styles.module.css"
+import Jigsaw from "./Jigsaw"
 
 export default class Mechanics extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      unlocked: false,
-      open: false,
+      closetUnlocked: false,
+      vaseBroken: false,
+      lockModalOpen: false,
+      vaseModalOpen: false,
       answer: null,
       submitMsg: null,
     }
   }
 
   componentDidMount() {
-    this.getUnlocked()
+    this.getclosetUnlocked()
   }
 
-  getUnlocked = () => {
+  getclosetUnlocked = () => {
     axios
       .get("/api/er/me_get_unlocked", {
         params: {
@@ -36,7 +40,7 @@ export default class Mechanics extends Component {
       })
       .then((res) => {
         this.setState({
-          unlocked: res.data.unlocked,
+          closetUnlocked: res.data.unlocked,
         })
         console.log(res)
       })
@@ -47,13 +51,16 @@ export default class Mechanics extends Component {
 
   lockedCloset = () => {
     return (
-      <div>
-        <Button variant="outlined" onClick={this.handleClickOpen}>
-          picture of lock
-        </Button>
+      <>
+        <img
+          src="#"
+          alt="lock"
+          className={styles.lock}
+          onClick={this.handleLockModalOpen}
+        />
         <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
+          open={this.state.lockModalOpen}
+          onClose={this.handleLockModalClose}
           aria-labelledby="form-dialog-title"
         >
           <DialogTitle id="form-dialog-title">Riddle</DialogTitle>
@@ -78,23 +85,69 @@ export default class Mechanics extends Component {
               )}
             </DialogContent>
             <DialogActions>
-              <Button onClick={this.handleClose}>Close</Button>
+              <Button onClick={this.handleLockModalClose}>Close</Button>
               <Button type="submit">Submit</Button>
             </DialogActions>
           </form>
         </Dialog>
-      </div>
+      </>
     )
   }
 
   unlockedCloset = () => {}
 
-  handleClickOpen = () => {
-    this.setState({ open: true })
+  brokenVase = () => {
+    return (
+      <>
+        <img
+          src="/media/vase_broken.png"
+          alt="broken vase"
+          className={styles.vase}
+          onClick={this.handleClickBrokenVase}
+        />
+        <Dialog
+          open={this.state.vaseModalOpen}
+          onClose={this.handleVaseModalClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogContent style={{ width: "500px", height: "600px" }}>
+            <Jigsaw />
+          </DialogContent>
+        </Dialog>
+      </>
+    )
   }
 
-  handleClose = () => {
-    this.setState({ open: false })
+  vase = () => {
+    return (
+      <img
+        src="/media/vase.png"
+        alt="vase"
+        className={styles.vase}
+        onClick={this.breakVase}
+      />
+    )
+  }
+
+  breakVase = () => {
+    if (this.props.equipped !== "wrench") return
+    this.setState({ vaseBroken: true })
+  }
+
+  handleLockModalOpen = () => {
+    this.setState({ lockModalOpen: true })
+  }
+
+  handleClickBrokenVase = () => {
+    this.setState({ vaseModalOpen: true })
+  }
+
+  handleLockModalClose = () => {
+    this.setState({ lockModalOpen: false })
+  }
+
+  handleVaseModalClose = () => {
+    this.setState({ vaseModalOpen: false })
   }
 
   handleSubmit = async (e) => {
@@ -108,8 +161,8 @@ export default class Mechanics extends Component {
         if (res.data.success) {
           if (res.data.msg === "correct") {
             this.setState({
-              unlocked: true,
-              open: false,
+              closetUnlocked: true,
+              lockModalOpen: false,
               submitMsg: null,
             })
           } else {
@@ -126,7 +179,20 @@ export default class Mechanics extends Component {
     return (
       <>
         <CssBaseline />
-        {this.state.unlocked ? this.unlockedCloset() : this.lockedCloset()}
+        <div
+          style={{
+            float: "left",
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <img src="/media/MechanicsRoom.png" width="100%" />
+          {this.state.closetUnlocked
+            ? this.unlockedCloset()
+            : this.lockedCloset()}
+
+          {this.state.vaseBroken ? this.brokenVase() : this.vase()}
+        </div>
       </>
     )
   }
