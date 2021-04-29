@@ -164,7 +164,7 @@ export default class ER extends Component {
                   />
                   <Grid item xs={3}>
                     <img
-                      src="#"
+                      src={`/media/${it}.png`}
                       style={{
                         cursor: "pointer",
                         borderColor: "red",

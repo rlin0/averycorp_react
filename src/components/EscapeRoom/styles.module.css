@@ -99,3 +99,14 @@
   z-index: 5;
   overflow: hidden;
 }
+
+.sewer {
+  width: 11.4%;
+  height: 11.4%;
+  left: 9.6%;
+  top: 77.3%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}

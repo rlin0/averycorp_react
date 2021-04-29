@@ -22,5 +22,6 @@ urlpatterns = [
     path(r'api/puzzle/submit_answer', views.submit_answer),
     path(r'api/er/me_unlock_closet', views.mechanics_unlock_closet),
     path(r'api/er/me_get_unlocked', views.mechanics_get_unlocked),
+    path(r'api/er/me_get_unlocked', views.sewer_get_unlocked),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

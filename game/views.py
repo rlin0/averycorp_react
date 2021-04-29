@@ -141,6 +141,7 @@ def get_solved(request):
 
 
 ######################## Escape Room API's ################################
+# TODO
 @api_view(['POST'])
 def mechanics_unlock_closet(request):
     try:
@@ -150,8 +151,19 @@ def mechanics_unlock_closet(request):
         return JsonResponse({'success': False})
 
 
+# TODO
 @api_view(['GET'])
 def mechanics_get_unlocked(request):
+    try:
+        team_id = int(request.query_params.get('teamId'))
+        return JsonResponse({'success': True, 'unlocked': False})
+    except:
+        return JsonResponse({'success': False})
+
+
+# TODO
+@api_view(['GET'])
+def sewer_get_unlocked(request):
     try:
         team_id = int(request.query_params.get('teamId'))
         return JsonResponse({'success': True, 'unlocked': False})

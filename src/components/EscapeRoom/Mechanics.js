@@ -28,10 +28,10 @@ export default class Mechanics extends Component {
   }
 
   componentDidMount() {
-    this.getclosetUnlocked()
+    this.getClosetUnlocked()
   }
 
-  getclosetUnlocked = () => {
+  getClosetUnlocked = () => {
     axios
       .get("/api/er/me_get_unlocked", {
         params: {
@@ -130,8 +130,7 @@ export default class Mechanics extends Component {
   }
 
   breakVase = () => {
-    if (this.props.equipped !== "wrench") return
-    this.setState({ vaseBroken: true })
+    if (this.props.equipped === "wrench") this.setState({ vaseBroken: true })
   }
 
   handleLockModalOpen = () => {
