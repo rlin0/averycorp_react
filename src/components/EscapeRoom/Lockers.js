@@ -1,30 +1,84 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
-import Typography from "@material-ui/core/Typography"
+import {
+  CssBaseline,
+  Button,
+  Typography,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@material-ui/core"
+import styles from "./styles.module.css"
+import Forbidden from "../Forbidden"
+import { withRouter, Link } from "react-router-dom"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
 export default class Lockers extends Component {
   constructor(props) {
     super(props)
+    this.state = { carModalOpen: false }
   }
 
   onClick = (e) => {
-    console.log(e.currentTarget.alt)
     return this.props.pickUp(e.currentTarget.alt)
   }
 
   render() {
     return (
       <>
-        <Typography variant="h1"> Lockers</Typography>
-        {items.map((it) => {
-          return (
-            !this.props[it] && (
-              <img src={`/media/${it}.png`} alt={it} onClick={this.onClick} />
-            )
-          )
-        })}
+        {this.props.lockersUnlocked ? (
+          <>
+            <img src="/media/Lockers.png" width="100%" />
+            <Link
+              to="/er"
+              style={{
+                width: "5.4%",
+                height: "7.2%",
+                left: "5.1%",
+                top: "89.5%",
+                position: "absolute",
+                cursor: "pointer",
+                display: "block",
+                zIndex: "5",
+                overflow: "hidden",
+              }}
+            />
+            {items.map((it) => {
+              return (
+                !this.props[it] && (
+                  <img
+                    src={`/media/${it}.png`}
+                    className={styles[it]}
+                    alt={it}
+                    onClick={this.onClick}
+                  />
+                )
+              )
+            })}
+            <div
+              className={styles.car}
+              onClick={() => this.setState({ carModalOpen: true })}
+            />
+            <Dialog
+              open={this.state.carModalOpen}
+              onClose={() => this.setState({ carModalOpen: false })}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogContent>
+                <img
+                  src="/media/car_zoomed.png"
+                  alt="car zoomed in"
+                  style={{ width: "500px", height: "600px" }}
+                />
+              </DialogContent>
+            </Dialog>
+          </>
+        ) : (
+          <Forbidden />
+        )}
       </>
     )
   }

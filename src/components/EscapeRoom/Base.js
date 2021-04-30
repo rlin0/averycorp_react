@@ -14,6 +14,7 @@ import {
 import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import { styles } from "../UI/InputModal"
+import { withRouter, Link } from "react-router-dom"
 
 const Style = {
   position: "fixed",
@@ -31,7 +32,7 @@ const items = [
   "inkwell",
 ]
 
-export default class ER extends Component {
+class ER extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -39,6 +40,7 @@ export default class ER extends Component {
       selected: null,
       equipped: null,
       sewerUnlocked: false,
+      lockersUnlocked: false,
 
       // items
       matches: false,
@@ -60,7 +62,6 @@ export default class ER extends Component {
     axios
       .get(`/api/inventory/${this.props.userId}/`)
       .then((res) => {
-        console.log(res.data)
         items.forEach((e) =>
           this.setState({
             [e]: res.data[e],
@@ -78,6 +79,7 @@ export default class ER extends Component {
       .then((res) => {
         this.setState({
           sewerUnlocked: res.data.sewer_unlocked,
+          lockersUnlocked: res.data.lockersUnlocked,
         })
       })
       .catch((err) => {
@@ -90,6 +92,17 @@ export default class ER extends Component {
       .patch(`/api/erstate/${this.props.teamId}/`, { sewer_unlocked: true })
       .then((res) => {
         this.setState({ sewerUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putLockersUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, { lockers_unlocked: true })
+      .then((res) => {
+        this.setState({ lockersUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -109,7 +122,6 @@ export default class ER extends Component {
   }
 
   onItemChanged = (e) => {
-    console.log(e.currentTarget.value)
     this.setState({
       selected: e.currentTarget.value,
     })
@@ -231,6 +243,7 @@ export default class ER extends Component {
             {...this.state}
             pickUp={this.pickUp}
             putSewerUnlocked={this.putSewerUnlocked}
+            putLockersUnlocked={this.putLockersUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>
@@ -266,3 +279,5 @@ export default class ER extends Component {
     )
   }
 }
+
+export default withRouter(ER)

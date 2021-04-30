@@ -111,3 +111,4 @@ class ERState(models.Model):
                                 on_delete=models.CASCADE)
     closet_unlocked = models.BooleanField(default=False)
     sewer_unlocked = models.BooleanField(default=False)
+    lockers_unlocked = models.BooleanField(default=False)

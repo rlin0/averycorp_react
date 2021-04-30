@@ -11,6 +11,7 @@ import {
   DialogTitle,
 } from "@material-ui/core"
 import styles from "./styles.module.css"
+import { withRouter, Link } from "react-router-dom"
 
 export default class Library extends Component {
   constructor() {

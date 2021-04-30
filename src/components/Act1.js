@@ -28,8 +28,7 @@ class Act1 extends Component {
     return /^([a-zA-Z0-9]{1,})$/.test(element)
   }
 
-  handleSubmit = async (e) => {
-    e.preventDefault()
+  handleSubmit = (e) => {
     const lst = this.state.fields.reduce((accumulator, cur) => {
       return [...accumulator, cur]
     }, [])

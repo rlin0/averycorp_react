@@ -37,4 +37,5 @@ class InventorySerializer(serializers.ModelSerializer):
 class ERStateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ERState
-        fields = ('team', 'closet_unlocked', 'sewer_unlocked')
+        fields = ('team', 'closet_unlocked', 'sewer_unlocked',
+                  'lockers_unlocked')
