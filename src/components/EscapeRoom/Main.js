@@ -1,16 +1,31 @@
 import React, { Component } from "react"
-import { Button, Typography, TextField } from "@material-ui/core"
+import {
+  Button,
+  Typography,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  IconButton,
+} from "@material-ui/core"
 import styles from "./styles.module.css"
 import axios from "axios"
 import Clock from "react-clock"
 import "react-clock/dist/Clock.css"
+import CloseIcon from "@material-ui/icons/Close"
+import { withRouter, Link } from "react-router-dom"
 
-export default class Main extends Component {
+class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
       date: new Date(),
       interval: null,
+      lockersUnlocked: false,
+      lockersModalOpen: false,
+      lockerCode: null,
     }
   }
 
@@ -22,6 +37,61 @@ export default class Main extends Component {
 
   componentWillUnmount() {
     clearInterval(this.state.interval)
+  }
+
+  handleLockersModalClose = () => {
+    this.setState({ lockersModalOpen: false })
+  }
+
+  handleLockersModalOpen = () => {
+    this.setState({ lockersModalOpen: true })
+  }
+
+  handleSubmitLockers = () => {
+    this.props.history.push("/er/lockers")
+  }
+
+  lockedLockers = () => {
+    return (
+      <>
+        <div className={styles.lockers} onClick={this.handleLockersModalOpen} />
+
+        <Dialog
+          open={this.state.lockersModalOpen}
+          onClose={this.handleLockersModalClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            <IconButton
+              aria-label="close"
+              onClick={this.handleLockersModalClose}
+            >
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+
+          <form onSubmit={this.handleSubmitLockers}>
+            <DialogContent>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="name"
+                label="code"
+                onChange={({ target }) =>
+                  this.setState({ lockerCode: target.value })
+                }
+              />
+              {this.state.submitMsg !== null && (
+                <DialogContentText>{this.state.submitMsg}</DialogContentText>
+              )}
+            </DialogContent>
+            <DialogActions>
+              <Button type="submit">Submit</Button>
+            </DialogActions>
+          </form>
+        </Dialog>
+      </>
+    )
   }
 
   render() {
@@ -42,10 +112,15 @@ export default class Main extends Component {
             size={100}
           />
         </div>
+        {this.state.lockersUnlocked ? (
+          <Link to="/er/lockers" className={styles.lockers} />
+        ) : (
+          this.lockedLockers()
+        )}
 
         {this.props.equipped === "paperclip" && (
-          <a
-            href="/er/spy"
+          <Link
+            to="/er/spy"
             className={styles.sewer}
             style={{ cursor: `url(/media/paperclip_cursor.png), auto` }}
             onClick={this.props.putSewerUnlocked}
@@ -55,3 +130,4 @@ export default class Main extends Component {
     )
   }
 }
+export default withRouter(Main)

@@ -121,3 +121,15 @@
   z-index: 5;
   overflow: hidden;
 }
+
+.lockers {
+  width: 10.6%;
+  height: 15.4%;
+  left: 83.6%;
+  top: 52.5%;
+  cursor: default;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
