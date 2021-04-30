@@ -2,33 +2,26 @@ import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import styles from "./styles.module.css"
 import axios from "axios"
+import Clock from "react-clock"
+import "react-clock/dist/Clock.css"
 
 export default class Main extends Component {
-  constructor() {
-    super()
-    this.setState({ sewerUnlocked: false })
+  constructor(props) {
+    super(props)
+    this.state = {
+      date: new Date(),
+      interval: null,
+    }
   }
 
   componentDidMount() {
-    this.getSewerUnlocked()
+    this.setState({
+      interval: setInterval(() => this.setState({ date: new Date() }), 1000),
+    })
   }
 
-  getSewerUnlocked = () => {
-    axios
-      .get("/api/er/sewer_get_unlocked", {
-        params: {
-          teamId: this.props.teamId,
-        },
-      })
-      .then((res) => {
-        this.setState({
-          sewerUnlocked: res.data.unlocked,
-        })
-        console.log(res)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+  componentWillUnmount() {
+    clearInterval(this.state.interval)
   }
 
   render() {
@@ -42,11 +35,20 @@ export default class Main extends Component {
           <input type="text" className={styles.text2} />
           <input type="text" className={styles.text3} />
         </form>
+        <div className={styles.clock}>
+          <Clock
+            value={new Date()}
+            // styleName={styles.clock}
+            size={100}
+          />
+        </div>
+
         {this.props.equipped === "paperclip" && (
           <a
             href="/er/spy"
             className={styles.sewer}
             style={{ cursor: `url(/media/paperclip_cursor.png), auto` }}
+            onClick={this.props.putSewerUnlocked}
           />
         )}
       </>

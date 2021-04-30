@@ -27,28 +27,6 @@ export default class Mechanics extends Component {
     }
   }
 
-  componentDidMount() {
-    this.getClosetUnlocked()
-  }
-
-  getClosetUnlocked = () => {
-    axios
-      .get("/api/er/me_get_unlocked", {
-        params: {
-          teamId: this.props.teamId,
-        },
-      })
-      .then((res) => {
-        this.setState({
-          closetUnlocked: res.data.unlocked,
-        })
-        console.log(res)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }
-
   lockedCloset = () => {
     return (
       <>

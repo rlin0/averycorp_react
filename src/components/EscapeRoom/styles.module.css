@@ -110,3 +110,14 @@
   z-index: 5;
   overflow: hidden;
 }
+
+.clock {
+  width: 15.4%;
+  height: 26.4%;
+  left: 79.8%;
+  top: 2.8%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}

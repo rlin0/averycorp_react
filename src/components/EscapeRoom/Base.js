@@ -38,6 +38,7 @@ export default class ER extends Component {
       open: false,
       selected: null,
       equipped: null,
+      sewerUnlocked: false,
 
       // items
       matches: false,
@@ -52,6 +53,7 @@ export default class ER extends Component {
 
   componentDidMount() {
     this.getItems()
+    this.getERState()
   }
 
   getItems = () => {
@@ -64,6 +66,30 @@ export default class ER extends Component {
             [e]: res.data[e],
           })
         )
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  getERState = () => {
+    axios
+      .get(`/api/erstate/${this.props.teamId}/`)
+      .then((res) => {
+        this.setState({
+          sewerUnlocked: res.data.sewer_unlocked,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putSewerUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, { sewer_unlocked: true })
+      .then((res) => {
+        this.setState({ sewerUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -204,6 +230,7 @@ export default class ER extends Component {
             selected={this.state.selected}
             {...this.state}
             pickUp={this.pickUp}
+            putSewerUnlocked={this.putSewerUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>

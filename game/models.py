@@ -103,3 +103,11 @@ class Inventory(models.Model):
     knife = models.BooleanField(default=False)
     paperclip = models.BooleanField(default=False)
     inkwell = models.BooleanField(default=False)
+
+
+class ERState(models.Model):
+    team = models.OneToOneField(Team,
+                                primary_key=True,
+                                on_delete=models.CASCADE)
+    closet_unlocked = models.BooleanField(default=False)
+    sewer_unlocked = models.BooleanField(default=False)

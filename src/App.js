@@ -15,6 +15,7 @@ import ER from "./components/EscapeRoom/Base"
 import Lockers from "./components/EscapeRoom/Lockers"
 import Library from "./components/EscapeRoom/Library"
 import Spy from "./components/EscapeRoom/Spy"
+import Hallway1 from "./components/EscapeRoom/Hallway1"
 
 import { ThemeProvider } from "@material-ui/core/styles"
 import AVERYCORP_THEME from "./components/Theme"
@@ -163,6 +164,14 @@ export default class App extends Component {
                     <Route exact path="/er/spy">
                       <ER
                         comp={Spy}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/er/hallway1">
+                      <ER
+                        comp={Hallway1}
                         userId={this.state.userId}
                         teamId={this.state.teamId}
                       />

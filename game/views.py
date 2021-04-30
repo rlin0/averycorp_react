@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer, InventorySerializer
-from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission, Inventory
+from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer, InventorySerializer, ERStateSerializer
+from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission, Inventory, ERState
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -34,6 +34,11 @@ class PuzzleView(viewsets.ModelViewSet):
 class InventoryView(viewsets.ModelViewSet):
     serializer_class = InventorySerializer
     queryset = Inventory.objects.all()
+
+
+class ERStateView(viewsets.ModelViewSet):
+    serializer_class = ERStateSerializer
+    queryset = ERState.objects.all()
 
 
 @api_view(['GET'])
@@ -143,29 +148,10 @@ def get_solved(request):
 ######################## Escape Room API's ################################
 # TODO
 @api_view(['POST'])
-def mechanics_unlock_closet(request):
+def me_unlock_closet(request):
     try:
-        team_id = int(request.data.get('teamId'))
+        team = int(request.data.get('teamId'))
+        answer = request.data.get('answer')
         return JsonResponse({'success': True, 'msg': 'correct'})
-    except:
-        return JsonResponse({'success': False})
-
-
-# TODO
-@api_view(['GET'])
-def mechanics_get_unlocked(request):
-    try:
-        team_id = int(request.query_params.get('teamId'))
-        return JsonResponse({'success': True, 'unlocked': False})
-    except:
-        return JsonResponse({'success': False})
-
-
-# TODO
-@api_view(['GET'])
-def sewer_get_unlocked(request):
-    try:
-        team_id = int(request.query_params.get('teamId'))
-        return JsonResponse({'success': True, 'unlocked': False})
     except:
         return JsonResponse({'success': False})

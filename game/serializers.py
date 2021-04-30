@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Profile, Team, Role, Puzzle, Inventory
+from .models import Profile, Team, Role, Puzzle, Inventory, ERState
 
 
 class ProfileSerializer(serializers.ModelSerializer):
@@ -32,3 +32,9 @@ class InventorySerializer(serializers.ModelSerializer):
         model = Inventory
         fields = ('user', 'matches', 'wrench', 'usb', 'soup', 'knife',
                   'paperclip', 'inkwell')
+
+
+class ERStateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ERState
+        fields = ('team', 'closet_unlocked', 'sewer_unlocked')
