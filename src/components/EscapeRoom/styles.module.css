@@ -179,3 +179,14 @@
   z-index: 5;
   overflow: hidden;
 }
+
+.candle {
+  width: 8.2%;
+  height: 8.7%;
+  left: 13.6%;
+  top: 25.5%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}

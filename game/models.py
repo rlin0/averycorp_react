@@ -112,3 +112,4 @@ class ERState(models.Model):
     closet_unlocked = models.BooleanField(default=False)
     sewer_unlocked = models.BooleanField(default=False)
     lockers_unlocked = models.BooleanField(default=False)
+    mechanics_unlocked = models.BooleanField(default=False)

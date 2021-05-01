@@ -41,6 +41,7 @@ class ER extends Component {
       equipped: null,
       sewerUnlocked: false,
       lockersUnlocked: false,
+      mechanicsUnlocked: false,
 
       // items
       matches: false,
@@ -79,7 +80,8 @@ class ER extends Component {
       .then((res) => {
         this.setState({
           sewerUnlocked: res.data.sewer_unlocked,
-          lockersUnlocked: res.data.lockersUnlocked,
+          lockersUnlocked: res.data.lockers_unlocked,
+          mechanicsUnlocked: res.data.mechanics_unlocked,
         })
       })
       .catch((err) => {
@@ -103,6 +105,17 @@ class ER extends Component {
       .patch(`/api/erstate/${this.props.teamId}/`, { lockers_unlocked: true })
       .then((res) => {
         this.setState({ lockersUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putMechanicsUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, { mechanics_unlocked: true })
+      .then((res) => {
+        this.setState({ mechanicsUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -239,11 +252,11 @@ class ER extends Component {
         >
           <Comp
             {...this.props}
-            selected={this.state.selected}
             {...this.state}
             pickUp={this.pickUp}
             putSewerUnlocked={this.putSewerUnlocked}
             putLockersUnlocked={this.putLockersUnlocked}
+            putMechanicsUnlocked={this.putMechanicsUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>

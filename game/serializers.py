@@ -38,4 +38,4 @@ class ERStateSerializer(serializers.ModelSerializer):
     class Meta:
         model = ERState
         fields = ('team', 'closet_unlocked', 'sewer_unlocked',
-                  'lockers_unlocked')
+                  'lockers_unlocked', 'mechanics_unlocked')

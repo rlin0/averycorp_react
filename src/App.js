@@ -16,6 +16,9 @@ import Lockers from "./components/EscapeRoom/Lockers"
 import Library from "./components/EscapeRoom/Library"
 import Spy from "./components/EscapeRoom/Spy"
 import Hallway1 from "./components/EscapeRoom/Hallway1"
+import Hallway2 from "./components/EscapeRoom/Hallway2"
+import Maintenance from "./components/EscapeRoom/Maintenance"
+import Merchant from "./components/EscapeRoom/Merchant"
 
 import { ThemeProvider } from "@material-ui/core/styles"
 import AVERYCORP_THEME from "./components/Theme"
@@ -172,6 +175,29 @@ export default class App extends Component {
                     <Route exact path="/er/hallway1">
                       <ER
                         comp={Hallway1}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+                    <Route exact path="/er/hallway2">
+                      <ER
+                        comp={Hallway2}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/er/maintenance">
+                      <ER
+                        comp={Maintenance}
+                        userId={this.state.userId}
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/er/merchant">
+                      <ER
+                        comp={Merchant}
                         userId={this.state.userId}
                         teamId={this.state.teamId}
                       />

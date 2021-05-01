@@ -127,7 +127,7 @@ export default class Mechanics extends Component {
     this.setState({ vaseModalOpen: false })
   }
 
-  handleSubmit = async (e) => {
+  handleSubmit = (e) => {
     e.preventDefault()
     axios
       .post("/api/er/me_unlock_closet", {
@@ -155,7 +155,7 @@ export default class Mechanics extends Component {
   render() {
     return (
       <>
-        <img src="/media/MechanicsRoom.png" width="100%" />
+        <img src="/media/Mechanics.png" width="100%" />
         {this.state.closetUnlocked
           ? this.unlockedCloset()
           : this.lockedCloset()}
