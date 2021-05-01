@@ -13,6 +13,17 @@ import {
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 
+const hallway1 = {
+  width: "5.2%",
+  height: "7.7%",
+  left: "5.7%",
+  top: "88.2%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Library extends Component {
   constructor() {
     super()
@@ -32,6 +43,7 @@ export default class Library extends Component {
     return (
       <>
         <img src="/media/Library.png" width="100%" />
+        <Link to="/er/hallway1" style={hallway1} />
         <div
           className={styles.book1}
           onClick={() => this.setState({ openBook1: true })}

@@ -35,6 +35,17 @@ const merchantRoom = {
   overflow: "hidden",
 }
 
+const library = {
+  width: "5.3%",
+  height: "7.1%",
+  left: "90.3%",
+  top: "87.2%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Hallway1 extends Component {
   render() {
     return (
@@ -42,6 +53,7 @@ export default class Hallway1 extends Component {
         <img src="/media/Hallway1.png" width="100%" />
         <Link style={mainRoom} to="/er" />
         <Link style={merchantRoom} to="/er/merchant" />
+        <Link style={library} to="/er/library" />
 
         {this.props.sewerUnlocked && <Link style={spyRoom} to="/er/spy" />}
       </>
