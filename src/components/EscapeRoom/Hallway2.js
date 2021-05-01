@@ -9,6 +9,7 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  DialogContentText,
   IconButton,
 } from "@material-ui/core"
 import axios from "axios"
@@ -56,6 +57,7 @@ class Hallway2 extends Component {
     this.state = {
       mechanicsModalOpen: false,
       mechanicsCode: null,
+      submitMsg: null,
     }
   }
 
@@ -69,8 +71,10 @@ class Hallway2 extends Component {
 
   handleSubmitMechanics = (e) => {
     e.preventDefault()
-    this.props.putMechanicsUnlocked()
-    this.props.history.push("/er/mechanics")
+    if (this.state.mechanicsCode === "0") {
+      this.props.putMechanicsUnlocked()
+      this.props.history.push("/er/mechanics")
+    } else this.setState({ submitMsg: "incorrect" })
   }
 
   lockedMechanics = () => {
@@ -103,6 +107,9 @@ class Hallway2 extends Component {
                   this.setState({ mechanicsCode: target.value })
                 }
               />
+              {this.state.submitMsg !== null && (
+                <DialogContentText>{this.state.submitMsg}</DialogContentText>
+              )}
             </DialogContent>
             <DialogActions>
               <Button type="submit">Submit</Button>

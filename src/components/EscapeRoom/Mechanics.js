@@ -129,27 +129,8 @@ export default class Mechanics extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    axios
-      .post("/api/er/me_unlock_closet", {
-        teamId: this.props.teamId,
-        answer: this.state.answer,
-      })
-      .then((res) => {
-        if (res.data.success) {
-          if (res.data.msg === "correct") {
-            this.setState({
-              closetUnlocked: true,
-              lockModalOpen: false,
-              submitMsg: null,
-            })
-          } else {
-            this.setState({ submitMsg: res.data.msg })
-          }
-        }
-      })
-      .catch((err) => {
-        console.log(err.response)
-      })
+    if (this.state.answer === 0) this.props.putClosetUnlocked()
+    else this.setState({ submitMsg: "Incorrect" })
   }
 
   render() {

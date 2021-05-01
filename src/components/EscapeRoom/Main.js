@@ -71,8 +71,12 @@ class Main extends Component {
 
   handleSubmitLockers = (e) => {
     e.preventDefault()
-    this.props.putLockersUnlocked()
-    this.props.history.push("/er/lockers")
+    if (this.state.lockerCode === "10") {
+      this.props.putLockersUnlocked()
+      this.props.history.push("/er/lockers")
+    } else {
+      this.setState({ submitMsg: "incorrect" })
+    }
   }
 
   lockedLockers = () => {

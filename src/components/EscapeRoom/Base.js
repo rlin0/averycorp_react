@@ -42,6 +42,7 @@ class ER extends Component {
       sewerUnlocked: false,
       lockersUnlocked: false,
       mechanicsUnlocked: false,
+      closetUnlocked: false,
 
       // items
       matches: false,
@@ -105,6 +106,17 @@ class ER extends Component {
       .patch(`/api/erstate/${this.props.teamId}/`, { lockers_unlocked: true })
       .then((res) => {
         this.setState({ lockersUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putClosetUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, { closet_unlocked: true })
+      .then((res) => {
+        this.setState({ closetUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -257,6 +269,7 @@ class ER extends Component {
             putSewerUnlocked={this.putSewerUnlocked}
             putLockersUnlocked={this.putLockersUnlocked}
             putMechanicsUnlocked={this.putMechanicsUnlocked}
+            putClosetUnlocked={this.putClosetUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>
