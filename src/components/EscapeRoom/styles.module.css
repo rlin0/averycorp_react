@@ -247,3 +247,21 @@
   height: 16.17%;
   z-index: 5;
 }
+
+.hologram {
+  position: absolute;
+  left: 63.36%;
+  top: 5.83%;
+  width: 15.52%;
+  height: 43.04%;
+  z-index: 5;
+}
+
+.hologramBottom {
+  position: absolute;
+  left: 59.22%;
+  top: 47.41%;
+  width: 23.97%;
+  height: 6.8%;
+  z-index: 5;
+}

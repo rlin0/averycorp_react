@@ -54,7 +54,10 @@ class Main extends Component {
 
   componentDidMount() {
     this.setState({
-      interval: setInterval(() => this.setState({ date: new Date() }), 1000),
+      interval: setInterval(
+        () => this.setState({ date: new Date(Date.now()) }),
+        1000
+      ),
     })
   }
 
@@ -139,7 +142,7 @@ class Main extends Component {
         </form>
         <div className={styles.clock}>
           <Clock
-            value={new Date()}
+            value={new Date(Date.now())}
             // styleName={styles.clock}
             size={100}
           />

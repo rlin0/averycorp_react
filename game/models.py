@@ -114,3 +114,4 @@ class ERState(models.Model):
     lockers_unlocked = models.BooleanField(default=False)
     mechanics_unlocked = models.BooleanField(default=False)
     electrical_box_unlocked = models.BooleanField(default=False)
+    hologram_unlocked = models.BooleanField(default=False)

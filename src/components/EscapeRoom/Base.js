@@ -44,6 +44,7 @@ class ER extends Component {
       lockersUnlocked: false,
       mechanicsUnlocked: false,
       closetUnlocked: false,
+      hologramUnlocked: false,
 
       // items
       matches: false,
@@ -85,6 +86,7 @@ class ER extends Component {
           lockersUnlocked: res.data.lockers_unlocked,
           mechanicsUnlocked: res.data.mechanics_unlocked,
           electricalBoxUnlocked: res.data.electrical_box_unlocked,
+          hologramUnlocked: res.data.hologram_unlocked,
         })
       })
       .catch((err) => {
@@ -151,6 +153,19 @@ class ER extends Component {
           console.error(err)
         })
     }
+  }
+
+  putHologramUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, {
+        hologram_unlocked: true,
+      })
+      .then((res) => {
+        this.setState({ hologramUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   handleClickOpen = () => {
@@ -292,6 +307,7 @@ class ER extends Component {
             putMechanicsUnlocked={this.putMechanicsUnlocked}
             putClosetUnlocked={this.putClosetUnlocked}
             putElectricalBoxUnlocked={this.putElectricalBoxUnlocked}
+            putHologramUnlocked={this.putHologramUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>

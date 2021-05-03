@@ -23,11 +23,19 @@ export default class Spy extends Component {
       computerModalOpen: false,
       computerCode: null,
       hangerModalOpen: false,
+      hologramModalOpen: false,
+      hologramCode: null,
+      submitMsg: null,
     }
+    this.vidRef = React.createRef()
+  }
+
+  handleHologramModalClose = () => {
+    this.setState({ hologramModalOpen: false, submitMsg: null })
   }
 
   handleComputerModalClose = () => {
-    this.setState({ computerModalOpen: false })
+    this.setState({ computerModalOpen: false, submitMsg: null })
   }
 
   handleHangerModalClose = () => {
@@ -42,6 +50,16 @@ export default class Spy extends Component {
   handleHangerClick = () => {
     if (this.props.equipped === "usb")
       this.setState({ computerModalOpen: true })
+  }
+
+  handleHologramSubmit = (e) => {
+    e.preventDefault()
+    if (this.state.hologramCode) {
+      this.props.putHologramUnlocked()
+      this.handleHologramModalClose()
+    } else {
+      this.setState({ submitMsg: "incorrect" })
+    }
   }
 
   render() {
@@ -87,6 +105,59 @@ export default class Spy extends Component {
                 )}
               </DialogContent>
             </Dialog>
+            <div
+              className={styles.hologramBottom}
+              onClick={() => this.setState({ hologramModalOpen: true })}
+            />
+
+            <Dialog
+              open={this.state.hologramModalOpen}
+              onClose={this.handleHologramModalClose}
+              aria-labelledby="form-dialog-title"
+            >
+              <DialogTitle id="form-dialog-title">
+                <IconButton
+                  aria-label="close"
+                  onClick={this.handleHologramModalClose}
+                >
+                  <CloseIcon />
+                </IconButton>
+              </DialogTitle>
+              <form onSubmit={this.handleHologramSubmit}>
+                <DialogContent>
+                  <TextField
+                    autoFocus
+                    margin="dense"
+                    id="name"
+                    label="code"
+                    onChange={({ target }) =>
+                      this.setState({ hologramCode: target.value })
+                    }
+                  />
+                  {this.state.submitMsg !== null && (
+                    <DialogContentText>
+                      {this.state.submitMsg}
+                    </DialogContentText>
+                  )}
+                </DialogContent>
+                <DialogActions>
+                  <Button type="submit">Submit</Button>
+                </DialogActions>
+              </form>
+            </Dialog>
+            {this.props.hologramUnlocked && (
+              <video
+                width="100px"
+                height="300px"
+                className={styles.hologram}
+                autoPlay
+                type="video/mp4"
+                src="/lemon.mp4"
+                onClick={(e) => {
+                  e.target.play()
+                }}
+              />
+            )}
             <Dialog
               open={this.state.computerModalOpen}
               onClose={this.handleComputerModalClose}
