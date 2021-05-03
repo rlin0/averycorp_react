@@ -23,6 +23,13 @@ class Profile(models.Model):
         """String for representing the Model object."""
         return str(self.username)
 
+    def save(self, *args, **kwargs):
+        is_new = True if not self.id else False
+        super(Profile, self).save(*args, **kwargs)
+        if is_new:
+            inventory = Inventory(user=self)
+            inventory.save()
+
 
 class Team(models.Model):
     """Model representing a team."""
@@ -34,6 +41,13 @@ class Team(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.name
+
+    def save(self, *args, **kwargs):
+        is_new = True if not self.id else False
+        super(Team, self).save(*args, **kwargs)
+        if is_new:
+            erState = ERState(team=self)
+            erState.save()
 
 
 class Role(models.Model):
