@@ -54,7 +54,14 @@ export default class Maintenance extends Component {
       <>
         <img src={`${S3Url}/er/Maintenance.png`} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
-
+        {this.props.electrical_box_unlocked ? (
+          <p>unlocked box</p>
+        ) : (
+          <div
+            className={styles.topElectricalBox}
+            onClick={this.props.putElectricalBoxUnlocked}
+          />
+        )}
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>
     )

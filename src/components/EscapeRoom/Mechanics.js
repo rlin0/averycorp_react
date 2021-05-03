@@ -130,7 +130,7 @@ export default class Mechanics extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (this.state.answer === 0) this.props.putClosetUnlocked()
+    if (this.state.answer === "0") this.props.putClosetUnlocked()
     else this.setState({ submitMsg: "Incorrect" })
   }
 

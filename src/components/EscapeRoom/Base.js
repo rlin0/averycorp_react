@@ -15,6 +15,7 @@ import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers"
 
 const Style = {
   position: "fixed",
@@ -83,6 +84,7 @@ class ER extends Component {
           sewerUnlocked: res.data.sewer_unlocked,
           lockersUnlocked: res.data.lockers_unlocked,
           mechanicsUnlocked: res.data.mechanics_unlocked,
+          electricalBoxUnlocked: res.data.electrical_box_unlocked,
         })
       })
       .catch((err) => {
@@ -125,13 +127,30 @@ class ER extends Component {
 
   putMechanicsUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, { mechanics_unlocked: true })
+      .patch(`/api/erstate/${this.props.teamId}/`, {
+        mechanics_unlocked: true,
+      })
       .then((res) => {
         this.setState({ mechanicsUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
       })
+  }
+
+  putElectricalBoxUnlocked = () => {
+    if (this.state.equipped === "inkwell") {
+      axios
+        .patch(`/api/erstate/${this.props.teamId}/`, {
+          electrical_box_unlocked: true,
+        })
+        .then((res) => {
+          this.setState({ electricalBoxUnlocked: true })
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
   }
 
   handleClickOpen = () => {
@@ -227,12 +246,14 @@ class ER extends Component {
                   />
                   <Grid item xs={3}>
                     <img
-                      src={`/media/${it}.png`}
+                      src={`${S3Url}/er/${it}.png`}
                       style={{
                         cursor: "pointer",
                         borderColor: "red",
                         border:
                           this.state.selected === it ? "1px solid red" : "0px",
+                        width: "50px",
+                        height: "50px",
                       }}
                       alt={it}
                     />
@@ -249,7 +270,7 @@ class ER extends Component {
   render() {
     const Comp = this.props.comp
     const cursorStyle = {
-      cursor: `url(/media/${this.state.equipped}_cursor.png), auto`,
+      cursor: `url(${S3Url}/er/${this.state.equipped}_cursor.png), auto`,
     }
 
     return (
@@ -270,6 +291,7 @@ class ER extends Component {
             putLockersUnlocked={this.putLockersUnlocked}
             putMechanicsUnlocked={this.putMechanicsUnlocked}
             putClosetUnlocked={this.putClosetUnlocked}
+            putElectricalBoxUnlocked={this.putElectricalBoxUnlocked}
           />
         </div>
         <Button style={Style} onClick={this.handleClickOpen}>

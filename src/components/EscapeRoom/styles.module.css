@@ -105,6 +105,7 @@
   height: 11.4%;
   left: 9.6%;
   top: 77.3%;
+  cursor: default;
   position: absolute;
   display: block;
   z-index: 5;
@@ -189,4 +190,60 @@
   display: block;
   z-index: 5;
   overflow: hidden;
+}
+
+.scanningDevice {
+  position: absolute;
+  left: 80.38%;
+  top: 50.31%;
+  width: 2.56%;
+  height: 7.43%;
+  z-index: 5;
+  overflow: hidden;
+  display: block;
+}
+
+.merchantPhoto {
+  position: absolute;
+  left: 57.34%;
+  top: 50.31%;
+  width: 4.35%;
+  height: 8.05%;
+  z-index: 5;
+}
+
+.computerSpy {
+  position: absolute;
+  left: 30.26%;
+  top: 52.1%;
+  width: 3.28%;
+  height: 3.24%;
+  z-index: 5;
+}
+
+.topElectricalBox {
+  position: absolute;
+  left: 89.77%;
+  top: 10.96%;
+  width: 7.34%;
+  height: 6.94%;
+  z-index: 5;
+}
+
+.hanger {
+  position: absolute;
+  left: 93.71%;
+  top: 14.08%;
+  width: 3.53%;
+  height: 3.4%;
+  z-index: 5;
+}
+
+.inkwell {
+  position: absolute;
+  left: 20.28%;
+  top: 33.33%;
+  width: 23.06%;
+  height: 16.17%;
+  z-index: 5;
 }

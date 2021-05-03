@@ -72,7 +72,7 @@ class Main extends Component {
 
   handleSubmitLockers = (e) => {
     e.preventDefault()
-    if (this.state.lockerCode === "10") {
+    if (this.state.lockerCode === "0") {
       this.props.putLockersUnlocked()
       this.props.history.push("/er/lockers")
     } else {
@@ -154,7 +154,7 @@ class Main extends Component {
           <Link
             to="/er/spy"
             className={styles.sewer}
-            style={{ cursor: `url(/media/paperclip_cursor.png), auto` }}
+            style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png) auto` }}
             onClick={this.props.putSewerUnlocked}
           />
         )}
