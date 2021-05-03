@@ -44,7 +44,7 @@ export default class Header extends Component {
           <SideBar />
           <Typography variant="h6">
             Welcome,
-            {this.props.username}
+            {this.props.username}. Team {this.props.team}
           </Typography>
           <SvgIcon
             component={AverycorpLogo}

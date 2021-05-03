@@ -17,6 +17,16 @@ import { S3Url } from "../../helpers.js"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
+const mainStyle = {
+  width: "5.4%",
+  height: "7.2%",
+  left: "5.1%",
+  top: "89.5%",
+  position: "absolute",
+  cursor: "pointer",
+  zIndex: "5",
+}
+
 export default class Lockers extends Component {
   constructor(props) {
     super(props)
@@ -33,20 +43,7 @@ export default class Lockers extends Component {
         {this.props.lockersUnlocked ? (
           <>
             <img src={`${S3Url}/er/Lockers.png`} width="100%" />
-            <Link
-              to="/er"
-              style={{
-                width: "5.4%",
-                height: "7.2%",
-                left: "5.1%",
-                top: "89.5%",
-                position: "absolute",
-                cursor: "pointer",
-                display: "block",
-                zIndex: "5",
-                overflow: "hidden",
-              }}
-            />
+            <Link to="/er" style={mainStyle} />
             {items.map((it) => {
               return (
                 !this.props[it] && (

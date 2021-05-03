@@ -35,6 +35,7 @@ export default class App extends Component {
       username: localStorage.getItem("username"),
       userId: localStorage.getItem("userId"),
       teamId: localStorage.getItem("teamId"),
+      teamName: localStorage.getItem("teamName"),
     }
   }
 
@@ -51,16 +52,18 @@ export default class App extends Component {
     }
   }
 
-  login = (username, userId, teamId) => {
+  login = (username, userId, teamId, teamName) => {
     this.setState({
       username: username,
       userId: userId,
       teamId: teamId,
+      teamName: teamName,
     })
     // store the user in localStorage
     localStorage.setItem("username", this.state.username)
     localStorage.setItem("userId", this.state.userId)
     localStorage.setItem("teamId", this.state.teamId)
+    localStorage.setItem("teamName", this.state.teamName)
   }
 
   logout = () => {
@@ -113,7 +116,11 @@ export default class App extends Component {
             <BrowserRouter>
               <div className="terminal">
                 <div className="app">
-                  <Header username={this.state.username} logout={this.logout} />
+                  <Header
+                    username={this.state.username}
+                    team={this.state.teamName}
+                    logout={this.logout}
+                  />
                   <Switch>
                     <Route exact path="/">
                       {" "}

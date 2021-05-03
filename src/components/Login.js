@@ -26,7 +26,8 @@ export default class Login extends Component {
             this.props.login(
               res.data.user.username,
               res.data.user.id,
-              res.data.user.teamId
+              res.data.user.teamId,
+              res.data.user.teamName
             )
           else this.setState({ incorrect: true })
         } else console.error(res.data)
