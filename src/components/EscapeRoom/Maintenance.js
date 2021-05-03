@@ -3,6 +3,7 @@ import CssBaseline from "@material-ui/core/CssBaseline"
 import Typography from "@material-ui/core/Typography"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers.js"
 
 const hallway2 = {
   width: "5.6%",
@@ -26,7 +27,7 @@ export default class Maintenance extends Component {
   candle = () => {
     return (
       <img
-        src="/media/candle.png"
+        src={`${S3Url}/er/candle.png`}
         alt="candle"
         className={styles.candle}
         onClick={this.lightCandle}
@@ -37,7 +38,7 @@ export default class Maintenance extends Component {
   litCandle = () => {
     return (
       <img
-        src="/media/litcandle.png"
+        src={`${S3Url}/er/litcandle.png`}
         alt="lit candle"
         className={styles.candle}
       />
@@ -51,7 +52,7 @@ export default class Maintenance extends Component {
   render() {
     return (
       <>
-        <img src="/media/Maintenance.png" width="100%" />
+        <img src={`${S3Url}/er/Maintenance.png`} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
 
         {this.state.candleLit ? this.litCandle() : this.candle()}

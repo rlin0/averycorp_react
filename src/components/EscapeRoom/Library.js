@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers.js"
 
 const hallway1 = {
   width: "5.2%",
@@ -42,7 +43,7 @@ export default class Library extends Component {
   render() {
     return (
       <>
-        <img src="/media/Library.png" width="100%" />
+        <img src={S3Url + "/er/Library.png"} width="100%" />
         <Link to="/er/hallway1" style={hallway1} />
         <div
           className={styles.book1}

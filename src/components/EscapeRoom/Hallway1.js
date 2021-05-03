@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Typography from "@material-ui/core/Typography"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers.js"
 
 const mainRoom = {
   width: "5.7%",
@@ -50,7 +51,7 @@ export default class Hallway1 extends Component {
   render() {
     return (
       <>
-        <img src="/media/Hallway1.png" width="100%" />
+        <img src={S3Url + "/er/Hallway1.png"} width="100%" />
         <Link style={mainRoom} to="/er" />
         <Link style={merchantRoom} to="/er/merchant" />
         <Link style={library} to="/er/library" />

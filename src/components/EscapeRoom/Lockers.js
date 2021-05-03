@@ -13,6 +13,7 @@ import {
 import styles from "./styles.module.css"
 import Forbidden from "../Forbidden"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers.js"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
@@ -31,7 +32,7 @@ export default class Lockers extends Component {
       <>
         {this.props.lockersUnlocked ? (
           <>
-            <img src="/media/Lockers.png" width="100%" />
+            <img src={`${S3Url}/er/Lockers.png`} width="100%" />
             <Link
               to="/er"
               style={{
@@ -50,7 +51,7 @@ export default class Lockers extends Component {
               return (
                 !this.props[it] && (
                   <img
-                    src={`/media/${it}.png`}
+                    src={`${S3Url}/er/${it}.png`}
                     className={styles[it]}
                     alt={it}
                     onClick={this.onClick}
@@ -69,7 +70,7 @@ export default class Lockers extends Component {
             >
               <DialogContent>
                 <img
-                  src="/media/car_zoomed.png"
+                  src={S3Url + "/er/car_zoomed.png"}
                   alt="car zoomed in"
                   style={{ width: "500px", height: "600px" }}
                 />

@@ -16,6 +16,7 @@ import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
+import { S3Url } from "../../helpers.js"
 
 const mainRoom = {
   width: "5.9%",
@@ -122,7 +123,7 @@ class Hallway2 extends Component {
   render() {
     return (
       <>
-        <img src="/media/Hallway2.png" width="100%" />
+        <img src={S3Url + "/er/Hallway2.png"} width="100%" />
         <Link style={mainRoom} to="/er" />
         <Link style={maintenanceRoom} to="/er/maintenance" />
 

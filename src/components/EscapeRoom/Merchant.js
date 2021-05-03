@@ -12,6 +12,7 @@ import {
 } from "@material-ui/core"
 import axios from "axios"
 import styles from "./styles.module.css"
+import { S3Url } from "../../helpers.js"
 
 export default class Merchant extends Component {
   constructor(props) {
@@ -22,7 +23,7 @@ export default class Merchant extends Component {
   render() {
     return (
       <>
-        <img src="/media/Merchant.png" width="100%" />
+        <img src={`${S3Url}/er/Merchant.png`} width="100%" />
       </>
     )
   }

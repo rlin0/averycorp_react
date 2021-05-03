@@ -13,6 +13,7 @@ import {
 import axios from "axios"
 import styles from "./styles.module.css"
 import Jigsaw from "./Jigsaw"
+import { S3Url } from "../../helpers.js"
 
 export default class Mechanics extends Component {
   constructor(props) {
@@ -136,7 +137,7 @@ export default class Mechanics extends Component {
   render() {
     return (
       <>
-        <img src="/media/Mechanics.png" width="100%" />
+        <img src={S3Url + "/er/Mechanics.png"} width="100%" />
         {this.state.closetUnlocked
           ? this.unlockedCloset()
           : this.lockedCloset()}

@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import Draggable, { DraggableCore } from "react-draggable" // Both at the same time
+import { S3Url } from "../../helpers.js"
 
 export default class Jigsaw extends Component {
   constructor() {
@@ -30,7 +31,7 @@ export default class Jigsaw extends Component {
               top: `${Math.floor(i / width) * (size + padding)}px`,
               position: "absolute",
             }}
-            src={`/media/jigsaw/${pieces[i] + 1}.png`}
+            src={`${S3Url}/er/jigsaw/${pieces[i] + 1}.png`}
           />
         </Draggable>
       )
