@@ -13,6 +13,18 @@ import axios from "axios"
 import styles from "./styles.module.css"
 import Jigsaw from "./Jigsaw"
 import { S3Url } from "../../helpers.js"
+import { withRouter, Link } from "react-router-dom"
+
+const hallway2 = {
+  width: "5.3%",
+  height: "7.1%",
+  left: "90.3%",
+  top: "87.2%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
 
 export default class Mechanics extends Component {
   constructor(props) {
@@ -138,6 +150,9 @@ export default class Mechanics extends Component {
     return (
       <>
         <img src={S3Url + "/er/Mechanics.png"} width="100%" />
+        <Link style={hallway2} to="/er/hallway2">
+          hallway 2
+        </Link>
         {this.state.closetUnlocked
           ? this.unlockedCloset()
           : this.lockedCloset()}

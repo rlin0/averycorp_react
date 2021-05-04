@@ -87,6 +87,7 @@ class ER extends Component {
           mechanicsUnlocked: res.data.mechanics_unlocked,
           electricalBoxUnlocked: res.data.electrical_box_unlocked,
           hologramUnlocked: res.data.hologram_unlocked,
+          closetUnlocked: res.data.closet_unlocked,
         })
       })
       .catch((err) => {

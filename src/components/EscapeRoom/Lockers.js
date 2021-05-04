@@ -37,6 +37,7 @@ export default class Lockers extends Component {
   }
 
   render() {
+    if (this.props.lockersUnlocked === null) return null
     return (
       <>
         {this.props.lockersUnlocked ? (

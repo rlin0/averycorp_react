@@ -39,7 +39,7 @@ export default class Act extends Component {
   }
 
   render() {
-    if (!this.state.allowed) {
+    if (this.state.allowed === false) {
       return (
         <>
           <TextField
