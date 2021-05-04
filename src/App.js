@@ -7,7 +7,7 @@ import CityIntroScene from "./components/CityIntroScene"
 import Act0 from "./components/Act0"
 import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
-import Map from "./components/Map"
+import Act2 from "./components/Act2"
 import Puzzle from "./components/Puzzle"
 import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
@@ -19,7 +19,7 @@ import Hallway1 from "./components/EscapeRoom/Hallway1"
 import Hallway2 from "./components/EscapeRoom/Hallway2"
 import Maintenance from "./components/EscapeRoom/Maintenance"
 import Merchant from "./components/EscapeRoom/Merchant"
-
+import Act from "./components/Act"
 import { ThemeProvider } from "@material-ui/core/styles"
 import AVERYCORP_THEME from "./components/Theme"
 
@@ -31,7 +31,7 @@ export default class App extends Component {
     super(props)
 
     this.state = {
-      progress: null,
+      act: 0,
       username: localStorage.getItem("username"),
       userId: localStorage.getItem("userId"),
       teamId: localStorage.getItem("teamId"),
@@ -40,11 +40,11 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    if (this.state.userId !== null) {
+    if (this.state.teamId !== null) {
       axios
-        .get(`/api/profile/${this.state.userId}/`)
+        .get(`/api/team/${this.state.teamId}/`)
         .then((res) => {
-          this.setState({ progress: res.data.progress })
+          this.setState({ act: parseInt(res.data.act) })
         })
         .catch((err) => {
           console.log(err)
@@ -70,44 +70,33 @@ export default class App extends Component {
     this.setState({
       username: null,
       userId: null,
+      teamId: null,
+      teamName: null,
+      act: 0,
     })
     localStorage.clear()
   }
 
-  next = () => {
-    this.setState(
-      {
-        progress: this.state.progress + 1,
-      },
-      () => {
-        axios
-          .patch(`/api/profile/${this.state.userId}/`, {
-            progress: this.state.progress,
-          })
-          .then((res) => {
-            console.log(res)
-          })
-          .catch((err) => {
-            console.log(err.response)
-          })
-      }
-    )
-  }
-
-  app = () => {
-    switch (this.state.progress) {
-      case null:
-        return <p>Loading</p>
-      case 0:
-        return <CityIntroScene next={this.next} />
-      default:
-        return <p>next stage here</p>
-    }
+  updateAct = (id) => {
+    const updated = this.state.act | (1 << (id - 1))
+    axios
+      .patch(`/api/team/${this.state.teamId}/`, {
+        act: updated,
+      })
+      .then((res) => {
+        this.setState({ act: updated })
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
   }
 
   render() {
     return (
       <ThemeProvider theme={AVERYCORP_THEME}>
+        <CssBaseline />
+
         {this.state.userId === null ? (
           <Login login={this.login} />
         ) : (
@@ -123,92 +112,116 @@ export default class App extends Component {
                   />
                   <Switch>
                     <Route exact path="/">
-                      {" "}
-                      {this.app()}{" "}
-                    </Route>
-                    <Route exact path="/map">
-                      <Map teamId={this.state.teamId} />
-                    </Route>
-                    <Route exact path="/act0">
-                      <Act0 userId={this.state.userId} />
-                    </Route>
-                    <Route exact path="/act1">
-                      <Act1 userId={this.state.userId} />
+                      <p>Homepage</p>
                     </Route>
                     <Route exact path="/profile">
                       <Profile userId={this.state.userId} />
+                    </Route>
+                    <Route exact path="/act0">
+                      <Act0 />
+                    </Route>
+                    <Route exact path="/act1">
+                      <Act
+                        id={1}
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        passcode="1"
+                      >
+                        <Act1
+                          userId={this.state.userId}
+                          restricted={this.state.act < 1}
+                          updateAct={this.updateAct}
+                        />
+                      </Act>
+                    </Route>
+                    <Route exact path="/act2">
+                      <Act
+                        id={2}
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        passcode="2"
+                      >
+                        <Act2 teamId={this.state.teamId} key="2" />
+                      </Act>
                     </Route>
                     <Route exact path="/puzzle">
                       <Puzzle puzzleId="1" userId={this.state.userId} />
                     </Route>
 
-                    <Route exact path="/er">
-                      <ER
-                        comp={Main}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
-                    <Route exact path="/er/mechanics">
-                      <ER
-                        comp={Mechanics}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
-                    <Route exact path="/er/lockers">
-                      <ER
-                        comp={Lockers}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
-                    <Route exact path="/er/library">
-                      <ER
-                        comp={Library}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
+                    <Act
+                      id={3}
+                      act={this.state.act}
+                      updateAct={this.updateAct}
+                      passcode="3"
+                    >
+                      <Route exact path="/er">
+                        <ER
+                          comp={Main}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/mechanics">
+                        <ER
+                          comp={Mechanics}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/lockers">
+                        <ER
+                          comp={Lockers}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/library">
+                        <ER
+                          comp={Library}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
 
-                    <Route exact path="/er/spy">
-                      <ER
-                        comp={Spy}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
+                      <Route exact path="/er/spy">
+                        <ER
+                          comp={Spy}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
 
-                    <Route exact path="/er/hallway1">
-                      <ER
-                        comp={Hallway1}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
-                    <Route exact path="/er/hallway2">
-                      <ER
-                        comp={Hallway2}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
+                      <Route exact path="/er/hallway1">
+                        <ER
+                          comp={Hallway1}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/hallway2">
+                        <ER
+                          comp={Hallway2}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
 
-                    <Route exact path="/er/maintenance">
-                      <ER
-                        comp={Maintenance}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
+                      <Route exact path="/er/maintenance">
+                        <ER
+                          comp={Maintenance}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
 
-                    <Route exact path="/er/merchant">
-                      <ER
-                        comp={Merchant}
-                        userId={this.state.userId}
-                        teamId={this.state.teamId}
-                      />
-                    </Route>
+                      <Route exact path="/er/merchant">
+                        <ER
+                          comp={Merchant}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                    </Act>
                   </Switch>
                 </div>
                 <div className="scanline"></div>

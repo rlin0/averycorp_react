@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
 import { Typography } from "@material-ui/core"
 import axios from "axios"
 
@@ -49,14 +48,12 @@ class Profile extends Component {
     if (this.state.bio === undefined) {
       return (
         <>
-          <CssBaseline />
           <Typography>No bio yet :(</Typography>
         </>
       )
     }
     return (
       <>
-        <CssBaseline />
         <Typography variant="h3"> Bio </Typography>
         <Typography>{this.state.bio}</Typography>
       </>

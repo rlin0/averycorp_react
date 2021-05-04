@@ -17,7 +17,6 @@ class Profile(models.Model):
                              on_delete=models.SET_NULL,
                              blank=True,
                              null=True)
-    progress = models.IntegerField(default=0)
 
     def __str__(self):
         """String for representing the Model object."""
@@ -37,6 +36,7 @@ class Team(models.Model):
     name = models.CharField(max_length=20, unique=True)
     puzzles_done = models.IntegerField(
         default=0, help_text='kth bit in binary represents if puzzle k solved')
+    act = models.IntegerField(default=0, help_text='current act on')
 
     def __str__(self):
         """String for representing the Model object."""

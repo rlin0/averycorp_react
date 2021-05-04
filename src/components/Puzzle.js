@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
 
@@ -79,14 +78,12 @@ class Puzzle extends Component {
     if (this.state.name === null) {
       return (
         <>
-          <CssBaseline />
           <p>Loading...</p>
         </>
       )
     }
     return (
       <>
-        <CssBaseline />
         <Typography variant="h3"> {this.state.name} </Typography>
         <iframe src={this.state.link} width="640" height="480"></iframe>
         <form onSubmit={this.handleSubmit} noValidate autoComplete="off">

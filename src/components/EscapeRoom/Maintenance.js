@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
 import Typography from "@material-ui/core/Typography"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"

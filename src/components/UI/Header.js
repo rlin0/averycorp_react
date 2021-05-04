@@ -23,11 +23,11 @@ const menuLinks = [
     link: "/act1",
   },
   {
-    label: "map",
-    link: "/map",
+    label: "act 2",
+    link: "/act2",
   },
   {
-    label: "escape room",
+    label: "act 3",
     link: "/er",
   },
   {

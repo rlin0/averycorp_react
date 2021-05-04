@@ -284,9 +284,9 @@ class ER extends Component {
 
   render() {
     const Comp = this.props.comp
-    const cursorStyle = {
-      cursor: `url(${S3Url}/er/${this.state.equipped}_cursor.png), auto`,
-    }
+    const cursorStyle = this.state.equipped
+      ? { cursor: `url(${S3Url}/er/${this.state.equipped}_cursor.png), auto` }
+      : { cursor: "default" }
 
     return (
       <div style={cursorStyle}>

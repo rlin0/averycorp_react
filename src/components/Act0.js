@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
 import DialogueBox from "./UI/DialogueBox"
 import AlertBox from "./UI/AlertBox"
 import ModalBox from "./UI/ModalBox"
@@ -19,7 +18,6 @@ class Act0 extends Component {
   render() {
     return (
       <>
-        <CssBaseline />
         <ModalBox
           title="Puzzle Title"
           text="This gives you some info about your puzzle or the story background. If you click GO it will take you to the next page."

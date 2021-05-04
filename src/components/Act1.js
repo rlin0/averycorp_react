@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import CssBaseline from "@material-ui/core/CssBaseline"
 import { Button, Typography, TextField } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 import axios from "axios"
@@ -88,14 +87,12 @@ class Act1 extends Component {
     if (this.state.prompts === undefined) {
       return (
         <>
-          <CssBaseline />
           <p>Loading</p>
         </>
       )
     }
     return (
       <>
-        <CssBaseline />
         <Typography variant="h1"> Madlibs! </Typography>
         <form
           onSubmit={this.handleSubmit}

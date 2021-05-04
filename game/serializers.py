@@ -6,13 +6,13 @@ class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
         fields = ('id', 'username', 'password', 'first_name', 'last_name',
-                  'team', 'role', 'progress')
+                  'team', 'role')
 
 
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('id', 'name', 'puzzles_done')
+        fields = ('id', 'name', 'puzzles_done', 'act')
 
 
 class RoleSerializer(serializers.ModelSerializer):
