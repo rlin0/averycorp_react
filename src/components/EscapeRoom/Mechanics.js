@@ -18,12 +18,11 @@ export default class Mechanics extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      closetUnlocked: false,
       vaseBroken: false,
       lockModalOpen: false,
       vaseModalOpen: false,
       answer: null,
-      submitMsg: null,
+      incorrect: false,
     }
   }
 
@@ -58,8 +57,8 @@ export default class Mechanics extends Component {
                 }
               />
 
-              {this.state.submitMsg !== null && (
-                <DialogContentText>{this.state.submitMsg}</DialogContentText>
+              {this.state.incorrect && (
+                <DialogContentText>incorrect</DialogContentText>
               )}
             </DialogContent>
             <DialogActions>
@@ -130,10 +129,12 @@ export default class Mechanics extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     if (this.state.answer === "0") this.props.putClosetUnlocked()
-    else this.setState({ submitMsg: "Incorrect" })
+    else this.setState({ incorrect: true })
   }
 
   render() {
+    if (this.props.closetUnlocked === null) return null
+
     return (
       <>
         <img src={S3Url + "/er/Mechanics.png"} width="100%" />

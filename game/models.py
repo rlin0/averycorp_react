@@ -124,7 +124,7 @@ class ERState(models.Model):
                                 primary_key=True,
                                 on_delete=models.CASCADE)
     closet_unlocked = models.BooleanField(default=False)
-    sewer_unlocked = models.BooleanField(default=False)
+    spyroom_unlocked = models.BooleanField(default=False)
     lockers_unlocked = models.BooleanField(default=False)
     mechanics_unlocked = models.BooleanField(default=False)
     electrical_box_unlocked = models.BooleanField(default=False)

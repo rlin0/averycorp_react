@@ -49,6 +49,7 @@ const library = {
 
 export default class Hallway1 extends Component {
   render() {
+    if (this.props.spyroomUnlocked === null) return null
     return (
       <>
         <img src={S3Url + "/er/Hallway1.png"} width="100%" />
@@ -56,7 +57,7 @@ export default class Hallway1 extends Component {
         <Link style={merchantRoom} to="/er/merchant" />
         <Link style={library} to="/er/library" />
 
-        {this.props.sewerUnlocked && <Link style={spyRoom} to="/er/spy" />}
+        {this.props.spyroomUnlocked && <Link style={spyRoom} to="/er/spy" />}
       </>
     )
   }

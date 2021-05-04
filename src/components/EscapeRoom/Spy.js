@@ -14,6 +14,18 @@ import CloseIcon from "@material-ui/icons/Close"
 import Forbidden from "../Forbidden"
 import { S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
+import { withRouter, Link } from "react-router-dom"
+
+const hallway1 = {
+  width: "10%",
+  height: "7.6%",
+  left: "10%",
+  top: "87.2%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
 
 export default class Spy extends Component {
   constructor(props) {
@@ -62,11 +74,19 @@ export default class Spy extends Component {
   }
 
   render() {
+    if (this.props.spyroomUnlocked === null) return null
     return (
       <>
-        {this.props.sewerUnlocked ? (
+        {this.props.spyroomUnlocked ? (
           <>
             <img src={`${S3Url}/er/Spy.png`} width="100%" />
+            <Link
+              style={hallway1}
+              to="/er/hallway1"
+              onclick={this.props.putSpyroomUnlocked}
+            >
+              Hallway1
+            </Link>
             <div
               className={styles.hanger}
               onClick={() => this.setState({ hangerModalOpen: true })}

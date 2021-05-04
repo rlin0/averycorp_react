@@ -40,11 +40,11 @@ class ER extends Component {
       open: false,
       selected: null,
       equipped: null,
-      sewerUnlocked: false,
-      lockersUnlocked: false,
-      mechanicsUnlocked: false,
-      closetUnlocked: false,
-      hologramUnlocked: false,
+      spyroomUnlocked: null,
+      lockersUnlocked: null,
+      mechanicsUnlocked: null,
+      closetUnlocked: null,
+      hologramUnlocked: null,
 
       // items
       matches: false,
@@ -82,7 +82,7 @@ class ER extends Component {
       .get(`/api/erstate/${this.props.teamId}/`)
       .then((res) => {
         this.setState({
-          sewerUnlocked: res.data.sewer_unlocked,
+          spyroomUnlocked: res.data.spyroom_unlocked,
           lockersUnlocked: res.data.lockers_unlocked,
           mechanicsUnlocked: res.data.mechanics_unlocked,
           electricalBoxUnlocked: res.data.electrical_box_unlocked,
@@ -94,15 +94,17 @@ class ER extends Component {
       })
   }
 
-  putSewerUnlocked = () => {
-    axios
-      .patch(`/api/erstate/${this.props.teamId}/`, { sewer_unlocked: true })
-      .then((res) => {
-        this.setState({ sewerUnlocked: true })
-      })
-      .catch((err) => {
-        console.error(err)
-      })
+  putSpyroomUnlocked = () => {
+    if (!this.props.spyroomUnlocked) {
+      axios
+        .patch(`/api/erstate/${this.props.teamId}/`, { spyroom_unlocked: true })
+        .then((res) => {
+          this.setState({ spyroomUnlocked: true })
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }
   }
 
   putLockersUnlocked = () => {
@@ -302,7 +304,7 @@ class ER extends Component {
             {...this.props}
             {...this.state}
             pickUp={this.pickUp}
-            putSewerUnlocked={this.putSewerUnlocked}
+            putSpyroomUnlocked={this.putSpyroomUnlocked}
             putLockersUnlocked={this.putLockersUnlocked}
             putMechanicsUnlocked={this.putMechanicsUnlocked}
             putClosetUnlocked={this.putClosetUnlocked}

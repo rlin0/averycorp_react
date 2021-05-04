@@ -120,6 +120,7 @@ class Hallway2 extends Component {
     )
   }
   render() {
+    if (this.props.mechanicsUnlocked === null) return null
     return (
       <>
         <img src={S3Url + "/er/Hallway2.png"} width="100%" />
