@@ -14,19 +14,20 @@ import CloseIcon from "@material-ui/icons/Close"
 import axios from "axios"
 import styles from "./styles.module.css"
 import { S3Url } from "../../helpers.js"
+import LockModal from "./LockModal"
 
 export default class Merchant extends Component {
   constructor(props) {
     super(props)
     this.state = {
       photoModalOpen: false,
-      scanningModalOpen: false,
-      scanningCode: null,
     }
   }
 
-  handleScanningModalClose = () => {
-    this.setState({ scanningModalOpen: false })
+  handleScanningModalSubmit = (code) => {
+    if (code === "0") {
+      return true
+    } else return false
   }
 
   render() {
@@ -34,44 +35,10 @@ export default class Merchant extends Component {
       <>
         <img src={`${S3Url}/er/Merchant.png`} width="100%" />
         <div className={styles.merchantPhoto} />
-        <div
+        <LockModal
           className={styles.scanningDevice}
-          onClick={() => this.setState({ scanningModalOpen: true })}
+          handleSubmit={this.handleScanningModalSubmit}
         />
-        <Dialog
-          open={this.state.scanningModalOpen}
-          onClose={this.handleScanningModalClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            <IconButton
-              aria-label="close"
-              onClick={this.handleScanningModalClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-
-          <form onSubmit={this.handleSubmitMechanics}>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="code"
-                onChange={({ target }) =>
-                  this.setState({ scanningCode: target.value })
-                }
-              />
-              {this.state.submitMsg !== null && (
-                <DialogContentText>{this.state.submitMsg}</DialogContentText>
-              )}
-            </DialogContent>
-            <DialogActions>
-              <Button type="submit">Submit</Button>
-            </DialogActions>
-          </form>
-        </Dialog>
       </>
     )
   }

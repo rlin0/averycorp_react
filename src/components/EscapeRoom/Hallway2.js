@@ -16,6 +16,8 @@ import CloseIcon from "@material-ui/icons/Close"
 import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
+import LockModal from "./LockModal"
+import Forbidden from "../Forbidden"
 
 const mainRoom = {
   width: "5.9%",
@@ -54,73 +56,28 @@ const mechanicsRoom = {
 class Hallway2 extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      mechanicsModalOpen: false,
-      mechanicsCode: null,
-      submitMsg: null,
-    }
+    this.state = {}
   }
 
-  handleMechanicsModalOpen = () => {
-    this.setState({ mechanicsModalOpen: true })
-  }
-
-  handleMechanicsModalClose = () => {
-    this.setState({ mechanicsModalOpen: false })
-  }
-
-  handleSubmitMechanics = (e) => {
-    e.preventDefault()
-    if (this.state.mechanicsCode === "0") {
+  handleSubmitMechanics = (code) => {
+    if (code === "0") {
       this.props.putMechanicsUnlocked()
-      this.props.history.push("/er/mechanics")
-    } else this.setState({ submitMsg: "incorrect" })
+      return true
+    } else return false
   }
 
   lockedMechanics = () => {
     return (
-      <>
-        <div style={mechanicsRoom} onClick={this.handleMechanicsModalOpen} />
-
-        <Dialog
-          open={this.state.mechanicsModalOpen}
-          onClose={this.handleMechanicsModalClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            <IconButton
-              aria-label="close"
-              onClick={this.handleMechanicsModalClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-
-          <form onSubmit={this.handleSubmitMechanics}>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="code"
-                onChange={({ target }) =>
-                  this.setState({ mechanicsCode: target.value })
-                }
-              />
-              {this.state.submitMsg !== null && (
-                <DialogContentText>{this.state.submitMsg}</DialogContentText>
-              )}
-            </DialogContent>
-            <DialogActions>
-              <Button type="submit">Submit</Button>
-            </DialogActions>
-          </form>
-        </Dialog>
-      </>
+      <LockModal
+        style={mechanicsRoom}
+        handleSubmit={this.handleSubmitMechanics}
+      />
     )
   }
   render() {
     if (this.props.mechanicsUnlocked === null) return null
+    if (!this.props.mechanicsUnlocked) return <Forbidden />
+
     return (
       <>
         <img src={S3Url + "/er/Hallway2.png"} width="100%" />

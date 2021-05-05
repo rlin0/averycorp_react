@@ -17,6 +17,7 @@ import "react-clock/dist/Clock.css"
 import CloseIcon from "@material-ui/icons/Close"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
+import LockModal from "./LockModal"
 
 const hallway1 = {
   width: "5.3%",
@@ -46,9 +47,6 @@ class Main extends Component {
     this.state = {
       date: new Date(),
       interval: null,
-      lockersModalOpen: false,
-      lockerCode: "",
-      submitMsg: null,
     }
   }
 
@@ -65,64 +63,21 @@ class Main extends Component {
     clearInterval(this.state.interval)
   }
 
-  handleLockersModalClose = () => {
-    this.setState({ lockersModalOpen: false })
-  }
-
-  handleLockersModalOpen = () => {
-    this.setState({ lockersModalOpen: true })
-  }
-
-  handleSubmitLockers = (e) => {
-    e.preventDefault()
-    if (this.state.lockerCode === "0") {
+  handleSubmitLockers = (code) => {
+    if (code === "0") {
       this.props.putLockersUnlocked()
-      this.props.history.push("/er/lockers")
+      return true
     } else {
-      this.setState({ submitMsg: "incorrect" })
+      return false
     }
   }
 
   lockedLockers = () => {
     return (
-      <>
-        <div className={styles.lockers} onClick={this.handleLockersModalOpen} />
-
-        <Dialog
-          open={this.state.lockersModalOpen}
-          onClose={this.handleLockersModalClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            <IconButton
-              aria-label="close"
-              onClick={this.handleLockersModalClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-
-          <form onSubmit={this.handleSubmitLockers}>
-            <DialogContent>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="code"
-                onChange={({ target }) =>
-                  this.setState({ lockerCode: target.value })
-                }
-              />
-              {this.state.submitMsg !== null && (
-                <DialogContentText>{this.state.submitMsg}</DialogContentText>
-              )}
-            </DialogContent>
-            <DialogActions>
-              <Button type="submit">Submit</Button>
-            </DialogActions>
-          </form>
-        </Dialog>
-      </>
+      <LockModal
+        className={styles.lockers}
+        handleSubmit={this.handleSubmitLockers}
+      />
     )
   }
 

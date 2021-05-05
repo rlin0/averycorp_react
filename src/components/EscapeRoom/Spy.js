@@ -15,6 +15,7 @@ import Forbidden from "../Forbidden"
 import { S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
+import LockModal from "./LockModal"
 
 const hallway1 = {
   width: "10%",
@@ -31,31 +32,13 @@ export default class Spy extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      computerModalOpen: false,
-      computerCode: null,
       hangerModalOpen: false,
-      hologramModalOpen: false,
-      hologramCode: null,
       submitMsg: null,
     }
-    this.vidRef = React.createRef()
-  }
-
-  handleHologramModalClose = () => {
-    this.setState({ hologramModalOpen: false, submitMsg: null })
-  }
-
-  handleComputerModalClose = () => {
-    this.setState({ computerModalOpen: false, submitMsg: null })
   }
 
   handleHangerModalClose = () => {
     this.setState({ hangerModalOpen: false })
-  }
-
-  handleComputerClick = () => {
-    if (this.props.equipped === "usb")
-      this.setState({ computerModalOpen: true })
   }
 
   handleHangerClick = () => {
@@ -63,159 +46,93 @@ export default class Spy extends Component {
       this.setState({ computerModalOpen: true })
   }
 
-  handleHologramSubmit = (e) => {
-    e.preventDefault()
-    if (this.state.hologramCode) {
+  handleHologramSubmit = (code) => {
+    if (code) {
       this.props.putHologramUnlocked()
-      this.handleHologramModalClose()
+      return true
     } else {
-      this.setState({ submitMsg: "incorrect" })
+      return false
+    }
+  }
+
+  handleComputerSubmit = (code) => {
+    if (code) {
+      return true
+    } else {
+      return false
     }
   }
 
   render() {
     if (this.props.spyroomUnlocked === null) return null
+    if (!this.props.spyroomUnlocked) return <Forbidden />
     return (
       <>
-        {this.props.spyroomUnlocked ? (
-          <>
-            <img src={`${S3Url}/er/Spy.png`} width="100%" />
-            <Link
-              style={hallway1}
-              to="/er/hallway1"
-              onclick={this.props.putSpyroomUnlocked}
-            >
-              Hallway1
-            </Link>
-            <div
-              className={styles.hanger}
-              onClick={() => this.setState({ hangerModalOpen: true })}
-            />
-            <div
-              className={styles.computerSpy}
-              onClick={this.handleComputerClick}
-            />
+        <img src={`${S3Url}/er/Spy.png`} width="100%" />
+        <Link
+          style={hallway1}
+          to="/er/hallway1"
+          onclick={this.props.putSpyroomUnlocked}
+        >
+          Hallway1
+        </Link>
+        <div
+          className={styles.hanger}
+          onClick={() => this.setState({ hangerModalOpen: true })}
+        />
 
-            <Dialog
-              open={this.state.hangerModalOpen}
-              onClose={this.handleHangerModalClose}
-              aria-labelledby="form-dialog-title"
-            >
-              <DialogTitle id="form-dialog-title">
-                Tool Case
-                <IconButton
-                  aria-label="close"
-                  onClick={this.handleHangerModalClose}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
-              <DialogContent>
-                <img src={`${S3Url}/er/SpyTool.png`} />
-                {!this.props.inkwell && (
-                  <img
-                    src={`${S3Url}/er/inkwell.png`}
-                    className={styles.inkwell}
-                    alt="inkwell"
-                    onClick={() => {
-                      return this.props.pickUp("inkwell")
-                    }}
-                  />
-                )}
-              </DialogContent>
-            </Dialog>
-            <div
-              className={styles.hologramBottom}
-              onClick={() => this.setState({ hologramModalOpen: true })}
-            />
+        <LockModal
+          className={styles.computerSpy}
+          required="usb"
+          equipped={this.props.equipped}
+          handleSubmit={this.handleComputerSubmit}
+        />
 
-            <Dialog
-              open={this.state.hologramModalOpen}
-              onClose={this.handleHologramModalClose}
-              aria-labelledby="form-dialog-title"
+        <Dialog
+          open={this.state.hangerModalOpen}
+          onClose={this.handleHangerModalClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">
+            Tool Case
+            <IconButton
+              aria-label="close"
+              onClick={this.handleHangerModalClose}
             >
-              <DialogTitle id="form-dialog-title">
-                <IconButton
-                  aria-label="close"
-                  onClick={this.handleHologramModalClose}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
-              <form onSubmit={this.handleHologramSubmit}>
-                <DialogContent>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="code"
-                    onChange={({ target }) =>
-                      this.setState({ hologramCode: target.value })
-                    }
-                  />
-                  {this.state.submitMsg !== null && (
-                    <DialogContentText>
-                      {this.state.submitMsg}
-                    </DialogContentText>
-                  )}
-                </DialogContent>
-                <DialogActions>
-                  <Button type="submit">Submit</Button>
-                </DialogActions>
-              </form>
-            </Dialog>
-            {this.props.hologramUnlocked && (
-              <video
-                width="100px"
-                height="300px"
-                className={styles.hologram}
-                autoPlay
-                type="video/mp4"
-                src="/lemon.mp4"
-                onClick={(e) => {
-                  e.target.play()
+              <CloseIcon />
+            </IconButton>
+          </DialogTitle>
+          <DialogContent>
+            <img src={`${S3Url}/er/SpyTool.png`} />
+            {!this.props.inkwell && (
+              <img
+                src={`${S3Url}/er/inkwell.png`}
+                className={styles.inkwell}
+                alt="inkwell"
+                onClick={() => {
+                  return this.props.pickUp("inkwell")
                 }}
               />
             )}
-            <Dialog
-              open={this.state.computerModalOpen}
-              onClose={this.handleComputerModalClose}
-              aria-labelledby="form-dialog-title"
-            >
-              <DialogTitle id="form-dialog-title">
-                <IconButton
-                  aria-label="close"
-                  onClick={this.handleComputerModalClose}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </DialogTitle>
+          </DialogContent>
+        </Dialog>
 
-              <form onSubmit={this.handleSubmitMechanics}>
-                <DialogContent>
-                  <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="code"
-                    onChange={({ target }) =>
-                      this.setState({ computerCode: target.value })
-                    }
-                  />
-                  {this.state.submitMsg !== null && (
-                    <DialogContentText>
-                      {this.state.submitMsg}
-                    </DialogContentText>
-                  )}
-                </DialogContent>
-                <DialogActions>
-                  <Button type="submit">Submit</Button>
-                </DialogActions>
-              </form>
-            </Dialog>
-          </>
-        ) : (
-          <Forbidden />
+        <LockModal
+          className={styles.hologramBottom}
+          handleSubmit={this.handleHologramSubmit}
+        />
+        {this.props.hologramUnlocked && (
+          <video
+            width="100px"
+            height="300px"
+            className={styles.hologram}
+            autoPlay
+            type="video/mp4"
+            src="/lemon.mp4"
+            onClick={(e) => {
+              e.target.play()
+            }}
+          />
         )}
       </>
     )
