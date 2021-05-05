@@ -12,6 +12,7 @@ import {
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
+import ZoomModal from "./ZoomModal"
 
 const hallway1 = {
   width: "5.2%",
@@ -27,12 +28,7 @@ const hallway1 = {
 export default class Library extends Component {
   constructor() {
     super()
-    this.state = {
-      openBook1: false,
-      openNote1: false,
-      openMagazine1: false,
-      openComputer: false,
-    }
+    this.state = {}
   }
 
   handleComputerClick = () => {
@@ -44,70 +40,38 @@ export default class Library extends Component {
       <>
         <img src={S3Url + "/er/Library.png"} width="100%" />
         <Link to="/er/hallway1" style={hallway1} />
-        <div
-          className={styles.book1}
-          onClick={() => this.setState({ openBook1: true })}
-        />
-        <Dialog
-          open={this.state.openBook1}
-          onClose={() => this.setState({ openBook1: false })}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogContent>
-            <img
-              src="/media/book1Cover.png"
-              alt="book cover"
-              style={{ width: "500px", height: "600px" }}
-            />
-          </DialogContent>
-        </Dialog>
 
-        <div
-          className={styles.note1}
-          onClick={() => this.setState({ openNote1: true })}
-        />
-        <Dialog
-          open={this.state.openNote1}
-          onClose={() => this.setState({ openNote1: false })}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogContent>
-            <img
-              src="/media/Note1Cover.png"
-              alt="Note cover"
-              style={{ width: "500px", height: "600px" }}
-            />
-          </DialogContent>
-        </Dialog>
+        <ZoomModal className={styles.book1}>
+          <img
+            src="/media/book1Cover.png"
+            alt="book cover"
+            style={{ width: "500px", height: "600px" }}
+          />
+        </ZoomModal>
 
-        <div
-          className={styles.magazine1}
-          onClick={() => this.setState({ openMagazine1: true })}
-        />
-        <Dialog
-          open={this.state.openMagazine1}
-          onClose={() => this.setState({ openMagazine1: false })}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogContent>
-            <img
-              src="/media/Magazine1Cover.png"
-              alt="Magazine cover"
-              style={{ width: "500px", height: "600px" }}
-            />
-          </DialogContent>
-        </Dialog>
+        <ZoomModal className={styles.note1}>
+          <img
+            src="/media/Note1Cover.png"
+            alt="Note cover"
+            style={{ width: "500px", height: "600px" }}
+          />
+        </ZoomModal>
 
-        <div className={styles.computer} onClick={this.handleComputerClick} />
-        <Dialog
-          open={this.state.openComputer}
-          onClose={() => this.setState({ openComputer: false })}
-          aria-labelledby="form-dialog-title"
+        <ZoomModal className={styles.magazine1}>
+          <img
+            src="/media/Magazine1Cover.png"
+            alt="Magazine cover"
+            style={{ width: "500px", height: "600px" }}
+          />
+        </ZoomModal>
+
+        <ZoomModal
+          className={styles.computer}
+          required="usb"
+          equipped={this.props.equipped}
         >
-          <DialogContent>
-            <DialogContentText>Unable to read usb</DialogContentText>
-          </DialogContent>
-        </Dialog>
+          <DialogContentText>Unable to read usb</DialogContentText>
+        </ZoomModal>
       </>
     )
   }

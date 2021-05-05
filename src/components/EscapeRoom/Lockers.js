@@ -13,6 +13,7 @@ import styles from "./styles.module.css"
 import Forbidden from "../Forbidden"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
+import ZoomModal from "./ZoomModal"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
@@ -29,7 +30,7 @@ const mainStyle = {
 export default class Lockers extends Component {
   constructor(props) {
     super(props)
-    this.state = { carModalOpen: false }
+    this.state = {}
   }
 
   onClick = (e) => {
@@ -56,23 +57,14 @@ export default class Lockers extends Component {
                 )
               )
             })}
-            <div
-              className={styles.car}
-              onClick={() => this.setState({ carModalOpen: true })}
-            />
-            <Dialog
-              open={this.state.carModalOpen}
-              onClose={() => this.setState({ carModalOpen: false })}
-              aria-labelledby="form-dialog-title"
-            >
-              <DialogContent>
-                <img
-                  src={S3Url + "/er/car_zoomed.png"}
-                  alt="car zoomed in"
-                  style={{ width: "500px", height: "600px" }}
-                />
-              </DialogContent>
-            </Dialog>
+
+            <ZoomModal className={styles.car}>
+              <img
+                src={S3Url + "/er/car_zoomed.png"}
+                alt="car zoomed in"
+                style={{ width: "500px", height: "600px" }}
+              />
+            </ZoomModal>
           </>
         ) : (
           <Forbidden />

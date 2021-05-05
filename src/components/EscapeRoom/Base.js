@@ -96,7 +96,7 @@ class ER extends Component {
   }
 
   putSpyroomUnlocked = () => {
-    if (!this.props.spyroomUnlocked) {
+    if (!this.state.spyroomUnlocked) {
       axios
         .patch(`/api/erstate/${this.props.teamId}/`, { spyroom_unlocked: true })
         .then((res) => {

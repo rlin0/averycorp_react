@@ -17,7 +17,6 @@ import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import LockModal from "./LockModal"
-import Forbidden from "../Forbidden"
 
 const mainRoom = {
   width: "5.9%",
@@ -76,7 +75,6 @@ class Hallway2 extends Component {
   }
   render() {
     if (this.props.mechanicsUnlocked === null) return null
-    if (!this.props.mechanicsUnlocked) return <Forbidden />
 
     return (
       <>
