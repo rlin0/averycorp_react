@@ -7,7 +7,6 @@ from game import views
 router = routers.DefaultRouter()
 router.register(r'profile', views.ProfileView, 'profile')
 router.register(r'team', views.TeamView, 'team')
-router.register(r'role', views.RoleView, 'role')
 router.register(r'puzzle', views.PuzzleView, 'puzzle')
 router.register(r'inventory', views.InventoryView, 'inventory')
 router.register(r'erstate', views.ERStateView, 'erstate')
@@ -21,6 +20,5 @@ urlpatterns = [
     path(r'api/madlib/get', views.get_madlib),
     path(r'api/puzzle/get_solved', views.get_solved),
     path(r'api/puzzle/submit_answer', views.submit_answer),
-    path(r'api/er/me_unlock_closet', views.me_unlock_closet),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

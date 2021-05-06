@@ -13,10 +13,6 @@ class Profile(models.Model):
                              on_delete=models.SET_NULL,
                              blank=True,
                              null=True)
-    role = models.ForeignKey('Role',
-                             on_delete=models.SET_NULL,
-                             blank=True,
-                             null=True)
 
     def __str__(self):
         """String for representing the Model object."""
@@ -48,16 +44,6 @@ class Team(models.Model):
         if is_new:
             erState = ERState(team=self)
             erState.save()
-
-
-class Role(models.Model):
-    """Model representing a role."""
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=20, unique=True)
-
-    def __str__(self):
-        """String for representing the Model object."""
-        return self.name
 
 
 class Puzzle(models.Model):

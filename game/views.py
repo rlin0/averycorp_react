@@ -1,6 +1,6 @@
 from rest_framework import viewsets
-from .serializers import ProfileSerializer, TeamSerializer, RoleSerializer, PuzzleSerializer, InventorySerializer, ERStateSerializer
-from .models import Profile, Team, Role, MadLib, Puzzle, PuzzleSubmission, Inventory, ERState
+from .serializers import ProfileSerializer, TeamSerializer, PuzzleSerializer, InventorySerializer, ERStateSerializer
+from .models import Profile, Team, MadLib, Puzzle, PuzzleSubmission, Inventory, ERState
 from rest_framework.decorators import api_view
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -19,11 +19,6 @@ class ProfileView(viewsets.ModelViewSet):
 class TeamView(viewsets.ModelViewSet):
     serializer_class = TeamSerializer
     queryset = Team.objects.all()
-
-
-class RoleView(viewsets.ModelViewSet):
-    serializer_class = RoleSerializer
-    queryset = Role.objects.all()
 
 
 class PuzzleView(viewsets.ModelViewSet):
@@ -147,12 +142,3 @@ def get_solved(request):
 
 
 ######################## Escape Room API's ################################
-# TODO
-@api_view(['POST'])
-def me_unlock_closet(request):
-    try:
-        team = int(request.data.get('teamId'))
-        answer = request.data.get('answer')
-        return JsonResponse({'success': True, 'msg': 'correct'})
-    except:
-        return JsonResponse({'success': False})
