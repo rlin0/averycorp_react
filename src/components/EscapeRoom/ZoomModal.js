@@ -18,7 +18,7 @@ import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import { Redirect } from "react-router-dom"
 
-class LockModal extends Component {
+class ZoomModal extends Component {
   constructor(props) {
     super(props)
     this.state = { modalOpen: false }
@@ -65,4 +65,4 @@ class LockModal extends Component {
     )
   }
 }
-export default withRouter(LockModal)
+export default withRouter(ZoomModal)
