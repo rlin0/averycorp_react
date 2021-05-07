@@ -113,7 +113,7 @@ class Main extends Component {
           <Link
             to="/er/spy"
             className={styles.sewer}
-            style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png) auto` }}
+            style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png), auto` }}
             onClick={this.props.putSpyroomUnlocked}
           />
         )}

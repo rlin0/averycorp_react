@@ -17,7 +17,7 @@ import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers"
 
-const Style = {
+const inventoryStyle = {
   position: "fixed",
   right: "10px",
   bottom: "10px",
@@ -45,6 +45,7 @@ class ER extends Component {
       mechanicsUnlocked: null,
       closetUnlocked: null,
       hologramUnlocked: null,
+      scanningUnlocked: null,
 
       // items
       matches: false,
@@ -113,6 +114,17 @@ class ER extends Component {
       .patch(`/api/erstate/${this.props.teamId}/`, { lockers_unlocked: true })
       .then((res) => {
         this.setState({ lockersUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putScanningUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.teamId}/`, { scanning_unlocked: true })
+      .then((res) => {
+        this.setState({ scanningUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -311,9 +323,10 @@ class ER extends Component {
             putClosetUnlocked={this.putClosetUnlocked}
             putElectricalBoxUnlocked={this.putElectricalBoxUnlocked}
             putHologramUnlocked={this.putHologramUnlocked}
+            putScanningUnlocked={this.putScanningUnlocked}
           />
         </div>
-        <Button style={Style} onClick={this.handleClickOpen}>
+        <Button style={inventoryStyle} onClick={this.handleClickOpen}>
           Inventory
         </Button>
         <Dialog

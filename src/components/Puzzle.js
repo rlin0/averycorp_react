@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
+import { Link } from "react-router-dom"
 
 class Puzzle extends Component {
   constructor(props) {
@@ -84,6 +85,7 @@ class Puzzle extends Component {
     }
     return (
       <>
+        <Link to="/act2">Back</Link>
         <Typography variant="h3"> {this.state.name} </Typography>
         <iframe src={this.state.link} width="640" height="480"></iframe>
         <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
