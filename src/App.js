@@ -8,7 +8,7 @@ import Act0 from "./components/Act0"
 import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
 import Act2 from "./components/Act2"
-import Puzzle from "./components/Puzzle"
+import Puzzle1 from "./components/Puzzles"
 import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
 import ER from "./components/EscapeRoom/Base"
@@ -144,8 +144,8 @@ export default class App extends Component {
                         <Act2 teamId={this.state.teamId} key="2" />
                       </Act>
                     </Route>
-                    <Route exact path="/puzzle">
-                      <Puzzle puzzleId="1" userId={this.state.userId} />
+                    <Route exact path="/puzzle1">
+                      <Puzzle1 teamId={this.state.teamId} />
                     </Route>
 
                     <Act

@@ -104,10 +104,10 @@ def get_madlib(request):
 @api_view(['POST'])
 def submit_answer(request):
     try:
-        user_id = int(request.data.get('userId'))
+        team_id = int(request.data.get('teamId'))
         puzzle_id = int(request.data.get('puzzleId'))
         answer = request.data.get('answer')
-        t = Profile.objects.get(id=user_id).team
+        t = Team.objects.get(id=team_id)
         p, created = PuzzleSubmission.objects.get_or_create(
             puzzle=Puzzle.objects.get(id=puzzle_id),
             team=Team.objects.get(id=t.id))
@@ -130,9 +130,9 @@ def submit_answer(request):
 @api_view(['GET'])
 def get_solved(request):
     try:
-        user_id = int(request.query_params.get('userId'))
+        team_id = int(request.query_params.get('teamId'))
         puzzle_id = int(request.query_params.get('puzzleId'))
-        t = Profile.objects.get(id=user_id).team
+        t = Team.objects.get(id=team_id)
         return JsonResponse({
             'success': True,
             'solved': t.puzzles_done & (1 << (puzzle_id - 1))

@@ -37,7 +37,7 @@ class Puzzle extends Component {
     axios
       .get("/api/puzzle/get_solved", {
         params: {
-          userId: this.props.userId,
+          teamId: this.props.teamId,
           puzzleId: this.props.puzzleId,
         },
       })
@@ -56,7 +56,7 @@ class Puzzle extends Component {
     e.preventDefault()
     axios
       .post("/api/puzzle/submit_answer", {
-        userId: this.props.userId,
+        teamId: this.props.teamId,
         puzzleId: this.props.puzzleId,
         answer: this.state.answer,
       })
@@ -87,7 +87,7 @@ class Puzzle extends Component {
       <>
         <Link to="/act2">Back</Link>
         <Typography variant="h3"> {this.state.name} </Typography>
-        <iframe src={this.state.link} width="640" height="480"></iframe>
+        {this.props.children}
         <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
           {this.state.solved ? (
             <Typography>Solved!</Typography>

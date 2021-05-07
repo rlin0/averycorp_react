@@ -68,7 +68,7 @@ class Act2 extends Component {
         <div style={{ float: "left", position: "relative", width: "100%" }}>
           <img src={`${S3Url}/map.png`} width="100%" />
           <Link
-            title="Puzzle 1"
+            title="Puzzle 2"
             to="/"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -87,8 +87,8 @@ class Act2 extends Component {
             }}
           />
           <Link
-            to="/puzzle"
-            title="Puzzle 2"
+            to="/puzzle1"
+            title="Puzzle 1"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
