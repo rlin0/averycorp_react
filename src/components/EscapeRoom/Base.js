@@ -13,7 +13,7 @@ import {
 } from "@material-ui/core"
 import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
-import { styles } from "../UI/InputModal"
+import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers"
 
@@ -47,6 +47,7 @@ class ER extends Component {
       hologramUnlocked: null,
       scanningUnlocked: null,
 
+      newItem: false,
       // items
       matches: false,
       wrench: false,
@@ -184,7 +185,7 @@ class ER extends Component {
   }
 
   handleClickOpen = () => {
-    this.setState({ open: true })
+    this.setState({ open: true, newItem: false })
   }
 
   handleClose = () => {
@@ -202,6 +203,7 @@ class ER extends Component {
   }
 
   pickUp = (it) => {
+    this.setState({ newItem: true })
     axios
       .patch(`/api/inventory/${this.props.userId}/`, {
         [it]: true,
@@ -326,7 +328,11 @@ class ER extends Component {
             putScanningUnlocked={this.putScanningUnlocked}
           />
         </div>
-        <Button style={inventoryStyle} onClick={this.handleClickOpen}>
+        <Button
+          style={inventoryStyle}
+          onClick={this.handleClickOpen}
+          className={this.state.newItem && styles.blob}
+        >
           Inventory
         </Button>
         <Dialog
