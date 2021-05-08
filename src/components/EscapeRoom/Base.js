@@ -15,7 +15,7 @@ import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
-import { S3Url } from "../../helpers"
+import { S3Url, setBit, getBit, countSetBits } from "../../helpers"
 
 const inventoryStyle = {
   position: "fixed",
@@ -46,6 +46,10 @@ class ER extends Component {
       closetUnlocked: null,
       hologramUnlocked: null,
       scanningUnlocked: null,
+
+      mcMechanic: 0,
+      mcSpy: 0,
+      mcMerchant: 0,
 
       newItem: false,
       // items
@@ -81,7 +85,7 @@ class ER extends Component {
 
   getERState = () => {
     axios
-      .get(`/api/erstate/${this.props.teamId}/`)
+      .get(`/api/erstate/${this.props.userId}/`)
       .then((res) => {
         this.setState({
           spyroomUnlocked: res.data.spyroom_unlocked,
@@ -90,6 +94,51 @@ class ER extends Component {
           electricalBoxUnlocked: res.data.electrical_box_unlocked,
           hologramUnlocked: res.data.hologram_unlocked,
           closetUnlocked: res.data.closet_unlocked,
+          mcMechanic: res.data.mechanic_mc,
+          mcSpy: res.data.spy_mc,
+          mcMerchant: res.data.merchant_mc,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putMCMerchant = (id) => {
+    const updated = setBit(this.state.mcMerchant, id)
+    axios
+      .patch(`/api/erstate/${this.props.userId}/`, { merchant_mc: updated })
+      .then((res) => {
+        this.setState({
+          mcMerchant: updated,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putMCMechanic = (id) => {
+    const updated = setBit(this.state.mcMechanic, id)
+    axios
+      .patch(`/api/erstate/${this.props.userId}/`, { mechanic_mc: updated })
+      .then((res) => {
+        this.setState({
+          mcMechanic: updated,
+        })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putMCSpy = (id) => {
+    const updated = setBit(this.state.mcSpy, id)
+    axios
+      .patch(`/api/erstate/${this.props.userId}/`, { spy_mc: updated })
+      .then((res) => {
+        this.setState({
+          mcSpy: updated,
         })
       })
       .catch((err) => {
@@ -100,7 +149,7 @@ class ER extends Component {
   putSpyroomUnlocked = () => {
     if (!this.state.spyroomUnlocked) {
       axios
-        .patch(`/api/erstate/${this.props.teamId}/`, { spyroom_unlocked: true })
+        .patch(`/api/erstate/${this.props.userId}/`, { spyroom_unlocked: true })
         .then((res) => {
           this.setState({ spyroomUnlocked: true })
         })
@@ -112,7 +161,7 @@ class ER extends Component {
 
   putLockersUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, { lockers_unlocked: true })
+      .patch(`/api/erstate/${this.props.userId}/`, { lockers_unlocked: true })
       .then((res) => {
         this.setState({ lockersUnlocked: true })
       })
@@ -123,7 +172,7 @@ class ER extends Component {
 
   putScanningUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, { scanning_unlocked: true })
+      .patch(`/api/erstate/${this.props.userId}/`, { scanning_unlocked: true })
       .then((res) => {
         this.setState({ scanningUnlocked: true })
       })
@@ -134,7 +183,7 @@ class ER extends Component {
 
   putClosetUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, { closet_unlocked: true })
+      .patch(`/api/erstate/${this.props.userId}/`, { closet_unlocked: true })
       .then((res) => {
         this.setState({ closetUnlocked: true })
       })
@@ -145,7 +194,7 @@ class ER extends Component {
 
   putMechanicsUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, {
+      .patch(`/api/erstate/${this.props.userId}/`, {
         mechanics_unlocked: true,
       })
       .then((res) => {
@@ -156,24 +205,9 @@ class ER extends Component {
       })
   }
 
-  putElectricalBoxUnlocked = () => {
-    if (this.state.equipped === "inkwell") {
-      axios
-        .patch(`/api/erstate/${this.props.teamId}/`, {
-          electrical_box_unlocked: true,
-        })
-        .then((res) => {
-          this.setState({ electricalBoxUnlocked: true })
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    }
-  }
-
   putHologramUnlocked = () => {
     axios
-      .patch(`/api/erstate/${this.props.teamId}/`, {
+      .patch(`/api/erstate/${this.props.userId}/`, {
         hologram_unlocked: true,
       })
       .then((res) => {
@@ -209,7 +243,6 @@ class ER extends Component {
         [it]: true,
       })
       .then((res) => {
-        console.log("success")
         this.setState({
           [it]: true,
         })
@@ -295,6 +328,44 @@ class ER extends Component {
             )
           )
         })}
+        <Grid item xs={3}>
+          <img
+            src={`${S3Url}/er/mcMerchant.png`}
+            style={{
+              cursor: "pointer",
+              width: "50px",
+              height: "50px",
+            }}
+            alt="mcMerchant"
+          />
+          <p>x {countSetBits(this.state.mcMerchant)}</p>
+        </Grid>
+
+        <Grid item xs={3}>
+          <img
+            src={`${S3Url}/er/mcMechanic.png`}
+            style={{
+              cursor: "pointer",
+              width: "50px",
+              height: "50px",
+            }}
+            alt="mcMechanic"
+          />
+          <p>x {countSetBits(this.state.mcMechanic)}</p>
+        </Grid>
+
+        <Grid item xs={3}>
+          <img
+            src={`${S3Url}/er/mcSpy.png`}
+            style={{
+              cursor: "pointer",
+              width: "50px",
+              height: "50px",
+            }}
+            alt="mcSpy"
+          />
+          <p>x {countSetBits(this.state.mcSpy)}</p>
+        </Grid>
       </>
     )
   }
@@ -326,6 +397,9 @@ class ER extends Component {
             putElectricalBoxUnlocked={this.putElectricalBoxUnlocked}
             putHologramUnlocked={this.putHologramUnlocked}
             putScanningUnlocked={this.putScanningUnlocked}
+            putMCSpy={this.putMCSpy}
+            putMCMechanic={this.putMCMechanic}
+            putMCMerchant={this.putMCMerchant}
           />
         </div>
         <Button

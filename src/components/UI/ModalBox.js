@@ -59,7 +59,7 @@ const DialogActions = withStyles((theme) => ({
 // you can optionally include a path so the button directs you to a new page (otherwise it just closes the modal)
 // usage: <ModalBox title="Puzzle Title" text="This is some info about your puzzle." buttonText="GO" buttonTo={path} />
 export default function ModalBox(props) {
-  const { title, text, buttonText, buttonTo } = props
+  const { title, children, buttonText, buttonTo } = props
   const [open, setOpen] = React.useState(true)
 
   const handleClose = () => {
@@ -78,9 +78,7 @@ export default function ModalBox(props) {
             {title}
           </DialogTitle>
         )}
-        <DialogContent dividers>
-          <MuiDialogContentText>{text}</MuiDialogContentText>
-        </DialogContent>
+        <DialogContent dividers>{children}</DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>
           {buttonTo ? (
             <ButtonLink

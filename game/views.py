@@ -40,6 +40,7 @@ class ERStateView(viewsets.ModelViewSet):
 def login(request):
     username = request.query_params.get('username')
     password = request.query_params.get('password')
+    print(username, password)
     try:
         res = Profile.objects.get(username=username, password=password)
         return JsonResponse({
@@ -49,13 +50,13 @@ def login(request):
                 'id': res.id,
                 'username': username,
                 'teamId': res.team.id if res.team else None,
-                'role': res.role.name if res.role else None,
                 'teamName': res.team.name if res.team else None
             }
         })
     except Profile.DoesNotExist:
         return JsonResponse({'success': True, 'loggedIn': False})
-    except:
+    except Exception as e:
+        print(e)
         return JsonResponse({'success': False})
 
 

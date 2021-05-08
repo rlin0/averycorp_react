@@ -22,7 +22,7 @@ import Merchant from "./components/EscapeRoom/Merchant"
 import Act from "./components/Act"
 import { ThemeProvider } from "@material-ui/core/styles"
 import AVERYCORP_THEME from "./components/Theme"
-
+import { getBit, setBit } from "./helpers.js"
 import "./App.css"
 import { CssBaseline } from "@material-ui/core"
 
@@ -78,7 +78,7 @@ export default class App extends Component {
   }
 
   updateAct = (id) => {
-    const updated = this.state.act | (1 << (id - 1))
+    const updated = setBit(this.state.act, id)
     axios
       .patch(`/api/team/${this.state.teamId}/`, {
         act: updated,

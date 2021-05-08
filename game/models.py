@@ -23,7 +23,9 @@ class Profile(models.Model):
         super(Profile, self).save(*args, **kwargs)
         if is_new:
             inventory = Inventory(user=self)
+            erState = ERState(user=self)
             inventory.save()
+            erState.save()
 
 
 class Team(models.Model):
@@ -37,13 +39,6 @@ class Team(models.Model):
     def __str__(self):
         """String for representing the Model object."""
         return self.name
-
-    def save(self, *args, **kwargs):
-        is_new = True if not self.id else False
-        super(Team, self).save(*args, **kwargs)
-        if is_new:
-            erState = ERState(team=self)
-            erState.save()
 
 
 class Puzzle(models.Model):
@@ -106,7 +101,7 @@ class Inventory(models.Model):
 
 
 class ERState(models.Model):
-    team = models.OneToOneField(Team,
+    user = models.OneToOneField(Profile,
                                 primary_key=True,
                                 on_delete=models.CASCADE)
     closet_unlocked = models.BooleanField(default=False)
@@ -116,3 +111,6 @@ class ERState(models.Model):
     electrical_box_unlocked = models.BooleanField(default=False)
     hologram_unlocked = models.BooleanField(default=False)
     scanning_unlocked = models.BooleanField(default=False)
+    merchant_mc = models.IntegerField(default=0)
+    spy_mc = models.IntegerField(default=0)
+    mechanic_mc = models.IntegerField(default=0)

@@ -2,7 +2,9 @@ import React, { Component } from "react"
 import Typography from "@material-ui/core/Typography"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
-import { S3Url } from "../../helpers.js"
+import { S3Url, getBit } from "../../helpers.js"
+import ModalBox from "../UI/ModalBox"
+import { BlueMC, GreenMC } from "./MC"
 
 const hallway2 = {
   width: "5.6%",
@@ -14,12 +16,24 @@ const hallway2 = {
   zIndex: "5",
   overflow: "hidden",
 }
+const statue = {
+  left: "88.37%",
+  top: "71.91%",
+  width: "9.62%",
+  height: "25.77%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
 
 export default class Maintenance extends Component {
   constructor(props) {
     super(props)
     this.state = {
       candleLit: false,
+      open: false,
+      openElectric: false,
     }
   }
 
@@ -48,19 +62,33 @@ export default class Maintenance extends Component {
     if (this.props.equipped === "matches") this.setState({ candleLit: true })
   }
 
+  handleStatueClick = () => {
+    if (getBit(this.props.mcMerchant, 3)) return
+    if (!this.props.scanningUnlocked) this.setState({ open: true })
+    this.props.putMCMerchant(3)
+  }
+
+  handleElectricalBoxClick = () => {
+    if (getBit(this.props.mcSpy, 3)) return
+    if (this.props.equipped !== "inkwell") return
+    this.setState({ openElectric: true })
+    this.props.putMCSpy(3)
+  }
+
   render() {
     return (
       <>
         <img src={`${S3Url}/er/Maintenance.png`} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
-        {this.props.electrical_box_unlocked ? (
-          <p>unlocked box</p>
-        ) : (
-          <div
-            className={styles.topElectricalBox}
-            onClick={this.props.putElectricalBoxUnlocked}
-          />
-        )}
+        <div style={statue} onClick={this.handleStatueClick} />
+        {this.state.open && <BlueMC />}
+
+        <div
+          className={styles.topElectricalBox}
+          onClick={this.handleElectricalBoxClick}
+        />
+
+        {this.state.openElectric && <GreenMC />}
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>
     )

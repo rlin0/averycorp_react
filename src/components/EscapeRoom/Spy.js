@@ -12,10 +12,11 @@ import {
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 import Forbidden from "../Forbidden"
-import { S3Url } from "../../helpers.js"
+import { getBit, S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import LockModal from "./LockModal"
+import { GreenMC } from "./MC"
 
 const hallway1 = {
   width: "10%",
@@ -34,6 +35,7 @@ export default class Spy extends Component {
     this.state = {
       hangerModalOpen: false,
       submitMsg: null,
+      mcOpen: false,
     }
   }
 
@@ -61,6 +63,12 @@ export default class Spy extends Component {
     } else {
       return false
     }
+  }
+
+  handleHologramEnd = () => {
+    if (getBit(this.props.mcSpy, 2)) return
+    this.setState({ mcOpen: true })
+    this.props.putMCSpy(2)
   }
 
   render() {
@@ -132,8 +140,10 @@ export default class Spy extends Component {
             onClick={(e) => {
               e.target.play()
             }}
+            onEnded={this.handleHologramEnd}
           />
         )}
+        {this.state.mcOpen && <GreenMC />}
       </>
     )
   }
