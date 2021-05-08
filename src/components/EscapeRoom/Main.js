@@ -41,21 +41,26 @@ const hallway2 = {
   overflow: "hidden",
 }
 
+const start = Date.parse("01 Jan 2020 00:00:00 PDT")
+
 class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
       date: new Date(),
       interval: null,
+      seconds: 0,
     }
   }
 
   componentDidMount() {
     this.setState({
-      interval: setInterval(
-        () => this.setState({ date: new Date(Date.now()) }),
-        1000
-      ),
+      interval: setInterval(() => {
+        this.setState({ seconds: this.state.seconds + 1 })
+        if (this.state.seconds < 10) {
+          this.setState({ date: new Date(start + this.state.seconds * 1000) })
+        }
+      }, 1000),
     })
   }
 
@@ -98,7 +103,7 @@ class Main extends Component {
         </form>
         <div className={styles.clock}>
           <Clock
-            value={new Date(Date.now())}
+            value={this.state.date}
             // styleName={styles.clock}
             size={100}
           />
