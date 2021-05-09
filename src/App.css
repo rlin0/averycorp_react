@@ -19,6 +19,7 @@ div.app {
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: 60%;
+  overflow-y: scroll;
 }
 
 div.terminal {

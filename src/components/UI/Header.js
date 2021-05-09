@@ -15,23 +15,23 @@ import { ReactComponent as AverycorpLogo } from "../../images/logo_A_fill_w.svg"
 
 const menuLinks = [
   {
-    label: "act 0",
+    label: "act 00",
     link: "/act0",
   },
   {
-    label: "act 1",
+    label: "act 01",
     link: "/act1",
   },
   {
-    label: "act 2",
+    label: "act 02",
     link: "/act2",
   },
   {
-    label: "act 3",
+    label: "act 03",
     link: "/er",
   },
   {
-    label: "act 4",
+    label: "act 04",
     link: "/act4",
   },
 ]

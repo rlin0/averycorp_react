@@ -25,6 +25,7 @@ import AVERYCORP_THEME from "./components/Theme"
 import { getBit, setBit } from "./helpers.js"
 import "./App.css"
 import { CssBaseline } from "@material-ui/core"
+import Credits from "./components/Credits"
 
 export default class App extends Component {
   constructor(props) {
@@ -111,6 +112,9 @@ export default class App extends Component {
                     logout={this.logout}
                   />
                   <Switch>
+                    <Route exact path="/credits">
+                      <Credits />
+                    </Route>
                     <Route exact path="/">
                       <p>Homepage</p>
                     </Route>
@@ -134,19 +138,20 @@ export default class App extends Component {
                         />
                       </Act>
                     </Route>
-                    <Route exact path="/act2">
-                      <Act
-                        id={2}
-                        act={this.state.act}
-                        updateAct={this.updateAct}
-                        passcode="2"
-                      >
+                    <Act
+                      id={2}
+                      act={this.state.act}
+                      updateAct={this.updateAct}
+                      passcode="2"
+                    >
+                      <Route exact path="/act2">
                         <Act2 teamId={this.state.teamId} key="2" />
-                      </Act>
-                    </Route>
-                    <Route exact path="/puzzle1">
-                      <Puzzle1 teamId={this.state.teamId} />
-                    </Route>
+                      </Route>
+
+                      <Route exact path="/puzzle1">
+                        <Puzzle1 teamId={this.state.teamId} />
+                      </Route>
+                    </Act>
 
                     <Act
                       id={3}
