@@ -31,10 +31,7 @@ const mc = {
 export default class Merchant extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      photoModalOpen: false,
-      mcOpen: false,
-    }
+    this.state = {}
   }
 
   handleScanningModalSubmit = (code) => {
@@ -45,8 +42,6 @@ export default class Merchant extends Component {
   }
 
   handleMCClick = () => {
-    if (getBit(this.props.mcMerchant, 1)) return
-    this.setState({ mcOpen: true })
     this.props.putMCMerchant(1)
   }
   render() {
@@ -54,8 +49,9 @@ export default class Merchant extends Component {
       <>
         <img src={`${S3Url}/er/Merchant.png`} width="100%" />
 
-        <div style={mc} onClick={this.handleMCClick} />
-        {this.state.mcOpen && <BlueMC />}
+        {!getBit(this.props.mcMerchant, 1) && (
+          <img src="" style={mc} alt="chip" onClick={this.handleMCClick} />
+        )}
 
         <div className={styles.merchantPhoto} />
         <LockModal

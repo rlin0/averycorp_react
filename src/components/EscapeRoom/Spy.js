@@ -16,7 +16,7 @@ import { getBit, S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import LockModal from "./LockModal"
-import { GreenMC } from "./MC"
+import MC from "./MC"
 
 const hallway1 = {
   width: "10%",
@@ -35,7 +35,6 @@ export default class Spy extends Component {
     this.state = {
       hangerModalOpen: false,
       submitMsg: null,
-      mcOpen: false,
     }
   }
 
@@ -143,7 +142,6 @@ export default class Spy extends Component {
             onEnded={this.handleHologramEnd}
           />
         )}
-        {this.state.mcOpen && <GreenMC />}
       </>
     )
   }

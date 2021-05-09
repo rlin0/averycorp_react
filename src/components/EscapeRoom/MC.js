@@ -1,34 +1,20 @@
 import ModalBox from "../UI/ModalBox"
 import React, { Component } from "react"
+import { S3Url } from "../../helpers"
 
-export class BlueMC extends Component {
-  render() {
-    return (
-      <ModalBox buttonText="OK">
-        <p>You've acquired a memory chip</p>
-        <img src="" alt="merchant (blue) chip" />
-      </ModalBox>
-    )
+export default class MC extends Component {
+  componentWillUnmount() {
+    this.props.done()
   }
-}
 
-export class RedMC extends Component {
   render() {
     return (
       <ModalBox buttonText="OK">
         <p>You've acquired a memory chip</p>
-        <img src="" alt="mechanic (red) chip" />
-      </ModalBox>
-    )
-  }
-}
-
-export class GreenMC extends Component {
-  render() {
-    return (
-      <ModalBox buttonText="OK">
-        <p>You've acquired a memory chip</p>
-        <img src="" alt="spy (green) chip" />
+        <img
+          src={`${S3Url}/er/mc_${this.props.color}`}
+          alt={`${this.props.color} chip`}
+        />
       </ModalBox>
     )
   }

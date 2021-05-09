@@ -239,6 +239,13 @@
   animation: pulse 2s infinite;
 }
 
+.lockedCloset {
+  position: absolute;
+  left: 66.33%;
+  top: 11.64%;
+  z-index: 5;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(0.95);

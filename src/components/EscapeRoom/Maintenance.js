@@ -4,7 +4,6 @@ import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
 import ModalBox from "../UI/ModalBox"
-import { BlueMC, GreenMC } from "./MC"
 
 const hallway2 = {
   width: "5.6%",
@@ -32,8 +31,6 @@ export default class Maintenance extends Component {
     super(props)
     this.state = {
       candleLit: false,
-      open: false,
-      openElectric: false,
     }
   }
 
@@ -64,14 +61,13 @@ export default class Maintenance extends Component {
 
   handleStatueClick = () => {
     if (getBit(this.props.mcMerchant, 3)) return
-    if (!this.props.scanningUnlocked) this.setState({ open: true })
+    if (!this.props.scanningUnlocked) return
     this.props.putMCMerchant(3)
   }
 
   handleElectricalBoxClick = () => {
     if (getBit(this.props.mcSpy, 3)) return
     if (this.props.equipped !== "inkwell") return
-    this.setState({ openElectric: true })
     this.props.putMCSpy(3)
   }
 
@@ -81,14 +77,12 @@ export default class Maintenance extends Component {
         <img src={`${S3Url}/er/Maintenance.png`} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
         <div style={statue} onClick={this.handleStatueClick} />
-        {this.state.open && <BlueMC />}
 
         <div
           className={styles.topElectricalBox}
           onClick={this.handleElectricalBoxClick}
         />
 
-        {this.state.openElectric && <GreenMC />}
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>
     )

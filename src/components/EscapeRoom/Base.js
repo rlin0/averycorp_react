@@ -16,7 +16,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, setBit, getBit, countSetBits } from "../../helpers"
-
+import MC from "./MC"
 const inventoryStyle = {
   position: "fixed",
   right: "10px",
@@ -50,6 +50,7 @@ class ER extends Component {
       mcMechanic: 0,
       mcSpy: 0,
       mcMerchant: 0,
+      mc: null,
 
       newItem: false,
       // items
@@ -104,6 +105,10 @@ class ER extends Component {
       })
   }
 
+  showedMC = () => {
+    this.setState({ mc: null })
+  }
+
   putMCMerchant = (id) => {
     const updated = setBit(this.state.mcMerchant, id)
     axios
@@ -111,6 +116,7 @@ class ER extends Component {
       .then((res) => {
         this.setState({
           mcMerchant: updated,
+          mc: "merchant",
         })
       })
       .catch((err) => {
@@ -123,8 +129,10 @@ class ER extends Component {
     axios
       .patch(`/api/erstate/${this.props.userId}/`, { mechanic_mc: updated })
       .then((res) => {
+        console.log("put mechanic")
         this.setState({
           mcMechanic: updated,
+          mc: "mechanic",
         })
       })
       .catch((err) => {
@@ -139,6 +147,7 @@ class ER extends Component {
       .then((res) => {
         this.setState({
           mcSpy: updated,
+          mc: "spy",
         })
       })
       .catch((err) => {
@@ -402,6 +411,9 @@ class ER extends Component {
             putMCMerchant={this.putMCMerchant}
           />
         </div>
+        {this.state.mc !== null && (
+          <MC color={this.state.mc} done={this.showedMC} />
+        )}
         <Button
           style={inventoryStyle}
           onClick={this.handleClickOpen}

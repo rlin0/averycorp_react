@@ -14,7 +14,6 @@ import { withRouter, Link } from "react-router-dom"
 import { S3Url, setBit, getBit } from "../../helpers"
 import ZoomModal from "./ZoomModal"
 import ModalBox from "../UI/ModalBox"
-import { BlueMC } from "./MC"
 
 const hallway1 = {
   width: "5.2%",
@@ -75,7 +74,7 @@ const magazine1 = {
 export default class Library extends Component {
   constructor(props) {
     super(props)
-    this.state = { open: false }
+    this.state = {}
   }
 
   handleComputerClick = () => {
@@ -84,7 +83,6 @@ export default class Library extends Component {
 
   handleBookClick = () => {
     if (getBit(this.props.mcMerchant, 2)) return
-    this.setState({ open: true })
     this.props.putMCMerchant(2)
   }
 
@@ -103,8 +101,6 @@ export default class Library extends Component {
         </ZoomModal>
 
         <div style={book2} onClick={this.handleBookClick} />
-
-        {this.state.open && <BlueMC />}
 
         <ZoomModal style={note1}>
           <img
