@@ -19,32 +19,46 @@ import { S3Url } from "../../helpers.js"
 import LockModal from "./LockModal"
 
 const mainRoom = {
-  width: "5.9%",
-  height: "7.6%",
-  left: "89.9%",
-  top: "87.2%",
+  left: "94.92%",
+  top: "43.63%",
+  width: "5.08%",
+  height: "36.13%",
   position: "absolute",
+  cursor: "default",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
 }
 
 const maintenanceRoom = {
-  width: "6.8%",
-  height: "9.3%",
-  left: "4.7%",
-  top: "85.8%",
+  left: "0%",
+  top: "42.63%",
+  width: "2%",
+  height: "34.88%",
   position: "absolute",
+  cursor: "default",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
 }
 
 const mechanicsRoom = {
-  width: "15.3%",
-  height: "51.5%",
-  left: "2.0%",
-  top: "21.2%",
+  left: "14.25%",
+  top: "57.13%",
+  width: "2.42%",
+  height: "5.25%",
+  position: "absolute",
+  cursor: "default",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const mcsuRoom = {
+  left: "51.92%",
+  top: "57%",
+  width: "2.42%",
+  height: "5.25%",
   position: "absolute",
   cursor: "default",
   display: "block",

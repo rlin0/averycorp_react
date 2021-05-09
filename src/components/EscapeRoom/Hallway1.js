@@ -4,47 +4,51 @@ import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 
 const mainRoom = {
-  width: "5.7%",
-  height: "7.3%",
-  left: "5.4%",
-  top: "87.2%",
+  left: "0%",
+  top: "43.88%",
+  width: "4.92%",
+  height: "36.38%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
+  cursor: "default",
 }
 
 const spyRoom = {
-  width: "15.8%",
-  height: "52.1%",
-  left: "2.1%",
-  top: "21.1%",
+  left: "45.58%",
+  top: "57.25%",
+  width: "2.67%",
+  height: "5%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
+  cursor: "default",
 }
 
 const merchantRoom = {
-  width: "15.6%",
-  height: "52.1%",
-  left: "60.4%",
-  top: "20.7%",
+  left: "83.25%",
+  top: "57.38%",
+  width: "2.67%",
+  height: "5%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
+  cursor: "default",
 }
 
 const library = {
-  width: "5.3%",
-  height: "7.1%",
-  left: "90.3%",
-  top: "87.2%",
+  left: "97.92%",
+  top: "42.88%",
+  width: "1.92%",
+  height: "35%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
+  cursor: "default",
 }
 
 export default class Hallway1 extends Component {
