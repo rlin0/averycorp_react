@@ -87,7 +87,7 @@ class Act2 extends Component {
             }}
           />
           <Link
-            to="/puzzle1"
+            to="/act2/puzzle1"
             title="Puzzle 1"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"

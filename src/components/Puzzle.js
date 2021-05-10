@@ -2,8 +2,9 @@ import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import Act from "./Act"
 
-class Puzzle extends Component {
+export default class Puzzle extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -11,6 +12,7 @@ class Puzzle extends Component {
       link: null,
       name: null,
       solved: false,
+      act: null,
     }
   }
 
@@ -85,28 +87,34 @@ class Puzzle extends Component {
     }
     return (
       <>
-        <Link to="/act2">Back</Link>
-        <Typography variant="h3"> {this.state.name} </Typography>
-        {this.props.children}
-        <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
-          {this.state.solved ? (
-            <Typography>Solved!</Typography>
-          ) : (
-            <>
-              <TextField
-                label="Answer"
-                onChange={({ target }) =>
-                  this.setState({ answer: target.value })
-                }
-              />
-              <Button type="submit" variant="contained" color="primary">
-                Submit
-              </Button>
-            </>
-          )}
-        </form>
+        <Act
+          id={2}
+          act={this.props.act}
+          updateAct={this.props.updateAct}
+          passcode="2"
+        >
+          <Link to="/act2">Back</Link>
+          <Typography variant="h3"> {this.state.name} </Typography>
+          {this.props.children}
+          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+            {this.state.solved ? (
+              <Typography>Solved!</Typography>
+            ) : (
+              <>
+                <TextField
+                  label="Answer"
+                  onChange={({ target }) =>
+                    this.setState({ answer: target.value })
+                  }
+                />
+                <Button type="submit" variant="contained" color="primary">
+                  Submit
+                </Button>
+              </>
+            )}
+          </form>
+        </Act>
       </>
     )
   }
 }
-export default Puzzle

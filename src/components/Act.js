@@ -3,6 +3,7 @@ import { Button, Typography, TextField } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 import axios from "axios"
 import InputModal from "./UI/InputModal"
+import { getBit } from "../helpers"
 
 export default class Act extends Component {
   constructor(props) {
@@ -16,14 +17,14 @@ export default class Act extends Component {
 
   componentDidMount() {
     this.setState({
-      allowed: (this.props.act & (1 << (this.props.id - 1))) > 0,
+      allowed: getBit(this.props.act, this.props.id),
     })
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.act !== this.props.act || prevProps.id !== this.props.id) {
       this.setState({
-        allowed: (this.props.act & (1 << (this.props.id - 1))) > 0,
+        allowed: getBit(this.props.act, this.props.id),
       })
     }
   }
