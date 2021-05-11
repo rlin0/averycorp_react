@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import DialogueBox from "./UI/DialogueBox"
-import AlertBox from "./UI/AlertBox"
+import FeedbackBar from "./UI/FeedbackBar"
 import ModalBox from "./UI/ModalBox"
 import ExpositionBox from "./UI/ExpositionBox"
 import InputModal from "./UI/InputModal"
@@ -18,12 +18,13 @@ class Act0 extends Component {
   render() {
     return (
       <>
-        <ModalBox
+        <FeedbackBar text="Something has happened" />
+        {/* <ModalBox
           title="Puzzle Title"
           text="This gives you some info about your puzzle or the story background. If you click GO it will take you to the next page."
           buttonText="GO"
           buttonTo="/act1"
-        />
+        /> */}
         {/* <ExpositionBox
           title="Title"
           text={[...new Array(50)]
