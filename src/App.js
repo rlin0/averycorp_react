@@ -11,6 +11,7 @@ import Act2 from "./components/Act2"
 import Puzzle from "./components/Puzzle"
 import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
+import MechanicsCloset from "./components/EscapeRoom/MechanicsCloset"
 import ER from "./components/EscapeRoom/Base"
 import Lockers from "./components/EscapeRoom/Lockers"
 import Library from "./components/EscapeRoom/Library"
@@ -175,6 +176,13 @@ export default class App extends Component {
                       <Route exact path="/er/mechanics">
                         <ER
                           comp={Mechanics}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/mechanics_closet">
+                        <ER
+                          comp={MechanicsCloset}
                           userId={this.state.userId}
                           teamId={this.state.teamId}
                         />

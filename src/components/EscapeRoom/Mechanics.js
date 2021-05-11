@@ -33,28 +33,6 @@ const hallway2 = {
   overflow: "hidden",
 }
 
-const box1 = {
-  left: "35.65%",
-  top: "54.45%",
-  width: "18.74%",
-  height: "41.66%",
-  position: "absolute",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
-}
-
-const box2 = {
-  left: "75.65%",
-  top: "54.45%",
-  width: "18.74%",
-  height: "41.66%",
-  position: "absolute",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
-}
-
 const picture = {
   width: "10%",
   height: "7.1%",
@@ -77,63 +55,12 @@ const lockedCloset = {
   overflow: "hidden",
 }
 
-const bolt1 = {
-  position: "absolute",
-  left: "73.54%",
-  top: "45.89%",
-  width: "1.76%",
-  height: "2.74%",
-  zIndex: "2",
-  display: "block",
-  overflow: "hidden",
-}
-
-const bolt2 = {
-  position: "absolute",
-  left: "77.84%",
-  top: "45.89%",
-  width: "1.76%",
-  height: "2.74%",
-  zIndex: "5",
-  display: "block",
-  overflow: "hidden",
-}
-
-const bolt3 = {
-  position: "absolute",
-  left: "73.77%",
-  top: "63.84%",
-  width: "1.76%",
-  height: "2.74%",
-  zIndex: "2",
-  display: "block",
-  overflow: "hidden",
-}
-
-const bolt4 = {
-  position: "absolute",
-  left: "77.76%",
-  top: "64.25%",
-  width: "1.76%",
-  height: "2.74%",
-  zIndex: "2",
-  display: "block",
-  overflow: "hidden",
-}
-
 export default class Mechanics extends Component {
   constructor(props) {
     super(props)
     this.state = {
       vaseBroken: false,
       vaseModalOpen: false,
-      box1Open: false,
-      box2Open: false,
-      dialogueBox: false,
-      bolt1: false,
-      bolt2: false,
-      bolt3: false,
-      bolt4: false,
     }
   }
 
@@ -170,43 +97,13 @@ export default class Mechanics extends Component {
 
   unlockedCloset = () => {
     return (
-      <>
+      <Link to="/er/mechanics_closet">
         <img
           src={`${S3Url}/er/closet_unlocked.png`}
           alt="unlocked closet"
           className={styles.closet}
         />
-        <ZoomModal className={styles.closet}>
-          <div
-            style={{ position: "relative", width: "800px", height: "800px" }}
-          >
-            <img
-              src={`${S3Url}/er/closet_zoom.png`}
-              alt="closet_zoom"
-              style={{ position: "absolute" }}
-            />
-            {this.state.box1Open ? (
-              <img
-                src={`${S3Url}/er/box_open.png`}
-                alt="box1 open"
-                style={box1}
-              />
-            ) : (
-              <img
-                src={`${S3Url}/er/box_closed.png`}
-                alt="box1 closed"
-                style={box1}
-                onClick={() => this.setState({ dialogueBox: true })}
-              />
-            )}
-          </div>
-          <DialogueBox data={text.box1} style={box1} />
-        </ZoomModal>
-        <div style={bolt1} id="bolt1" onClick={this.unscrewBolt} />
-        <div style={bolt2} id="bolt2" onClick={this.unscrewBolt} />
-        <div style={bolt3} id="bolt3" onClick={this.unscrewBolt} />
-        <div style={bolt4} id="bolt4" onClick={this.unscrewBolt} />
-      </>
+      </Link>
     )
   }
 

@@ -38,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
 // see sampleText.json for examples of format
 export default function DialogueBox(props) {
   const classes = useStyles()
-  const { data, style } = props
+  const { data, style, repeat } = props
   const [textIdx, setTextIdx] = React.useState(-1) // index for advancing dialogue
   const [letterIdx, setLetterIdx] = React.useState(1) // index for animating text
+  const [cnt, setCnt] = React.useState(0) // number of times played
 
   // animate text with typewriter effect
   React.useEffect(() => {
@@ -81,8 +82,10 @@ export default function DialogueBox(props) {
   )
 
   const play = () => {
+    if (!repeat && cnt > 0) return
     setTextIdx(0)
     setLetterIdx(1)
+    setCnt((prev) => prev + 1)
   }
 
   return (

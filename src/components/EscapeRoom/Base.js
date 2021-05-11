@@ -21,6 +21,7 @@ const inventoryStyle = {
   position: "fixed",
   right: "10px",
   bottom: "10px",
+  zIndex: 10,
 }
 
 const items = [
