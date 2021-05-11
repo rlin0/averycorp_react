@@ -16,9 +16,9 @@ div.app {
   z-index: 1000;
   height: 100vh;
   background-image: url(./images/logo_neon_purple.svg);
-  background-position: center bottom;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: 60%;
+  background-size: 40%;
   overflow-y: scroll;
 }
 
