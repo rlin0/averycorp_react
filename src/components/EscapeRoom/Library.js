@@ -16,10 +16,10 @@ import ZoomModal from "./ZoomModal"
 import ModalBox from "../UI/ModalBox"
 
 const hallway1 = {
-  width: "5.2%",
-  height: "7.7%",
-  left: "5.7%",
-  top: "88.2%",
+  left: "42.33%",
+  top: "91.13%",
+  width: "15%",
+  height: "8.75%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -27,10 +27,10 @@ const hallway1 = {
 }
 
 const book1 = {
-  width: "1.3%",
-  height: "6.3%",
-  left: "14.2%",
-  top: "13.4%",
+  left: "12.75%",
+  top: "45.5%",
+  width: "1.67%",
+  height: "4.25%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -39,14 +39,13 @@ const book1 = {
 
 const book2 = {
   position: "absolute",
-  left: "40.27%",
-  top: "28.86%",
-  width: "6.15%",
-  height: "6.3%",
+  left: "14.25%",
+  top: "54.63%",
+  width: "1.67%",
+  height: "4.25%",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  color: "blue",
 }
 
 const note1 = {
@@ -61,10 +60,21 @@ const note1 = {
 }
 
 const magazine1 = {
-  width: "4%",
-  height: "9.3%",
-  left: "45.5%",
-  top: "75.8%",
+  left: "31.17%",
+  top: "81.13%",
+  width: "5.42%",
+  height: "7.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const computer = {
+  left: "83.75%",
+  top: "60.12%",
+  width: "8.08%",
+  height: "10.63%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -112,14 +122,14 @@ export default class Library extends Component {
 
         <ZoomModal style={magazine1}>
           <img
-            src="/media/Magazine1Cover.png"
+            src={S3Url + "/er/magazine.png"}
             alt="Magazine cover"
             style={{ width: "500px", height: "600px" }}
           />
         </ZoomModal>
 
         <ZoomModal
-          className={styles.computer}
+          style={computer}
           required="usb"
           equipped={this.props.equipped}
         >

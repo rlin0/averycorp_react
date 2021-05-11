@@ -23,7 +23,6 @@ const mainStyle = {
   width: "20.67%",
   height: "100%",
   position: "absolute",
-  cursor: "default",
   zIndex: "5",
 }
 const mainStyle2 = {
@@ -32,7 +31,6 @@ const mainStyle2 = {
   width: "20.67%",
   height: "100",
   position: "absolute",
-  cursor: "default",
   zIndex: "5",
 }
 

@@ -12,7 +12,6 @@ const mainRoom = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 const spyRoom = {
@@ -24,7 +23,6 @@ const spyRoom = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 const merchantRoom = {
@@ -36,7 +34,6 @@ const merchantRoom = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 const library = {
@@ -48,7 +45,6 @@ const library = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 export default class Hallway1 extends Component {

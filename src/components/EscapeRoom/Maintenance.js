@@ -6,20 +6,32 @@ import { S3Url, getBit } from "../../helpers.js"
 import ModalBox from "../UI/ModalBox"
 
 const hallway2 = {
-  width: "5.6%",
-  height: "8.6%",
-  left: "4.1%",
-  top: "86.3%",
+  left: "40.83%",
+  top: "91.25%",
+  width: "18%",
+  height: "8.75%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
 }
+
 const statue = {
   left: "88.37%",
   top: "71.91%",
   width: "9.62%",
   height: "25.77%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const topElectricalBox = {
+  left: "6%",
+  top: "36.13%",
+  width: "6.92%",
+  height: "8.88%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -78,10 +90,7 @@ export default class Maintenance extends Component {
         <Link style={hallway2} to="/er/hallway2" />
         <div style={statue} onClick={this.handleStatueClick} />
 
-        <div
-          className={styles.topElectricalBox}
-          onClick={this.handleElectricalBoxClick}
-        />
+        <div style={topElectricalBox} onClick={this.handleElectricalBoxClick} />
 
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>

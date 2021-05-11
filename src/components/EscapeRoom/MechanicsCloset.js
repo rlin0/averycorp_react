@@ -54,7 +54,6 @@ const back1 = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 const back2 = {
@@ -66,7 +65,6 @@ const back2 = {
   display: "block",
   zIndex: "5",
   overflow: "hidden",
-  cursor: "default",
 }
 
 const bolt1 = {

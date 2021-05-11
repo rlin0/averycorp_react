@@ -27,7 +27,6 @@ const hallway2 = {
   width: "12%",
   height: "6.25%",
   position: "absolute",
-  cursor: "default",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
