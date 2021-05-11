@@ -10,10 +10,10 @@
 }
 
 .vase {
-  width: 7.7%;
-  height: 13.7%;
-  left: 27.7%;
-  top: 44%;
+  left: 30.08%;
+  top: 54.75%;
+  width: 4.92%;
+  height: auto;
   position: absolute;
   display: block;
   z-index: 5;
@@ -82,8 +82,8 @@
 .clock {
   width: 15.4%;
   height: 26.4%;
-  left: 79.8%;
-  top: 2.8%;
+  left: 60.8%;
+  top: 32.8%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -91,10 +91,10 @@
 }
 
 .lockers {
-  width: 10.6%;
-  height: 15.4%;
-  left: 83.6%;
-  top: 52.5%;
+  left: 64.08%;
+  top: 54.5%;
+  width: 8.33%;
+  height: 17.75%;
   cursor: default;
   position: absolute;
   display: block;
@@ -127,10 +127,10 @@
 }
 
 .matches {
-  width: 9.7%;
-  height: 17.3%;
-  left: 34.6%;
-  top: 13.3%;
+  left: 26.42%;
+  top: 25.88%;
+  width: 9.17%;
+  height: auto;
   position: absolute;
   display: block;
   z-index: 5;
@@ -239,10 +239,14 @@
   animation: pulse 2s infinite;
 }
 
-.lockedCloset {
+.closet {
+  left: 60.83%;
+  top: 46%;
+  width: 15.33%;
+  height: 30.63%;
   position: absolute;
-  left: 66.33%;
-  top: 11.64%;
+  cursor: default;
+  overflow: hidden;
   z-index: 5;
 }
 

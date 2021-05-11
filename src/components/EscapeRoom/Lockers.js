@@ -18,12 +18,21 @@ import ZoomModal from "./ZoomModal"
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
 const mainStyle = {
-  width: "5.4%",
-  height: "7.2%",
-  left: "5.1%",
-  top: "89.5%",
+  left: "0%",
+  top: "0%",
+  width: "20.67%",
+  height: "100%",
   position: "absolute",
-  cursor: "pointer",
+  cursor: "default",
+  zIndex: "5",
+}
+const mainStyle2 = {
+  left: "79.5%",
+  top: "0%",
+  width: "20.67%",
+  height: "100",
+  position: "absolute",
+  cursor: "default",
   zIndex: "5",
 }
 
@@ -45,6 +54,7 @@ export default class Lockers extends Component {
           <>
             <img src={`${S3Url}/er/Lockers.png`} width="100%" />
             <Link to="/er" style={mainStyle} />
+            <Link to="/er" style={mainStyle2} />
             {items.map((it) => {
               return (
                 !this.props[it] && (
@@ -57,7 +67,6 @@ export default class Lockers extends Component {
                 )
               )
             })}
-
             <ZoomModal className={styles.car}>
               <img
                 src={S3Url + "/er/car_zoomed.png"}

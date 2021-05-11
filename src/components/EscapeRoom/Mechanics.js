@@ -18,12 +18,37 @@ import Forbidden from "../Forbidden"
 import LockModal from "./LockModal"
 import ZoomModal from "./ZoomModal"
 import { RedMC } from "./MC"
+import DialogueBox from "../UI/DialogueBox"
+import text from "../../text/mechanics"
 
 const hallway2 = {
-  width: "5.3%",
-  height: "7.1%",
-  left: "90.3%",
-  top: "87.2%",
+  left: "61.67%",
+  top: "93.75%",
+  width: "12%",
+  height: "6.25%",
+  position: "absolute",
+  cursor: "default",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const box1 = {
+  left: "35.65%",
+  top: "54.45%",
+  width: "18.74%",
+  height: "41.66%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const box2 = {
+  left: "75.65%",
+  top: "54.45%",
+  width: "18.74%",
+  height: "41.66%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -102,6 +127,9 @@ export default class Mechanics extends Component {
     this.state = {
       vaseBroken: false,
       vaseModalOpen: false,
+      box1Open: false,
+      box2Open: false,
+      dialogueBox: false,
       bolt1: false,
       bolt2: false,
       bolt3: false,
@@ -113,9 +141,9 @@ export default class Mechanics extends Component {
     return (
       <>
         <img
-          src={`${S3Url}/er/locked_closet.png`}
+          src={`${S3Url}/er/closet_locked.png`}
           alt="locked closet"
-          className={styles.lockedCloset}
+          className={styles.closet}
         />
         <LockModal
           style={lockedCloset}
@@ -126,6 +154,7 @@ export default class Mechanics extends Component {
   }
 
   unscrewBolt = (e) => {
+    if (getBit(this.props.mcMechanic, 1)) return
     if (this.props.equipped !== "wrench") return
     this.setState({ [e.target.id]: true }, () => {
       if (
@@ -140,9 +169,39 @@ export default class Mechanics extends Component {
   }
 
   unlockedCloset = () => {
-    if (getBit(this.props.mcMechanic, 1)) return
     return (
       <>
+        <img
+          src={`${S3Url}/er/closet_unlocked.png`}
+          alt="unlocked closet"
+          className={styles.closet}
+        />
+        <ZoomModal className={styles.closet}>
+          <div
+            style={{ position: "relative", width: "800px", height: "800px" }}
+          >
+            <img
+              src={`${S3Url}/er/closet_zoom.png`}
+              alt="closet_zoom"
+              style={{ position: "absolute" }}
+            />
+            {this.state.box1Open ? (
+              <img
+                src={`${S3Url}/er/box_open.png`}
+                alt="box1 open"
+                style={box1}
+              />
+            ) : (
+              <img
+                src={`${S3Url}/er/box_closed.png`}
+                alt="box1 closed"
+                style={box1}
+                onClick={() => this.setState({ dialogueBox: true })}
+              />
+            )}
+          </div>
+          <DialogueBox data={text.box1} style={box1} />
+        </ZoomModal>
         <div style={bolt1} id="bolt1" onClick={this.unscrewBolt} />
         <div style={bolt2} id="bolt2" onClick={this.unscrewBolt} />
         <div style={bolt3} id="bolt3" onClick={this.unscrewBolt} />
@@ -215,9 +274,7 @@ export default class Mechanics extends Component {
     return (
       <>
         <img src={S3Url + "/er/Mechanics.png"} width="100%" />
-        <Link style={hallway2} to="/er/hallway2">
-          hallway 2
-        </Link>
+        <Link style={hallway2} to="/er/hallway2" />
 
         <ZoomModal style={picture}>
           <div

@@ -53,6 +53,7 @@ class ZoomModal extends Component {
           open={this.state.modalOpen}
           onClose={this.handleModalClose}
           aria-labelledby="form-dialog-title"
+          maxWidth="lg"
         >
           <DialogTitle id="form-dialog-title">
             <IconButton aria-label="close" onClick={this.handleModalClose}>

@@ -20,21 +20,23 @@ import { S3Url } from "../../helpers.js"
 import LockModal from "./LockModal"
 
 const hallway1 = {
-  width: "5.3%",
-  height: "6.7%",
-  left: "92.4%",
-  top: "40.8%",
+  left: "82.33%",
+  top: "47.88%",
+  width: "9%",
+  height: "31.37%",
   position: "absolute",
+  cursor: "default",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
 }
 
 const hallway2 = {
-  width: "6.0%",
-  height: "6.9%",
-  left: "2.6%",
-  top: "64.2%",
+  left: "7%",
+  top: "48.25%",
+  width: "9%",
+  height: "31.37%",
+  cursor: "default",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -96,11 +98,11 @@ class Main extends Component {
         <Link style={hallway1} to="/er/hallway1" />
         <Link style={hallway2} to="/er/hallway2" />
 
-        <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+        {/* <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
           <input type="text" className={styles.text1} />
           <input type="text" className={styles.text2} />
           <input type="text" className={styles.text3} />
-        </form>
+        </form> */}
         <div className={styles.clock}>
           <Clock
             value={this.state.date}

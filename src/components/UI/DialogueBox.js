@@ -10,7 +10,7 @@ import NextIcon from "@material-ui/icons/NavigateNext"
 const useStyles = makeStyles((theme) => ({
   bgImage: {
     display: "block",
-    position: "relative",
+    position: "absolute",
     width: "80%",
     height: "auto",
     margin: "auto",
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: "2%",
     left: "5%",
     width: "90%",
+    zIndex: 10,
   },
   textBox: {
     border: "2px solid white",
@@ -37,13 +38,14 @@ const useStyles = makeStyles((theme) => ({
 // see sampleText.json for examples of format
 export default function DialogueBox(props) {
   const classes = useStyles()
-  const { data } = props
-  const [textIdx, setTextIdx] = React.useState(0) // index for advancing dialogue
+  const { data, style } = props
+  const [textIdx, setTextIdx] = React.useState(-1) // index for advancing dialogue
   const [letterIdx, setLetterIdx] = React.useState(1) // index for animating text
 
   // animate text with typewriter effect
   React.useEffect(() => {
     if (
+      textIdx === -1 ||
       textIdx === data.text.length ||
       letterIdx === data.text[textIdx].length + 1
     )
@@ -78,36 +80,45 @@ export default function DialogueBox(props) {
     </div>
   )
 
+  const play = () => {
+    setTextIdx(0)
+    setLetterIdx(1)
+  }
+
   return (
-    textIdx < data.text.length && (
-      <>
-        {data.BGImage && getImage(data.BGImage[textIdx])}
-        <Container maxWidth="xl" className={classes.textContainer}>
-          <div>
-            <Card
-              square
-              onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work
-              raised
-              className={classes.textBox}
-              tabIndex={-1}
-            >
-              <CardContent style={{ display: "flex" }}>
-                <div className={classes.animatedText}>
-                  {data.text[textIdx].substring(0, letterIdx)}
-                </div>
-                <IconButton
-                  onClick={advanceDialogue}
-                  edge="end"
-                  color="inherit"
-                  size="small"
-                >
-                  <NextIcon />
-                </IconButton>
-              </CardContent>
-            </Card>
-          </div>
-        </Container>
-      </>
-    )
+    <>
+      <div style={style} onClick={play} />
+
+      {textIdx !== -1 && textIdx < data.text.length && (
+        <>
+          {data.BGImage && getImage(data.BGImage[textIdx])}
+          <Container maxWidth="xl" className={classes.textContainer}>
+            <div>
+              <Card
+                square
+                onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work
+                raised
+                className={classes.textBox}
+                tabIndex={-1}
+              >
+                <CardContent style={{ display: "flex" }}>
+                  <div className={classes.animatedText}>
+                    {data.text[textIdx].substring(0, letterIdx)}
+                  </div>
+                  <IconButton
+                    onClick={advanceDialogue}
+                    edge="end"
+                    color="inherit"
+                    size="small"
+                  >
+                    <NextIcon />
+                  </IconButton>
+                </CardContent>
+              </Card>
+            </div>
+          </Container>
+        </>
+      )}
+    </>
   )
 }
