@@ -9,6 +9,7 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
+  Zoom,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
 import axios from "axios"
@@ -18,6 +19,7 @@ import LockModal from "./LockModal"
 import { BlueMC } from "./MC"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
+import ZoomModal from "./ZoomModal"
 
 const mc = {
   width: "5.3%",
@@ -51,6 +53,17 @@ const cities = {
   zIndex: "5",
   overflow: "hidden",
 }
+
+const pics = [
+  "bigben",
+  "hagia",
+  "wall",
+  "colosseum",
+  "canald",
+  "rio",
+  "triangle",
+  "world-map-numbered",
+]
 
 export default class Merchant extends Component {
   constructor(props) {
@@ -89,6 +102,18 @@ export default class Merchant extends Component {
           style={cities}
           onClick={() => this.setState({ citiesClick: true })}
         />
+        {pics.map((it) => {
+          return (
+            <ZoomModal className={styles[it]}>
+              <img
+                src={`${S3Url}/er/${it}.jpg`}
+                alt={it}
+                width="800px"
+                height="auto"
+              />
+            </ZoomModal>
+          )
+        })}
 
         {this.state.citiesClick && (
           <FeedbackBar
