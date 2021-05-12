@@ -24,12 +24,13 @@ const useStyles = makeStyles((theme) => ({
   textContainer: {
     position: "fixed",
     bottom: "2%",
-    left: "5%",
-    width: "90%",
+    left: "10%",
+    width: "80%",
     zIndex: 10,
   },
   textBox: {
     border: "2px solid white",
+    opacity: 0.95,
   },
 }))
 

@@ -1,5 +1,7 @@
 import React, { Component } from "react"
+import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
+import "./Login.css"
 
 export default class Login extends Component {
   constructor(props) {
@@ -39,24 +41,35 @@ export default class Login extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>{this.state.incorrect && <p>Incorrect login!</p>}</div>
-        <label htmlFor="username">Username: </label>
-        <input
-          type="text"
-          value={this.state.username}
-          onChange={({ target }) => this.setState({ username: target.value })}
-        />
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={({ target }) => this.setState({ password: target.value })}
+      <div className="login">
+        <form onSubmit={this.handleSubmit}>
+          <img
+            src={require(`../images/logo2_fill_w.svg`).default}
+            alt="logo"
+            className="center"
           />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+          <label htmlFor="username">LOGIN ID </label>
+          <input
+            type="text"
+            value={this.state.username}
+            onChange={({ target }) => this.setState({ username: target.value })}
+          />
+          <div>
+            <label htmlFor="password">PASSWORD </label>
+            <input
+              type="password"
+              value={this.state.password}
+              onChange={({ target }) =>
+                this.setState({ password: target.value })
+              }
+            />
+          </div>
+          <div className="incorrect">
+            {this.state.incorrect && <p>Incorrect login.</p>}
+          </div>
+          <button type="submit">LOGIN</button>
+        </form>
+      </div>
     )
   }
 }

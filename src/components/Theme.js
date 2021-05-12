@@ -2,7 +2,9 @@ import { createMuiTheme } from "@material-ui/core/styles"
 import { purple, green } from "@material-ui/core/colors"
 import OCRA from "../fonts/OcrA.ttf"
 import BabaPro from "../fonts/BabaPro-Bold.ttf"
+import BergenMono from "../fonts/BergenMono-Bold.woff"
 
+// normal text font
 const ocra = {
   fontFamily: "OCRA",
   src: `
@@ -11,11 +13,21 @@ const ocra = {
   `,
 }
 
+// fancy display font
 const babapro = {
   fontFamily: "BabaPro",
   src: `
     local('BabaPro-Bold'),
     url(${BabaPro}) format('truetype')
+  `,
+}
+
+// emph text font
+const bergenmono = {
+  fontFamily: "Bergen Mono",
+  src: `
+    local('BergenMono-Bold'),
+    url(${BergenMono}) format('woff')
   `,
 }
 
@@ -43,12 +55,12 @@ const AVERYCORP_THEME = createMuiTheme({
       main: green.A400,
     },
     text: {
-      primary: purple.A100,
-      secondary: purple.A200,
+      primary: "#fff",
+      secondary: purple.A100,
     },
     background: {
-      default: "#252525",
-      paper: "#353535",
+      default: "#181818",
+      paper: "#252525",
     },
   },
   typography: {
@@ -56,6 +68,7 @@ const AVERYCORP_THEME = createMuiTheme({
       "OCRA",
       "Consolas",
       "Menlo",
+      "Bergen Mono",
       "Monaco",
       "monospace",
       "Roboto",
