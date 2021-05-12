@@ -115,7 +115,7 @@ export default class Mechanics extends Component {
           <FeedbackBar text={txt.brokenVase} closed={this.closed} />
         )}
         <img
-          src="/media/vase_broken.png"
+          src={S3Url + "/er/vase_broken.png"}
           alt="broken vase"
           className={styles.vase}
           onClick={this.handleClickBrokenVase}
@@ -137,7 +137,7 @@ export default class Mechanics extends Component {
     return (
       <>
         <img
-          src="/media/vase.png"
+          src={S3Url + "/er/vase_new.png"}
           alt="vase"
           className={styles.vase}
           onClick={this.breakVase}

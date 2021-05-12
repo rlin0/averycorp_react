@@ -18,10 +18,10 @@ const hallway2 = {
 }
 
 const statue = {
-  left: "88.37%",
-  top: "71.91%",
-  width: "9.62%",
-  height: "25.77%",
+  left: "51.5%",
+  top: "42.25%",
+  width: "7.33%",
+  height: "31.13%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -62,7 +62,7 @@ export default class Maintenance extends Component {
   litCandle = () => {
     return (
       <img
-        src={`${S3Url}/er/litcandle.png`}
+        src={`${S3Url}/er/candle_lit.png`}
         alt="lit candle"
         className={styles.candle}
       />
