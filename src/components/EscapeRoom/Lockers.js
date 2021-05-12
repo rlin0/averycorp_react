@@ -32,7 +32,7 @@ const mainStyle2 = {
   left: "79.5%",
   top: "0%",
   width: "20.67%",
-  height: "100",
+  height: "100%",
   position: "absolute",
   zIndex: "5",
 }

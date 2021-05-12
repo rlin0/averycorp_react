@@ -226,19 +226,21 @@
 
 .computerSpy {
   position: absolute;
-  left: 30.26%;
-  top: 52.1%;
-  width: 3.28%;
-  height: 3.24%;
+  left: 15.25%;
+  top: 60.88%;
+  width: 7.33%;
+  height: 9.75%;
   z-index: 5;
+  overflow: hidden;
+  display: block;
 }
 
 .hanger {
   position: absolute;
-  left: 93.71%;
-  top: 14.08%;
-  width: 3.53%;
-  height: 3.4%;
+  left: 82.25%;
+  top: 57%;
+  width: 2.08%;
+  height: 3.63%;
   z-index: 5;
 }
 
@@ -262,10 +264,10 @@
 
 .hologramBottom {
   position: absolute;
-  left: 59.22%;
-  top: 47.41%;
-  width: 23.97%;
-  height: 6.8%;
+  left: 57.17%;
+  top: 61.63%;
+  width: 3.75%;
+  height: 4.63%;
   z-index: 5;
 }
 
