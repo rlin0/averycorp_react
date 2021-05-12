@@ -80,6 +80,12 @@ const AVERYCORP_THEME = createMuiTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
+    h6: {
+      fontFamily: "Bergen Mono, Consolas, Menlo, monospace, Roboto, sans serif",
+    },
+    button: {
+      fontFamily: "Bergen Mono, Consolas, Menlo, monospace, Roboto, sans serif",
+    },
   },
   // style of Material-UI components
   overrides: {

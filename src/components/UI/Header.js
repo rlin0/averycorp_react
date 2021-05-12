@@ -43,15 +43,16 @@ export default class Header extends Component {
         <Toolbar>
           <SideBar />
           <Typography variant="h6">
-            Welcome,
-            {this.props.username}. Team {this.props.team}
+            WELCOME,
+            {this.props.username.toUpperCase()}. TEAM{" "}
+            {this.props.team.toUpperCase()}.
           </Typography>
           <SvgIcon
             component={AverycorpLogo}
             fontSize="large"
             viewBox="0 -50 240 240"
           />
-          <Button color="inherit" onClick={this.props.logout}>
+          <Button color="inherit" onClick={this.props.logout} size="large">
             Logout
           </Button>
         </Toolbar>

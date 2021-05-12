@@ -42,23 +42,29 @@ export default class Login extends Component {
   render() {
     return (
       <div className="login">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="login-form">
           <img
             src={require(`../images/logo2_fill_w.svg`).default}
             alt="logo"
-            className="center"
+            id="login-logo"
           />
-          <label htmlFor="username">LOGIN ID </label>
+          <label htmlFor="username" className="login-label">
+            LOGIN ID{" "}
+          </label>
           <input
             type="text"
             value={this.state.username}
+            className="login-input"
             onChange={({ target }) => this.setState({ username: target.value })}
           />
           <div>
-            <label htmlFor="password">PASSWORD </label>
+            <label htmlFor="password" className="login-label">
+              PASSWORD{" "}
+            </label>
             <input
               type="password"
               value={this.state.password}
+              className="login-input"
               onChange={({ target }) =>
                 this.setState({ password: target.value })
               }
@@ -67,7 +73,9 @@ export default class Login extends Component {
           <div className="incorrect">
             {this.state.incorrect && <p>Incorrect login.</p>}
           </div>
-          <button type="submit">LOGIN</button>
+          <button type="submit" className="login-button">
+            LOGIN
+          </button>
         </form>
       </div>
     )
