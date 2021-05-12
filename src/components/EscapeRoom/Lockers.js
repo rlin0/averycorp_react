@@ -81,10 +81,15 @@ export default class Lockers extends Component {
               alt="pearl"
               onClick={() => this.setState({ item: "pearl" })}
             />
-            <ZoomModal className={styles.car}>
+            <div
+              className={styles["car"]}
+              alt="car"
+              onClick={() => this.setState({ item: "car" })}
+            />
+            <ZoomModal className={styles.photo}>
               <img
-                src={S3Url + "/er/car_zoomed.png"}
-                alt="car zoomed in"
+                src={S3Url + "/er/photograph.png"}
+                alt="photo zoomed in"
                 style={{ width: "500px", height: "600px" }}
               />
             </ZoomModal>

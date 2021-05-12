@@ -103,10 +103,10 @@
 }
 
 .car {
-  width: 14.4%;
-  height: 11.5%;
-  left: 51.8%;
-  top: 18.3%;
+  left: 43.83%;
+  top: 32.13%;
+  width: 12.5%;
+  height: 6.38%;
   position: absolute;
   cursor: default;
   display: block;
@@ -119,6 +119,17 @@
   height: 10%;
   left: 64.1%;
   top: 30.3%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.photo {
+  left: 66.25%;
+  top: 43.63%;
+  width: 6%;
+  height: 9.75%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -159,10 +170,10 @@
 }
 
 .pearl {
-  left: 26.9%;
-  top: 56.8%;
-  width: 12.9%;
-  height: 12.7%;
+  left: 27.58%;
+  top: 59.38%;
+  width: 6.33%;
+  height: 9.13%;
   position: absolute;
   display: block;
   z-index: 5;
