@@ -4,6 +4,7 @@ import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
 import ModalBox from "../UI/ModalBox"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway2 = {
   left: "40.83%",
@@ -27,11 +28,11 @@ const statue = {
   overflow: "hidden",
 }
 
-const topElectricalBox = {
-  left: "6%",
-  top: "36.13%",
-  width: "6.92%",
-  height: "8.88%",
+const electricalBox = {
+  left: "5.75%",
+  top: "45.25%",
+  width: "7.92%",
+  height: "25.37%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -43,6 +44,7 @@ export default class Maintenance extends Component {
     super(props)
     this.state = {
       candleLit: false,
+      noInkwellTxt: false,
     }
   }
 
@@ -79,8 +81,15 @@ export default class Maintenance extends Component {
 
   handleElectricalBoxClick = () => {
     if (getBit(this.props.mcSpy, 3)) return
-    if (this.props.equipped !== "inkwell") return
+    if (this.props.equipped !== "inkwell") {
+      this.setState({ noInkwellTxt: true })
+      return
+    }
     this.props.putMCSpy(3)
+  }
+
+  closed = () => {
+    this.setState({ noInkwellTxt: false })
   }
 
   render() {
@@ -90,8 +99,13 @@ export default class Maintenance extends Component {
         <Link style={hallway2} to="/er/hallway2" />
         <div style={statue} onClick={this.handleStatueClick} />
 
-        <div style={topElectricalBox} onClick={this.handleElectricalBoxClick} />
-
+        <div style={electricalBox} onClick={this.handleElectricalBoxClick} />
+        {this.state.noInkwellTxt && (
+          <FeedbackBar
+            text="This seems to be an ordinary electrical box at the moment."
+            closed={this.closed}
+          />
+        )}
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>
     )

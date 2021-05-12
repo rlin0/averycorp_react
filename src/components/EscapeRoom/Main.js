@@ -18,6 +18,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import LockModal from "./LockModal"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway1 = {
   left: "82.33%",
@@ -50,6 +51,7 @@ class Main extends Component {
       date: new Date(),
       interval: null,
       seconds: 0,
+      clickSewer: false,
     }
   }
 
@@ -86,6 +88,10 @@ class Main extends Component {
     )
   }
 
+  closed = () => {
+    this.setState({ clickSewer: false })
+  }
+
   render() {
     if (this.props.lockersUnlocked === null) return null
     return (
@@ -114,6 +120,20 @@ class Main extends Component {
           this.lockedLockers()
         )}
 
+        <div
+          className={styles.sewer}
+          onClick={() => {
+            if (this.props.equipped !== "paperclip") {
+              this.setState({ clickSewer: true })
+            }
+          }}
+        />
+        {this.state.clickSewer && (
+          <FeedbackBar
+            text="This drainage system seems to lead somewhere. However it seems to be locked at the moment"
+            closed={this.closed}
+          />
+        )}
         {this.props.equipped === "paperclip" && (
           <Link
             to="/er/spy"

@@ -14,6 +14,8 @@ import Forbidden from "../Forbidden"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import ZoomModal from "./ZoomModal"
+import txt from "../../text/mechanics.json"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]
 
@@ -25,6 +27,7 @@ const mainStyle = {
   position: "absolute",
   zIndex: "5",
 }
+
 const mainStyle2 = {
   left: "79.5%",
   top: "0%",
@@ -37,11 +40,16 @@ const mainStyle2 = {
 export default class Lockers extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = { item: null }
   }
 
   onClick = (e) => {
+    this.setState({ item: e.currentTarget.alt })
     return this.props.pickUp(e.currentTarget.alt)
+  }
+
+  closed = () => {
+    this.setState({ item: null })
   }
 
   render() {
@@ -53,18 +61,26 @@ export default class Lockers extends Component {
             <img src={`${S3Url}/er/Lockers.png`} width="100%" />
             <Link to="/er" style={mainStyle} />
             <Link to="/er" style={mainStyle2} />
+
             {items.map((it) => {
               return (
                 !this.props[it] && (
-                  <img
-                    src={`${S3Url}/er/${it}.png`}
-                    className={styles[it]}
-                    alt={it}
-                    onClick={this.onClick}
-                  />
+                  <>
+                    <img
+                      src={`${S3Url}/er/${it}.png`}
+                      className={styles[it]}
+                      alt={it}
+                      onClick={this.onClick}
+                    />
+                  </>
                 )
               )
             })}
+            <div
+              className={styles["pearl"]}
+              alt="pearl"
+              onClick={() => this.setState({ item: "pearl" })}
+            />
             <ZoomModal className={styles.car}>
               <img
                 src={S3Url + "/er/car_zoomed.png"}
@@ -72,6 +88,9 @@ export default class Lockers extends Component {
                 style={{ width: "500px", height: "600px" }}
               />
             </ZoomModal>
+            {this.state.item && (
+              <FeedbackBar text={txt[this.state.item]} closed={this.closed} />
+            )}
           </>
         ) : (
           <Forbidden />
