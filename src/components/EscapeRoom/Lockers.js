@@ -14,7 +14,7 @@ import Forbidden from "../Forbidden"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import ZoomModal from "./ZoomModal"
-import txt from "../../text/mechanics.json"
+import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
 
 const items = ["matches", "wrench", "usb", "soup", "knife", "paperclip"]

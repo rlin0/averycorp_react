@@ -224,15 +224,6 @@
   display: block;
 }
 
-.merchantPhoto {
-  position: absolute;
-  left: 57.34%;
-  top: 50.31%;
-  width: 4.35%;
-  height: 8.05%;
-  z-index: 5;
-}
-
 .computerSpy {
   position: absolute;
   left: 30.26%;

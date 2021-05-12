@@ -11,9 +11,6 @@ export default function FeedbackBar(props) {
   const [open, setOpen] = React.useState(true)
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return
-    }
     closed && closed()
     setOpen(false)
   }

@@ -19,7 +19,7 @@ import LockModal from "./LockModal"
 import ZoomModal from "./ZoomModal"
 import { RedMC } from "./MC"
 import DialogueBox from "../UI/DialogueBox"
-import txt from "../../text/mechanics"
+import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway2 = {
