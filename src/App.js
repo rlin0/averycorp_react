@@ -132,11 +132,7 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         passcode="1"
                       >
-                        <Act1
-                          userId={this.state.userId}
-                          restricted={this.state.act < 1}
-                          updateAct={this.updateAct}
-                        />
+                        <Act1 userId={this.state.userId} />
                       </Act>
                     </Route>
 

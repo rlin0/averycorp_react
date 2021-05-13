@@ -19,7 +19,8 @@ import LockModal from "./LockModal"
 import ZoomModal from "./ZoomModal"
 import { RedMC } from "./MC"
 import DialogueBox from "../UI/DialogueBox"
-import text from "../../text/mechanics"
+import txt from "../../text/er.json"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway2 = {
   left: "61.67%",
@@ -60,6 +61,7 @@ export default class Mechanics extends Component {
     this.state = {
       vaseBroken: false,
       vaseModalOpen: false,
+      vaseTxt: false,
     }
   }
 
@@ -109,8 +111,11 @@ export default class Mechanics extends Component {
   brokenVase = () => {
     return (
       <>
+        {this.state.vaseTxt && (
+          <FeedbackBar text={txt.brokenVase} closed={this.closed} />
+        )}
         <img
-          src="/media/vase_broken.png"
+          src={S3Url + "/er/vase_broken.png"}
           alt="broken vase"
           className={styles.vase}
           onClick={this.handleClickBrokenVase}
@@ -130,17 +135,25 @@ export default class Mechanics extends Component {
 
   vase = () => {
     return (
-      <img
-        src="/media/vase.png"
-        alt="vase"
-        className={styles.vase}
-        onClick={this.breakVase}
-      />
+      <>
+        <img
+          src={S3Url + "/er/vase_new.png"}
+          alt="vase"
+          className={styles.vase}
+          onClick={this.breakVase}
+        />
+      </>
     )
   }
 
   breakVase = () => {
-    if (this.props.equipped === "wrench") this.setState({ vaseBroken: true })
+    if (this.props.equipped === "wrench") {
+      this.setState({ vaseBroken: true, vaseTxt: true })
+    }
+  }
+
+  closed = () => {
+    this.setState({ vaseTxt: false })
   }
 
   handleClickBrokenVase = () => {

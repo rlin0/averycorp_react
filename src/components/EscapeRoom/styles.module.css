@@ -10,10 +10,10 @@
 }
 
 .vase {
-  left: 30.08%;
-  top: 54.75%;
-  width: 4.92%;
-  height: auto;
+  left: 26.08%;
+  top: 53%;
+  width: 4.42%;
+  height: 9.13%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -68,10 +68,10 @@
 }
 
 .sewer {
-  width: 11.4%;
-  height: 11.4%;
-  left: 9.6%;
-  top: 77.3%;
+  left: 81.83%;
+  top: 90.5%;
+  width: 10.25%;
+  height: 6.63%;
   cursor: default;
   position: absolute;
   display: block;
@@ -103,10 +103,10 @@
 }
 
 .car {
-  width: 14.4%;
-  height: 11.5%;
-  left: 51.8%;
-  top: 18.3%;
+  left: 43.83%;
+  top: 32.13%;
+  width: 12.5%;
+  height: 6.38%;
   position: absolute;
   cursor: default;
   display: block;
@@ -115,12 +115,22 @@
 }
 
 .wrench {
-  width: 16.6%;
-  height: 13.9%;
-  left: 74.1%;
-  top: 17.3%;
+  width: 12.6%;
+  height: 10%;
+  left: 64.1%;
+  top: 30.3%;
   position: absolute;
-  cursor: default;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.photo {
+  left: 66.25%;
+  top: 43.63%;
+  width: 6%;
+  height: 9.75%;
+  position: absolute;
   display: block;
   z-index: 5;
   overflow: hidden;
@@ -128,9 +138,20 @@
 
 .matches {
   left: 26.42%;
-  top: 25.88%;
+  top: 30.88%;
   width: 9.17%;
-  height: auto;
+  height: 10%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.usb {
+  left: 26.42%;
+  top: 45.88%;
+  width: 9.17%;
+  height: 10%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -138,10 +159,43 @@
 }
 
 .knife {
-  width: 22.9%;
-  height: 14.7%;
-  left: 52.9%;
-  top: 73.8%;
+  left: 42.9%;
+  top: 56.8%;
+  width: 12.9%;
+  height: 12.7%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.pearl {
+  left: 27.58%;
+  top: 59.38%;
+  width: 6.33%;
+  height: 9.13%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.paperclip {
+  left: 62.9%;
+  top: 60.8%;
+  width: 10.9%;
+  height: 10.7%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
+.soup {
+  left: 47.9%;
+  top: 42.8%;
+  width: 6.9%;
+  height: 10.7%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -149,10 +203,10 @@
 }
 
 .candle {
-  width: 8.2%;
-  height: 8.7%;
-  left: 13.6%;
-  top: 25.5%;
+  left: 33.33%;
+  top: 56.13%;
+  width: 3.83%;
+  height: 6.5%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -170,30 +224,23 @@
   display: block;
 }
 
-.merchantPhoto {
-  position: absolute;
-  left: 57.34%;
-  top: 50.31%;
-  width: 4.35%;
-  height: 8.05%;
-  z-index: 5;
-}
-
 .computerSpy {
   position: absolute;
-  left: 30.26%;
-  top: 52.1%;
-  width: 3.28%;
-  height: 3.24%;
+  left: 15.25%;
+  top: 60.88%;
+  width: 7.33%;
+  height: 9.75%;
   z-index: 5;
+  overflow: hidden;
+  display: block;
 }
 
 .hanger {
   position: absolute;
-  left: 93.71%;
-  top: 14.08%;
-  width: 3.53%;
-  height: 3.4%;
+  left: 82.25%;
+  top: 57%;
+  width: 2.08%;
+  height: 3.63%;
   z-index: 5;
 }
 
@@ -217,10 +264,10 @@
 
 .hologramBottom {
   position: absolute;
-  left: 59.22%;
-  top: 47.41%;
-  width: 23.97%;
-  height: 6.8%;
+  left: 57.17%;
+  top: 61.63%;
+  width: 3.75%;
+  height: 4.63%;
   z-index: 5;
 }
 
@@ -235,6 +282,94 @@
   top: 46%;
   width: 15.33%;
   height: 30.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.bigben {
+  left: 28.25%;
+  top: 39.63%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.hagia {
+  left: 35.75%;
+  top: 39.63%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.wall {
+  left: 43.67%;
+  top: 39.5%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.colosseum {
+  left: 28.25%;
+  top: 47.63%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.canald {
+  left: 35.83%;
+  top: 47.75%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.rio {
+  left: 43.58%;
+  top: 47.75%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.triangle {
+  left: 35.92%;
+  top: 55.88%;
+  width: 7.25%;
+  height: 7.63%;
+  position: absolute;
+  cursor: default;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.world-map-numbered {
+  left: 8%;
+  top: 44.63%;
+  width: 15.67%;
+  height: 11.63%;
   position: absolute;
   cursor: default;
   overflow: hidden;

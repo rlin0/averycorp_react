@@ -19,7 +19,8 @@ import LockModal from "./LockModal"
 import ZoomModal from "./ZoomModal"
 import { RedMC } from "./MC"
 import DialogueBox from "../UI/DialogueBox"
-import text from "../../text/mechanics"
+import text from "../../text/er.json"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const box1 = {
   left: "27.1%",
@@ -169,6 +170,7 @@ export default class MechanicsCloset extends Component {
       bolt6: false,
       bolt7: false,
       bolt8: false,
+      unscrewed: false,
     }
   }
 
@@ -184,6 +186,7 @@ export default class MechanicsCloset extends Component {
     if (this.props.equipped !== "wrench") return
     this.setState({ [e.target.id]: true }, () => {
       console.log("unscrewed ", e.target.id)
+      this.setState({ unscrewed: true })
       if (
         !this.state.box1Open &&
         this.state.bolt1 &&
@@ -203,6 +206,10 @@ export default class MechanicsCloset extends Component {
         this.setState({ box2Open: true })
       }
     })
+  }
+
+  closed = () => {
+    this.setState({ unscrewed: false })
   }
 
   render() {
@@ -230,6 +237,9 @@ export default class MechanicsCloset extends Component {
         <div style={bolt6} id="bolt6" onClick={this.unscrewBolt} />
         <div style={bolt7} id="bolt7" onClick={this.unscrewBolt} />
         <div style={bolt8} id="bolt8" onClick={this.unscrewBolt} />
+        {this.state.unscrewed && (
+          <FeedbackBar text="A screw has come loose" closed={this.closed} />
+        )}
       </>
     )
   }

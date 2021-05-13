@@ -17,6 +17,8 @@ import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import LockModal from "./LockModal"
 import MC from "./MC"
+import txt from "../../text/er.json"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway1 = {
   width: "10%",
@@ -29,12 +31,24 @@ const hallway1 = {
   overflow: "hidden",
 }
 
+const usb = {
+  left: "26%",
+  top: "61%",
+  width: "5.42%",
+  height: "10.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Spy extends Component {
   constructor(props) {
     super(props)
     this.state = {
       hangerModalOpen: false,
       submitMsg: null,
+      clickComputer: false,
     }
   }
 
@@ -79,7 +93,7 @@ export default class Spy extends Component {
         <Link
           style={hallway1}
           to="/er/hallway1"
-          onclick={this.props.putSpyroomUnlocked}
+          onClick={this.props.putSpyroomUnlocked}
         >
           Hallway1
         </Link>
@@ -87,9 +101,18 @@ export default class Spy extends Component {
           className={styles.hanger}
           onClick={() => this.setState({ hangerModalOpen: true })}
         />
-
-        <LockModal
+        <div
           className={styles.computerSpy}
+          onClick={() => this.setState({ clickComputer: true })}
+        />
+        {this.state.clickComputer && (
+          <FeedbackBar
+            text={txt.computerSpy}
+            closed={() => this.setState({ clickComputer: false })}
+          />
+        )}
+        <LockModal
+          style={usb}
           required="usb"
           equipped={this.props.equipped}
           handleSubmit={this.handleComputerSubmit}

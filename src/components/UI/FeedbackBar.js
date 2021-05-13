@@ -7,14 +7,11 @@ import CloseIcon from "@material-ui/icons/Close"
 // small popup at bottom of screen that goes away on its own
 // usage: <FeedbackBar text="Something has happened"/>
 export default function FeedbackBar(props) {
-  const { text } = props
+  const { text, closed } = props
   const [open, setOpen] = React.useState(true)
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return
-    }
-
+    closed && closed()
     setOpen(false)
   }
 

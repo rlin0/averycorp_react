@@ -4,6 +4,7 @@ import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
 import ModalBox from "../UI/ModalBox"
+import FeedbackBar from "../UI/FeedbackBar"
 
 const hallway2 = {
   left: "40.83%",
@@ -17,21 +18,21 @@ const hallway2 = {
 }
 
 const statue = {
-  left: "88.37%",
-  top: "71.91%",
-  width: "9.62%",
-  height: "25.77%",
+  left: "51.5%",
+  top: "42.25%",
+  width: "7.33%",
+  height: "31.13%",
   position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
 }
 
-const topElectricalBox = {
-  left: "6%",
-  top: "36.13%",
-  width: "6.92%",
-  height: "8.88%",
+const electricalBox = {
+  left: "5.75%",
+  top: "45.25%",
+  width: "7.92%",
+  height: "25.37%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -43,6 +44,7 @@ export default class Maintenance extends Component {
     super(props)
     this.state = {
       candleLit: false,
+      noInkwellTxt: false,
     }
   }
 
@@ -60,7 +62,7 @@ export default class Maintenance extends Component {
   litCandle = () => {
     return (
       <img
-        src={`${S3Url}/er/litcandle.png`}
+        src={`${S3Url}/er/candle_lit.png`}
         alt="lit candle"
         className={styles.candle}
       />
@@ -79,8 +81,15 @@ export default class Maintenance extends Component {
 
   handleElectricalBoxClick = () => {
     if (getBit(this.props.mcSpy, 3)) return
-    if (this.props.equipped !== "inkwell") return
+    if (this.props.equipped !== "inkwell") {
+      this.setState({ noInkwellTxt: true })
+      return
+    }
     this.props.putMCSpy(3)
+  }
+
+  closed = () => {
+    this.setState({ noInkwellTxt: false })
   }
 
   render() {
@@ -90,8 +99,13 @@ export default class Maintenance extends Component {
         <Link style={hallway2} to="/er/hallway2" />
         <div style={statue} onClick={this.handleStatueClick} />
 
-        <div style={topElectricalBox} onClick={this.handleElectricalBoxClick} />
-
+        <div style={electricalBox} onClick={this.handleElectricalBoxClick} />
+        {this.state.noInkwellTxt && (
+          <FeedbackBar
+            text="This seems to be an ordinary electrical box at the moment."
+            closed={this.closed}
+          />
+        )}
         {this.state.candleLit ? this.litCandle() : this.candle()}
       </>
     )
