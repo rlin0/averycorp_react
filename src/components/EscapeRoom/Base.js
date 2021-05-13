@@ -17,6 +17,7 @@ import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, setBit, getBit, countSetBits } from "../../helpers"
 import MC from "./MC"
+
 const inventoryStyle = {
   position: "fixed",
   right: "10px",
@@ -62,6 +63,8 @@ class ER extends Component {
       knife: false,
       paperclip: false,
       inkwell: false,
+
+      done: false,
     }
   }
 
@@ -108,6 +111,10 @@ class ER extends Component {
 
   showedMC = () => {
     this.setState({ mc: null })
+  }
+
+  putDone = () => {
+    this.setState({ done: true })
   }
 
   putMCMerchant = (id) => {
@@ -386,6 +393,10 @@ class ER extends Component {
       ? { cursor: `url(${S3Url}/er/${this.state.equipped}_cursor.png), auto` }
       : { cursor: "default" }
 
+    if (this.state.done) {
+      return <p>Congrats you have escaped!</p>
+    }
+
     return (
       <div style={cursorStyle}>
         <CssBaseline />
@@ -410,6 +421,7 @@ class ER extends Component {
             putMCSpy={this.putMCSpy}
             putMCMechanic={this.putMCMechanic}
             putMCMerchant={this.putMCMerchant}
+            putDone={this.putDone}
           />
         </div>
         {this.state.mc !== null && (

@@ -12,6 +12,8 @@
         "Bolt unscrewed"
       ]
     },
+    "sewerDenied": "This drainage system seems to lead somewhere. However it seems to be locked at the moment",
+    "portalDenied": "You do not seem to have the required pieces to get access the memories at the Memory Storage Unit",
     "computerLibrary": "It seems that you can read some devices by inserting it into the slot.",
     "computerLibraryUsb": "It seems that this computer cannot access the information on this device",
     "matches": "Even in a cyberpunk world, fire remains a precious resource.",
