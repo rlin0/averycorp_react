@@ -12,6 +12,8 @@
         "Bolt unscrewed"
       ]
     },
+    "computerLibrary": "It seems that you can read some devices by inserting it into the slot.",
+    "computerLibraryUsb": "It seems that this computer cannot access the information on this device",
     "matches": "Even in a cyberpunk world, fire remains a precious resource.",
     "car": "Seems like the mechanic is quite fond of cars.",
     "wrench": "Used to screw and unscrew things.",

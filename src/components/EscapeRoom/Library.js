@@ -14,6 +14,8 @@ import { withRouter, Link } from "react-router-dom"
 import { S3Url, setBit, getBit } from "../../helpers"
 import ZoomModal from "./ZoomModal"
 import ModalBox from "../UI/ModalBox"
+import FeedbackBar from "../UI/FeedbackBar"
+import txt from "../../text/er.json"
 
 const hallway1 = {
   left: "42.33%",
@@ -84,16 +86,17 @@ const computer = {
 export default class Library extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
-  }
-
-  handleComputerClick = () => {
-    if (this.props.equipped === "usb") this.setState({ openComputer: true })
+    this.state = { computerTxt: false, computerTxtUsb: false }
   }
 
   handleBookClick = () => {
     if (getBit(this.props.mcMerchant, 2)) return
     this.props.putMCMerchant(2)
+  }
+
+  handleComputerClick = () => {
+    if (this.props.equipped === "usb") this.setState({ computerTxtUsb: true })
+    else this.setState({ computerTxt: true })
   }
 
   render() {
@@ -128,13 +131,19 @@ export default class Library extends Component {
           />
         </ZoomModal>
 
-        <ZoomModal
-          style={computer}
-          required="usb"
-          equipped={this.props.equipped}
-        >
-          <DialogContentText>Unable to read usb</DialogContentText>
-        </ZoomModal>
+        <div style={computer} onClick={this.handleComputerClick} />
+        {this.state.computerTxtUsb && (
+          <FeedbackBar
+            text={txt.computerLibraryUsb}
+            closed={() => this.setState({ computerTxtUsb: false })}
+          />
+        )}
+        {this.state.computerTxt && (
+          <FeedbackBar
+            text={txt.computerLibrary}
+            closed={() => this.setState({ computerTxt: false })}
+          />
+        )}
       </>
     )
   }
