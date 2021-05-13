@@ -220,8 +220,8 @@ export default class MechanicsCloset extends Component {
         {this.state.box2Open && (
           <img src={`${S3Url}/er/box_open.png`} alt="box2 open" style={box2} />
         )}
-        <DialogueBox data={text.box1} style={box1} repeat={false} />
-        <DialogueBox data={text.box1} style={box2} repeat={false} />
+        <DialogueBox data={text.box1} style={box1} repeat={false} clickToggle />
+        <DialogueBox data={text.box1} style={box2} repeat={false} clickToggle />
         <div style={bolt1} id="bolt1" onClick={this.unscrewBolt} />
         <div style={bolt2} id="bolt2" onClick={this.unscrewBolt} />
         <div style={bolt3} id="bolt3" onClick={this.unscrewBolt} />

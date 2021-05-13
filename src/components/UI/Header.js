@@ -39,7 +39,7 @@ const menuLinks = [
 export default class Header extends Component {
   render() {
     return (
-      <AppBar position="static">
+      <AppBar position="sticky">
         <Toolbar>
           <SideBar />
           <Typography variant="h6">

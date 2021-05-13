@@ -6,7 +6,12 @@
       "This is part 3 of the dialogue. Sometimes dialogues can get kind of long. I'm going to keep writing in this text box to see how much text we can handle displaying. I wonder if it will overflow or just resize the box.",
       "This is the last text snippet. Advancing should close the text box."
     ],
-    "BGImage": ["MainRoom.png", "MainRoom.png", "MainRoom.png", "MainRoom.png"]
+    "BGImage": [
+      "er/MainRoom.png",
+      "er/MainRoom.png",
+      "er/MainRoom.png",
+      "er/MainRoom.png"
+    ]
   },
   "sampleDialogueNoBG": {
     "text": [

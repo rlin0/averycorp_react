@@ -22,7 +22,7 @@ const babapro = {
   `,
 }
 
-// emph text font
+// emph/header font
 const bergenmono = {
   fontFamily: "Bergen Mono",
   src: `

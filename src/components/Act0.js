@@ -18,7 +18,6 @@ class Act0 extends Component {
   render() {
     return (
       <>
-        <FeedbackBar text="Something has happened" />
         {/* <ModalBox
           title="Puzzle Title"
           text="This gives you some info about your puzzle or the story background. If you click GO it will take you to the next page."
