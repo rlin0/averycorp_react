@@ -156,6 +156,51 @@ export default class App extends Component {
                       />
                     </Route>
 
+                    <Route exact path="/act2/puzzle2">
+                      <Puzzle
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="2"
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/act2/puzzle3">
+                      <Puzzle
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="3"
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/act2/puzzle4">
+                      <Puzzle
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="4"
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/act2/puzzle5">
+                      <Puzzle
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="5"
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
+                    <Route exact path="/act2/puzzle6">
+                      <Puzzle
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="6"
+                        teamId={this.state.teamId}
+                      />
+                    </Route>
+
                     <Act
                       id={3}
                       act={this.state.act}

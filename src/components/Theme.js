@@ -40,7 +40,7 @@ const AVERYCORP_THEME = createMuiTheme({
       main: purple.A700,
     },
     secondary: {
-      main: "#ed1f8f",
+      main: "#0a1015",
     },
     error: {
       main: "#ed2924",

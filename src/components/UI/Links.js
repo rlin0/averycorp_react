@@ -1,6 +1,7 @@
 // source: https://material-ui.com/guides/composition/#routing-libraries
 import React from "react"
 import Button from "@material-ui/core/Button"
+import IconButton from "@material-ui/core/IconButton"
 import Link from "@material-ui/core/Link"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
@@ -23,6 +24,25 @@ export function ButtonLink(props) {
     <Button color="primary" component={renderLink} {...other}>
       {buttonText}
     </Button>
+  )
+}
+
+// usage: <IconLink icon={myIcon} to={path} /IconLink>
+export function IconLink(props) {
+  const { icon, to, ...other } = props
+
+  const renderLink = React.useMemo(
+    () =>
+      React.forwardRef((itemProps, ref) => (
+        <RouterLink to={to} ref={ref} {...itemProps} />
+      )),
+    [to]
+  )
+
+  return (
+    <IconButton component={renderLink} {...other}>
+      {icon}
+    </IconButton>
   )
 }
 
