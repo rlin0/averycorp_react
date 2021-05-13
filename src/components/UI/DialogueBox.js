@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   textContainer: {
-    position: "sticky",
+    position: "fixed",
     bottom: "2%",
-    left: "10%",
+    left: "9.5%",
     width: "80%",
     zIndex: 10,
   },
