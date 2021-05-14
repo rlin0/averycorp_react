@@ -140,7 +140,7 @@ class Act2 extends Component {
         <div style={{ float: "left", position: "relative", width: "100%" }}>
           <img src={`${S3Url}/map.svg`} width="100%" />
           <Link
-            title="Puzzle 1"
+            title="BotW"
             to="/act2/puzzle1"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -151,7 +151,7 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Puzzle 2"
+            title="Code Transcription"
             to="/act2/puzzle2"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -162,7 +162,7 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Puzzle 3"
+            title="Crossword"
             to="/act2/puzzle3"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -173,7 +173,7 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Puzzle 4"
+            title="ID Card"
             to="/act2/puzzle4"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -184,7 +184,7 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Puzzle 5"
+            title="Spot the Difference"
             to="/act2/puzzle5"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -195,7 +195,7 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Puzzle 6"
+            title="Headquarters"
             to="/act2/puzzle6"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
@@ -226,7 +226,7 @@ class Act2 extends Component {
           >
             <Typography>
               <h3>{this.state.name}</h3>
-              {this.state.solved === 1 ? <p>Solved!</p> : <p> Not solved</p>}
+              {this.state.solved === 1 ? <p>Solved!</p> : <p>Not solved</p>}
             </Typography>
           </Popover>
         </div>

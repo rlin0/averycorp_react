@@ -34,6 +34,10 @@ const menuLinks = [
     label: "act 04",
     link: "/act4",
   },
+  {
+    label: "credits",
+    link: "/credits",
+  },
 ]
 
 export default class Header extends Component {

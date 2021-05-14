@@ -9,6 +9,7 @@ import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
 import Act2 from "./components/Act2"
 import Puzzle from "./components/Puzzle"
+import { Puzzle3 } from "./components/Puzzles"
 import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
 import MechanicsCloset from "./components/EscapeRoom/MechanicsCloset"
@@ -168,12 +169,7 @@ export default class App extends Component {
                     </Route>
 
                     <Route exact path="/act2/puzzle3">
-                      <Puzzle
-                        act={this.state.act}
-                        updateAct={this.updateAct}
-                        puzzleId="3"
-                        teamId={this.state.teamId}
-                      />
+                      <Puzzle3 />
                     </Route>
 
                     <Route exact path="/act2/puzzle4">

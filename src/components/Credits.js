@@ -21,12 +21,14 @@ export default class Credits extends Component {
             <p>LC, Albert, Albie, Steve, Zimo</p>
             <h2> act 03 </h2>
             <p>David, James, Sherry</p>
-            <h2> artwork </h2>
-            <p>Lucy, James</p>
+            <h2> artwork/design </h2>
+            <p>Lucy, James, Yu Han, Shu Fay </p>
+            <h2> website </h2>
+            <p>Rachel, Rachel, Lucy</p>
             <h2> organizing us fools </h2>
-            <p>James, Yuhan, Lucy </p>
+            <p>James, Yu Han, Lucy </p>
             <h2> idea/story cred </h2>
-            <p>James, Yuhan</p>
+            <p>James, Yu Han</p>
           </Grid>
         </Grid>
       </>
