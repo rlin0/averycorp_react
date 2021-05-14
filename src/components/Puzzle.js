@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
 
 export default class Puzzle extends Component {
@@ -93,7 +94,7 @@ export default class Puzzle extends Component {
           updateAct={this.props.updateAct}
           passcode="2"
         >
-          <Link to="/act2">Back</Link>
+          <ButtonLink buttonText="Back to Map" to="/act2" />
           <Typography variant="h3"> {this.state.name} </Typography>
           {this.props.children}
           <form onSubmit={this.handleSubmit} noValidate autoComplete="off">

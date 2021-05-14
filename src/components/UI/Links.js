@@ -8,7 +8,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import { NavLink as RouterLink } from "react-router-dom"
 
-// usage: <ButtonLink buttonText={text} to={path} /ButtonLink>
+// usage: <ButtonLink buttonText={text} to={path} />
 export function ButtonLink(props) {
   const { buttonText, to, ...other } = props
 
@@ -27,7 +27,7 @@ export function ButtonLink(props) {
   )
 }
 
-// usage: <IconLink icon={myIcon} to={path} /IconLink>
+// usage: <IconLink icon={myIcon} to={path} />
 export function IconLink(props) {
   const { icon, to, ...other } = props
 
@@ -46,7 +46,7 @@ export function IconLink(props) {
   )
 }
 
-// usage: <LinkRouter linkText={text} to={path} /LinkRouter>
+// usage: <LinkRouter linkText={text} to={path} />
 export function LinkRouter(props) {
   const { linkText, to } = props
 
@@ -61,7 +61,7 @@ export function LinkRouter(props) {
   return <Link component={renderLink}>{linkText}</Link>
 }
 
-// usage: <ListItemLink primary={text} to={path} /ListItemLink>
+// usage: <ListItemLink primary={text} to={path} />
 export function ListItemLink(props) {
   const { icon, primary, to } = props
 

@@ -57,14 +57,15 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions)
 
 // like ModalBox but allows user to input info
-// usage: <InputModal title="Input Form" text="You must enter a password to proceed." formLabel="password"/>
+// usage: <InputModal title="Optional Title" text="You must enter a password to proceed." label="password"/>
 // TODO: add backend support so submit button does something
 export default function InputModal(props) {
-  const { title, text, formLabel } = props
+  const { title, text, onSubmit, ...TextFieldProps } = props
   const [open, setOpen] = React.useState(true)
 
   const handleClose = () => {
-    setOpen(false)
+    // setOpen(false)
+    onSubmit()
   }
 
   return (
@@ -85,9 +86,9 @@ export default function InputModal(props) {
             autoFocus
             margin="dense"
             id="form"
-            label={formLabel}
             type="text"
             fullWidth
+            {...TextFieldProps}
           />
         </DialogContent>
         <DialogActions style={{ justifyContent: "center" }}>

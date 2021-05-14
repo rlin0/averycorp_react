@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
+import { S3Url } from "../helpers.js"
 import "./Login.css"
 
 export default class Login extends Component {
@@ -43,11 +44,7 @@ export default class Login extends Component {
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit} className="login-form">
-          <img
-            src={require(`../images/logo2_fill_w.svg`).default}
-            alt="logo"
-            id="login-logo"
-          />
+          <img src={S3Url + "/logo2_fill_w.svg"} alt="logo" id="login-logo" />
           <label htmlFor="username" className="login-label">
             LOGIN ID{" "}
           </label>

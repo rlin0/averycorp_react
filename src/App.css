@@ -15,14 +15,20 @@ div.app {
   position: relative;
   z-index: 1000;
   height: 100vh;
-  background-image: url(./images/logo_neon_purple.svg);
-  background-position: 50% 70%;
-  background-repeat: no-repeat;
-  background-size: 60% 60%;
   overflow-y: scroll;
 }
 
+div.home {
+  position: relative;
+  height: 100vh;
+  background-image: url(https://averycorp.s3.amazonaws.com/logo_neon_purple.svg);
+  background-position: 50% 50%;
+  background-size: 60% 60%;
+  background-repeat: no-repeat;
+}
+
 div.terminal {
+  position: relative;
   height: 100vh;
   background-color: #314;
   /* black shadow at the top of the terminal */

@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles"
-import { purple, green } from "@material-ui/core/colors"
+import { purple, green, grey } from "@material-ui/core/colors"
 import OCRA from "../fonts/OcrA.ttf"
 import BabaPro from "../fonts/BabaPro-Bold.ttf"
 import BergenMono from "../fonts/BergenMono-Bold.woff"
@@ -55,8 +55,8 @@ const AVERYCORP_THEME = createMuiTheme({
       main: green.A400,
     },
     text: {
-      primary: "#fff",
-      secondary: purple.A100,
+      primary: grey[100],
+      secondary: grey[400],
     },
     background: {
       default: "#181818",

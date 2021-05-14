@@ -70,7 +70,7 @@ export default function DialogueBox(props) {
 
     const timeout = setTimeout(() => {
       setLetterIdx((prev) => prev + 1)
-    }, 30)
+    }, 10)
 
     return () => clearTimeout(timeout)
   }, [textIdx, letterIdx, data.text])

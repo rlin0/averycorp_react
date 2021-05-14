@@ -1,5 +1,13 @@
 import React, { Component } from "react"
-import { Button, Typography, TextField } from "@material-ui/core"
+import {
+  Button,
+  Card,
+  CardContent,
+  CardActions,
+  Typography,
+  TextField,
+  withTheme,
+} from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
 import axios from "axios"
 import InputModal from "./UI/InputModal"
@@ -42,19 +50,44 @@ export default class Act extends Component {
   render() {
     if (this.state.allowed === false) {
       return (
-        <>
+        <Card
+          square
+          raised
+          style={{
+            position: "relative",
+            display: "block",
+            width: "30%",
+            margin: "auto",
+            height: "20%",
+            top: "40%",
+            padding: "1%",
+          }}
+        >
+          <Typography>Enter the passcode to proceed.</Typography>
           <TextField
             autoFocus
+            error={this.state.incorrect}
+            helperText={this.state.incorrect ? "Incorrect entry." : null}
             margin="dense"
             label="code"
             type="text"
             onChange={({ target }) => this.setState({ code: target.value })}
+            fullWidth
           />
-          <Button autoFocus onClick={this.handleEnter} color="primary">
+          <Button
+            autoFocus
+            onClick={this.handleEnter}
+            color="primary"
+            style={{
+              position: "absolute",
+              width: "20%",
+              left: "40%",
+              bottom: "5%",
+            }}
+          >
             Submit
           </Button>
-          {this.state.incorrect && <p>incorrect!</p>}
-        </>
+        </Card>
       )
     }
     return this.props.children

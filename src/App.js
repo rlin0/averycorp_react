@@ -117,7 +117,9 @@ export default class App extends Component {
                       <Credits />
                     </Route>
                     <Route exact path="/">
-                      <p>Homepage</p>
+                      <div className="home">
+                        <p>Homepage</p>
+                      </div>
                     </Route>
                     <Route exact path="/profile">
                       <Profile userId={this.state.userId} />

@@ -4,11 +4,13 @@
 }
 
 div.login {
+  position: relative;
   height: 100vh;
-  background-image: url(../images/login_background.svg);
+  background-image: url(https://averycorp.s3.amazonaws.com/login_background.png);
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
+  overflow-y: hidden;
 }
 
 div.incorrect {
