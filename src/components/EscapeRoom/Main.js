@@ -190,6 +190,13 @@ class Main extends Component {
             onClick={this.props.putSpyroomUnlocked}
           />
         )}
+        <ZoomModal className={styles.tablet}>
+          <img
+            src={S3Url + "/er/tablet_screen.png"}
+            alt="tablet screen"
+            style={{ width: "600px", height: "300px" }}
+          />
+        </ZoomModal>
         {this.state.mcSet ? (
           <ZoomModal style={portal}>
             {this.props.mcSpy === 7 && (

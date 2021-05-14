@@ -56,6 +56,17 @@
   overflow: hidden;
 }
 
+.tablet {
+  left: 42.08%;
+  top: 77.88%;
+  width: 5.58%;
+  height: 5.88%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
 .computer {
   width: 2.7%;
   height: 14.1%;

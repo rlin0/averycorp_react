@@ -125,7 +125,7 @@ export default class Mechanics extends Component {
           onClose={this.handleVaseModalClose}
           aria-labelledby="form-dialog-title"
         >
-          <DialogContent style={{ width: "500px", height: "600px" }}>
+          <DialogContent style={{ width: "800px", height: "600px" }}>
             <Jigsaw />
           </DialogContent>
         </Dialog>
