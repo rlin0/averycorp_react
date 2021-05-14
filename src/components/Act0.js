@@ -28,11 +28,16 @@ for (let i = 0; i < 9; i++) {
     tileData.set(s, null)
   }
 }
-
 // TODO: Set colors of starting points
 tileData.set("t11", "yellow")
 tileData.set("t12", "brown")
 tileData.set("t13", "orange")
+
+// TODO: fill in the rest
+const answer = [
+  ["blue", "blue", "blue", "blue", "blue", "pink", "pink", "pink", "pink"],
+  ["blue"],
+]
 
 export default class Act0 extends Component {
   constructor(props) {
@@ -61,9 +66,18 @@ export default class Act0 extends Component {
     }
   }
 
+  checkAnswer = () => {
+    for (let i = 0; i < 9; i++) {
+      for (let j = 0; j < 9; j++) {
+        let s = "t" + i.toString() + j.toString()
+        if (this.state[s] !== answer[i][j]) return false
+      }
+    }
+    return true
+  }
+
   render() {
-    // Very annoying brute force check if all tiles correct
-    if (this.state.t00 === "blue") return <p>Solved!</p>
+    if (this.checkAnswer()) return <p>Solved!</p>
     return (
       <div style={{ cursor: "default" }}>
         <GridList cellHeight={80} cols={9}>
