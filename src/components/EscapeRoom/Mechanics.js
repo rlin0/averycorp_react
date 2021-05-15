@@ -34,10 +34,10 @@ const hallway2 = {
 }
 
 const picture = {
-  width: "10%",
-  height: "7.1%",
-  left: "50.3%",
-  top: "15.2%",
+  left: "2.58%",
+  top: "41.38%",
+  width: "12.5%",
+  height: "16.13%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -55,6 +55,17 @@ const lockedCloset = {
   overflow: "hidden",
 }
 
+const motorcycle = {
+  left: "1.83%",
+  top: "76.38%",
+  width: "26%",
+  height: "21.25%",
+  zIndex: "5",
+  position: "absolute",
+  display: "block",
+  overflow: "hidden",
+}
+
 export default class Mechanics extends Component {
   constructor(props) {
     super(props)
@@ -62,6 +73,7 @@ export default class Mechanics extends Component {
       vaseBroken: false,
       vaseModalOpen: false,
       vaseTxt: false,
+      motorcycleTxt: false,
     }
   }
 
@@ -112,7 +124,10 @@ export default class Mechanics extends Component {
     return (
       <>
         {this.state.vaseTxt && (
-          <FeedbackBar text={txt.brokenVase} closed={this.closed} />
+          <FeedbackBar
+            text={txt.brokenVase}
+            closed={() => this.setState({ vaseTxt: false })}
+          />
         )}
         <img
           src={S3Url + "/er/vase_broken.png"}
@@ -152,10 +167,6 @@ export default class Mechanics extends Component {
     }
   }
 
-  closed = () => {
-    this.setState({ vaseTxt: false })
-  }
-
   handleClickBrokenVase = () => {
     this.setState({ vaseModalOpen: true })
   }
@@ -174,7 +185,7 @@ export default class Mechanics extends Component {
   }
 
   handlePictureClick = () => {
-    // # TODO give memory chip
+    console.log("pic clikc")
   }
 
   render() {
@@ -186,23 +197,29 @@ export default class Mechanics extends Component {
         <Link style={hallway2} to="/er/hallway2" />
 
         <ZoomModal style={picture}>
-          <div
-            style={{ position: "relative", width: "800px", height: "500px" }}
-          >
-            <img
-              src={S3Url + "/map.png"}
-              alt="picture"
-              style={{ position: "absolute" }}
+          <img src={S3Url + "/er/jigsaw/Gear.png"} usemap="#image-map" />
+          <map name="image-map">
+            <area
+              coords="211,234,296,206,266,357,390,327,252,464,176,390"
+              shape="poly"
+              onClick={this.handlePictureClick}
             />
-            <Button style={picture} onclick={this.handlePictureClick}>
-              d
-            </Button>
-          </div>
+          </map>
         </ZoomModal>
         {this.props.closetUnlocked
           ? this.unlockedCloset()
           : this.lockedCloset()}
 
+        <div
+          style={motorcycle}
+          onClick={() => this.setState({ motorcycleTxt: true })}
+        />
+        {this.state.motorcycleTxt && (
+          <FeedbackBar
+            text={txt.motorcycle}
+            closed={() => this.setState({ motorcycleTxt: false })}
+          />
+        )}
         {this.state.vaseBroken ? this.brokenVase() : this.vase()}
       </>
     )

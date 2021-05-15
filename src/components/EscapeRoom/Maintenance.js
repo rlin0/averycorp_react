@@ -5,6 +5,8 @@ import { withRouter, Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
 import ModalBox from "../UI/ModalBox"
 import FeedbackBar from "../UI/FeedbackBar"
+import txt from "../../text/er.json"
+import { TocTwoTone } from "@material-ui/icons"
 
 const hallway2 = {
   left: "40.83%",
@@ -88,10 +90,6 @@ export default class Maintenance extends Component {
     this.props.putMCSpy(3)
   }
 
-  closed = () => {
-    this.setState({ noInkwellTxt: false })
-  }
-
   render() {
     return (
       <>
@@ -102,8 +100,8 @@ export default class Maintenance extends Component {
         <div style={electricalBox} onClick={this.handleElectricalBoxClick} />
         {this.state.noInkwellTxt && (
           <FeedbackBar
-            text="This seems to be an ordinary electrical box at the moment."
-            closed={this.closed}
+            text={txt.electricalBox}
+            closed={() => this.setState({ noInkwellTxt: false })}
           />
         )}
         {this.state.candleLit ? this.litCandle() : this.candle()}

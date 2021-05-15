@@ -12,6 +12,8 @@
         "Bolt unscrewed"
       ]
     },
+    "electricalBox": "This seems to be an ordinary electrical box at the moment.",
+    "motorcycle": "My friend from Germany sent this to me as a gift.",
     "sewerDenied": "This drainage system seems to lead somewhere. However it seems to be locked at the moment",
     "portalDenied": "You do not seem to have the required pieces to get access the memories at the Memory Storage Unit",
     "computerLibrary": "It seems that you can read some devices by inserting it into the slot.",
