@@ -40,3 +40,5 @@ yarn-error.log*
 .env
 
 .eslintrc.json
+
+Pipfile*

@@ -24,33 +24,20 @@ export default class Flow extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      color: null,
-      t00: null,
-      t01: null,
-      t02: null,
-      t03: null,
-      t04: null,
-      t05: null,
-      t06: null,
-      t07: null,
-      t08: null,
-      t09: null,
-      t10: null,
-      t11: null,
-      t12: null,
-      t13: null,
-      t14: null,
-      t15: null,
-      t16: null,
-      // TODO: fill in the rest
-      t88: null,
+      color: null
+    }
+    for (let i = 0; i < this.props.dim; i++) {
+      for (let j = 0; j < this.props.dim; j++) {
+        let s = "t" + i.toString() + "-" + j.toString()
+        this.state[s] = null;
+      }
     }
   }
 
   checkAnswer = () => {
     for (let i = 0; i < this.props.dim; i++) {
       for (let j = 0; j < this.props.dim; j++) {
-        let s = "t" + i.toString() + j.toString()
+        let s = "t" + i.toString() + "-" + j.toString()
         if (this.state[s] !== this.props.answer[i][j]) return false
       }
     }
@@ -91,7 +78,7 @@ export default class Flow extends Component {
             }
           })}
         </GridList>
-        <Button onClick={() => this.setState({ color: "white" })}>Erase</Button>
+        <Button onClick={() => this.setState({ color: null })}>Erase</Button>
       </div>
     )
   }

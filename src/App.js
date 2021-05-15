@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Header from "./components/UI/Header"
 import Login from "./components/Login"
 import CityIntroScene from "./components/CityIntroScene"
-import Act0 from "./components/Act0"
+import {Act0_1, Act0_2, Act0_3, Act0_4, Act0_5} from "./components/Act0"
 import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
 import Act2 from "./components/Act2"
@@ -123,7 +123,7 @@ export default class App extends Component {
                       <Profile userId={this.state.userId} />
                     </Route>
                     <Route exact path="/act0">
-                      <Act0 />
+                      <Act0_1 />
                     </Route>
                     <Route exact path="/act1">
                       <Act
