@@ -67,6 +67,17 @@
   overflow: hidden;
 }
 
+.electrical {
+  left: 5.75%;
+  top: 45.25%;
+  width: 7.92%;
+  height: 25.37%;
+  position: absolute;
+  display: block;
+  z-index: 5;
+  overflow: hidden;
+}
+
 .computer {
   width: 2.7%;
   height: 14.1%;

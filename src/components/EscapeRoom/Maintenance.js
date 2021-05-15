@@ -30,17 +30,6 @@ const statue = {
   overflow: "hidden",
 }
 
-const electricalBox = {
-  left: "5.75%",
-  top: "45.25%",
-  width: "7.92%",
-  height: "25.37%",
-  position: "absolute",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
-}
-
 export default class Maintenance extends Component {
   constructor(props) {
     super(props)
@@ -81,15 +70,6 @@ export default class Maintenance extends Component {
     this.props.putMCMerchant(3)
   }
 
-  handleElectricalBoxClick = () => {
-    if (getBit(this.props.mcSpy, 3)) return
-    if (this.props.equipped !== "inkwell") {
-      this.setState({ noInkwellTxt: true })
-      return
-    }
-    this.props.putMCSpy(3)
-  }
-
   render() {
     return (
       <>
@@ -97,7 +77,22 @@ export default class Maintenance extends Component {
         <Link style={hallway2} to="/er/hallway2" />
         <div style={statue} onClick={this.handleStatueClick} />
 
-        <div style={electricalBox} onClick={this.handleElectricalBoxClick} />
+        {!getBit(this.props.mcSpy, 3) && this.props.equipped !== "inkwell" && (
+          <div
+            className={styles.electrical}
+            onClick={() => this.setState({ noInkwellTxt: true })}
+          />
+        )}
+
+        {!getBit(this.props.mcSpy, 3) && this.props.equipped === "inkwell" && (
+          <Link
+            to="/er/electrical"
+            className={styles.electrical}
+            style={{ cursor: `url(${S3Url}/er/inkwell_cursor.png), auto` }}
+            onClick={this.props.putElectricalBoxUnlocked}
+          />
+        )}
+
         {this.state.noInkwellTxt && (
           <FeedbackBar
             text={txt.electricalBox}

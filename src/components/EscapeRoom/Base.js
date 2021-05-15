@@ -48,6 +48,7 @@ class ER extends Component {
       closetUnlocked: null,
       hologramUnlocked: null,
       scanningUnlocked: null,
+      electricalBoxUnlocked: null,
 
       mcMechanic: 0,
       mcSpy: 0,
@@ -229,6 +230,19 @@ class ER extends Component {
       })
       .then((res) => {
         this.setState({ hologramUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putElectricalBoxUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.userId}/`, {
+        electrical_box_unlocked: true,
+      })
+      .then((res) => {
+        this.setState({ electricalBoxUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
