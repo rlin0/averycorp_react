@@ -50,7 +50,8 @@ def login(request):
                 'id': res.id,
                 'username': username,
                 'teamId': res.team.id if res.team else None,
-                'teamName': res.team.name if res.team else None
+                'teamName': res.team.name if res.team else None,
+                'role': res.role
             }
         })
     except Profile.DoesNotExist:

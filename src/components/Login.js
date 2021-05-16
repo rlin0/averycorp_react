@@ -30,7 +30,8 @@ export default class Login extends Component {
               res.data.user.username,
               res.data.user.id,
               res.data.user.teamId,
-              res.data.user.teamName
+              res.data.user.teamName,
+              res.data.user.role
             )
           else this.setState({ incorrect: true })
         } else console.error(res.data)

@@ -4,6 +4,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
+import { S3Url } from "../helpers"
 
 export default class Puzzle extends Component {
   constructor(props) {
@@ -86,6 +87,10 @@ export default class Puzzle extends Component {
         </>
       )
     }
+    var role
+    if (this.props.role === undefined) {
+      role = ""
+    } else role = this.props.role
     return (
       <>
         <Act
@@ -96,7 +101,12 @@ export default class Puzzle extends Component {
         >
           <ButtonLink buttonText="Back to Map" to="/act2" />
           <Typography variant="h3"> {this.state.name} </Typography>
-          {this.props.children}
+          <iframe
+            src={`${S3Url}/act2/${this.props.link}${role}.pdf`}
+            width="70%"
+            height="80%"
+          />
+
           <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
             {this.state.solved ? (
               <Typography>Solved!</Typography>

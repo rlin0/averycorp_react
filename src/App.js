@@ -29,6 +29,7 @@ import { getBit, setBit } from "./helpers.js"
 import "./App.css"
 import { CssBaseline } from "@material-ui/core"
 import Credits from "./components/Credits"
+import { S3Url } from "./helpers"
 
 export default class App extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class App extends Component {
       userId: localStorage.getItem("userId"),
       teamId: localStorage.getItem("teamId"),
       teamName: localStorage.getItem("teamName"),
+      role: localStorage.getItem("role"),
     }
   }
 
@@ -56,18 +58,20 @@ export default class App extends Component {
     }
   }
 
-  login = (username, userId, teamId, teamName) => {
+  login = (username, userId, teamId, teamName, role) => {
     this.setState({
       username: username,
       userId: userId,
       teamId: teamId,
       teamName: teamName,
+      role: role,
     })
     // store the user in localStorage
     localStorage.setItem("username", this.state.username)
     localStorage.setItem("userId", this.state.userId)
     localStorage.setItem("teamId", this.state.teamId)
     localStorage.setItem("teamName", this.state.teamName)
+    localStorage.setItem("role", this.state.role)
   }
 
   logout = () => {
@@ -77,6 +81,7 @@ export default class App extends Component {
       teamId: null,
       teamName: null,
       act: 0,
+      role: null,
     })
     localStorage.clear()
   }
@@ -157,6 +162,7 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="1"
                         teamId={this.state.teamId}
+                        link="botw"
                       />
                     </Route>
 
@@ -166,11 +172,16 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="2"
                         teamId={this.state.teamId}
+                        link="codetrans"
                       />
                     </Route>
 
                     <Route exact path="/act2/puzzle3">
-                      <Puzzle3 />
+                      <Puzzle3
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        role={this.state.role}
+                      />
                     </Route>
 
                     <Route exact path="/act2/puzzle4">
@@ -179,6 +190,8 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="4"
                         teamId={this.state.teamId}
+                        role={this.state.role}
+                        link="id"
                       />
                     </Route>
 
@@ -188,6 +201,8 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="5"
                         teamId={this.state.teamId}
+                        link="spot"
+                        role={this.state.role}
                       />
                     </Route>
 

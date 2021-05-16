@@ -5,32 +5,36 @@ import { Link } from "react-router-dom"
 import Puzzle from "./Puzzle"
 import Crossword from "@jaredreisinger/react-crossword"
 import { crosswordPlayer1, crosswordPlayer2 } from "../text/crossword"
-
-export class Puzzle1 extends Component {
-  render() {
-    return (
-      <Puzzle puzzleId="1" teamId={this.props.teamId}>
-        <p>puzzle 1 description here</p>
-      </Puzzle>
-    )
-  }
-}
+import Act from "./Act"
 
 export class Puzzle3 extends Component {
   render() {
+    var crossword = null
+    if (this.props.role === 0) {
+      crossword = crosswordPlayer1
+    } else {
+      crossword = crosswordPlayer2
+    }
     return (
-      <Crossword
-        data={crosswordPlayer1}
-        theme={{
-          gridBackground: "transparent",
-          cellBackground: "rgba(255,255,255,0.8)",
-          cellBorder: "#8561a9",
-          textColor: "#000",
-          numberColor: "#638",
-          focusBackground: "#97a",
-          highlightBackground: "#859",
-        }}
-      />
+      <Act
+        id={2}
+        act={this.props.act}
+        updateAct={this.props.updateAct}
+        passcode="2"
+      >
+        <Crossword
+          data={crossword}
+          theme={{
+            gridBackground: "transparent",
+            cellBackground: "rgba(255,255,255,0.8)",
+            cellBorder: "#8561a9",
+            textColor: "#000",
+            numberColor: "#638",
+            focusBackground: "#97a",
+            highlightBackground: "#859",
+          }}
+        />
+      </Act>
     )
   }
 }
