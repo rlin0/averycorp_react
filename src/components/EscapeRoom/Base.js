@@ -325,6 +325,20 @@ class ER extends Component {
     this.setState({ equipped: null, open: false })
   }
 
+  reset = () => {
+    axios
+      .post("/api/er/reset", {
+        userId: this.props.userId,
+      })
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.log(err.response)
+      })
+    window.location.reload()
+  }
+
   renderItems = () => {
     return (
       <>
@@ -472,6 +486,7 @@ class ER extends Component {
             <Button onClick={this.remove}>Remove</Button>
             <Button onClick={this.equip}>Equip</Button>
             <Button onClick={this.unequip}>Unequip</Button>
+            <Button onClick={this.reset}>Reset</Button>
           </DialogActions>
         </Dialog>
       </div>

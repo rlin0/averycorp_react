@@ -143,3 +143,33 @@ def get_solved(request):
 
 
 ######################## Escape Room API's ################################
+@api_view(['POST'])
+def reset(request):
+    try:
+        user_id = int(request.data.get('userId'))
+        e = ERState.objects.get(user__id=user_id)
+        e.closet_unlocked = False
+        e.spyroom_unlocked = False
+        e.lockers_unlocked = False
+        e.mechanics_unlocked = False
+        e.electrical_box_unlocked = False
+        e.hologram_unlocked = False
+        e.scanning_unlocked = False
+        e.merchant_mc = 0
+        e.spy_mc = 0
+        e.mechanic_mc = 0
+        e.save()
+        i = Inventory.objects.get(user__id=user_id)
+        i.matches = False
+        i.wrench = False
+        i.usb = False
+        i.soup = False
+        i.knife = False
+        i.paperclip = False
+        i.inkwell = False
+        i.save()
+        return JsonResponse({
+            'success': True,
+        })
+    except:
+        return JsonResponse({'success': False})
