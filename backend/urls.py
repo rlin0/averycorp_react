@@ -16,7 +16,6 @@ urlpatterns = [
     path(r'api/', include(router.urls)),
     path(r'api/login/', views.login),
     path(r'api/madlib/post', views.post_madlib),
-    path(r'api/madlib/get_prompt', views.get_madlib_prompt),
     path(r'api/madlib/get', views.get_madlib),
     path(r'api/puzzle/get_solved', views.get_solved),
     path(r'api/puzzle/submit_answer', views.submit_answer),

@@ -76,19 +76,6 @@ def post_madlib(request):
 
 
 @api_view(['GET'])
-def get_madlib_prompt(request):
-    try:
-        user_id = request.query_params.get('userId')
-        m = MadLib.objects.get(profile_from=Profile.objects.get(id=user_id))
-        return JsonResponse({
-            'success': True,
-            'prompts': m.type_id.prompts,
-        })
-    except:
-        return JsonResponse({'success': False})
-
-
-@api_view(['GET'])
 def get_madlib(request):
     try:
         user_id = request.query_params.get('userId')
@@ -97,9 +84,9 @@ def get_madlib(request):
         return JsonResponse({
             'success': True,
             'fields': m.fields,
-            'text': m.type_id.text,
         })
-    except:
+    except Exception as e:
+        print(e)
         return JsonResponse({'success': False})
 
 
@@ -114,7 +101,7 @@ def submit_answer(request):
             puzzle=Puzzle.objects.get(id=puzzle_id),
             team=Team.objects.get(id=t.id))
         # TODO: set period limit
-        if not created and timezone.now() - p.ts < timedelta(minutes=0):
+        if not created and timezone.now() - p.ts < timedelta(minutes=1):
             return JsonResponse({'success': True, 'msg': 'later'})
         p.save()
         if Puzzle.objects.filter(id=puzzle_id, answer=answer).exists():

@@ -68,9 +68,9 @@ export default class Puzzle extends Component {
         if (res.data.success) {
           if (res.data.msg === "correct") this.setState({ solved: true })
           else if (res.data.msg === "incorrect")
-            alert("incorrect! Try again in 5 minutes")
+            alert("incorrect! Try again in 1 minute")
           else if (res.data.msg === "later")
-            alert("You are allowed 1 guess per 5 minutes! Try again later")
+            alert("You are allowed 1 guess per minute! Try again later")
         }
         console.log(res)
       })

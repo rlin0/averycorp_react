@@ -14,13 +14,27 @@ class Act1 extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      fields: [null, null, null],
-      prompts: undefined,
+      fields: new Array(17).fill(null),
+      prompts: [
+        "number",
+        "profession",
+        "plural noun",
+        "adjective noun",
+        "adverb",
+        "verb ending in -ing",
+        "place",
+        "person's name",
+        "noun",
+        "plural noun",
+        "adjective",
+        "imperative statement",
+        "verb ending in -ing",
+        "length of time",
+        "verb",
+        "body part",
+        "verb",
+      ],
     }
-  }
-
-  componentDidMount() {
-    this.getPrompts()
   }
 
   valid = (element) => {
@@ -32,7 +46,7 @@ class Act1 extends Component {
       return [...accumulator, cur]
     }, [])
     if (lst.every(this.valid)) {
-      alert("valid text: " + lst.join())
+      console.log("valid text: " + lst.join())
       axios
         .post("/api/madlib/post", {
           userId: this.props.userId,
@@ -60,37 +74,7 @@ class Act1 extends Component {
     this.setState({ fields })
   }
 
-  getPrompts = () => {
-    axios
-      .get("/api/madlib/get_prompt", {
-        params: {
-          userId: this.props.userId,
-        },
-      })
-      .then((res) => {
-        if (res.data.success) {
-          console.log("success prompt")
-          this.setState({
-            prompts: res.data.prompts.split(","),
-          })
-        } else {
-          console.log("error getting prompt")
-        }
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }
-
   render() {
-    if (this.state.prompts === undefined) {
-      return (
-        <>
-          <p>Loading</p>
-        </>
-      )
-    }
     return (
       <>
         <Typography variant="h1"> Madlibs! </Typography>

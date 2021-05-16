@@ -2,6 +2,9 @@ import React, { Component } from "react"
 import { Typography } from "@material-ui/core"
 import axios from "axios"
 
+const txt =
+  "You are a *-year old *. Your home was destroyed by *, but you narrowly escaped. According to our intel, you sometimes goes by the nickname *. Spends their free time * * in *. Seems to be obsessed with *'s *. Secretly scared of *, especially * ones. Thinks it is funny to tell people to “*”. Is good at *, but not much else. Spent * trying to learn how to *, and then gave up. Constantly complains about your *, which you hurt while trying to *."
+
 class Profile extends Component {
   constructor(props) {
     super(props)
@@ -25,7 +28,7 @@ class Profile extends Component {
         if (res.data.success) {
           console.log("success prompt")
           const fields = res.data.fields.split(",")
-          const text = res.data.text.split("*")
+          const text = txt.split("*")
           let bio = ""
           for (let i = 0; i < text.length; i++) {
             bio = bio.concat(text[i])

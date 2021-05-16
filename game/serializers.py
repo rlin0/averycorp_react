@@ -18,7 +18,7 @@ class TeamSerializer(serializers.ModelSerializer):
 class PuzzleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Puzzle
-        fields = ('id', 'name', 'link', 'answer')
+        fields = ('id', 'name', 'answer', 'link')
 
 
 class InventorySerializer(serializers.ModelSerializer):
