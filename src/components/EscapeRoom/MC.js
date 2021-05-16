@@ -12,7 +12,7 @@ export default class MC extends Component {
       <ModalBox buttonText="OK">
         <p>You've acquired a memory chip</p>
         <img
-          src={`${S3Url}/er/mc_${this.props.color}`}
+          src={`${S3Url}/er/mc_${this.props.color}.png`}
           alt={`${this.props.color} chip`}
         />
       </ModalBox>

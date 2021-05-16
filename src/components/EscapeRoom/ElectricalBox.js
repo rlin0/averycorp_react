@@ -28,6 +28,7 @@ export default class ElectricalBox extends Component {
     if (this.state.solved === 2) return <Puzzle0_3 solved={this.updateSolved} />
     if (this.state.solved === 3) return <Puzzle0_4 solved={this.updateSolved} />
     if (this.state.solved === 4) return <Puzzle0_5 solved={this.updateSolved} />
+    this.props.putMCSpy(2)
     this.props.putMCSpy(3)
     return <p>What are you still waiting around for?</p>
   }

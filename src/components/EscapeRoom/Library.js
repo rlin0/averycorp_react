@@ -29,8 +29,8 @@ const hallway1 = {
 }
 
 const book1 = {
-  left: "12.75%",
-  top: "45.5%",
+  left: "20.33%",
+  top: "63.25%",
   width: "1.67%",
   height: "4.25%",
   position: "absolute",
@@ -45,17 +45,6 @@ const book2 = {
   top: "54.63%",
   width: "1.67%",
   height: "4.25%",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
-}
-
-const note1 = {
-  width: "4.2%",
-  height: "8.5%",
-  left: "25.4%",
-  top: "87.5%",
-  position: "absolute",
   display: "block",
   zIndex: "5",
   overflow: "hidden",
@@ -107,21 +96,13 @@ export default class Library extends Component {
 
         <ZoomModal style={book1}>
           <img
-            src="/media/book1Cover.png"
+            src={S3Url + "/er/boba_book.png"}
             alt="book cover"
             style={{ width: "500px", height: "600px" }}
           />
         </ZoomModal>
 
         <div style={book2} onClick={this.handleBookClick} />
-
-        <ZoomModal style={note1}>
-          <img
-            src="/media/Note1Cover.png"
-            alt="Note cover"
-            style={{ width: "500px", height: "600px" }}
-          />
-        </ZoomModal>
 
         <ZoomModal style={magazine1}>
           <img

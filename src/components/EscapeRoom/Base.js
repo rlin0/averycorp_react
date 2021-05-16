@@ -375,7 +375,7 @@ class ER extends Component {
         })}
         <Grid item xs={3}>
           <img
-            src={`${S3Url}/er/mcMerchant.png`}
+            src={`${S3Url}/er/mc_merchant.png`}
             style={{
               cursor: "pointer",
               width: "50px",
@@ -388,7 +388,7 @@ class ER extends Component {
 
         <Grid item xs={3}>
           <img
-            src={`${S3Url}/er/mcMechanic.png`}
+            src={`${S3Url}/er/mc_mechanic.png`}
             style={{
               cursor: "pointer",
               width: "50px",
@@ -401,7 +401,7 @@ class ER extends Component {
 
         <Grid item xs={3}>
           <img
-            src={`${S3Url}/er/mcSpy.png`}
+            src={`${S3Url}/er/mc_spy.png`}
             style={{
               cursor: "pointer",
               width: "50px",

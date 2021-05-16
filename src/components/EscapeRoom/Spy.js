@@ -19,12 +19,13 @@ import LockModal from "./LockModal"
 import MC from "./MC"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
+import ZoomModal from "./ZoomModal"
 
 const hallway1 = {
-  width: "10%",
-  height: "7.6%",
-  left: "10%",
-  top: "87.2%",
+  left: "57.5%",
+  top: "91.13%",
+  width: "19.25%",
+  height: "8.75%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -42,6 +43,28 @@ const usb = {
   overflow: "hidden",
 }
 
+const toolcase = {
+  left: "82.83%",
+  top: "44.13%",
+  width: "6.92%",
+  height: "9.63%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const inkwell = {
+  left: "85.92%",
+  top: "48.25%",
+  width: "2.5%",
+  height: "4%",
+  position: "absolute",
+  display: "block",
+  zIndex: "7",
+  overflow: "hidden",
+}
+
 export default class Spy extends Component {
   constructor(props) {
     super(props)
@@ -49,6 +72,7 @@ export default class Spy extends Component {
       hangerModalOpen: false,
       submitMsg: null,
       clickComputer: false,
+      computerUnlocked: false,
     }
   }
 
@@ -72,6 +96,7 @@ export default class Spy extends Component {
 
   handleComputerSubmit = (code) => {
     if (code) {
+      this.setState({ computerUnlocked: true })
       return true
     } else {
       return false
@@ -94,17 +119,27 @@ export default class Spy extends Component {
           style={hallway1}
           to="/er/hallway1"
           onClick={this.props.putSpyroomUnlocked}
-        >
-          Hallway1
-        </Link>
+        />
         <div
           className={styles.hanger}
           onClick={() => this.setState({ hangerModalOpen: true })}
         />
-        <div
-          className={styles.computerSpy}
-          onClick={() => this.setState({ clickComputer: true })}
-        />
+
+        {this.state.computerUnlocked ? (
+          <ZoomModal className={styles.computerSpy}>
+            <img
+              src={`${S3Url}/er/monitor_closeup.png`}
+              alt="spy room monitor"
+              style={{ width: "800px", height: "500px" }}
+            />
+          </ZoomModal>
+        ) : (
+          <div
+            className={styles.computerSpy}
+            onClick={() => this.setState({ clickComputer: true })}
+          />
+        )}
+
         {this.state.clickComputer && (
           <FeedbackBar
             text={txt.computerSpy}
@@ -118,7 +153,23 @@ export default class Spy extends Component {
           handleSubmit={this.handleComputerSubmit}
         />
 
-        <Dialog
+        {this.state.hangerModalOpen && (
+          <>
+            <img src={`${S3Url}/er/spy_toolcase.png`} style={toolcase} />
+
+            {!this.props.inkwell && (
+              <img
+                src={`${S3Url}/er/inkwell.png`}
+                style={inkwell}
+                alt="inkwell"
+                onClick={() => {
+                  return this.props.pickUp("inkwell")
+                }}
+              />
+            )}
+          </>
+        )}
+        {/* <Dialog
           open={this.state.hangerModalOpen}
           onClose={this.handleHangerModalClose}
           aria-labelledby="form-dialog-title"
@@ -145,7 +196,7 @@ export default class Spy extends Component {
               />
             )}
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
 
         <LockModal
           className={styles.hologramBottom}

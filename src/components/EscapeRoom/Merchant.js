@@ -20,12 +20,24 @@ import { BlueMC } from "./MC"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
 import ZoomModal from "./ZoomModal"
+import { Link } from "react-router-dom"
 
 const mc = {
-  width: "5.3%",
-  height: "7.1%",
-  left: "90.3%",
-  top: "87.2%",
+  left: "70%",
+  top: "63.5%",
+  width: "3.5%",
+  height: "5.5%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const hallway1 = {
+  left: "16.67%",
+  top: "91%",
+  width: "18.08%",
+  height: "8.88%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -88,7 +100,12 @@ export default class Merchant extends Component {
         <img src={`${S3Url}/er/Merchant.png`} width="100%" />
 
         {!getBit(this.props.mcMerchant, 1) && (
-          <img src="" style={mc} alt="chip" onClick={this.handleMCClick} />
+          <img
+            src={`${S3Url}/er/mc_merchant.png`}
+            style={mc}
+            alt="chip"
+            onClick={this.handleMCClick}
+          />
         )}
 
         <div style={map} onClick={() => this.setState({ mapClick: true })} />
@@ -125,6 +142,8 @@ export default class Merchant extends Component {
           className={styles.scanningDevice}
           handleSubmit={this.handleScanningModalSubmit}
         />
+
+        <Link to="/er/Hallway1" style={hallway1} />
       </>
     )
   }
