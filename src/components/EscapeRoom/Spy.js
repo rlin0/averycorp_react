@@ -111,7 +111,9 @@ export default class Spy extends Component {
 
   render() {
     if (this.props.spyroomUnlocked === null) return null
-    if (!this.props.spyroomUnlocked) return <Forbidden />
+    if (!this.props.spyroomUnlocked) {
+      return <Forbidden />
+    }
     return (
       <>
         <img src={`${S3Url}/er/Spy.png`} width="100%" />

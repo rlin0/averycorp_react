@@ -23,10 +23,10 @@ import ZoomModal from "./ZoomModal"
 import { Link } from "react-router-dom"
 
 const mc = {
-  left: "70%",
-  top: "63.5%",
-  width: "3.5%",
-  height: "5.5%",
+  left: "82.25%",
+  top: "63.75%",
+  width: "2.58%",
+  height: "3.88%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -138,10 +138,22 @@ export default class Merchant extends Component {
             closed={() => this.setState({ citiesClick: false })}
           />
         )}
-        <LockModal
-          className={styles.scanningDevice}
-          handleSubmit={this.handleScanningModalSubmit}
-        />
+
+        {this.props.scanningUnlocked ? (
+          <ZoomModal className={styles.scanningDevice}>
+            <img
+              src={`${S3Url}/er/statue_yellow.png`}
+              alt="yellow statue"
+              height="500px"
+              width="auto"
+            />
+          </ZoomModal>
+        ) : (
+          <LockModal
+            className={styles.scanningDevice}
+            handleSubmit={this.handleScanningModalSubmit}
+          />
+        )}
 
         <Link to="/er/Hallway1" style={hallway1} />
       </>

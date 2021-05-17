@@ -66,6 +66,17 @@ const motorcycle = {
   overflow: "hidden",
 }
 
+const mc = {
+  left: "46%",
+  top: "73.75%",
+  width: "2.33%",
+  height: "3.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Mechanics extends Component {
   constructor(props) {
     super(props)
@@ -184,10 +195,6 @@ export default class Mechanics extends Component {
     }
   }
 
-  handlePictureClick = () => {
-    console.log("pic clikc")
-  }
-
   render() {
     if (this.props.closetUnlocked === null) return null
     if (!this.props.mechanicsUnlocked) return <Forbidden />
@@ -195,17 +202,26 @@ export default class Mechanics extends Component {
       <>
         <img src={S3Url + "/er/Mechanics.png"} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
-
-        <ZoomModal style={picture}>
-          <img src={S3Url + "/er/jigsaw/Gear.png"} usemap="#image-map" />
-          <map name="image-map">
-            <area
-              coords="211,234,296,206,266,357,390,327,252,464,176,390"
-              shape="poly"
-              onClick={this.handlePictureClick}
-            />
-          </map>
-        </ZoomModal>
+        {!getBit(this.props.mcMechanic, 3) && (
+          <img
+            src={`${S3Url}/er/mc_mechanic.png`}
+            style={mc}
+            alt="mechanic chip"
+            onClick={() => this.props.putMCMechanic(3)}
+          />
+        )}
+        {this.state.vaseBroken && (
+          <ZoomModal style={picture}>
+            <img src={S3Url + "/er/jigsaw/Gear.png"} usemap="#image-map" />
+            <map name="image-map">
+              <area
+                coords="211,234,296,206,266,357,390,327,252,464,176,390"
+                shape="poly"
+                onClick={() => this.props.putMCMechanic(2)}
+              />
+            </map>
+          </ZoomModal>
+        )}
         {this.props.closetUnlocked
           ? this.unlockedCloset()
           : this.lockedCloset()}

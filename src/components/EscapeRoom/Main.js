@@ -182,14 +182,18 @@ class Main extends Component {
             closed={() => this.setState({ clickSewer: false })}
           />
         )}
-        {this.props.equipped === "paperclip" && (
-          <Link
-            to="/er/spy"
-            className={styles.sewer}
-            style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png), auto` }}
-            onClick={this.props.putSpyroomUnlocked}
-          />
+
+        {this.props.spyroomUnlocked ? (
+          <Link to="/er/spy" className={styles.sewer} />
+        ) : (
+          this.props.equipped === "paperclip" && (
+            <div
+              onClick={this.props.putSpyroomUnlocked}
+              className={styles.sewer}
+            />
+          )
         )}
+
         <ZoomModal className={styles.tablet}>
           <img
             src={S3Url + "/er/tablet_screen.png"}

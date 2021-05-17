@@ -212,6 +212,7 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="6"
                         teamId={this.state.teamId}
+                        link="meta"
                       />
                     </Route>
 

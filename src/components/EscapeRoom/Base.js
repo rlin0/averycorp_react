@@ -100,6 +100,7 @@ class ER extends Component {
           electricalBoxUnlocked: res.data.electrical_box_unlocked,
           hologramUnlocked: res.data.hologram_unlocked,
           closetUnlocked: res.data.closet_unlocked,
+          scanningUnlocked: res.data.scanning_unlocked,
           mcMechanic: res.data.mechanic_mc,
           mcSpy: res.data.spy_mc,
           mcMerchant: res.data.merchant_mc,
