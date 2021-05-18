@@ -152,6 +152,14 @@ export default class Merchant extends Component {
           <LockModal
             className={styles.scanningDevice}
             handleSubmit={this.handleScanningModalSubmit}
+            display={
+              <img
+                src={`${S3Url}/er/statue_yellow.png`}
+                alt="yellow statue"
+                height="500px"
+                width="auto"
+              />
+            }
           />
         )}
 

@@ -45,6 +45,12 @@ class LockModal extends Component {
     this.setState({ modalOpen: false })
   }
 
+  display = () => {
+    if (this.props.display) {
+      return this.props.display
+    } else return <p>Access Granted</p>
+  }
+
   render() {
     return (
       <>
@@ -88,7 +94,7 @@ class LockModal extends Component {
               </DialogActions>
             </form>
           )}
-          {this.state.correct === true && <p>Access Granted</p>}
+          {this.state.correct === true && this.display()}
         </Dialog>
       </>
     )

@@ -75,6 +75,17 @@ const hologram = {
   zIndex: "5",
 }
 
+const computer = {
+  left: "26.17%",
+  top: "60.88%",
+  width: "5%",
+  height: "10.38%",
+  position: "absolute",
+  display: "block",
+  zIndex: "7",
+  overflow: "hidden",
+}
+
 export default class Spy extends Component {
   constructor(props) {
     super(props)
@@ -82,7 +93,6 @@ export default class Spy extends Component {
       hangerModalOpen: false,
       submitMsg: null,
       clickComputer: false,
-      computerUnlocked: false,
     }
   }
 
@@ -96,7 +106,7 @@ export default class Spy extends Component {
   }
 
   handleHologramSubmit = (code) => {
-    if (code) {
+    if (code === "0" || code === "0153") {
       this.props.putHologramUnlocked()
       return true
     } else {
@@ -106,6 +116,12 @@ export default class Spy extends Component {
 
   handleHologramEnd = () => {
     this.props.putMCSpy(2)
+  }
+
+  handleComputerClick = () => {
+    if (this.props.equipped === "usb" && !getBit(this.props.mcSpy, 1)) {
+      this.props.putMCSpy(1)
+    }
   }
 
   render() {
@@ -125,8 +141,9 @@ export default class Spy extends Component {
           className={styles.hanger}
           onClick={() => this.setState({ hangerModalOpen: true })}
         />
+        <div style={computer} onClick={this.handleComputerClick} />
 
-        {this.props.equipped === "usb" ? (
+        {getBit(this.props.mcSpy, 1) ? (
           <ZoomModal className={styles.computerSpy}>
             <img
               src={`${S3Url}/er/monitor_closeup.png`}
