@@ -227,6 +227,17 @@ export class Puzzle0_2 extends Component {
       ],
       [
         "blue",
+        "cyan",
+        "tomato",
+        "tomato",
+        "orange",
+        "cyan",
+        "cyan",
+        "orange",
+        "yellow",
+      ],
+      [
+        "blue",
         "tomato",
         "tomato",
         "saddlebrown",
@@ -304,9 +315,9 @@ export class Puzzle0_3 extends Component {
     tileData.set("t7-3", "saddlebrown")
     tileData.set("t7-6", "fuchsia")
     tileData.set("t7-7", "orange")
-    tileData.set("t7-8", "gray")
+    tileData.set("t7-8", "purple")
     tileData.set("t8-0", "blue")
-    tileData.set("t8-5", "gray")
+    tileData.set("t8-5", "purple")
 
     const answer = [
       [
@@ -351,6 +362,17 @@ export class Puzzle0_3 extends Component {
         "green",
         "yellow",
         "yellow",
+        "yellow",
+      ],
+      [
+        "blue",
+        "green",
+        "saddlebrown",
+        "green",
+        "green",
+        "green",
+        "yellow",
+        "orange",
         "yellow",
       ],
       [
@@ -427,8 +449,8 @@ export class Puzzle0_4 extends Component {
     }
 
     // Board 4
-    tileData.set("t0-10", "thistle")
-    tileData.set("t0-13", "thistle")
+    tileData.set("t0-10", "purple")
+    tileData.set("t0-13", "purple")
     tileData.set("t2-2", "yellow")
     tileData.set("t2-3", "green")
     tileData.set("t2-4", "orange")
@@ -781,8 +803,9 @@ export class Puzzle0_5 extends Component {
         "orange",
         "steelblue",
         "tomato",
-      ][
-        ("orange",
+      ],
+      [
+        "orange",
         "orange",
         "gray",
         "saddlebrown",
@@ -796,7 +819,7 @@ export class Puzzle0_5 extends Component {
         "tomato",
         "orange",
         "steelblue",
-        "tomato")
+        "tomato",
       ],
       [
         "blue",

@@ -3,9 +3,18 @@ import GridList from "@material-ui/core/GridList"
 import GridListTile from "@material-ui/core/GridListTile"
 import { CssBaseline, Button } from "@material-ui/core"
 import { S3Url } from "../../helpers.js"
+import { withRouter, Link } from "react-router-dom"
+import ZoomModal from "./ZoomModal.js"
 
-const background = {
-  backgroundImage: S3Url + "/er/electrical.png",
+const maintenance = {
+  left: "72.75%",
+  top: "0%",
+  width: "27.25%",
+  height: "99.88%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
 }
 
 export default class Flow extends Component {
@@ -36,14 +45,6 @@ export default class Flow extends Component {
   }
 
   render() {
-    if (this.checkAnswer()) {
-      return (
-        <>
-          <h3>Solved!</h3>
-          <Button onClick={this.props.solved}>Next</Button>
-        </>
-      )
-    }
     return (
       <>
         <div
@@ -55,7 +56,23 @@ export default class Flow extends Component {
             backgroundPosition: "center",
           }}
         >
-          <div style={{ width: "50%", margin: "auto" }}>
+          <Link style={maintenance} to="/er/maintenance" />
+
+          <div
+            style={{
+              position: "absolute",
+              top: "25%",
+              left: "15%",
+              width: "50%",
+              height: "50%",
+            }}
+          >
+            {this.checkAnswer() && (
+              <>
+                <h3>Solved!</h3>
+                <Button onClick={this.props.solved}>Next</Button>
+              </>
+            )}
             <GridList cellHeight={40} cols={this.props.dim}>
               {Array.from(this.props.tileInitial.keys()).map((key) => {
                 let value = this.props.tileInitial.get(key)

@@ -156,6 +156,7 @@ export default class Mechanics extends Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogContent style={{ width: "800px", height: "600px" }}>
+            <h3>Double click and hold to drag</h3>
             <Jigsaw />
           </DialogContent>
         </Dialog>

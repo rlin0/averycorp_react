@@ -49,10 +49,21 @@ const hallway2 = {
 }
 
 const portal = {
-  left: "40%",
-  top: "49.38%",
-  width: "19.58%",
-  height: "21.38%",
+  left: "36.08%",
+  top: "58.13%",
+  width: "2.42%",
+  height: "4.63%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const monitor = {
+  left: "23.83%",
+  top: "68%",
+  width: "10.58%",
+  height: "9%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -215,7 +226,21 @@ class Main extends Component {
             />
           )
         )}
-
+        <ZoomModal style={monitor}>
+          <p>
+            The server room door can only be opened with the help of memory
+            chips scattered around the area. These memory chips belong to 3
+            AveryCorp employees that are tired of the corporation’s rule over
+            everything. There are 9 chips total, 3 each of a color: you’ll need
+            to find all of them in order to unlock the server room door. <br />
+            Click on a door to move from room to room. Some rooms are locked and
+            you’ll need to either enter a code on the number pad next to the
+            door, or find another way inside. Certain items can be picked up and
+            will be added to your inventory (bottom right button). To equip an
+            item, go into the inventory, click on an item, then press ‘equip’.
+            To unequip it, simply press ‘unequip.’
+          </p>
+        </ZoomModal>
         <ZoomModal className={styles.tablet}>
           <div
             style={{

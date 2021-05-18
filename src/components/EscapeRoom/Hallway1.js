@@ -91,7 +91,7 @@ class Hallway1 extends Component {
   }
 
   handleSubmitMerchant = (code) => {
-    if (code === "0" || code === "0513") {
+    if (code === "0" || code === "0624") {
       this.props.putMerchantUnlocked()
       return true
     } else return false
