@@ -48,9 +48,11 @@ export default class Flow extends Component {
       <>
         <div
           style={{
+            height: "100vh",
             backgroundImage: `url(${S3Url + "/er/electrical.png"})`,
             backgroundRepeat: "no-repeat",
             backgroundSize: "100% 100%",
+            backgroundPosition: "center",
           }}
         >
           <div style={{ width: "50%", margin: "auto" }}>
