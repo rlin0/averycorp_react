@@ -11,17 +11,24 @@ import {
   DialogContentText,
   IconButton,
 } from "@material-ui/core"
-import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
-import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
-import { S3Url } from "../../helpers.js"
 import { Redirect } from "react-router-dom"
 
-class ZoomModal extends Component {
+class LockModal extends Component {
   constructor(props) {
     super(props)
-    this.state = { modalOpen: false }
+    this.state = { modalOpen: false, code: null, correct: null }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const res = this.props.handleSubmit(this.state.code)
+    if (res === false) {
+      this.setState({ correct: false })
+    } else {
+      this.setState({ correct: true })
+    }
   }
 
   handleModalOpen = () => {
@@ -53,17 +60,38 @@ class ZoomModal extends Component {
           open={this.state.modalOpen}
           onClose={this.handleModalClose}
           aria-labelledby="form-dialog-title"
-          maxWidth="lg"
         >
           <DialogTitle id="form-dialog-title">
             <IconButton aria-label="close" onClick={this.handleModalClose}>
               <CloseIcon />
             </IconButton>
           </DialogTitle>
-          <DialogContent>{this.props.children}</DialogContent>
+          {this.state.correct !== true && (
+            <form onSubmit={this.handleSubmit}>
+              <DialogContent>
+                {this.props.children}
+                <TextField
+                  autoFocus
+                  margin="dense"
+                  id="name"
+                  label="code"
+                  onChange={({ target }) =>
+                    this.setState({ code: target.value })
+                  }
+                />
+                {this.state.correct === false && (
+                  <DialogContentText>incorrect</DialogContentText>
+                )}
+              </DialogContent>
+              <DialogActions>
+                <Button type="submit">Submit</Button>
+              </DialogActions>
+            </form>
+          )}
+          {this.state.correct === true && <p>Access Granted</p>}
         </Dialog>
       </>
     )
   }
 }
-export default withRouter(ZoomModal)
+export default withRouter(LockModal)

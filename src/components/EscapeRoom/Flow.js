@@ -4,7 +4,7 @@ import GridListTile from "@material-ui/core/GridListTile"
 import { CssBaseline, Button } from "@material-ui/core"
 import { S3Url } from "../../helpers.js"
 import { withRouter, Link } from "react-router-dom"
-import ZoomModal from "./ZoomModal.js"
+import ZoomModal from "../UI/ZoomModal.js"
 
 const maintenance = {
   left: "72.75%",

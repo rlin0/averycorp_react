@@ -15,7 +15,7 @@ import {
   Popover,
   IconButton,
 } from "@material-ui/core"
-import LockModal from "./LockModal"
+import LockModal from "../UI/LockModal"
 
 const mainRoom = {
   left: "0%",

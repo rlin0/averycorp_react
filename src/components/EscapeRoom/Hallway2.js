@@ -17,7 +17,7 @@ import CloseIcon from "@material-ui/icons/Close"
 import { styles } from "../UI/InputModal"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
-import LockModal from "./LockModal"
+import LockModal from "../UI/LockModal"
 import { withStyles } from "@material-ui/styles"
 
 const mainRoom = {

@@ -12,7 +12,7 @@ import {
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url, setBit, getBit } from "../../helpers"
-import ZoomModal from "./ZoomModal"
+import ZoomModal from "../UI/ZoomModal"
 import ModalBox from "../UI/ModalBox"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"

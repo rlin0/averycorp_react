@@ -13,7 +13,7 @@ import styles from "./styles.module.css"
 import Forbidden from "../Forbidden"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
-import ZoomModal from "./ZoomModal"
+import ZoomModal from "../UI/ZoomModal"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
 

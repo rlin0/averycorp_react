@@ -21,10 +21,12 @@ import "react-clock/dist/Clock.css"
 import CloseIcon from "@material-ui/icons/Close"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
-import LockModal from "./LockModal"
+import LockModal from "../UI/LockModal"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
-import ZoomModal from "./ZoomModal"
+import ZoomModal from "../UI/ZoomModal"
+import TabBox from "../UI/TabBox"
+import TabBoxServer from "../UI/TabBoxServer"
 
 const hallway1 = {
   left: "82.33%",
@@ -72,33 +74,6 @@ const monitor = {
 
 const start = Date.parse("01 Jan 2020 00:00:00 PDT")
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  )
-}
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  }
-}
-
 class Main extends Component {
   constructor(props) {
     super(props)
@@ -109,7 +84,6 @@ class Main extends Component {
       clickSewer: false,
       portalDenied: false,
       mcSet: false,
-      tabletVal: 0,
     }
   }
 
@@ -172,10 +146,6 @@ class Main extends Component {
     } else {
       return false
     }
-  }
-
-  tabletHandleChange = (event, newVal) => {
-    this.setState({ tabletVal: newVal })
   }
 
   render() {
@@ -251,78 +221,39 @@ class Main extends Component {
               width: "600px",
             }}
           >
-            <AppBar position="static">
-              <Tabs
-                value={this.state.tabletVal}
-                onChange={this.tabletHandleChange}
-                aria-label="simple tabs example"
-              >
-                <Tab label="Spy" {...a11yProps(0)} />
-                <Tab label="Merchant" {...a11yProps(1)} />
-                <Tab label="Mechanic" {...a11yProps(2)} />
-              </Tabs>
-            </AppBar>
-            <TabPanel value={this.state.tabletVal} index={0}>
-              <img
-                src={S3Url + "/er/spy_dossier.png"}
-                alt="spy dossier"
-                style={{ width: "500px", height: "500px" }}
-              />
-            </TabPanel>
-            <TabPanel value={this.state.tabletVal} index={1}>
-              <img
-                src={S3Url + "/er/merchant_dossier.png"}
-                alt="merchant dossier"
-                style={{ width: "500px", height: "500px" }}
-              />
-            </TabPanel>
-            <TabPanel value={this.state.tabletVal} index={2}>
-              <img
-                src={S3Url + "/er/mechanic_dossier.png"}
-                alt="mechanic dossier"
-                style={{ width: "500px", height: "500px" }}
-              />
-            </TabPanel>
+            <TabBox
+              left={
+                <img
+                  src={S3Url + "/er/spy_dossier.png"}
+                  alt="spy dossier"
+                  style={{ width: "500px", height: "500px" }}
+                />
+              }
+              center={
+                <img
+                  src={S3Url + "/er/merchant_dossier.png"}
+                  alt="merchant dossier"
+                  style={{ width: "500px", height: "500px" }}
+                />
+              }
+              right={
+                <img
+                  src={S3Url + "/er/mechanic_dossier.png"}
+                  alt="mechanic dossier"
+                  style={{ width: "500px", height: "500px" }}
+                />
+              }
+            />
           </div>
         </ZoomModal>
 
-        {this.state.mcSet ? (
-          <LockModal style={portal} handleSubmit={this.handlePortalSubmit}>
-            {this.props.mcSpy === 7 && (
-              <img
-                src={S3Url + "/er/final_spy.png"}
-                alt="picture for spy"
-                style={{ width: "600px", height: "300px" }}
-              />
-            )}
-            {this.props.mcMechanic === 7 && (
-              <img
-                src={S3Url + "/er/final_mechanic.png"}
-                alt="picture for mechanic"
-                style={{ width: "600px", height: "300px" }}
-              />
-            )}
-            {this.props.mcMerchant === 7 && (
-              <img
-                src={S3Url + "/er/final_merchant.png"}
-                alt="picture for merchant"
-                style={{ width: "600px", height: "300px" }}
-              />
-            )}
-          </LockModal>
-        ) : (
-          <div
-            style={portal}
-            onClick={() => this.setState({ portalDenied: true })}
+        <LockModal style={portal} handleSubmit={this.handlePortalSubmit}>
+          <TabBoxServer
+            mcSpy={this.props.mcSpy}
+            mcMechanic={this.props.mcMechanic}
+            mcMerchant={this.props.mcMerchant}
           />
-        )}
-
-        {this.state.portalDenied && (
-          <FeedbackBar
-            text={txt.portalDenied}
-            closed={() => this.setState({ portalDenied: false })}
-          />
-        )}
+        </LockModal>
       </>
     )
   }

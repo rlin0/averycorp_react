@@ -15,11 +15,11 @@ import CloseIcon from "@material-ui/icons/Close"
 import axios from "axios"
 import styles from "./styles.module.css"
 import { S3Url, getBit } from "../../helpers.js"
-import LockModal from "./LockModal"
+import LockModal from "../UI/LockModal"
 import { BlueMC } from "./MC"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
-import ZoomModal from "./ZoomModal"
+import ZoomModal from "../UI/ZoomModal"
 import { Link } from "react-router-dom"
 
 const mc = {

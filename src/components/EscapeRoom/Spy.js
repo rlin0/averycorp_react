@@ -15,11 +15,11 @@ import Forbidden from "../Forbidden"
 import { getBit, S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
 import { withRouter, Link } from "react-router-dom"
-import LockModal from "./LockModal"
+import LockModal from "../UI/LockModal"
 import MC from "./MC"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
-import ZoomModal from "./ZoomModal"
+import ZoomModal from "../UI/ZoomModal"
 import DialogueBox from "../UI/DialogueBox"
 
 const hallway1 = {
