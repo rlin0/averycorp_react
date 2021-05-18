@@ -104,18 +104,7 @@ export default class Spy extends Component {
     }
   }
 
-  handleComputerSubmit = (code) => {
-    if (code) {
-      this.setState({ computerUnlocked: true })
-      return true
-    } else {
-      return false
-    }
-  }
-
   handleHologramEnd = () => {
-    if (getBit(this.props.mcSpy, 2)) return
-    this.setState({ mcOpen: true })
     this.props.putMCSpy(2)
   }
 
@@ -137,7 +126,7 @@ export default class Spy extends Component {
           onClick={() => this.setState({ hangerModalOpen: true })}
         />
 
-        {this.state.computerUnlocked ? (
+        {this.props.equipped === "usb" ? (
           <ZoomModal className={styles.computerSpy}>
             <img
               src={`${S3Url}/er/monitor_closeup.png`}
@@ -158,12 +147,6 @@ export default class Spy extends Component {
             closed={() => this.setState({ clickComputer: false })}
           />
         )}
-        <LockModal
-          style={usb}
-          required="usb"
-          equipped={this.props.equipped}
-          handleSubmit={this.handleComputerSubmit}
-        />
 
         {this.state.hangerModalOpen && (
           <>
@@ -187,12 +170,13 @@ export default class Spy extends Component {
           handleSubmit={this.handleHologramSubmit}
         />
 
-        {this.props.hologramUnlocked && (
+        {this.props.hologramUnlocked && !getBit(this.props.mcSpy, 2) && (
           <DialogueBox
             data={txt.hologram}
             style={hologram}
             repeat={false}
             clickToggle
+            onEnd={this.handleHologramEnd}
           />
         )}
       </>

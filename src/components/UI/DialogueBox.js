@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 // see sampleText.json for examples of format
 export default function DialogueBox(props) {
   const classes = useStyles()
-  const { data, style, repeat, clickToggle = false } = props
+  const { data, style, repeat, clickToggle = false, onEnd = () => {} } = props
   const [textIdx, setTextIdx] = React.useState(-1) // index for advancing dialogue
   const [letterIdx, setLetterIdx] = React.useState(1) // index for animating text
   const [cnt, setCnt] = React.useState(0) // number of times played
@@ -98,6 +98,7 @@ export default function DialogueBox(props) {
   )
 
   const display = () => {
+    if (textIdx === data.text.length) onEnd()
     return textIdx !== -1 && textIdx < data.text.length
   }
 
