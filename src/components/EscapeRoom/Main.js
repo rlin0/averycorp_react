@@ -9,6 +9,10 @@ import {
   DialogContentText,
   DialogTitle,
   IconButton,
+  AppBar,
+  Tabs,
+  Tab,
+  Box,
 } from "@material-ui/core"
 import styles from "./styles.module.css"
 import axios from "axios"
@@ -55,18 +59,34 @@ const portal = {
   overflow: "hidden",
 }
 
-const portalLock = {
-  left: "36.67%",
-  top: "58.13%",
-  width: "2.42%",
-  height: "4.75%",
-  position: "absolute",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
+const start = Date.parse("01 Jan 2020 00:00:00 PDT")
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  )
 }
 
-const start = Date.parse("01 Jan 2020 00:00:00 PDT")
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  }
+}
 
 class Main extends Component {
   constructor(props) {
@@ -78,6 +98,9 @@ class Main extends Component {
       clickSewer: false,
       portalDenied: false,
       mcSet: false,
+      tabletVal: 0,
+      code: null,
+      correct: null,
     }
   }
 
@@ -133,11 +156,16 @@ class Main extends Component {
     )
   }
 
-  handlePortalSubmit = (code) => {
-    if (code === "0") {
+  handlePortalSubmit = () => {
+    if (this.state.code === "0") {
       this.props.putDone()
-      return true
-    } else return false
+    } else {
+      this.setState({ correct: false })
+    }
+  }
+
+  tabletHandleChange = (event, newVal) => {
+    this.setState({ tabletVal: newVal })
   }
 
   render() {
@@ -150,11 +178,6 @@ class Main extends Component {
         <Link style={hallway1} to="/er/hallway1" />
         <Link style={hallway2} to="/er/hallway2" />
 
-        {/* <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
-          <input type="text" className={styles.text1} />
-          <input type="text" className={styles.text2} />
-          <input type="text" className={styles.text3} />
-        </form> */}
         <div className={styles.clock}>
           <Clock
             value={this.state.date}
@@ -195,12 +218,50 @@ class Main extends Component {
         )}
 
         <ZoomModal className={styles.tablet}>
-          <img
-            src={S3Url + "/er/tablet_screen.png"}
-            alt="tablet screen"
-            style={{ width: "600px", height: "300px" }}
-          />
+          <div
+            style={{
+              backgroundImage: `url(${S3Url + "/er/tablet_screen.png"})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+              height: "700px",
+              width: "600px",
+            }}
+          >
+            <AppBar position="static">
+              <Tabs
+                value={this.state.tabletVal}
+                onChange={this.tabletHandleChange}
+                aria-label="simple tabs example"
+              >
+                <Tab label="Spy" {...a11yProps(0)} />
+                <Tab label="Merchant" {...a11yProps(1)} />
+                <Tab label="Mechanic" {...a11yProps(2)} />
+              </Tabs>
+            </AppBar>
+            <TabPanel value={this.state.tabletVal} index={0}>
+              <img
+                src={S3Url + "/er/spy_dossier.png"}
+                alt="spy dossier"
+                style={{ width: "500px", height: "500px" }}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabletVal} index={1}>
+              <img
+                src={S3Url + "/er/merchant_dossier.png"}
+                alt="merchant dossier"
+                style={{ width: "500px", height: "500px" }}
+              />
+            </TabPanel>
+            <TabPanel value={this.state.tabletVal} index={2}>
+              <img
+                src={S3Url + "/er/mechanic_dossier.png"}
+                alt="mechanic dossier"
+                style={{ width: "500px", height: "500px" }}
+              />
+            </TabPanel>
+          </div>
         </ZoomModal>
+
         {this.state.mcSet ? (
           <ZoomModal style={portal}>
             {this.props.mcSpy === 7 && (
@@ -224,6 +285,16 @@ class Main extends Component {
                 style={{ width: "600px", height: "300px" }}
               />
             )}
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="code"
+              onChange={({ target }) => this.setState({ code: target.value })}
+            />
+            {this.state.correct === false && <p>incorrect</p>}
+
+            <Button onClick={this.handlePortalSubmit}>Submit</Button>
           </ZoomModal>
         ) : (
           <div
@@ -238,7 +309,6 @@ class Main extends Component {
             closed={() => this.setState({ portalDenied: false })}
           />
         )}
-        <LockModal style={portalLock} handleSubmit={this.handlePortalSubmit} />
       </>
     )
   }
