@@ -15,6 +15,7 @@ import {
   Popover,
   IconButton,
 } from "@material-ui/core"
+import LockModal from "./LockModal"
 
 const mainRoom = {
   left: "0%",
@@ -89,6 +90,22 @@ class Hallway1 extends Component {
     }
   }
 
+  handleSubmitMerchant = (code) => {
+    if (code === "0" || code === "0513") {
+      this.props.putMerchantUnlocked()
+      return true
+    } else return false
+  }
+
+  lockedMerchant = () => {
+    return (
+      <LockModal
+        style={merchantRoom}
+        handleSubmit={this.handleSubmitMerchant}
+      />
+    )
+  }
+
   render() {
     if (this.props.spyroomUnlocked === null) return null
 
@@ -96,7 +113,6 @@ class Hallway1 extends Component {
       <>
         <img src={S3Url + "/er/Hallway1.png"} width="100%" />
         <Link style={mainRoom} to="/er" />
-        <Link style={merchantRoom} to="/er/merchant" />
         <div
           style={window}
           aria-owns={this.state.window ? "mouse-over-popover" : undefined}
@@ -131,6 +147,11 @@ class Hallway1 extends Component {
         <Link style={library} to="/er/library" />
 
         {this.props.spyroomUnlocked && <Link style={spyRoom} to="/er/spy" />}
+        {this.props.merchantUnlocked ? (
+          <Link style={merchantRoom} to="/er/merchant" />
+        ) : (
+          this.lockedMerchant()
+        )}
       </>
     )
   }

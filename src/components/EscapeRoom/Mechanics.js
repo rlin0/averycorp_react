@@ -96,10 +96,14 @@ export default class Mechanics extends Component {
           alt="locked closet"
           className={styles.closet}
         />
-        <LockModal
-          style={lockedCloset}
-          handleSubmit={this.handleClosetSubmit}
-        />
+        <LockModal style={lockedCloset} handleSubmit={this.handleClosetSubmit}>
+          <p>
+            If you can solve my riddle, then you can take a look at my closet.
+            Riddle: Given eight eights (8, 8, 8, 8, 8, 8, 8, 8), you can arrange
+            them to create any numbers you want and use +, -, *, or /. How can
+            you get 1000? (no spaces)
+          </p>
+        </LockModal>
       </>
     )
   }
@@ -187,7 +191,7 @@ export default class Mechanics extends Component {
   }
 
   handleClosetSubmit = (code) => {
-    if (code === "0") {
+    if (code === "0" || code === "888+88+8+8+8") {
       this.props.putClosetUnlocked()
       return true
     } else {

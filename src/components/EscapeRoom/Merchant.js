@@ -84,7 +84,7 @@ export default class Merchant extends Component {
   }
 
   handleScanningModalSubmit = (code) => {
-    if (code === "0") {
+    if (code === "0" || code === "86712") {
       this.props.putScanningUnlocked()
       return true
     } else return false

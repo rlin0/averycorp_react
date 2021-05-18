@@ -72,6 +72,7 @@ class LockModal extends Component {
           {this.state.correct !== true && (
             <form onSubmit={this.handleSubmit}>
               <DialogContent>
+                {this.props.children}
                 <TextField
                   autoFocus
                   margin="dense"

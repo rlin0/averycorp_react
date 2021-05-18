@@ -91,7 +91,7 @@ class Hallway2 extends Component {
   }
 
   handleSubmitMechanics = (code) => {
-    if (code === "0") {
+    if (code === "0" || code === "X66R19") {
       this.props.putMechanicsUnlocked()
       return true
     } else return false

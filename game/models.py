@@ -97,6 +97,7 @@ class ERState(models.Model):
     spyroom_unlocked = models.BooleanField(default=False)
     lockers_unlocked = models.BooleanField(default=False)
     mechanics_unlocked = models.BooleanField(default=False)
+    merchant_unlocked = models.BooleanField(default=False)
     electrical_box_unlocked = models.BooleanField(default=False)
     hologram_unlocked = models.BooleanField(default=False)
     scanning_unlocked = models.BooleanField(default=False)

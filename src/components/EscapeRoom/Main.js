@@ -99,8 +99,6 @@ class Main extends Component {
       portalDenied: false,
       mcSet: false,
       tabletVal: 0,
-      code: null,
-      correct: null,
     }
   }
 
@@ -127,7 +125,7 @@ class Main extends Component {
         this.props.mcMechanic === 7,
       interval: setInterval(() => {
         this.setState({ seconds: this.state.seconds + 1 })
-        if (this.state.seconds < 10) {
+        if (this.state.seconds < 114) {
           this.setState({ date: new Date(start + this.state.seconds * 1000) })
         }
       }, 1000),
@@ -139,7 +137,7 @@ class Main extends Component {
   }
 
   handleSubmitLockers = (code) => {
-    if (code === "0") {
+    if (code === "0" || code === "53110") {
       this.props.putLockersUnlocked()
       return true
     } else {
@@ -159,8 +157,9 @@ class Main extends Component {
   handlePortalSubmit = () => {
     if (this.state.code === "0") {
       this.props.putDone()
+      return true
     } else {
-      this.setState({ correct: false })
+      return false
     }
   }
 
@@ -263,7 +262,7 @@ class Main extends Component {
         </ZoomModal>
 
         {this.state.mcSet ? (
-          <ZoomModal style={portal}>
+          <LockModal style={portal} handleSubmit={this.handlePortalSubmit}>
             {this.props.mcSpy === 7 && (
               <img
                 src={S3Url + "/er/final_spy.png"}
@@ -285,17 +284,7 @@ class Main extends Component {
                 style={{ width: "600px", height: "300px" }}
               />
             )}
-            <TextField
-              autoFocus
-              margin="dense"
-              id="name"
-              label="code"
-              onChange={({ target }) => this.setState({ code: target.value })}
-            />
-            {this.state.correct === false && <p>incorrect</p>}
-
-            <Button onClick={this.handlePortalSubmit}>Submit</Button>
-          </ZoomModal>
+          </LockModal>
         ) : (
           <div
             style={portal}
