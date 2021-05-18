@@ -20,6 +20,7 @@ import MC from "./MC"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
 import ZoomModal from "./ZoomModal"
+import DialogueBox from "../UI/DialogueBox"
 
 const hallway1 = {
   left: "57.5%",
@@ -63,6 +64,15 @@ const inkwell = {
   display: "block",
   zIndex: "7",
   overflow: "hidden",
+}
+
+const hologram = {
+  position: "absolute",
+  left: "62.33%",
+  top: "43.13%",
+  width: "12.33%",
+  height: "32.63%",
+  zIndex: "5",
 }
 
 export default class Spy extends Component {
@@ -171,51 +181,18 @@ export default class Spy extends Component {
             )}
           </>
         )}
-        {/* <Dialog
-          open={this.state.hangerModalOpen}
-          onClose={this.handleHangerModalClose}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogTitle id="form-dialog-title">
-            Tool Case
-            <IconButton
-              aria-label="close"
-              onClick={this.handleHangerModalClose}
-            >
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-          <DialogContent>
-            <img src={`${S3Url}/er/SpyTool.png`} />
-            {!this.props.inkwell && (
-              <img
-                src={`${S3Url}/er/inkwell.png`}
-                className={styles.inkwell}
-                alt="inkwell"
-                onClick={() => {
-                  return this.props.pickUp("inkwell")
-                }}
-              />
-            )}
-          </DialogContent>
-        </Dialog> */}
 
         <LockModal
           className={styles.hologramBottom}
           handleSubmit={this.handleHologramSubmit}
         />
+
         {this.props.hologramUnlocked && (
-          <video
-            width="100px"
-            height="300px"
-            className={styles.hologram}
-            autoPlay
-            type="video/mp4"
-            src="/lemon.mp4"
-            onClick={(e) => {
-              e.target.play()
-            }}
-            onEnded={this.handleHologramEnd}
+          <DialogueBox
+            data={txt.hologram}
+            style={hologram}
+            repeat={false}
+            clickToggle
           />
         )}
       </>

@@ -266,15 +266,6 @@
   z-index: 5;
 }
 
-.hologram {
-  position: absolute;
-  left: 63.36%;
-  top: 5.83%;
-  width: 15.52%;
-  height: 43.04%;
-  z-index: 5;
-}
-
 .hologramBottom {
   position: absolute;
   left: 57.17%;
