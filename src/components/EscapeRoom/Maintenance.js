@@ -1,12 +1,9 @@
 import React, { Component } from "react"
-import Typography from "@material-ui/core/Typography"
 import styles from "./styles.module.css"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
-import ModalBox from "../UI/ModalBox"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
-import { TocTwoTone } from "@material-ui/icons"
 
 const hallway2 = {
   left: "40.83%",

@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import Typography from "@material-ui/core/Typography"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import {
   Puzzle0_1,

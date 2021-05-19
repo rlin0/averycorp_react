@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import ReactDOM from "react-dom"
-import Draggable, { DraggableCore } from "react-draggable" // Both at the same time
+import Draggable from "react-draggable"
 import { S3Url } from "../../helpers.js"
 
 export default class Jigsaw extends Component {

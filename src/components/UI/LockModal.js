@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import {
-  Grid,
   Button,
-  Typography,
   TextField,
   Dialog,
   DialogActions,
@@ -12,8 +10,7 @@ import {
   IconButton,
 } from "@material-ui/core"
 import CloseIcon from "@material-ui/icons/Close"
-import { withRouter, Link } from "react-router-dom"
-import { Redirect } from "react-router-dom"
+import { withRouter } from "react-router-dom"
 
 class LockModal extends Component {
   constructor(props) {

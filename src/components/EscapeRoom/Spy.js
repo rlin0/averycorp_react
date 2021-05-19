@@ -1,22 +1,9 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-} from "@material-ui/core"
-import CloseIcon from "@material-ui/icons/Close"
 import Forbidden from "../Forbidden"
 import { getBit, S3Url } from "../../helpers.js"
 import styles from "./styles.module.css"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import LockModal from "../UI/LockModal"
-import MC from "./MC"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
 import ZoomModal from "../UI/ZoomModal"
@@ -27,17 +14,6 @@ const hallway1 = {
   top: "91.13%",
   width: "19.25%",
   height: "8.75%",
-  position: "absolute",
-  display: "block",
-  zIndex: "5",
-  overflow: "hidden",
-}
-
-const usb = {
-  left: "26%",
-  top: "61%",
-  width: "5.42%",
-  height: "10.25%",
   position: "absolute",
   display: "block",
   zIndex: "5",

@@ -1,17 +1,7 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@material-ui/core"
 import styles from "./styles.module.css"
 import Forbidden from "../Forbidden"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import ZoomModal from "../UI/ZoomModal"
 import txt from "../../text/er.json"

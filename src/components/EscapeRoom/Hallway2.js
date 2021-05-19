@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
 import Window from "../UI/Window"

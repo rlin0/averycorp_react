@@ -1,20 +1,5 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-  AppBar,
-  Tabs,
-  Tab,
-  Box,
-} from "@material-ui/core"
-import "react-clock/dist/Clock.css"
+import { Typography, AppBar, Tabs, Tab, Box } from "@material-ui/core"
 import { S3Url } from "../../helpers"
 
 function TabPanel(props) {

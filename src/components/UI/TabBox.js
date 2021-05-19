@@ -1,21 +1,5 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-  AppBar,
-  Tabs,
-  Tab,
-  Box,
-} from "@material-ui/core"
-import axios from "axios"
-import Clock from "react-clock"
+import { Typography, AppBar, Tabs, Tab, Box } from "@material-ui/core"
 import "react-clock/dist/Clock.css"
 
 function TabPanel(props) {

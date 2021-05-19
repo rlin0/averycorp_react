@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import GridList from "@material-ui/core/GridList"
 import GridListTile from "@material-ui/core/GridListTile"
-import { CssBaseline, Button } from "@material-ui/core"
+import { Button } from "@material-ui/core"
 import { S3Url } from "../../helpers.js"
-import { withRouter, Link } from "react-router-dom"
-import ZoomModal from "../UI/ZoomModal.js"
+import { Link } from "react-router-dom"
 
 const maintenance = {
   left: "72.75%",

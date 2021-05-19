@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
-import { Link } from "react-router-dom"
 import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
 import { S3Url } from "../helpers"

@@ -1,8 +1,4 @@
 import React, { Component } from "react"
-import { Button, Typography, TextField } from "@material-ui/core"
-import axios from "axios"
-import { Link } from "react-router-dom"
-import Puzzle from "./Puzzle"
 import Crossword from "@jaredreisinger/react-crossword"
 import { crosswordPlayer1, crosswordPlayer2 } from "../text/crossword"
 import Act from "./Act"

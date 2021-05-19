@@ -3,8 +3,6 @@ import {
   CssBaseline,
   Grid,
   Button,
-  Typography,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
@@ -14,8 +12,8 @@ import {
 import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import styles from "./styles.module.css"
-import { withRouter, Link } from "react-router-dom"
-import { S3Url, setBit, getBit, countSetBits } from "../../helpers"
+import { withRouter } from "react-router-dom"
+import { S3Url, setBit, countSetBits } from "../../helpers"
 import MC from "./MC"
 
 const inventoryStyle = {

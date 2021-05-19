@@ -1,24 +1,7 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  IconButton,
-  AppBar,
-  Tabs,
-  Tab,
-  Box,
-} from "@material-ui/core"
 import styles from "./styles.module.css"
-import axios from "axios"
 import Clock from "react-clock"
 import "react-clock/dist/Clock.css"
-import CloseIcon from "@material-ui/icons/Close"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
@@ -209,6 +192,7 @@ class Main extends Component {
             <div
               onClick={this.props.putSpyroomUnlocked}
               className={styles.sewer}
+              style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png), auto` }}
             />
           )
         )}

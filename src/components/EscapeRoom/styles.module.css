@@ -11,45 +11,20 @@
 
 .vase {
   left: 26.08%;
-  top: 53%;
-  width: 4.42%;
-  height: 9.13%;
+  top: 52%;
+  width: 3.5%;
+  height: 10.13%;
   position: absolute;
   display: block;
   z-index: 5;
   overflow: hidden;
 }
 
-.text1 {
-  background-color: red;
-  width: 5.6%;
-  height: 1.7%;
-  left: 43.9%;
-  top: 32.2%;
-  position: absolute;
-  display: block;
-  z-index: 5;
-  overflow: hidden;
-}
-
-.text2 {
-  background-color: green;
-  width: 5.7%;
-  height: 1.5%;
-  left: 43.9%;
-  top: 36%;
-  position: absolute;
-  display: block;
-  z-index: 5;
-  overflow: hidden;
-}
-
-.text3 {
-  background-color: blue;
-  width: 5.7%;
-  height: 1.5%;
-  left: 43.9%;
-  top: 38.9%;
+.vaseBroken {
+  left: 26.08%;
+  top: 58%;
+  width: 9.42%;
+  height: 4.13%;
   position: absolute;
   display: block;
   z-index: 5;
@@ -94,7 +69,6 @@
   top: 90.5%;
   width: 10.25%;
   height: 6.63%;
-  cursor: default;
   position: absolute;
   display: block;
   z-index: 5;

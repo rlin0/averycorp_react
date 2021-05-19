@@ -1,10 +1,9 @@
 import React, { Component } from "react"
 import axios from "axios"
-import { Typography, Popover, SvgIcon } from "@material-ui/core"
+import { Typography, Popover } from "@material-ui/core"
 import { withStyles } from "@material-ui/styles"
 import { Link } from "react-router-dom"
 import { S3Url } from "../helpers.js"
-import InputModal from "./UI/InputModal"
 
 const pin1 = {
   width: "5%",

@@ -1,23 +1,7 @@
 import React, { Component } from "react"
-import {
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-} from "@material-ui/core"
-import axios from "axios"
-import styles from "./styles.module.css"
-import Jigsaw from "./Jigsaw"
 import { S3Url, getBit } from "../../helpers.js"
-import { withRouter, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Forbidden from "../Forbidden"
-import LockModal from "../UI/LockModal"
-import ZoomModal from "../UI/ZoomModal"
-import { RedMC } from "./MC"
 import DialogueBox from "../UI/DialogueBox"
 import text from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"

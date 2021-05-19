@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Button, Typography, TextField } from "@material-ui/core"
 import axios from "axios"
 import { S3Url } from "../helpers.js"
 import "./Login.css"
