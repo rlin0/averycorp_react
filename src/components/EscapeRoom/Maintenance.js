@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
+import ZoomModal from "../UI/ZoomModal"
 
 const hallway2 = {
   left: "40.83%",
@@ -21,6 +22,17 @@ const statue = {
   top: "42.25%",
   width: "7.33%",
   height: "31.13%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const note = {
+  left: "25%",
+  top: "72%",
+  width: "2.08%",
+  height: "2.5%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -97,6 +109,13 @@ export default class Maintenance extends Component {
           />
         )}
         {this.state.candleLit ? this.litCandle() : this.candle()}
+        <ZoomModal style={note}>
+          <img
+            src={`${S3Url}/er/meme_note.png`}
+            alt="XD"
+            style={{ width: "500px", height: "300px" }}
+          />
+        </ZoomModal>
       </>
     )
   }

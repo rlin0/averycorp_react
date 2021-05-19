@@ -82,10 +82,22 @@ const computer = {
   overflow: "hidden",
 }
 
+const monitor = {
+  position: "absolute",
+  left: "84.33%",
+  top: "50.63%",
+  width: "7.17%",
+  height: "8%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Library extends Component {
   constructor(props) {
     super(props)
-    this.state = { computerTxt: false, computerTxtUsb: false }
+    this.state = { computerTxt: false, computerUnlocked: false }
   }
 
   handleBookClick = () => {
@@ -94,7 +106,7 @@ export default class Library extends Component {
   }
 
   handleComputerClick = () => {
-    if (this.props.equipped === "usb") this.setState({ computerTxtUsb: true })
+    if (this.props.equipped === "usb") this.setState({ computerUnlocked: true })
     else this.setState({ computerTxt: true })
   }
 
@@ -143,11 +155,14 @@ export default class Library extends Component {
         </ZoomModal>
 
         <div style={computer} onClick={this.handleComputerClick} />
-        {this.state.computerTxtUsb && (
-          <FeedbackBar
-            text={txt.computerLibraryUsb}
-            closed={() => this.setState({ computerTxtUsb: false })}
-          />
+        {this.state.computerUnlocked && (
+          <ZoomModal style={monitor}>
+            <img
+              src={S3Url + "/er/monitor_library_closeup.png"}
+              alt="map"
+              style={{ width: "800px", height: "500px" }}
+            />
+          </ZoomModal>
         )}
         {this.state.computerTxt && (
           <FeedbackBar

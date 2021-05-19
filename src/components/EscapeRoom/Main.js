@@ -55,7 +55,7 @@ const monitor = {
   overflow: "hidden",
 }
 
-const start = Date.parse("01 Jan 2020 00:00:00 PDT")
+const start = Date.parse("01 Jan 2020 00:01:43 PDT")
 
 class Main extends Component {
   constructor(props) {
@@ -94,7 +94,7 @@ class Main extends Component {
         this.props.mcMechanic === 7,
       interval: setInterval(() => {
         this.setState({ seconds: this.state.seconds + 1 })
-        if (this.state.seconds < 114) {
+        if (this.state.seconds < 11) {
           this.setState({ date: new Date(start + this.state.seconds * 1000) })
         }
       }, 1000),
@@ -124,7 +124,7 @@ class Main extends Component {
   }
 
   handlePortalSubmit = () => {
-    if (this.state.code === "0") {
+    if (this.state.code === "0" || this.state.code === "all") {
       this.props.putDone()
       return true
     } else {
@@ -162,7 +162,7 @@ class Main extends Component {
           />
         )}
         <div className={styles.clock}>
-          <Clock value={this.state.date} size={100} />
+          <Clock value={this.state.date} size={100} hourHandLength={0} />
         </div>
         {this.props.lockersUnlocked ? (
           <Link to="/er/lockers" className={styles.lockers} />

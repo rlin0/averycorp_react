@@ -4,6 +4,8 @@ import { S3Url } from "../../helpers.js"
 import { withStyles } from "@material-ui/styles"
 import LockModal from "../UI/LockModal"
 import Window from "../UI/Window"
+import FeedbackBar from "../UI/FeedbackBar"
+import txt from "../../text/er.json"
 
 const mainRoom = {
   left: "0%",
@@ -85,7 +87,7 @@ class Hallway1 extends Component {
     super(props)
     this.state = {
       window: false,
-      anchorEl: null,
+      spyRoomDenied: false,
     }
   }
 
@@ -116,7 +118,22 @@ class Hallway1 extends Component {
         <Link style={library} to="/er/library" />
         <Window style={windowSpy} link={S3Url + "/er/spy_window.png"} />
 
-        {this.props.spyroomUnlocked && <Link style={spyRoom} to="/er/spy" />}
+        {this.props.spyroomUnlocked ? (
+          <Link style={spyRoom} to="/er/spy" />
+        ) : (
+          <>
+            <div
+              style={spyRoom}
+              onClick={() => this.setState({ spyRoomDenied: true })}
+            />
+            {this.state.spyRoomDenied && (
+              <FeedbackBar
+                text={txt.spyroom}
+                closed={() => this.setState({ spyRoomDenied: false })}
+              />
+            )}
+          </>
+        )}
         {this.props.merchantUnlocked ? (
           <Link style={merchantRoom} to="/er/merchant" />
         ) : (

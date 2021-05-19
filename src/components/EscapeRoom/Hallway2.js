@@ -37,7 +37,7 @@ const mechanicsRoom = {
   overflow: "hidden",
 }
 
-const mcsuRoom = {
+const memeRoom = {
   left: "51.92%",
   top: "57%",
   width: "2.42%",
@@ -53,6 +53,17 @@ const window = {
   top: "50.25%",
   width: "17.75%",
   height: "14%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const memeWindow = {
+  left: "67.75%",
+  top: "49.88%",
+  width: "17.75%",
+  height: "14.38%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -90,6 +101,8 @@ export default class Hallway2 extends Component {
         <Link style={maintenanceRoom} to="/er/maintenance" />
 
         <Window style={window} link={S3Url + "/er/window_mechanic.png"} />
+        <Window style={memeWindow} link={S3Url + "/er/memeroom_window.png"} />
+
         {this.props.mechanicsUnlocked ? (
           <Link style={mechanicsRoom} to="/er/mechanics" />
         ) : (
