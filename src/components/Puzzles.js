@@ -6,7 +6,7 @@ import Act from "./Act"
 export class Puzzle3 extends Component {
   render() {
     var crossword = null
-    if (this.props.role === 0) {
+    if (this.props.role === "0") {
       crossword = crosswordPlayer1
     } else {
       crossword = crosswordPlayer2
