@@ -122,6 +122,10 @@ export default class Flow extends Component {
             </Button>
 
             <Button onClick={this.reset}>Reset</Button>
+            <p>
+              Pair all colors, and cover the entire board to solve each puzzle.
+              <br /> But watch out, pipes will break if they cross or overlap!
+            </p>
           </div>
         </div>
       </>
