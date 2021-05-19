@@ -66,6 +66,17 @@ const cities = {
   overflow: "hidden",
 }
 
+const paper = {
+  left: "26.33%",
+  top: "74.13%",
+  width: "6.08%",
+  height: "5%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 const pics = [
   "bigben",
   "hagia",
@@ -98,7 +109,14 @@ export default class Merchant extends Component {
     return (
       <>
         <img src={`${S3Url}/er/Merchant.png`} width="100%" />
-
+        <ZoomModal style={paper}>
+          <img
+            src={`${S3Url}/er/merchant_list.png`}
+            alt="merchant list"
+            width="800px"
+            height="auto"
+          />
+        </ZoomModal>
         {!getBit(this.props.mcMerchant, 1) && (
           <img
             src={`${S3Url}/er/mc_merchant.png`}

@@ -100,27 +100,12 @@ export default class Mechanics extends Component {
           <p>
             If you can solve my riddle, then you can take a look at my closet.
             Riddle: Given eight eights (8, 8, 8, 8, 8, 8, 8, 8), you can arrange
-            them to create any numbers you want and use +, -, *, or /. How can
-            you get 1000? (no spaces)
+            them to create any numbers you want and use +. How can you get 1000?
+            (no spaces, order numbers from greatest to least)
           </p>
         </LockModal>
       </>
     )
-  }
-
-  unscrewBolt = (e) => {
-    if (getBit(this.props.mcMechanic, 1)) return
-    if (this.props.equipped !== "wrench") return
-    this.setState({ [e.target.id]: true }, () => {
-      if (
-        this.state.bolt1 &&
-        this.state.bolt2 &&
-        this.state.bolt3 &&
-        this.state.bolt4
-      ) {
-        this.props.putMCMechanic(1)
-      }
-    })
   }
 
   unlockedCloset = () => {

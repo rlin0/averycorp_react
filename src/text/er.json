@@ -18,6 +18,13 @@
       "Place it a top the box, and a hidden place you will find."
     ]
   },
+  "boxhint": {
+    "text": [
+      "You have one more piece to collect.",
+      "Take the tool in your hand and break the vase. There is more than meets the eye here."
+    ]
+  },
+  "leaveMain": "I should try to open the lockers first",
   "electricalBox": "This seems to be an ordinary electrical box at the moment.",
   "motorcycle": "My friend from Germany sent this to me as a gift.",
   "sewerDenied": "This drainage system seems to lead somewhere. However it seems to be locked at the moment",

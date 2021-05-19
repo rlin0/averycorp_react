@@ -222,7 +222,16 @@ export default class MechanicsCloset extends Component {
         <Link to="/er/mechanics" style={back1} />
         <Link to="/er/mechanics" style={back2} />
         {this.state.box1Open && (
-          <img src={`${S3Url}/er/box_open.png`} alt="box1 open" style={box1} />
+          <>
+            <img
+              src={`${S3Url}/er/box_open.png`}
+              alt="box1 open"
+              style={box1}
+            />
+            {!getBit(this.props.mcMechanic, 2) && (
+              <DialogueBox data={text.boxhint} repeat={false} />
+            )}
+          </>
         )}
         {this.state.box2Open && (
           <img src={`${S3Url}/er/box_open.png`} alt="box2 open" style={box2} />

@@ -44,6 +44,13 @@ export default class Flow extends Component {
     return true
   }
 
+  reset = () => {
+    this.props.tileInitial.forEach((value, key) => {
+      if (value === null) {
+        this.setState({ [key]: null })
+      }
+    })
+  }
   render() {
     return (
       <>
@@ -63,8 +70,6 @@ export default class Flow extends Component {
               position: "absolute",
               top: "25%",
               left: "15%",
-              width: "50%",
-              height: "50%",
             }}
           >
             {this.checkAnswer() && (
@@ -73,7 +78,12 @@ export default class Flow extends Component {
                 <Button onClick={this.props.solved}>Next</Button>
               </>
             )}
-            <GridList cellHeight={40} cols={this.props.dim}>
+            <GridList
+              cellHeight={40}
+              spacing={0}
+              cols={this.props.dim}
+              style={{ width: "40%" }}
+            >
               {Array.from(this.props.tileInitial.keys()).map((key) => {
                 let value = this.props.tileInitial.get(key)
                 if (value !== null) {
@@ -85,7 +95,7 @@ export default class Flow extends Component {
                         this.setState({ color: value })
                       }}
                     >
-                      <Tile color={value} char="o" />
+                      <Tile color={value} char="O" />
                     </GridListTile>
                   )
                 } else {
@@ -111,6 +121,8 @@ export default class Flow extends Component {
             <Button onClick={() => this.setState({ color: null })}>
               Erase
             </Button>
+
+            <Button onClick={this.reset}>Reset</Button>
           </div>
         </div>
       </>
@@ -130,8 +142,8 @@ class Tile extends Component {
           variant="outlined"
           style={{
             backgroundColor: this.props.color,
-            width: "30px",
-            height: "30px",
+            width: "10px",
+            height: "40px",
           }}
         >
           {this.props.char}

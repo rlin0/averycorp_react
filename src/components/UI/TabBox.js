@@ -66,9 +66,13 @@ export default class TabBox extends Component {
             onChange={this.tabletHandleChange}
             aria-label="simple tabs example"
           >
-            <Tab label="Spy" {...a11yProps(0)} />
-            <Tab label="Merchant" {...a11yProps(1)} />
-            <Tab label="Mechanic" {...a11yProps(2)} />
+            <Tab style={{ color: "red" }} label="Spy" {...a11yProps(0)} />
+            <Tab style={{ color: "blue" }} label="Merchant" {...a11yProps(1)} />
+            <Tab
+              style={{ color: "yellow" }}
+              label="Mechanic"
+              {...a11yProps(2)}
+            />
           </Tabs>
         </AppBar>
         <TabPanel value={this.state.tabletVal} index={0}>

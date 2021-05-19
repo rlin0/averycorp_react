@@ -2,20 +2,8 @@ import React, { Component } from "react"
 import { withRouter, Link } from "react-router-dom"
 import { S3Url } from "../../helpers.js"
 import { withStyles } from "@material-ui/styles"
-import {
-  Grid,
-  Button,
-  Typography,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  DialogContentText,
-  Popover,
-  IconButton,
-} from "@material-ui/core"
 import LockModal from "../UI/LockModal"
+import Window from "../UI/Window"
 
 const mainRoom = {
   left: "0%",
@@ -72,6 +60,17 @@ const window = {
   overflow: "hidden",
 }
 
+const windowSpy = {
+  left: "14.5%",
+  top: "50.25%",
+  width: "17.75%",
+  height: "14.12%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 const useStyles = (theme) => ({
   popover: {
     pointerEvents: "none",
@@ -113,38 +112,9 @@ class Hallway1 extends Component {
       <>
         <img src={S3Url + "/er/Hallway1.png"} width="100%" />
         <Link style={mainRoom} to="/er" />
-        <div
-          style={window}
-          aria-owns={this.state.window ? "mouse-over-popover" : undefined}
-          aria-haspopup="true"
-          onMouseEnter={(e) =>
-            this.setState({ window: true, anchorEl: e.currentTarget })
-          }
-          onMouseLeave={(e) => this.setState({ window: false, anchorEl: null })}
-        />
-        <Popover
-          id="mouse-over-popover"
-          className={this.props.classes.popover}
-          classes={{
-            paper: this.props.classes.paper,
-          }}
-          open={this.state.window}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
-          transformOrigin={{
-            vertical: "top",
-            horizontal: "center",
-          }}
-          onClose={this.handlePopoverClose}
-          disableRestoreFocus
-        >
-          <img src={S3Url + "/er/window_merchant.png"} />
-        </Popover>
-
+        <Window style={window} link={S3Url + "/er/window_merchant.png"} />
         <Link style={library} to="/er/library" />
+        <Window style={windowSpy} link={S3Url + "/er/spy_window.png"} />
 
         {this.props.spyroomUnlocked && <Link style={spyRoom} to="/er/spy" />}
         {this.props.merchantUnlocked ? (

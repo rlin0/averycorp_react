@@ -63,7 +63,7 @@ export default class TabBoxServer extends Component {
         <>
           <h3>
             You activate the memory unit .... What? An image is being projected
-            into your mind! So this is a moment in the
+            into your mind! So this is a moment in the{" "}
             {labels[this.state.tabletVal]}’s life … What does it mean? Maybe
             it’s related to the memories of the other two...
           </h3>
