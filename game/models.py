@@ -101,6 +101,7 @@ class ERState(models.Model):
     electrical_box_unlocked = models.BooleanField(default=False)
     hologram_unlocked = models.BooleanField(default=False)
     scanning_unlocked = models.BooleanField(default=False)
+    meme_unlocked = models.BooleanField(default=False)
     merchant_mc = models.IntegerField(default=0)
     spy_mc = models.IntegerField(default=0)
     mechanic_mc = models.IntegerField(default=0)

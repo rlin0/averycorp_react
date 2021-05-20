@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import styles from "./styles.module.css"
 import { Link } from "react-router-dom"
 import { S3Url, getBit } from "../../helpers.js"
-import FeedbackBar from "../UI/FeedbackBar"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 import txt from "../../text/er.json"
 import ZoomModal from "../UI/ZoomModal"
 
@@ -44,7 +44,6 @@ export default class Maintenance extends Component {
     super(props)
     this.state = {
       candleLit: false,
-      noInkwellTxt: false,
     }
   }
 
@@ -73,41 +72,31 @@ export default class Maintenance extends Component {
     if (this.props.equipped === "matches") this.setState({ candleLit: true })
   }
 
-  handleStatueClick = () => {
-    if (getBit(this.props.mcMerchant, 3)) return
-    if (!this.props.scanningUnlocked) return
-    this.props.putMCMerchant(3)
-  }
-
   render() {
     return (
       <>
         <img src={`${S3Url}/er/Maintenance.png`} width="100%" />
         <Link style={hallway2} to="/er/hallway2" />
-        <div style={statue} onClick={this.handleStatueClick} />
-
-        {!getBit(this.props.mcSpy, 3) && this.props.equipped !== "inkwell" && (
-          <div
-            className={styles.electrical}
-            onClick={() => this.setState({ noInkwellTxt: true })}
-          />
+        {!getBit(this.props.mcMerchant, 3) && this.props.scanningUnlocked ? (
+          <div style={statue} onClick={() => this.props.putMCMerchant(3)} />
+        ) : (
+          <FeedbackBarToggle text={txt.statueYellow} style={statue} />
         )}
 
-        {!getBit(this.props.mcSpy, 3) && this.props.equipped === "inkwell" && (
+        {!getBit(this.props.mcSpy, 3) && this.props.equipped === "inkwell" ? (
           <Link
             to="/er/electrical"
             className={styles.electrical}
             style={{ cursor: `url(${S3Url}/er/inkwell_cursor.png), auto` }}
             onClick={this.props.putElectricalBoxUnlocked}
           />
-        )}
-
-        {this.state.noInkwellTxt && (
-          <FeedbackBar
+        ) : (
+          <FeedbackBarToggle
             text={txt.electricalBox}
-            closed={() => this.setState({ noInkwellTxt: false })}
+            className={styles.electrical}
           />
         )}
+
         {this.state.candleLit ? this.litCandle() : this.candle()}
         <ZoomModal style={note}>
           <img

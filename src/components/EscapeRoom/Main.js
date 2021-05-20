@@ -10,6 +10,7 @@ import txt from "../../text/er.json"
 import ZoomModal from "../UI/ZoomModal"
 import TabBox from "../UI/TabBox"
 import TabBoxServer from "../UI/TabBoxServer"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 
 const hallway1 = {
   left: "82.33%",
@@ -55,6 +56,17 @@ const monitor = {
   overflow: "hidden",
 }
 
+const trash = {
+  left: "53.17%",
+  top: "87.38%",
+  width: "7.08%",
+  height: "12.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 const start = Date.parse("01 Jan 2020 00:01:43 PDT")
 
 class Main extends Component {
@@ -67,7 +79,6 @@ class Main extends Component {
       clickSewer: false,
       portalDenied: false,
       mcSet: false,
-      leave: false,
     }
   }
 
@@ -142,25 +153,14 @@ class Main extends Component {
         {this.props.lockersUnlocked ? (
           <Link style={hallway1} to="/er/hallway1" />
         ) : (
-          <div
-            style={hallway1}
-            onClick={() => this.setState({ leave: true })}
-          />
+          <FeedbackBarToggle style={hallway1} text={txt.leaveMain} />
         )}
         {this.props.lockersUnlocked ? (
           <Link style={hallway2} to="/er/hallway2" />
         ) : (
-          <div
-            style={hallway2}
-            onClick={() => this.setState({ leave: true })}
-          />
+          <FeedbackBarToggle style={hallway2} text={txt.leaveMain} />
         )}
-        {this.state.leave && (
-          <FeedbackBar
-            text={txt.leaveMain}
-            closed={() => this.setState({ leave: false })}
-          />
-        )}
+        <FeedbackBarToggle style={trash} text={txt.trash} />
         <div className={styles.clock}>
           <Clock value={this.state.date} size={100} hourHandLength={0} />
         </div>
@@ -170,31 +170,16 @@ class Main extends Component {
           this.lockedLockers()
         )}
 
-        <div
-          className={styles.sewer}
-          onClick={() => {
-            if (this.props.equipped !== "paperclip") {
-              this.setState({ clickSewer: true })
-            }
-          }}
-        />
-        {this.state.clickSewer && (
-          <FeedbackBar
-            text={txt.sewerDenied}
-            closed={() => this.setState({ clickSewer: false })}
-          />
-        )}
-
         {this.props.spyroomUnlocked ? (
           <Link to="/er/spy" className={styles.sewer} />
+        ) : this.props.equipped === "paperclip" ? (
+          <div
+            onClick={this.props.putSpyroomUnlocked}
+            className={styles.sewer}
+            style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png), auto` }}
+          />
         ) : (
-          this.props.equipped === "paperclip" && (
-            <div
-              onClick={this.props.putSpyroomUnlocked}
-              className={styles.sewer}
-              style={{ cursor: `url(${S3Url}/er/paperclip_cursor.png), auto` }}
-            />
-          )
+          <FeedbackBarToggle text={txt.sewerDenied} className={styles.sewer} />
         )}
         <ZoomModal style={monitor}>
           <p>

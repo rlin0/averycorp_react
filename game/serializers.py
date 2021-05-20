@@ -34,5 +34,5 @@ class ERStateSerializer(serializers.ModelSerializer):
         fields = ('user', 'closet_unlocked', 'spyroom_unlocked',
                   'lockers_unlocked', 'mechanics_unlocked',
                   'merchant_unlocked', 'electrical_box_unlocked',
-                  'hologram_unlocked', 'scanning_unlocked', 'merchant_mc',
-                  'spy_mc', 'mechanic_mc')
+                  'hologram_unlocked', 'scanning_unlocked', 'meme_unlocked',
+                  'merchant_mc', 'spy_mc', 'mechanic_mc')

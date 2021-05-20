@@ -83,6 +83,13 @@ export default class Hallway2 extends Component {
     } else return false
   }
 
+  handleSubmitMeme = (code) => {
+    if (code === masterPW || code === "42069") {
+      this.props.putMemeUnlocked()
+      return true
+    } else return false
+  }
+
   lockedMechanics = () => {
     return (
       <LockModal
@@ -107,6 +114,12 @@ export default class Hallway2 extends Component {
           <Link style={mechanicsRoom} to="/er/mechanics" />
         ) : (
           this.lockedMechanics()
+        )}
+
+        {this.props.memeUnlocked ? (
+          <Link style={memeRoom} to="/er/meme" />
+        ) : (
+          <LockModal style={memeRoom} handleSubmit={this.handleSubmitMeme} />
         )}
       </>
     )

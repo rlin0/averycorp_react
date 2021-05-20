@@ -48,6 +48,7 @@ class ER extends Component {
       scanningUnlocked: null,
       electricalBoxUnlocked: null,
       merchantUnlocked: null,
+      memeUnlocked: null,
 
       mcMechanic: 0,
       mcSpy: 0,
@@ -101,6 +102,7 @@ class ER extends Component {
           closetUnlocked: res.data.closet_unlocked,
           scanningUnlocked: res.data.scanning_unlocked,
           merchantUnlocked: res.data.merchant_unlocked,
+          memeUnlocked: res.data.meme_unlocked,
           mcMechanic: res.data.mechanic_mc,
           mcSpy: res.data.spy_mc,
           mcMerchant: res.data.merchant_mc,
@@ -244,6 +246,19 @@ class ER extends Component {
       })
       .then((res) => {
         this.setState({ hologramUnlocked: true })
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+
+  putMemeUnlocked = () => {
+    axios
+      .patch(`/api/erstate/${this.props.userId}/`, {
+        meme_unlocked: true,
+      })
+      .then((res) => {
+        this.setState({ memeUnlocked: true })
       })
       .catch((err) => {
         console.error(err)
@@ -461,6 +476,7 @@ class ER extends Component {
             putElectricalBoxUnlocked={this.putElectricalBoxUnlocked}
             putHologramUnlocked={this.putHologramUnlocked}
             putScanningUnlocked={this.putScanningUnlocked}
+            putMemeUnlocked={this.putMemeUnlocked}
             putMCSpy={this.putMCSpy}
             putMCMechanic={this.putMCMechanic}
             putMCMerchant={this.putMCMerchant}

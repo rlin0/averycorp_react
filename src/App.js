@@ -21,6 +21,7 @@ import Hallway1 from "./components/EscapeRoom/Hallway1"
 import Hallway2 from "./components/EscapeRoom/Hallway2"
 import Maintenance from "./components/EscapeRoom/Maintenance"
 import ElectricalBox from "./components/EscapeRoom/ElectricalBox"
+import Meme from "./components/EscapeRoom/Meme"
 import Merchant from "./components/EscapeRoom/Merchant"
 import Act from "./components/Act"
 import { ThemeProvider } from "@material-ui/core/styles"
@@ -294,6 +295,13 @@ export default class App extends Component {
                       <Route exact path="/er/maintenance">
                         <ER
                           comp={Maintenance}
+                          userId={this.state.userId}
+                          teamId={this.state.teamId}
+                        />
+                      </Route>
+                      <Route exact path="/er/meme">
+                        <ER
+                          comp={Meme}
                           userId={this.state.userId}
                           teamId={this.state.teamId}
                         />

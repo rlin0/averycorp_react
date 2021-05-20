@@ -5,7 +5,7 @@ import styles from "./styles.module.css"
 import { Link } from "react-router-dom"
 import LockModal from "../UI/LockModal"
 import txt from "../../text/er.json"
-import FeedbackBar from "../UI/FeedbackBar"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 import ZoomModal from "../UI/ZoomModal"
 import DialogueBox from "../UI/DialogueBox"
 
@@ -62,13 +62,45 @@ const computer = {
   overflow: "hidden",
 }
 
+const painting1 = {
+  left: "4.08%",
+  top: "42.25%",
+  width: "8.25%",
+  height: "14%",
+  position: "absolute",
+  display: "block",
+  zIndex: "7",
+  overflow: "hidden",
+}
+
+const painting2 = {
+  left: "28.58%",
+  top: "39.25%",
+  width: "6.33%",
+  height: "11.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "7",
+  overflow: "hidden",
+}
+
+const painting3 = {
+  left: "37.67%",
+  top: "44.25%",
+  width: "4.67%",
+  height: "10.25%",
+  position: "absolute",
+  display: "block",
+  zIndex: "7",
+  overflow: "hidden",
+}
+
 export default class Spy extends Component {
   constructor(props) {
     super(props)
     this.state = {
       hangerModalOpen: false,
       submitMsg: null,
-      clickComputer: false,
     }
   }
 
@@ -128,16 +160,9 @@ export default class Spy extends Component {
             />
           </ZoomModal>
         ) : (
-          <div
-            className={styles.computerSpy}
-            onClick={() => this.setState({ clickComputer: true })}
-          />
-        )}
-
-        {this.state.clickComputer && (
-          <FeedbackBar
+          <FeedbackBarToggle
             text={txt.computerSpy}
-            closed={() => this.setState({ clickComputer: false })}
+            className={styles.computerSpy}
           />
         )}
 
@@ -157,20 +182,26 @@ export default class Spy extends Component {
             )}
           </>
         )}
-
+        <FeedbackBarToggle text={txt.painting} style={painting1} />
+        <FeedbackBarToggle text={txt.painting} style={painting2} />
+        <FeedbackBarToggle text={txt.painting} style={painting3} />
         <LockModal
           className={styles.hologramBottom}
           handleSubmit={this.handleHologramSubmit}
         />
 
         {this.props.hologramUnlocked && !getBit(this.props.mcSpy, 2) && (
-          <DialogueBox
-            data={txt.hologram}
-            style={hologram}
-            repeat={false}
-            clickToggle
-            onEnd={this.handleHologramEnd}
-          />
+          <>
+            <img src={`${S3Url}/er/spy_hologram.png`} style={hologram} />
+
+            <DialogueBox
+              data={txt.hologram}
+              style={hologram}
+              repeat={false}
+              clickToggle
+              onEnd={this.handleHologramEnd}
+            />
+          </>
         )}
       </>
     )

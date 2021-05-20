@@ -24,6 +24,13 @@
       "Take the tool in your hand and break the vase. There is more than meets the eye here."
     ]
   },
+  "can": "An empty watering can",
+  "statueYellow": "It’s a statue with a yellow stripe on it.",
+  "statueRed": "It’s a statue with a red stripe on it.",
+  "statueBlue": "It’s a statue with a blue stripe on it.",
+  "plant": "This plant hasn't been watered in a while",
+  "painting": "A detailed painting.",
+  "libraryNote": "I have been really interested in going here to grab some spices. Make sure to pick up a book for traveling purposes",
   "leaveMain": "I should try to open the lockers first",
   "spyroom": "The door is locked. It can only be opened from the inside.",
   "electricalBox": "The electrical box is securely locked. You’ll need to find a way to open it.",

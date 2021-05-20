@@ -4,6 +4,7 @@ import { S3Url, getBit } from "../../helpers"
 import ZoomModal from "../UI/ZoomModal"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 
 const hallway1 = {
   left: "42.33%",
@@ -94,6 +95,27 @@ const monitor = {
   overflow: "hidden",
 }
 
+const statue = {
+  left: "58.5%",
+  top: "41.88%",
+  width: "7.75%",
+  height: "33.5%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+const note = {
+  left: "70.17%",
+  top: "87%",
+  width: "5.67%",
+  height: "3.63%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
 export default class Library extends Component {
   constructor(props) {
     super(props)
@@ -170,6 +192,8 @@ export default class Library extends Component {
             closed={() => this.setState({ computerTxt: false })}
           />
         )}
+        <FeedbackBarToggle text={txt.statueBlue} style={statue} />
+        <FeedbackBarToggle text={txt.libraryNote} style={note} />
       </>
     )
   }

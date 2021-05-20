@@ -3,6 +3,7 @@ import styles from "./styles.module.css"
 import { S3Url, getBit, masterPW } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
 import FeedbackBar from "../UI/FeedbackBar"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 import txt from "../../text/er.json"
 import ZoomModal from "../UI/ZoomModal"
 import { Link } from "react-router-dom"
@@ -56,6 +57,39 @@ const paper = {
   top: "74.13%",
   width: "6.08%",
   height: "5%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const can = {
+  left: "4.33%",
+  top: "83.13%",
+  width: "5.58%",
+  height: "10.5%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const plant = {
+  left: "15.75%",
+  top: "65.5%",
+  width: "6.58%",
+  height: "16.88%",
+  position: "absolute",
+  display: "block",
+  zIndex: "5",
+  overflow: "hidden",
+}
+
+const statue = {
+  left: "88.58%",
+  top: "58.5%",
+  width: "7.92%",
+  height: "38.63%",
   position: "absolute",
   display: "block",
   zIndex: "5",
@@ -141,6 +175,9 @@ export default class Merchant extends Component {
             closed={() => this.setState({ citiesClick: false })}
           />
         )}
+        <FeedbackBarToggle style={can} text={txt.can} />
+        <FeedbackBarToggle style={plant} text={txt.plant} />
+        <FeedbackBarToggle style={statue} text={txt.statueRed} />
 
         {this.props.scanningUnlocked ? (
           <ZoomModal className={styles.scanningDevice}>

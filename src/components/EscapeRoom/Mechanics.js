@@ -9,6 +9,7 @@ import LockModal from "../UI/LockModal"
 import ZoomModal from "../UI/ZoomModal"
 import txt from "../../text/er.json"
 import FeedbackBar from "../UI/FeedbackBar"
+import FeedbackBarToggle from "../UI/FeedbackBarToggle"
 
 const hallway2 = {
   left: "61.67%",
@@ -72,7 +73,6 @@ export default class Mechanics extends Component {
       vaseBroken: false,
       vaseModalOpen: false,
       vaseTxt: false,
-      motorcycleTxt: false,
     }
   }
 
@@ -204,16 +204,8 @@ export default class Mechanics extends Component {
           ? this.unlockedCloset()
           : this.lockedCloset()}
 
-        <div
-          style={motorcycle}
-          onClick={() => this.setState({ motorcycleTxt: true })}
-        />
-        {this.state.motorcycleTxt && (
-          <FeedbackBar
-            text={txt.motorcycle}
-            closed={() => this.setState({ motorcycleTxt: false })}
-          />
-        )}
+        <FeedbackBarToggle text={txt.motorcycle} style={motorcycle} />
+
         {this.state.vaseBroken ? this.brokenVase() : this.vase()}
       </>
     )
