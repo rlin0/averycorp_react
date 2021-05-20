@@ -4,6 +4,11 @@ import Crossword from "@jaredreisinger/react-crossword"
 import { ButtonLink } from "./UI/Links"
 import { crosswordPlayer1, crosswordPlayer2 } from "../text/crossword"
 import Act from "./Act"
+import axios from "axios"
+
+let puzzleId = new Map()
+puzzleId.set("0", 3)
+puzzleId.set("1", 7)
 
 export class Puzzle3 extends Component {
   constructor(props) {
@@ -24,9 +29,39 @@ export class Puzzle3 extends Component {
     e.preventDefault()
     if (this.myRef.current.isCrosswordCorrect()) {
       this.setState({ solved: true })
+      axios
+        .post("/api/puzzle/submit_crossword", {
+          teamId: this.props.teamId,
+          role: this.props.role,
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err.response)
+        })
     } else {
       this.setState({ incorrect: true })
     }
+  }
+
+  getSolved = () => {
+    axios
+      .get("/api/puzzle/get_solved", {
+        params: {
+          teamId: this.props.teamId,
+          puzzleId: puzzleId.get(this.props.role),
+        },
+      })
+      .then((res) => {
+        this.setState({
+          solved: res.data.solved,
+        })
+        console.log(res)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   render() {

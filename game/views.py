@@ -116,6 +116,28 @@ def submit_answer(request):
         return JsonResponse({'success': False})
 
 
+@api_view(['POST'])
+def submit_crossword(request):
+    try:
+        team_id = int(request.data.get('teamId'))
+        role = int(request.data.get('role'))
+        puzzle_id = 3 if role == 0 else 7
+        t = Team.objects.get(id=team_id)
+        p, created = PuzzleSubmission.objects.get_or_create(
+            puzzle=Puzzle.objects.get(id=puzzle_id),
+            team=Team.objects.get(id=t.id))
+        # TODO: set period limit
+        if not created and timezone.now() - p.ts < timedelta(minutes=1):
+            return JsonResponse({'success': True, 'msg': 'later'})
+        p.save()
+        t.puzzles_done = t.puzzles_done | (1 << (puzzle_id - 1))
+        t.save()
+        return JsonResponse({'success': True, 'msg': 'correct'})
+    except Exception as e:
+        print(e)
+        return JsonResponse({'success': False})
+
+
 @api_view(['GET'])
 def get_solved(request):
     try:

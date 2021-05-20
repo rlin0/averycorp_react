@@ -19,6 +19,7 @@ urlpatterns = [
     path(r'api/madlib/get', views.get_madlib),
     path(r'api/puzzle/get_solved', views.get_solved),
     path(r'api/puzzle/submit_answer', views.submit_answer),
+    path(r'api/puzzle/submit_answer', views.submit_crossword),
     path(r'api/er/reset', views.reset),
     re_path('.*', TemplateView.as_view(template_name='index.html')),
 ]

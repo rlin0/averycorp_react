@@ -3,7 +3,7 @@ import axios from "axios"
 import { Typography, Popover } from "@material-ui/core"
 import { withStyles } from "@material-ui/styles"
 import { Link } from "react-router-dom"
-import { S3Url } from "../helpers.js"
+import { S3Url, getBit } from "../helpers.js"
 import DialogueBox from "./UI/DialogueBox"
 import text from "../text/act2Scripts"
 
@@ -118,14 +118,20 @@ class Act2 extends Component {
   }
 
   handlePopoverOpen = (event) => {
-    const id = parseInt(event.currentTarget.getAttribute("alt"))
+    const id = parseInt(event.currentTarget.getAttribute("id"))
 
     this.setState({
       name: event.currentTarget.getAttribute("title"),
       address: event.currentTarget.getAttribute("address"),
-      solved: this.state.solved_puzzles & (1 << (id - 1)),
+      solved: getBit(this.state.solved_puzzles, id),
       anchorEl: event.currentTarget,
     })
+    // Check that both crosswords are solved
+    if (id === 3) {
+      this.setState({
+        solved: this.state.solved && getBit(this.state.solved_puzzles, 7),
+      })
+    }
   }
 
   handlePopoverClose = () => {
@@ -156,6 +162,7 @@ class Act2 extends Component {
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
+            id="1"
             style={pin1}
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
@@ -168,6 +175,7 @@ class Act2 extends Component {
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
+            id="2"
             style={pin2}
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
@@ -181,6 +189,7 @@ class Act2 extends Component {
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
             style={pin3}
+            id="3"
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
@@ -193,6 +202,7 @@ class Act2 extends Component {
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
             style={pin4}
+            id="4"
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
@@ -205,6 +215,7 @@ class Act2 extends Component {
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
             style={pin5}
+            id="5"
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
@@ -217,6 +228,7 @@ class Act2 extends Component {
             onMouseEnter={this.handlePopoverOpen}
             onMouseLeave={this.handlePopoverClose}
             style={pin6}
+            id="6"
           >
             <img src={`${S3Url}/pink_pin.svg`} height="100%" />
           </Link>
@@ -242,7 +254,7 @@ class Act2 extends Component {
             <Typography>
               <h3>{this.state.address}</h3>
               <h4>{this.state.name}</h4>
-              {this.state.solved === 1 ? <p>Solved!</p> : <p>Not solved</p>}
+              {this.state.solved ? <p>Solved!</p> : <p>Not solved</p>}
             </Typography>
           </Popover>
         </div>
