@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { Dialog, DialogContent } from "@material-ui/core"
 import styles from "./styles.module.css"
 import Jigsaw from "./Jigsaw"
-import { S3Url, getBit } from "../../helpers.js"
+import { S3Url, getBit, masterPW } from "../../helpers.js"
 import { Link } from "react-router-dom"
 import Forbidden from "../Forbidden"
 import LockModal from "../UI/LockModal"
@@ -165,7 +165,7 @@ export default class Mechanics extends Component {
   }
 
   handleClosetSubmit = (code) => {
-    if (code === "0" || code === "888+88+8+8+8") {
+    if (code === masterPW || code === "888+88+8+8+8") {
       this.props.putClosetUnlocked()
       return true
     } else {

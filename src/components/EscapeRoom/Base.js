@@ -13,7 +13,7 @@ import axios from "axios"
 import CloseIcon from "@material-ui/icons/Close"
 import styles from "./styles.module.css"
 import { withRouter } from "react-router-dom"
-import { S3Url, setBit, countSetBits } from "../../helpers"
+import { S3Url, masterPW, setBit, countSetBits } from "../../helpers"
 import MC from "./MC"
 
 const inventoryStyle = {

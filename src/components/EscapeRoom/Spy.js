@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Forbidden from "../Forbidden"
-import { getBit, S3Url } from "../../helpers.js"
+import { getBit, S3Url, masterPW } from "../../helpers.js"
 import styles from "./styles.module.css"
 import { Link } from "react-router-dom"
 import LockModal from "../UI/LockModal"
@@ -82,7 +82,7 @@ export default class Spy extends Component {
   }
 
   handleHologramSubmit = (code) => {
-    if (code === "0" || code === "0153") {
+    if (code === masterPW || code === "0153") {
       this.props.putHologramUnlocked()
       return true
     } else {

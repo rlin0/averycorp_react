@@ -142,7 +142,7 @@ export default class App extends Component {
                         id={1}
                         act={this.state.act}
                         updateAct={this.updateAct}
-                        passcode="1"
+                        passcode="whereami"
                       >
                         <Act1 userId={this.state.userId} />
                       </Act>
@@ -153,7 +153,7 @@ export default class App extends Component {
                         id={2}
                         act={this.state.act}
                         updateAct={this.updateAct}
-                        passcode="2"
+                        passcode="gowhere"
                       >
                         <Act2 teamId={this.state.teamId} key="2" />
                       </Act>
@@ -223,7 +223,7 @@ export default class App extends Component {
                       id={3}
                       act={this.state.act}
                       updateAct={this.updateAct}
-                      passcode="3"
+                      passcode="imready"
                     >
                       <Route exact path="/er">
                         <ER

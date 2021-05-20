@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { S3Url } from "../../helpers.js"
+import { S3Url, masterPW } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
 import Window from "../UI/Window"
 
@@ -77,7 +77,7 @@ export default class Hallway2 extends Component {
   }
 
   handleSubmitMechanics = (code) => {
-    if (code === "0" || code === "X66R19") {
+    if (code === masterPW || code === "X66R19") {
       this.props.putMechanicsUnlocked()
       return true
     } else return false
