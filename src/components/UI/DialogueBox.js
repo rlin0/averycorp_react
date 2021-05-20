@@ -5,7 +5,7 @@ import Container from "@material-ui/core/Container"
 import CardContent from "@material-ui/core/CardContent"
 import Button from "@material-ui/core/Button"
 import IconButton from "@material-ui/core/IconButton"
-import NextIcon from "@material-ui/icons/NavigateNext"
+import NextIcon from "@material-ui/icons/DoubleArrow"
 import SkipNext from "@material-ui/icons/SkipNext"
 import { S3Url } from "../../helpers.js"
 
@@ -158,7 +158,8 @@ export default function DialogueBox(props) {
                     onClick={advanceDialogue}
                     edge="end"
                     color="inherit"
-                    size="small"
+                    size="medium"
+                    variant="contained"
                   >
                     <NextIcon />
                   </IconButton>

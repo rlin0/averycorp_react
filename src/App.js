@@ -9,7 +9,7 @@ import Profile from "./components/Profile"
 import Act2 from "./components/Act2"
 import Act4 from "./components/Act4"
 import Puzzle from "./components/Puzzle"
-import { Puzzle3 } from "./components/Puzzles"
+import { Puzzle3 } from "./components/CrosswordPuzzle"
 import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
 import MechanicsCloset from "./components/EscapeRoom/MechanicsCloset"
@@ -132,7 +132,12 @@ export default class App extends Component {
                       <Profile userId={this.state.userId} />
                     </Route>
                     <Route exact path="/act0">
-                      <Act0 />
+                      <Act0
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        puzzleId="0"
+                        teamId={this.state.teamId}
+                      />
                     </Route>
                     <Route exact path="/act4">
                       <Act4 />
@@ -159,7 +164,7 @@ export default class App extends Component {
                       </Act>
                     </Route>
 
-                    <Route exact path="/act2/puzzle1">
+                    <Route exact path="/act2/botw">
                       <Puzzle
                         act={this.state.act}
                         updateAct={this.updateAct}
@@ -169,7 +174,7 @@ export default class App extends Component {
                       />
                     </Route>
 
-                    <Route exact path="/act2/puzzle2">
+                    <Route exact path="/act2/code">
                       <Puzzle
                         act={this.state.act}
                         updateAct={this.updateAct}
@@ -179,15 +184,17 @@ export default class App extends Component {
                       />
                     </Route>
 
-                    <Route exact path="/act2/puzzle3">
+                    <Route exact path="/act2/crossword">
                       <Puzzle3
                         act={this.state.act}
                         updateAct={this.updateAct}
+                        puzzleId="3"
+                        teamId={this.state.teamId}
                         role={this.state.role}
                       />
                     </Route>
 
-                    <Route exact path="/act2/puzzle4">
+                    <Route exact path="/act2/id">
                       <Puzzle
                         act={this.state.act}
                         updateAct={this.updateAct}
@@ -198,7 +205,7 @@ export default class App extends Component {
                       />
                     </Route>
 
-                    <Route exact path="/act2/puzzle5">
+                    <Route exact path="/act2/spot">
                       <Puzzle
                         act={this.state.act}
                         updateAct={this.updateAct}
@@ -209,7 +216,7 @@ export default class App extends Component {
                       />
                     </Route>
 
-                    <Route exact path="/act2/puzzle6">
+                    <Route exact path="/act2/meta">
                       <Puzzle
                         act={this.state.act}
                         updateAct={this.updateAct}

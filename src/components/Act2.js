@@ -93,6 +93,7 @@ class Act2 extends Component {
     super(props)
     this.state = {
       name: null,
+      address: null,
       solved_puzzles: 0,
       solved: 0,
       anchorEl: null,
@@ -121,6 +122,7 @@ class Act2 extends Component {
 
     this.setState({
       name: event.currentTarget.getAttribute("title"),
+      address: event.currentTarget.getAttribute("address"),
       solved: this.state.solved_puzzles & (1 << (id - 1)),
       anchorEl: event.currentTarget,
     })
@@ -142,8 +144,9 @@ class Act2 extends Component {
         <div style={{ float: "left", position: "relative", width: "100%" }}>
           <img src={`${S3Url}/map.svg`} width="100%" />
           <Link
-            title="BotW"
-            to="/act2/puzzle1"
+            title="Breath of the Wild"
+            address="Rm. B108"
+            to="/act2/botw"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -154,7 +157,8 @@ class Act2 extends Component {
           </Link>
           <Link
             title="Code Transcription"
-            to="/act2/puzzle2"
+            address="Scrap Store"
+            to="/act2/code"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -165,7 +169,8 @@ class Act2 extends Component {
           </Link>
           <Link
             title="Crossword"
-            to="/act2/puzzle3"
+            address="Abandoned Office"
+            to="/act2/crossword"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -176,7 +181,8 @@ class Act2 extends Component {
           </Link>
           <Link
             title="ID Card"
-            to="/act2/puzzle4"
+            address="Dark Alleyway"
+            to="/act2/id"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -187,7 +193,8 @@ class Act2 extends Component {
           </Link>
           <Link
             title="Spot the Difference"
-            to="/act2/puzzle5"
+            address="Data Warehouse"
+            to="/act2/spot"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -197,8 +204,9 @@ class Act2 extends Component {
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
           <Link
-            title="Headquarters"
-            to="/act2/puzzle6"
+            title="Meta"
+            address="Contractor's Office"
+            to="/act2/meta"
             aria-owns={open ? "mouse-over-popover" : undefined}
             aria-haspopup="true"
             onMouseEnter={this.handlePopoverOpen}
@@ -227,7 +235,8 @@ class Act2 extends Component {
             disableRestoreFocus
           >
             <Typography>
-              <h3>{this.state.name}</h3>
+              <h3>{this.state.address}</h3>
+              <h4>{this.state.name}</h4>
               {this.state.solved === 1 ? <p>Solved!</p> : <p>Not solved</p>}
             </Typography>
           </Popover>

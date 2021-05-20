@@ -1,36 +1,29 @@
 import React, { Component } from "react"
-import { Typography } from "@material-ui/core"
+import { Typography, TextField, Button } from "@material-ui/core"
 import { S3Url } from "../helpers"
 import DialogueBox from "./UI/DialogueBox"
+import axios from "axios"
 import text from "../text/act1Scripts"
 import "./Act0.css"
 
-const mapStyle = {
-  position: "relative",
-  display: "block",
-  width: "60%",
-  margin: "auto",
-}
-
-const puzzleStyle = {
-  position: "relative",
-  display: "block",
-  height: "50%",
-  margin: "auto",
-}
-
-const textStyle = {
-  color: "blue",
-}
-
-class Act0 extends Component {
+export default class Act0 extends Component {
   constructor(props) {
     super(props)
     this.state = {
       x: 0,
       y: 0,
-      fields: [null, null, null],
-      prompts: undefined,
+      answer: null,
+      solved: null,
+    }
+  }
+
+  handleSubmit = async (e) => {
+    e.preventDefault()
+    if (this.state.answer === "375,241") {
+      this.setState({ solved: true })
+    } else {
+      this.setState({ incorrect: false })
+      alert("incorrect")
     }
   }
 
@@ -42,7 +35,8 @@ class Act0 extends Component {
     const { x, y } = this.state
     return (
       <>
-        <DialogueBox data={text.act1Intro} />
+        {this.state.solved && <DialogueBox data={text.act1MapCorrect} />}
+        {!this.state.solved && <DialogueBox data={text.act1Intro} />}
         <div
           style={{
             position: "relative",
@@ -68,10 +62,29 @@ class Act0 extends Component {
           </div>
           <div>
             <img id="puzzle0" src={S3Url + "/intro_puzzle.png"} />
+            <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+              {this.state.solved ? (
+                <Typography>Solved!</Typography>
+              ) : (
+                <>
+                  <Typography>
+                    Enter where you would like to go (no spaces).
+                  </Typography>
+                  <TextField
+                    label="Answer"
+                    onChange={({ target }) =>
+                      this.setState({ answer: target.value })
+                    }
+                  />
+                  <Button type="submit" variant="contained" color="primary">
+                    Submit
+                  </Button>
+                </>
+              )}
+            </form>
           </div>
         </div>
       </>
     )
   }
 }
-export default Act0

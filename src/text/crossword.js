@@ -7,7 +7,7 @@ export const crosswordPlayer1 = {
       col: 4,
     },
     7: {
-      clue: "Doesn't say",
+      clue: "Doesn't say anything",
       answer: "MUTE",
       row: 2,
       col: 13,
@@ -31,7 +31,7 @@ export const crosswordPlayer1 = {
       col: 0,
     },
     12: {
-      clue: "This is so annoying",
+      clue: "This thing is so annoying",
       answer: "NUISANCE",
       row: 10,
       col: 4,
@@ -46,7 +46,7 @@ export const crosswordPlayer1 = {
   down: {
     1: {
       clue: "",
-      answer: "uwuw",
+      answer: "UWUW",
       row: 0,
       col: 9,
     },
@@ -125,7 +125,7 @@ export const crosswordPlayer2 = {
   down: {
     1: {
       clue: "Double uw",
-      answer: "uwuw",
+      answer: "UWUW",
       row: 0,
       col: 9,
     },
@@ -136,7 +136,7 @@ export const crosswordPlayer2 = {
       col: 7,
     },
     4: {
-      clue: "Forget what I just said",
+      clue: "I forgot what I just said",
       answer: "AMNESIA",
       row: 1,
       col: 13,
