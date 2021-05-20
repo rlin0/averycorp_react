@@ -1,7 +1,9 @@
 import React, { Component } from "react"
-import "./Act0.css"
 import { Typography } from "@material-ui/core"
 import { S3Url } from "../helpers"
+import DialogueBox from "./UI/DialogueBox"
+import text from "../text/act1Scripts"
+import "./Act0.css"
 
 const mapStyle = {
   position: "relative",
@@ -39,37 +41,36 @@ class Act0 extends Component {
   render() {
     const { x, y } = this.state
     return (
-      <div
-        style={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          top: "20%",
-        }}
-      >
-        <div>
-          <img
-            onMouseMove={this.handleMouseMove.bind(this)}
-            id="puzzle-map"
-            src={S3Url + "/map.svg"}
-          />
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <Typography id="x-coord" align="center">
-              {x}
-            </Typography>
-            <Typography id="y-coord" align="center">
-              {y}
-            </Typography>
+      <>
+        <DialogueBox data={text.act1Intro} />
+        <div
+          style={{
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            top: "20%",
+          }}
+        >
+          <div>
+            <img
+              onMouseMove={this.handleMouseMove.bind(this)}
+              id="puzzle-map"
+              src={S3Url + "/map.svg"}
+            />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <Typography id="x-coord" align="center">
+                {x}
+              </Typography>
+              <Typography id="y-coord" align="center">
+                {y}
+              </Typography>
+            </div>
+          </div>
+          <div>
+            <img id="puzzle0" src={S3Url + "/intro_puzzle.png"} />
           </div>
         </div>
-        <div>
-          <img
-            onMouseMove={this.handleMouseMove.bind(this)}
-            id="puzzle0"
-            src={S3Url + "/puzzle0.png"}
-          />
-        </div>
-      </div>
+      </>
     )
   }
 }

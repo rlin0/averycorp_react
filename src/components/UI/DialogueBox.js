@@ -17,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     left: "10%",
     overflow: "auto",
   },
+  charImage: {
+    position: "fixed",
+    zIndex: "10",
+    height: "80%",
+    left: "50%",
+    bottom: "10%",
+  },
   animatedText: {
     ...theme.typography.body1,
     backgroundColor: theme.palette.background.paper,
@@ -74,7 +81,7 @@ export default function DialogueBox(props) {
 
     const timeout = setTimeout(() => {
       setLetterIdx((prev) => prev + 1)
-    }, 10)
+    }, 9)
 
     return () => clearTimeout(timeout)
   }, [textIdx, letterIdx, data.text])
@@ -90,13 +97,13 @@ export default function DialogueBox(props) {
     }
   }
 
-  const getImage = (imageName) => (
+  const getImage = (imageName, className) => (
     <div>
       <img
         // src={require(`../../images/${imageName}`).default} // for local img
         src={S3Url + "/" + imageName}
         alt="background"
-        className={classes.bgImage}
+        className={className}
       />
     </div>
   )
@@ -124,7 +131,11 @@ export default function DialogueBox(props) {
       {display() && (
         <>
           <div>
-            {data.BGImage && getImage(data.BGImage[textIdx])}
+            {data.BGImage && getImage(data.BGImage[textIdx], classes.bgImage)}
+
+            {data.speaker &&
+              data.speaker[textIdx] &&
+              getImage(data.speaker[textIdx], classes.charImage)}
 
             <Container maxWidth="xl" className={classes.textContainer}>
               <div className={classes.skipButton}>
