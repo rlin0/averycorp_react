@@ -42,38 +42,43 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="login">
-        <form onSubmit={this.handleSubmit} className="login-form">
-          <img src={S3Url + "/logo2_fill_w.svg"} alt="logo" id="login-logo" />
-          <label htmlFor="username" className="login-label">
-            LOGIN ID{" "}
-          </label>
-          <input
-            type="text"
-            value={this.state.username}
-            className="login-input"
-            onChange={({ target }) => this.setState({ username: target.value })}
-          />
-          <div>
-            <label htmlFor="password" className="login-label">
-              PASSWORD{" "}
+      <div className="login-terminal">
+        <div className="login">
+          <form onSubmit={this.handleSubmit} className="login-form">
+            <img src={S3Url + "/logo2_fill_w.svg"} alt="logo" id="login-logo" />
+            <label htmlFor="username" className="login-label">
+              LOGIN ID{" "}
             </label>
             <input
-              type="password"
-              value={this.state.password}
+              type="text"
+              value={this.state.username}
               className="login-input"
               onChange={({ target }) =>
-                this.setState({ password: target.value })
+                this.setState({ username: target.value })
               }
             />
-          </div>
-          <div className="incorrect">
-            {this.state.incorrect && <p>Incorrect login.</p>}
-          </div>
-          <button type="submit" className="login-button">
-            LOGIN
-          </button>
-        </form>
+            <div>
+              <label htmlFor="password" className="login-label">
+                PASSWORD{" "}
+              </label>
+              <input
+                type="password"
+                value={this.state.password}
+                className="login-input"
+                onChange={({ target }) =>
+                  this.setState({ password: target.value })
+                }
+              />
+            </div>
+            <div className="incorrect">
+              {this.state.incorrect && <p>Incorrect login.</p>}
+            </div>
+            <button type="submit" className="login-button">
+              LOGIN
+            </button>
+          </form>
+        </div>
+        <div className="login-scanline" />
       </div>
     )
   }

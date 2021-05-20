@@ -1,12 +1,13 @@
 import React, { Component } from "react"
 import axios from "axios"
-import { BrowserRouter, Route, Switch } from "react-router-dom"
+import { BrowserRouter, Route, Switch, NavLink } from "react-router-dom"
 import Header from "./components/UI/Header"
 import Login from "./components/Login"
 import Act0 from "./components/Act0"
 import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
 import Act2 from "./components/Act2"
+import Act4 from "./components/Act4"
 import Puzzle from "./components/Puzzle"
 import { Puzzle3 } from "./components/Puzzles"
 import Main from "./components/EscapeRoom/Main"
@@ -123,7 +124,8 @@ export default class App extends Component {
                     </Route>
                     <Route exact path="/">
                       <div className="home">
-                        <p>Homepage</p>
+                        Welcome. If you just arrived, start at{" "}
+                        <NavLink to={"/act0"}>Act 0</NavLink>.
                       </div>
                     </Route>
                     <Route exact path="/profile">
@@ -131,6 +133,9 @@ export default class App extends Component {
                     </Route>
                     <Route exact path="/act0">
                       <Act0 />
+                    </Route>
+                    <Route exact path="/act4">
+                      <Act4 />
                     </Route>
                     <Route exact path="/act1">
                       <Act

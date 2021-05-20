@@ -1,0 +1,37 @@
+{
+  "act3Intro": {
+    "text": [
+      "Grim but determined, you and your team execute the plan to break into AveryCorp and save this digital dimension.",
+      "Everything goes smoothly at first. You clear the 8ft high electric fence in the outer perimeter, swiftly weave past security bots, use the ID card forged by the Replicator to access the elevator shaft and hoist yourself in…",
+      "As you climb the dusty walls of the elevator shaft, making your way to the very top floor, you can’t help but think that everything is going too well. Your group finally reaches a ventilation panel bolted against the side of the wall and cracks it open.",
+      "The Recruiter’s voice buzzes through your head again.",
+      "Recruiter: Once you enter the top floor, I won’t be able to contact you like this anymore. Find the file and destroy it as soon as you can.",
+      "Recruiter: The info the Archivist provided is good, but it can’t account for everything. There could be anything up ahead. Stay alert.",
+      "As you crawl through the ventilation space, the Recruiter’s voice grows fuzzier and fuzzier until it blips out. The four of you are on your own.",
+      "Finally, you reach the end and drop down… to find yourself in the middle of a hallway. You see the server room, but you find yourself on the wrong side of the reinforced steel doors. The doors won’t budge. You’ll need to enter a security code on the number pad besides it to continue.",
+      "It’s too late to back out now. The only way to proceed is to press on and find a way into that server room, one way or another. Maybe a look around the nearby offices will provide some clues..."
+    ],
+    "BGImage": [
+      "er/black.png",
+      "er/elevator_shaft.png",
+      "er/elevator_shaft.png",
+      "er/elevator_shaft.png",
+      "er/elevator_shaft.png",
+      "er/elevator_shaft.png",
+      "er/elevator_shaft.png",
+      "er/escaperoom_start.png",
+      "er/escaperoom_start.png"
+    ],
+    "speaker": [
+      "Narration",
+      "Narration",
+      "Narration",
+      "Narration",
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png",
+      "Narration",
+      "Narration",
+      "Narration"
+    ]
+  }
+}

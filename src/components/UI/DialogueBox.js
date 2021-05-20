@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   textContainer: {
     position: "fixed",
+    display: "inline-block",
     bottom: "2%",
     left: "9.5%",
     width: "80%",
@@ -32,13 +33,17 @@ const useStyles = makeStyles((theme) => ({
   },
   textBox: {
     border: "1px solid white",
-    opacity: 0.9,
+    opacity: 0.95,
     borderImage:
       "url(" +
       S3Url +
-      "/yellow_message_frame.png) 75 70 40 40 / 75 70 40 40 / 40 4 4 4",
+      "/yellow_message_frame_left.png) 70 70 40 40 / 70 70 40 40 / 35 4 4 4", // slice width outset
   },
-  skipButton: {},
+  skipButton: {
+    display: "inline-block",
+    textAlign: "right",
+    width: "100%",
+  },
 }))
 
 // textbox at bottom of screen for advanceable dialogue
@@ -122,13 +127,11 @@ export default function DialogueBox(props) {
             {data.BGImage && getImage(data.BGImage[textIdx])}
 
             <Container maxWidth="xl" className={classes.textContainer}>
-              <Button
-                onClick={skip}
-                className={classes.skipButton}
-                endIcon={<SkipNext />}
-              >
-                Skip
-              </Button>
+              <div className={classes.skipButton}>
+                <Button onClick={skip} endIcon={<SkipNext />}>
+                  Skip
+                </Button>
+              </div>
               <Card
                 square
                 onKeyDown={advanceDialogue} // TODO: onKeyDown doesn't work

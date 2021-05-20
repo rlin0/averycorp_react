@@ -47,8 +47,7 @@ export default class Header extends Component {
         <Toolbar>
           <SideBar />
           <Typography variant="h6">
-            WELCOME,
-            {this.props.username.toUpperCase()}. TEAM{" "}
+            WELCOME, {this.props.username.toUpperCase()}. TEAM{" "}
             {this.props.team.toUpperCase()}.
           </Typography>
           <SvgIcon

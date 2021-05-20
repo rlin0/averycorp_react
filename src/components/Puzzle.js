@@ -1,5 +1,10 @@
 import React, { Component } from "react"
-import { Button, Typography, TextField } from "@material-ui/core"
+import {
+  Button,
+  Typography,
+  TextField,
+  LinearProgress,
+} from "@material-ui/core"
 import axios from "axios"
 import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
@@ -80,11 +85,7 @@ export default class Puzzle extends Component {
 
   render() {
     if (this.state.name === null) {
-      return (
-        <>
-          <p>Loading...</p>
-        </>
-      )
+      return <LinearProgress color="primary" /> // Loading bar
     }
     var role
     if (this.props.role === undefined) {

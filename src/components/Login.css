@@ -67,3 +67,57 @@ div.incorrect {
   left: 25%;
   cursor: pointer;
 }
+
+div.login-terminal {
+  position: relative;
+  height: 100vh;
+  background-color: #314;
+  /* black shadow at the top of the terminal */
+  background-image: radial-gradient(
+    ellipse 1000% 100% at 50% 90%,
+    transparent,
+    #111
+  );
+  background-position: center;
+  display: block;
+  /* shadow around the terminal */
+  box-shadow: inset 0 0 10em 1em rgba(0, 0, 0, 0.5);
+  /* prevents scanline from forming a scrollwheel */
+  overflow: hidden;
+}
+
+div.login-scanline {
+  margin-top: 0%;
+  width: 100%;
+  height: 60px;
+  position: relative;
+  z-index: 0;
+  pointer-events: none;
+  /* Safari 4.0 - 8.0 */
+  -webkit-animation: scan 12s linear 0s infinite; /* You may need to change this. If the bar goes by too quickly, increase 5s. */
+  animation: scan 12s linear 0s infinite; /* Same as above */
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.3)
+  ) !important;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes scan {
+  from {
+    transform: translateY(-2500%);
+  }
+  to {
+    transform: translateY(2500%);
+  } /* You may need to change this depending on the length of your terminal. If the scanline stops halfway, increase the second number.*/
+}
+
+@keyframes scan {
+  from {
+    transform: translateY(-2500%);
+  }
+  to {
+    transform: translateY(2500%);
+  } /* Same as above.*/
+}
