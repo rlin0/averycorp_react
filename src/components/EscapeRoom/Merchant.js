@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import styles from "./styles.module.css"
-import { S3Url, getBit } from "../../helpers.js"
+import { S3Url, getBit, masterPW } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
@@ -80,7 +80,7 @@ export default class Merchant extends Component {
   }
 
   handleScanningModalSubmit = (code) => {
-    if (code === "0" || code === "86712") {
+    if (code === masterPW || code === "86712") {
       this.props.putScanningUnlocked()
       return true
     } else return false

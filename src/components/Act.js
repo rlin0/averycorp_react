@@ -11,7 +11,7 @@ import {
 import { withStyles } from "@material-ui/core/styles"
 import axios from "axios"
 import InputModal from "./UI/InputModal"
-import { getBit } from "../helpers"
+import { getBit, masterPW } from "../helpers"
 
 export default class Act extends Component {
   constructor(props) {
@@ -38,7 +38,10 @@ export default class Act extends Component {
   }
 
   handleEnter = () => {
-    if (this.state.code === this.props.passcode) {
+    if (
+      this.state.code === this.props.passcode ||
+      this.state.code === masterPW
+    ) {
       this.props.updateAct(this.props.id)
       return true
     } else {

@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { S3Url } from "../../helpers.js"
+import { S3Url, masterPW } from "../../helpers.js"
 import { withStyles } from "@material-ui/styles"
 import LockModal from "../UI/LockModal"
 import Window from "../UI/Window"
@@ -92,7 +92,7 @@ class Hallway1 extends Component {
   }
 
   handleSubmitMerchant = (code) => {
-    if (code === "0" || code === "0624") {
+    if (code === masterPW || code === "0624") {
       this.props.putMerchantUnlocked()
       return true
     } else return false

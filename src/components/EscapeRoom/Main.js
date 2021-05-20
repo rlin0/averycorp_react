@@ -3,7 +3,7 @@ import styles from "./styles.module.css"
 import Clock from "react-clock"
 import "react-clock/dist/Clock.css"
 import { withRouter, Link } from "react-router-dom"
-import { S3Url } from "../../helpers.js"
+import { S3Url, masterPW } from "../../helpers.js"
 import LockModal from "../UI/LockModal"
 import FeedbackBar from "../UI/FeedbackBar"
 import txt from "../../text/er.json"
@@ -106,7 +106,7 @@ class Main extends Component {
   }
 
   handleSubmitLockers = (code) => {
-    if (code === "0" || code === "53110") {
+    if (code === masterPW || code === "53110") {
       this.props.putLockersUnlocked()
       return true
     } else {
@@ -123,8 +123,8 @@ class Main extends Component {
     )
   }
 
-  handlePortalSubmit = () => {
-    if (this.state.code === "0" || this.state.code === "all") {
+  handlePortalSubmit = (code) => {
+    if (code === masterPW || code.toLowerCase() === "ice") {
       this.props.putDone()
       return true
     } else {
