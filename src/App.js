@@ -42,6 +42,9 @@ export default class App extends Component {
       teamId: localStorage.getItem("teamId"),
       teamName: localStorage.getItem("teamName"),
       role: localStorage.getItem("role"),
+
+      intro0Played: false,
+      intro2Played: false,
     }
   }
 
@@ -101,6 +104,12 @@ export default class App extends Component {
       })
   }
 
+  setIntroPlayed = (id) => {
+    this.setState({
+      [id]: true,
+    })
+  }
+
   render() {
     return (
       <ThemeProvider theme={AVERYCORP_THEME}>
@@ -138,6 +147,8 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         puzzleId="0"
                         teamId={this.state.teamId}
+                        introPlayed={this.state.intro0Played}
+                        setIntroPlayed={this.setIntroPlayed}
                       />
                     </Route>
                     <Route exact path="/act4">
@@ -161,7 +172,12 @@ export default class App extends Component {
                         updateAct={this.updateAct}
                         passcode="gowhere"
                       >
-                        <Act2 teamId={this.state.teamId} key="2" />
+                        <Act2
+                          teamId={this.state.teamId}
+                          key="2"
+                          introPlayed={this.state.intro2Played}
+                          setIntroPlayed={this.setIntroPlayed}
+                        />
                       </Act>
                     </Route>
 

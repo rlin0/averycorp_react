@@ -36,7 +36,12 @@ export default class Act0 extends Component {
     return (
       <>
         {this.state.solved && <DialogueBox data={text.act1MapCorrect} />}
-        {!this.state.solved && <DialogueBox data={text.act1Intro} />}
+        {!this.props.introPlayed && (
+          <DialogueBox
+            data={text.act1Intro}
+            onEnd={() => this.props.setIntroPlayed("intro0Played")}
+          />
+        )}
         <div
           style={{
             position: "relative",
