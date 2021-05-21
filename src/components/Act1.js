@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Button, Typography, TextField } from "@material-ui/core"
 import { withStyles } from "@material-ui/core/styles"
+import { ButtonLink } from "./UI/Links"
 import axios from "axios"
 
 const styles = {
@@ -98,16 +99,20 @@ class Act1 extends Component {
             <Button type="submit" variant="contained" color="primary">
               Submit
             </Button>
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                marginTop: "10%",
+              }}
+            >
+              <ButtonLink
+                to="/act1/spyfall"
+                buttonText="Continue to Spyfall"
+                variant="contained"
+              />
+            </div>
           </form>
-        </div>
-        <div style={{ float: "left", width: "50%" }}>
-          <Typography variant="h1"> Spyfall! </Typography>
-          Airplane <br> Bank <br> Beach <br> Broadway <br> Theater <br> Casino <br> Cathedral <br> Circus
-          Tent <br> Corporate Party <br> Crusader Army <br> Day Spa <br> Embassy <br> Gaming
-          Convention <br> Hospital <br> Hotel <br> Military Base <br> Movie Studio <br> Ocean Liner <br>
-          Passenger Train <br> Pirate Ship <br> Polar Station <br> Police Station <br>
-          Restaurant <br> School <br> Service Station <br> Space Station <br> Submarine <br>
-          Supermarket <br> University
         </div>
       </>
     )

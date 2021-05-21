@@ -5,6 +5,7 @@ import Header from "./components/UI/Header"
 import Login from "./components/Login"
 import Act0 from "./components/Act0"
 import Act1 from "./components/Act1"
+import Act1Spyfall from "./components/Act1Spyfall"
 import Profile from "./components/Profile"
 import Act2Intro from "./components/Act2Intro"
 import Act2 from "./components/Act2"
@@ -163,6 +164,16 @@ export default class App extends Component {
                         passcode="whereami"
                       >
                         <Act1 userId={this.state.userId} />
+                      </Act>
+                    </Route>
+                    <Route exact path="/act1/spyfall">
+                      <Act
+                        id={1}
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        passcode="whereami"
+                      >
+                        <Act1Spyfall />
                       </Act>
                     </Route>
 
