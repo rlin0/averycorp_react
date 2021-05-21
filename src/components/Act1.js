@@ -102,12 +102,12 @@ class Act1 extends Component {
         </div>
         <div style={{ float: "left", width: "50%" }}>
           <Typography variant="h1"> Spyfall! </Typography>
-          Airplane, Bank, Beach, Broadway, Theater, Casino, Cathedral, Circus
-          Tent, Corporate Party, Crusader Army, Day Spa, Embassy, Gaming
-          Convention, Hospital, Hotel, Military Base, Movie Studio, Ocean Liner,
-          Passenger Train, Pirate Ship, Polar Station, Police Station,
-          Restaurant, School, Service Station, Space Station, Submarine,
-          Supermarket, University
+          Airplane <br> Bank <br> Beach <br> Broadway <br> Theater <br> Casino <br> Cathedral <br> Circus
+          Tent <br> Corporate Party <br> Crusader Army <br> Day Spa <br> Embassy <br> Gaming
+          Convention <br> Hospital <br> Hotel <br> Military Base <br> Movie Studio <br> Ocean Liner <br>
+          Passenger Train <br> Pirate Ship <br> Polar Station <br> Police Station <br>
+          Restaurant <br> School <br> Service Station <br> Space Station <br> Submarine <br>
+          Supermarket <br> University
         </div>
       </>
     )
