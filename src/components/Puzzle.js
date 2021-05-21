@@ -4,7 +4,10 @@ import {
   Typography,
   TextField,
   LinearProgress,
+  IconButton,
 } from "@material-ui/core"
+import MusicOn from "@material-ui/icons/MusicNote"
+import MusicOff from "@material-ui/icons/MusicOff"
 import axios from "axios"
 import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
@@ -29,6 +32,7 @@ export default class Puzzle extends Component {
       name: null,
       solved: false,
       act: null,
+      audio: false,
     }
   }
 
@@ -93,6 +97,16 @@ export default class Puzzle extends Component {
       })
   }
 
+  toggleAudio = () => {
+    if (!this.state.audio) {
+      const audioEl = document.getElementsByClassName("audio")[0]
+      if (audioEl) audioEl.play()
+    }
+    this.setState((state) => {
+      return { audio: !state.audio }
+    })
+  }
+
   render() {
     if (this.state.name === null) {
       return <LinearProgress color="primary" /> // Loading bar
@@ -113,14 +127,41 @@ export default class Puzzle extends Component {
             <DialogueBox data={text[cutscenes[this.props.puzzleId][1]]} />
           ) : null}
           {!this.state.solved ? (
-            <DialogueBox data={text[cutscenes[this.props.puzzleId][0]]} />
+            <DialogueBox
+              data={text[cutscenes[this.props.puzzleId][0]]}
+              onEnd={() => {
+                const audioEl = document.getElementsByClassName("audio")[0]
+                if (audioEl) audioEl.play()
+                this.setState({ audio: true })
+              }}
+            />
           ) : null}
 
-          <ButtonLink buttonText="Back to Map" to="/act2/map" />
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <ButtonLink buttonText="Back to Map" to="/act2/map" />
+            <IconButton
+              onClick={this.toggleAudio}
+              color="primary"
+              size="medium"
+              variant="contained"
+              style={{
+                position: "relative",
+                top: "5%",
+                right: "5%",
+                zIndex: "1",
+              }}
+            >
+              {this.state.audio ? <MusicOn /> : <MusicOff />}
+            </IconButton>
+            <audio autoPlay loop muted={!this.state.audio} className="audio">
+              <source src={S3Url + "/Thinking.wav"} type="audio/wav" />
+            </audio>
+          </div>
           <Typography variant="h3" style={{ textAlign: "center" }}>
             {" "}
             {this.state.name} {this.state.solved ? "- Solved!" : ""}{" "}
           </Typography>
+
           <iframe
             src={`${S3Url}/act2/${this.props.link}${role}.pdf`}
             width="70%"

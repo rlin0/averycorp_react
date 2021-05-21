@@ -11,9 +11,14 @@ export default class Act0 extends Component {
     this.state = {
       x: 0,
       y: 0,
+      played: 0,
       answer: null,
       solved: null,
     }
+  }
+
+  setPlayed = (num) => () => {
+    this.setState({ played: num })
   }
 
   handleSubmit = async (e) => {
@@ -33,12 +38,48 @@ export default class Act0 extends Component {
     const { x, y } = this.state
     return (
       <>
-        {!this.props.introPlayed && (
+        {!this.props.introPlayed && this.state.played === 0 && (
+          <div
+            style={{
+              display: "block",
+              position: "fixed",
+              width: "80%",
+              left: "10%",
+              zIndex: "10",
+            }}
+          >
+            <img
+              src={S3Url + "/story_art/headphones.png"}
+              alt="shutdown_button"
+              style={{ width: "100%" }}
+            />
+            <audio
+              autoPlay
+              controls
+              className="audio"
+              onEnded={this.setPlayed(1)}
+              style={{
+                position: "fixed",
+                top: "90%",
+                width: "40%",
+                left: "30%",
+                zIndex: "100",
+              }}
+            >
+              <source src={S3Url + "/neural_scan.mp3"} type="audio/mp3" />
+            </audio>
+          </div>
+        )}
+        {!this.props.introPlayed && this.state.played === 1 && (
+          <DialogueBox data={text.act1Intro} onEnd={this.setPlayed(2)} />
+        )}
+        {!this.props.introPlayed && this.state.played === 2 && (
           <DialogueBox
-            data={text.act1Intro}
+            data={text.act1Intro2}
             onEnd={() => this.props.setIntroPlayed("intro0Played")}
           />
         )}
+
         {this.state.solved && (
           <>
             <DialogueBox data={text.act1MapCorrect} />

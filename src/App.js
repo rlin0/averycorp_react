@@ -167,7 +167,14 @@ export default class App extends Component {
                     </Route>
 
                     <Route exact path="/act2">
-                      <ERIntro />
+                      <Act
+                        id={2}
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        passcode="gowhere"
+                      >
+                        <Act2Intro />
+                      </Act>
                     </Route>
                     <Route exact path="/act2/map">
                       <Act

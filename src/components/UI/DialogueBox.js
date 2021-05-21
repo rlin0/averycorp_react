@@ -63,6 +63,7 @@ export default function DialogueBox(props) {
   const [textIdx, setTextIdx] = React.useState(-1) // index for advancing dialogue
   const [letterIdx, setLetterIdx] = React.useState(1) // index for animating text
   const [cnt, setCnt] = React.useState(0) // number of times played
+  const [audio, setAudio] = React.useState(false)
 
   React.useEffect(() => {
     if (!clickToggle) {
@@ -96,6 +97,10 @@ export default function DialogueBox(props) {
       setTextIdx((prev) => prev + 1)
       setLetterIdx(1)
     }
+    if (!audio) {
+      const audioEl = document.getElementsByClassName("audio")[0]
+      if (audioEl) audioEl.play()
+    }
   }
 
   const getImage = (imageName, className) => (
@@ -110,7 +115,10 @@ export default function DialogueBox(props) {
   )
 
   const display = () => {
-    if (textIdx === data.text.length) onEnd()
+    if (textIdx === data.text.length) {
+      onEnd()
+      setTextIdx((prev) => prev + 1)
+    }
     return textIdx !== -1 && textIdx < data.text.length
   }
 
@@ -132,6 +140,12 @@ export default function DialogueBox(props) {
       {display() && (
         <>
           <div>
+            {data.audio && (
+              <audio autoPlay className="audio">
+                <source src={S3Url + "/" + data.audio} type="audio/wav" />
+              </audio>
+            )}
+
             {data.BGImage && getImage(data.BGImage[textIdx], classes.bgImage)}
 
             {data.speaker &&
