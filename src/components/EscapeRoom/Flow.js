@@ -71,12 +71,6 @@ export default class Flow extends Component {
               left: "15%",
             }}
           >
-            {this.checkAnswer() && (
-              <>
-                <h3>Solved!</h3>
-                <Button onClick={this.props.solved}>Next</Button>
-              </>
-            )}
             <GridList
               cellHeight={40}
               spacing={0}
@@ -117,6 +111,14 @@ export default class Flow extends Component {
                 }
               })}
             </GridList>
+            {this.checkAnswer() && (
+              <>
+                <h3>Solved!</h3>
+                <Button color="primary" onClick={this.props.solved}>
+                  Next
+                </Button>
+              </>
+            )}
             <Button onClick={() => this.setState({ color: null })}>
               Erase
             </Button>
