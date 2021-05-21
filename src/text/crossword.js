@@ -1,7 +1,7 @@
 export const crosswordPlayer1 = {
   across: {
     2: {
-      clue: "The second word on your partner's third hint",
+      clue: "The third word on your partner's third hint",
       answer: "WHAT",
       row: 1,
       col: 4,
