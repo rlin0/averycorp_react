@@ -77,27 +77,38 @@ class Act1 extends Component {
   render() {
     return (
       <>
-        <Typography variant="h1"> Madlibs! </Typography>
-        <form
-          onSubmit={this.handleSubmit}
-          className={this.props.classes.root}
-          noValidate
-          autoComplete="off"
-        >
-          {this.state.prompts.map((currentValue, index) => {
-            return (
-              <TextField
-                id={index.toString()}
-                key={index.toString()}
-                label={currentValue}
-                onChange={this.handleInput}
-              />
-            )
-          })}
-          <Button type="submit" variant="contained" color="primary">
-            Submit
-          </Button>
-        </form>
+        <div style={{ float: "left", width: "50%" }}>
+          <Typography variant="h1"> Madlibs! </Typography>
+          <form
+            onSubmit={this.handleSubmit}
+            className={this.props.classes.root}
+            noValidate
+            autoComplete="off"
+          >
+            {this.state.prompts.map((currentValue, index) => {
+              return (
+                <TextField
+                  id={index.toString()}
+                  key={index.toString()}
+                  label={currentValue}
+                  onChange={this.handleInput}
+                />
+              )
+            })}
+            <Button type="submit" variant="contained" color="primary">
+              Submit
+            </Button>
+          </form>
+        </div>
+        <div style={{ float: "left", width: "50%" }}>
+          <Typography variant="h1"> Spyfall! </Typography>
+          Airplane, Bank, Beach, Broadway, Theater, Casino, Cathedral, Circus
+          Tent, Corporate Party, Crusader Army, Day Spa, Embassy, Gaming
+          Convention, Hospital, Hotel, Military Base, Movie Studio, Ocean Liner,
+          Passenger Train, Pirate Ship, Polar Station, Police Station,
+          Restaurant, School, Service Station, Space Station, Submarine,
+          Supermarket, University
+        </div>
       </>
     )
   }
