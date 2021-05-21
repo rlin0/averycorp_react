@@ -154,7 +154,14 @@ export default class App extends Component {
                       />
                     </Route>
                     <Route exact path="/act4">
-                      <Act4 />
+                      <Act
+                        id={4}
+                        act={this.state.act}
+                        updateAct={this.updateAct}
+                        passcode="whatsnext"
+                      >
+                        <Act4 />
+                      </Act>
                     </Route>
                     <Route exact path="/act1">
                       <Act
