@@ -3,7 +3,7 @@ import { Typography } from "@material-ui/core"
 import axios from "axios"
 
 const txt =
-  "You are a *-year old *. Your home was destroyed by *, but you narrowly escaped. According to our intel, you sometimes goes by the nickname *. You spend your free time * * in *. Seem to be obsessed with *'s *. Secretly scared of *, especially * ones. Think it is funny to tell people to “*”. Is good at *, but not much else. Spent * trying to learn how to *, and then gave up. Constantly complain about your *, which you hurt while trying to *."
+  "You are a *-year old *. Your home was destroyed by *, but you narrowly escaped. According to our intel, you sometime go by the nickname *. \nYou spend your free time * * in *. \nYou seem to be obsessed with *'s *. \nYou are secretly scared of *, especially * ones. \nYou think it is funny to tell people to “*”. \nYou are good at *, but not much else. \nYou spent * trying to learn how to *, and then gave up. \nYou constantly complain about your *, which you hurt while trying to *."
 
 class Profile extends Component {
   constructor(props) {
