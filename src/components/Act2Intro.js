@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { Redirect } from "react-router-dom"
-import DialogueBox from "../UI/DialogueBox"
-import text from "../../text/act3Scripts"
+import DialogueBox from "./UI/DialogueBox"
+import text from "../text/act2Scripts"
 
 export default class Act2Intro extends Component {
   constructor(props) {
