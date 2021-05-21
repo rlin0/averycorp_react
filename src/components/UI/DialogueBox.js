@@ -16,12 +16,13 @@ const useStyles = makeStyles((theme) => ({
     width: "80%",
     left: "10%",
     overflow: "auto",
+    zIndex: "1",
   },
   charImage: {
     position: "fixed",
     zIndex: "10",
     height: "80%",
-    left: "50%",
+    left: "55%",
     bottom: "10%",
   },
   animatedText: {

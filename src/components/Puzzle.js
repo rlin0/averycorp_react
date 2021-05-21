@@ -9,6 +9,16 @@ import axios from "axios"
 import { ButtonLink } from "./UI/Links"
 import Act from "./Act"
 import { S3Url } from "../helpers"
+import DialogueBox from "./UI/DialogueBox"
+import text from "../text/act2Scripts"
+
+const cutscenes = {
+  1: ["act2BotwBefore", "act2BotwAfter"],
+  2: ["act2CodeBefore", "act2CodeAfter"],
+  4: ["act2IDBefore", "act2IDAfter"],
+  5: ["act2SpotBefore", "act2SpotAfter"],
+  6: ["act2MetaBefore", "act2MetaAfter"],
+}
 
 export default class Puzzle extends Component {
   constructor(props) {
@@ -99,19 +109,38 @@ export default class Puzzle extends Component {
           updateAct={this.props.updateAct}
           passcode="2"
         >
+          {this.state.solved ? (
+            <DialogueBox data={text[cutscenes[this.props.puzzleId][1]]} />
+          ) : null}
+          {!this.state.solved ? (
+            <DialogueBox data={text[cutscenes[this.props.puzzleId][0]]} />
+          ) : null}
+
           <ButtonLink buttonText="Back to Map" to="/act2" />
-          <Typography variant="h3"> {this.state.name} </Typography>
+          <Typography variant="h3">
+            {" "}
+            {this.state.name} {this.state.solved ? "- Solved!" : ""}{" "}
+          </Typography>
           <iframe
             src={`${S3Url}/act2/${this.props.link}${role}.pdf`}
             width="70%"
             height="80%"
+            style={{ display: "block", margin: "auto" }}
           />
 
-          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
-            {this.state.solved ? (
-              <Typography>Solved!</Typography>
-            ) : (
-              <>
+          <form
+            onSubmit={this.handleSubmit}
+            noValidate
+            autoComplete="off"
+            style={{
+              width: "20%",
+              display: "block",
+              margin: "auto",
+              textAlign: "center",
+            }}
+          >
+            {this.state.solved ? null : (
+              <div>
                 <TextField
                   label="Answer"
                   onChange={({ target }) =>
@@ -121,7 +150,7 @@ export default class Puzzle extends Component {
                 <Button type="submit" variant="contained" color="primary">
                   Submit
                 </Button>
-              </>
+              </div>
             )}
           </form>
         </Act>

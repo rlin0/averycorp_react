@@ -5,6 +5,8 @@ import { ButtonLink } from "./UI/Links"
 import { crosswordPlayer1, crosswordPlayer2 } from "../text/crossword"
 import Act from "./Act"
 import axios from "axios"
+import DialogueBox from "./UI/DialogueBox"
+import text from "../text/act2Scripts"
 
 let puzzleId = new Map()
 puzzleId.set("0", 3)
@@ -23,6 +25,29 @@ export class Puzzle3 extends Component {
     }
 
     this.myRef = React.createRef()
+  }
+
+  componentDidMount() {
+    this.getSolved()
+  }
+
+  getSolved = () => {
+    axios
+      .get("/api/puzzle/get_solved", {
+        params: {
+          teamId: this.props.teamId,
+          puzzleId: puzzleId.get(this.props.role),
+        },
+      })
+      .then((res) => {
+        this.setState({
+          solved: res.data.solved,
+        })
+        console.log(res)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }
 
   handleSubmit = async (e) => {
@@ -45,25 +70,6 @@ export class Puzzle3 extends Component {
     }
   }
 
-  getSolved = () => {
-    axios
-      .get("/api/puzzle/get_solved", {
-        params: {
-          teamId: this.props.teamId,
-          puzzleId: puzzleId.get(this.props.role),
-        },
-      })
-      .then((res) => {
-        this.setState({
-          solved: res.data.solved,
-        })
-        console.log(res)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-  }
-
   render() {
     var crossword = null
     if (this.props.role === "0") {
@@ -71,6 +77,7 @@ export class Puzzle3 extends Component {
     } else {
       crossword = crosswordPlayer2
     }
+
     return (
       <Act
         id={2}
@@ -78,7 +85,18 @@ export class Puzzle3 extends Component {
         updateAct={this.props.updateAct}
         passcode="2"
       >
+        {this.state.solved ? (
+          <DialogueBox data={text.act2CrosswordAfter} />
+        ) : null}
+        {!this.state.solved ? (
+          <DialogueBox data={text.act2CrosswordBefore} />
+        ) : null}
+
         <ButtonLink buttonText="Back to Map" to="/act2" />
+        <Typography variant="h3">
+          {" "}
+          Crossword {this.state.solved ? "- Solved!" : ""}{" "}
+        </Typography>
         <Crossword
           data={crossword}
           onCorrect={this.markCorrectClue}
@@ -93,20 +111,25 @@ export class Puzzle3 extends Component {
             highlightBackground: "#859",
           }}
         />
-        <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
-          {this.state.solved ? (
-            <Typography>Solved!</Typography>
-          ) : (
-            <>
+        {this.state.solved ? null : (
+          <div
+            style={{
+              position: "fixed",
+              right: "10%",
+              bottom: "10%",
+              zIndex: "0",
+            }}
+          >
+            <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
               <Button type="submit" variant="contained" color="primary">
                 Submit
               </Button>
               {this.state.incorrect && (
-                <Typography color="error"> Incorrect! </Typography>
+                <Typography color="error">Incorrect!</Typography>
               )}
-            </>
-          )}
-        </form>
+            </form>
+          </div>
+        )}
       </Act>
     )
   }

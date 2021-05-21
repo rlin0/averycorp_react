@@ -12,15 +12,15 @@
       "It’s too late to back out now. The only way to proceed is to press on and find a way into that server room, one way or another. Maybe a look around the nearby offices will provide some clues..."
     ],
     "BGImage": [
-      "er/black.png",
-      "er/elevator_shaft.png",
-      "er/elevator_shaft.png",
-      "er/elevator_shaft.png",
-      "er/elevator_shaft.png",
-      "er/elevator_shaft.png",
-      "er/elevator_shaft.png",
-      "er/escaperoom_start.png",
-      "er/escaperoom_start.png"
+      "story_art/black.png",
+      "story_art/elevator_shaft.png",
+      "story_art/elevator_shaft.png",
+      "story_art/elevator_shaft.png",
+      "story_art/elevator_shaft.png",
+      "story_art/elevator_shaft.png",
+      "story_art/elevator_shaft.png",
+      "story_art/escaperoom_start.png",
+      "story_art/escaperoom_start.png"
     ],
     "speaker": [
       "Narration",

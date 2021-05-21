@@ -12,10 +12,9 @@
   margin: auto;
 }
 
-#x-coord {
-  color: #78d766;
-}
-
-#y-coord {
-  color: #18a1d9;
+#puzzle0-submit {
+  position: relative;
+  display: block;
+  margin: auto;
+  text-align: center;
 }

@@ -134,8 +134,7 @@ export default class App extends Component {
                     </Route>
                     <Route exact path="/">
                       <div className="home">
-                        Welcome. If you just arrived, start at{" "}
-                        <NavLink to={"/act0"}>Act 0</NavLink>.
+                        Welcome. If you just arrived, begin at Act 00.
                       </div>
                     </Route>
                     <Route exact path="/profile">

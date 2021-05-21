@@ -255,26 +255,26 @@
     ],
     "speaker": [
       null,
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png"
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png"
     ]
   },
   "act2CodeAfter": {
@@ -293,11 +293,11 @@
       "story_art/techjunkie_store.png"
     ],
     "speaker": [
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png",
-      "story_art/techjunkie.png"
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png",
+      "story_art/char_techjunkie.png"
     ]
   },
 
@@ -565,7 +565,7 @@
       "story_art/char_datajacker.png"
     ]
   },
-  "act2Finale": {
+  "act2MetaBefore": {
     "text": [
       "Something’s wrong when you return to the Tea Bar. The windows are shattered, the metal door forcibly wrenched open from its hinges.",
       "When your group rushes in, the room is deserted and considerably more roughed up then when you first saw it. The Contractor is nowhere to be found.",
@@ -574,10 +574,7 @@
       "You: What do we do? They must’ve taken the Contractor.",
       "Recruiter: Knowing her, she would’ve kept a backup plan, just in case. Search the room. There must be a hidden safe of some sort.",
       "It takes some time, but finally you find something. A hidden chamber underneath the Contractor’s desk. You look inside to find a data chip with a hastily-scribbled note attached to it. You and your team lean in for a closer look.",
-      ">>> RECORDING >>>",
-      "Contractor: If you’re watching this, then I’ve probably been captured by AveryCorp. Your situation is probably no safer than mine, so I’ll keep this short.",
-      "Contractor: We were planning to take some more time to train you properly before the actual break-in, but now that we’ve been exposed, we’re going to have to accelerate our plans. We are going to proceed with the break-in tonight. They won’t be expecting us to commence with the sabotage right after I’ve been captured.",
-      "Contractor: One last thing. The file that you’re looking for, whatever it is stored deep within AveryCorp, it’s dangerous, more than you can imagine. You might be able to find it, if you’re tenacious enough, but controlling it is another matter entirely. Don’t do anything stupid."
+      "It seems as though she's left a riddle behind for you to solve. Maybe solving it will grant you access to the data chip?"
     ],
     "BGImage": [
       "story_art/contractors_office.png",
@@ -587,10 +584,7 @@
       "story_art/contractors_office.png",
       "story_art/contractors_office.png",
       "story_art/contractors_office.png",
-      "story_art/data_tablet.png",
-      "story_art/data_tablet.png",
-      "story_art/data_tablet.png",
-      "story_art/data_tablet.png"
+      "story_art/contractors_office.png"
     ],
     "speaker": [
       null,
@@ -599,6 +593,26 @@
       "story_art/char_recruiter.png",
       "story_art/char_recruiter.png",
       "story_art/char_recruiter.png",
+      null,
+      null
+    ]
+  },
+  "act2MetaAfter": {
+    "text": [
+      "You unlock the message the contractor left behind.",
+      ">>> RECORDING >>>",
+      "Contractor: If you’re watching this, then I’ve probably been captured by AveryCorp. Your situation is probably no safer than mine, so I’ll keep this short.",
+      "Contractor: We were planning to take some more time to train you properly before the actual break-in, but now that we’ve been exposed, we’re going to have to accelerate our plans. We are going to proceed with the break-in tonight. They won’t be expecting us to commence with the sabotage right after I’ve been captured.",
+      "Contractor: One last thing. The file that you’re looking for, whatever it is stored deep within AveryCorp, it’s dangerous, more than you can imagine. You might be able to find it, if you’re tenacious enough, but controlling it is another matter entirely. Don’t do anything stupid."
+    ],
+    "BGImage": [
+      "story_art/contractors_office.png",
+      "story_art/data_tablet.png",
+      "story_art/data_tablet.png",
+      "story_art/data_tablet.png",
+      "story_art/data_tablet.png"
+    ],
+    "speaker": [
       null,
       null,
       "story_art/char_contractor.png",
