@@ -14,6 +14,7 @@ import Main from "./components/EscapeRoom/Main"
 import Mechanics from "./components/EscapeRoom/Mechanics"
 import MechanicsCloset from "./components/EscapeRoom/MechanicsCloset"
 import ER from "./components/EscapeRoom/Base"
+import ERIntro from "./components/EscapeRoom/ERIntro"
 import Lockers from "./components/EscapeRoom/Lockers"
 import Library from "./components/EscapeRoom/Library"
 import Spy from "./components/EscapeRoom/Spy"
@@ -249,6 +250,9 @@ export default class App extends Component {
                       passcode="imready"
                     >
                       <Route exact path="/er">
+                        <ERIntro />
+                      </Route>
+                      <Route exact path="/er/main">
                         <ER
                           comp={Main}
                           userId={this.state.userId}

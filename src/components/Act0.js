@@ -48,6 +48,7 @@ export default class Act0 extends Component {
                 href="https://discord.gg/ccJvehav"
                 color="inherit"
                 underline="always"
+                target="_blank"
               >
                 {"next room."}
               </Link>

@@ -93,7 +93,7 @@ export class Puzzle3 extends Component {
         ) : null}
 
         <ButtonLink buttonText="Back to Map" to="/act2" />
-        <Typography variant="h3">
+        <Typography variant="h3" style={{ textAlign: "center" }}>
           {" "}
           Crossword {this.state.solved ? "- Solved!" : ""}{" "}
         </Typography>

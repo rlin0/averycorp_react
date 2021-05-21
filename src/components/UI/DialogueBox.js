@@ -12,7 +12,7 @@ import { S3Url } from "../../helpers.js"
 const useStyles = makeStyles((theme) => ({
   bgImage: {
     display: "block",
-    position: "relative",
+    position: "fixed",
     width: "80%",
     left: "10%",
     overflow: "auto",

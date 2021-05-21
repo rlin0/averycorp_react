@@ -117,7 +117,7 @@ export default class Puzzle extends Component {
           ) : null}
 
           <ButtonLink buttonText="Back to Map" to="/act2" />
-          <Typography variant="h3">
+          <Typography variant="h3" style={{ textAlign: "center" }}>
             {" "}
             {this.state.name} {this.state.solved ? "- Solved!" : ""}{" "}
           </Typography>

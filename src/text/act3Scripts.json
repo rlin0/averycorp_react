@@ -23,15 +23,15 @@
       "story_art/escaperoom_start.png"
     ],
     "speaker": [
-      "Narration",
-      "Narration",
-      "Narration",
-      "Narration",
+      null,
+      null,
+      null,
+      null,
       "story_art/char_recruiter.png",
       "story_art/char_recruiter.png",
-      "Narration",
-      "Narration",
-      "Narration"
+      null,
+      null,
+      null
     ]
   }
 }
