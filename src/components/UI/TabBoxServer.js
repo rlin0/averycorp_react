@@ -47,10 +47,12 @@ export default class TabBoxServer extends Component {
       return (
         <>
           <h3>
-            You activate the memory unit .... What? An image is being projected
+            You activate the memory units .... What? An image is being projected
             into your mind! So this is a moment in the{" "}
-            {labels[this.state.tabletVal]}’s life … What does it mean? Maybe
-            it’s related to the memories of the other two...
+            {labels[this.state.tabletVal]}’s life … What does it mean? It seems
+            as though all the images are hinting at the final code to access the
+            server room. Maybe there’s an underlying string that ties all these
+            memories together?
           </h3>
           <img
             src={`${S3Url}/er/final_${labels[this.state.tabletVal]}.png`}

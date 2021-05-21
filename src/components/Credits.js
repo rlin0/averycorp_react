@@ -21,6 +21,10 @@ export default class Credits extends Component {
             <p>LC, Albert, Albie, Steve, Zimo</p>
             <h2> act 03 </h2>
             <p>David, James, Sherry</p>
+            <h2> act 04 </h2>
+            <p>Steve, Zimo, James</p>
+            <h2>Sound</h2>
+            <p>Jaeyoung</p>
             <h2> artwork/design </h2>
             <p>Lucy, James, Yu Han, Shu Fay </p>
             <h2> website </h2>

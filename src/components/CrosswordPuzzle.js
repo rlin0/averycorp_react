@@ -8,10 +8,6 @@ import axios from "axios"
 import DialogueBox from "./UI/DialogueBox"
 import text from "../text/act2Scripts"
 
-let puzzleId = new Map()
-puzzleId.set("0", 3)
-puzzleId.set("1", 7)
-
 export class Puzzle3 extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +32,7 @@ export class Puzzle3 extends Component {
       .get("/api/puzzle/get_solved", {
         params: {
           teamId: this.props.teamId,
-          puzzleId: puzzleId.get(this.props.role),
+          puzzleId: this.props.puzzleId,
         },
       })
       .then((res) => {
@@ -57,7 +53,6 @@ export class Puzzle3 extends Component {
       axios
         .post("/api/puzzle/submit_crossword", {
           teamId: this.props.teamId,
-          role: this.props.role,
         })
         .then((res) => {
           console.log(res)
