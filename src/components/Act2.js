@@ -3,7 +3,7 @@ import axios from "axios"
 import { Typography, Popover } from "@material-ui/core"
 import { withStyles } from "@material-ui/styles"
 import { Link } from "react-router-dom"
-import { S3Url, getBit } from "../helpers.js"
+import { S3Url, getBit, countSetBits } from "../helpers.js"
 import DialogueBox from "./UI/DialogueBox"
 import text from "../text/act2Scripts"
 
@@ -121,11 +121,11 @@ class Act2 extends Component {
       anchorEl: event.currentTarget,
     })
     // Check that both crosswords are solved
-    if (id === 3) {
-      this.setState({
-        solved: this.state.solved && getBit(this.state.solved_puzzles, 7),
-      })
-    }
+    // if (id === 3) {
+    //   this.setState({
+    //     solved: this.state.solved && getBit(this.state.solved_puzzles, 7),
+    //   })
+    // }
   }
 
   handlePopoverClose = () => {
@@ -213,19 +213,21 @@ class Act2 extends Component {
           >
             <img src={`${S3Url}/purple_pin.svg`} height="100%" />
           </Link>
-          <Link
-            title="Meta"
-            address="Contractor's Office"
-            to="/act2/meta"
-            aria-owns={open ? "mouse-over-popover" : undefined}
-            aria-haspopup="true"
-            onMouseEnter={this.handlePopoverOpen}
-            onMouseLeave={this.handlePopoverClose}
-            style={pin6}
-            id="6"
-          >
-            <img src={`${S3Url}/pink_pin.svg`} height="100%" />
-          </Link>
+          {countSetBits(this.state.solved_puzzles) >= 5 && (
+            <Link
+              title="Meta"
+              address="Contractor's Office"
+              to="/act2/meta"
+              aria-owns={open ? "mouse-over-popover" : undefined}
+              aria-haspopup="true"
+              onMouseEnter={this.handlePopoverOpen}
+              onMouseLeave={this.handlePopoverClose}
+              style={pin6}
+              id="6"
+            >
+              <img src={`${S3Url}/pink_pin.svg`} height="100%" />
+            </Link>
+          )}
           <Popover
             id="mouse-over-popover"
             className={this.props.classes.popover}
