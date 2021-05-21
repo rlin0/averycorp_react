@@ -31,7 +31,7 @@ export default class Act4 extends Component {
   render() {
     return (
       <>
-        {this.state.played === 3 && (
+        {this.state.played === 0 && (
           <DialogueBox data={text.act4Intro} onEnd={this.setPlayed(1)} />
         )}
         {this.state.played === 1 && (
@@ -84,7 +84,7 @@ export default class Act4 extends Component {
         {this.state.played === 2 && (
           <DialogueBox data={text.act4Finale} onEnd={this.setPlayed(3)} />
         )}
-        {this.state.played === 0 && (
+        {this.state.played === 3 && (
           <div
             style={{
               display: "block",

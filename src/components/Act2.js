@@ -15,7 +15,6 @@ const pin1 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 
@@ -27,7 +26,6 @@ const pin2 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 
@@ -39,7 +37,6 @@ const pin3 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 
@@ -51,7 +48,6 @@ const pin4 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 
@@ -63,7 +59,6 @@ const pin5 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 
@@ -75,7 +70,6 @@ const pin6 = {
   position: "absolute",
   cursor: "pointer",
   display: "block",
-  zIndex: "5",
   overflow: "hidden",
 }
 

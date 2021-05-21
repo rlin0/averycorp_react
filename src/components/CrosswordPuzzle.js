@@ -87,7 +87,7 @@ export class Puzzle3 extends Component {
           <DialogueBox data={text.act2CrosswordBefore} />
         ) : null}
 
-        <ButtonLink buttonText="Back to Map" to="/act2" />
+        <ButtonLink buttonText="Back to Map" to="/act2/map" />
         <Typography variant="h3" style={{ textAlign: "center" }}>
           {" "}
           Crossword {this.state.solved ? "- Solved!" : ""}{" "}

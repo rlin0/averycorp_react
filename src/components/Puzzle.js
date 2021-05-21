@@ -116,7 +116,7 @@ export default class Puzzle extends Component {
             <DialogueBox data={text[cutscenes[this.props.puzzleId][0]]} />
           ) : null}
 
-          <ButtonLink buttonText="Back to Map" to="/act2" />
+          <ButtonLink buttonText="Back to Map" to="/act2/map" />
           <Typography variant="h3" style={{ textAlign: "center" }}>
             {" "}
             {this.state.name} {this.state.solved ? "- Solved!" : ""}{" "}

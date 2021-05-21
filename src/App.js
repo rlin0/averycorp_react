@@ -6,6 +6,7 @@ import Login from "./components/Login"
 import Act0 from "./components/Act0"
 import Act1 from "./components/Act1"
 import Profile from "./components/Profile"
+import Act2Intro from "./components/Act2Intro"
 import Act2 from "./components/Act2"
 import Act4 from "./components/Act4"
 import Puzzle from "./components/Puzzle"
@@ -166,6 +167,9 @@ export default class App extends Component {
                     </Route>
 
                     <Route exact path="/act2">
+                      <ERIntro />
+                    </Route>
+                    <Route exact path="/act2/map">
                       <Act
                         id={2}
                         act={this.state.act}
