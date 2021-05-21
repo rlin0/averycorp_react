@@ -38,7 +38,7 @@ class Act1 extends Component {
   }
 
   valid = (element) => {
-    return /^([a-zA-Z0-9]{1,})$/.test(element)
+    return /^([a-zA-Z0-9 !.,]{1,})$/.test(element)
   }
 
   handleSubmit = (e) => {

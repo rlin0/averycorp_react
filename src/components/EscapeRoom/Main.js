@@ -67,15 +67,10 @@ const trash = {
   overflow: "hidden",
 }
 
-const start = Date.parse("01 Jan 2020 00:01:43 PDT")
-
 class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      date: new Date(),
-      interval: null,
-      seconds: 0,
       clickSewer: false,
       portalDenied: false,
       mcSet: false,
@@ -103,12 +98,6 @@ class Main extends Component {
         this.props.mcSpy === 7 ||
         this.props.mcMerchant === 7 ||
         this.props.mcMechanic === 7,
-      interval: setInterval(() => {
-        this.setState({ seconds: this.state.seconds + 1 })
-        if (this.state.seconds < 11) {
-          this.setState({ date: new Date(start + this.state.seconds * 1000) })
-        }
-      }, 1000),
     })
   }
 
@@ -161,9 +150,7 @@ class Main extends Component {
           <FeedbackBarToggle style={hallway2} text={txt.leaveMain} />
         )}
         <FeedbackBarToggle style={trash} text={txt.trash} />
-        <div className={styles.clock}>
-          <Clock value={this.state.date} size={100} hourHandLength={0} />
-        </div>
+        <img className={styles.clock} src={S3Url + "/er/clock.png"} />
         {this.props.lockersUnlocked ? (
           <Link to="/er/lockers" className={styles.lockers} />
         ) : (

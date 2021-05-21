@@ -95,7 +95,7 @@ def submit_answer(request):
     try:
         team_id = int(request.data.get('teamId'))
         puzzle_id = int(request.data.get('puzzleId'))
-        answer = request.data.get('answer')
+        answer = request.data.get('answer').lower()
         t = Team.objects.get(id=team_id)
         p, created = PuzzleSubmission.objects.get_or_create(
             puzzle=Puzzle.objects.get(id=puzzle_id),
@@ -120,8 +120,7 @@ def submit_answer(request):
 def submit_crossword(request):
     try:
         team_id = int(request.data.get('teamId'))
-        role = int(request.data.get('role'))
-        puzzle_id = 3 if role == 0 else 7
+        puzzle_id = 3
         t = Team.objects.get(id=team_id)
         p, created = PuzzleSubmission.objects.get_or_create(
             puzzle=Puzzle.objects.get(id=puzzle_id),
