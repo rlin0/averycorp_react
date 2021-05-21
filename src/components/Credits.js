@@ -28,7 +28,7 @@ export default class Credits extends Component {
             <h2> artwork/design </h2>
             <p>Lucy, James, Yu Han, Shu Fay </p>
             <h2> website </h2>
-            <p>Rachel, Rachel, Lucy</p>
+            <p>Rachel, Lucy</p>
             <h2> organizing us fools </h2>
             <p>James, Yu Han, Lucy </p>
             <h2> idea/story cred </h2>
