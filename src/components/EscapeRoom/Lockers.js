@@ -49,8 +49,8 @@ export default class Lockers extends Component {
         {this.props.lockersUnlocked ? (
           <>
             <img src={`${S3Url}/er/Lockers.png`} width="100%" />
-            <Link to="/er" style={mainStyle} />
-            <Link to="/er" style={mainStyle2} />
+            <Link to="/er/main" style={mainStyle} />
+            <Link to="/er/main" style={mainStyle2} />
 
             {items.map((it) => {
               return (

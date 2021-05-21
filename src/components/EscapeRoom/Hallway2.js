@@ -104,7 +104,7 @@ export default class Hallway2 extends Component {
     return (
       <>
         <img src={S3Url + "/er/Hallway2.png"} width="100%" />
-        <Link style={mainRoom} to="/er" />
+        <Link style={mainRoom} to="/er/main" />
         <Link style={maintenanceRoom} to="/er/maintenance" />
 
         <Window style={window} link={S3Url + "/er/window_mechanic.png"} />

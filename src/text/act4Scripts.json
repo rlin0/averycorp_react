@@ -1,0 +1,74 @@
+{
+  "act4Intro": {
+    "text": [
+      "The menacing iron doors slide open, and you and your group find yourselves stepping into the heart of AveryCorp. Rows and rows of data storage and server units fill the inside of the room, yet there is an unsettling silence that unnerves you.",
+      "Recruiter: Congratulations, you’ve managed to infiltrate into the very core of this place. The server room should house whatever technology the corporation is using to keep us under control and trapped in this simulation.",
+      "Recruiter: Search around for the control panel so that we can disable whatever technology they are using. Be careful though. I doubt those iron doors were the only security measures that were put in place to protect this room.",
+      "Knowing that AveryCorp security could rush in after you at any moment, you move hastily, searching in between the rows of machines."
+    ],
+    "BGImage": [
+      "story_art/server_room.png",
+      "story_art/server_room.png",
+      "story_art/server_room.png",
+      "story_art/server_room.png"
+    ],
+    "speaker": [
+      null,
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png",
+      null
+    ]
+  },
+  "act4Intro2": {
+    "text": [
+      "You find a set of monitors in one corner of the room and call your friends over. You read the text on the screen.",
+      "You: Uh, “Input Level-5 Security Password”?",
+      "Recruiter: Hmmm… looks like we’ll have to improvise. Connect yourselves to the computer using your memory modules. I’ll try to hack you guys into the system.",
+      "You jack yourself in and wait for the Recruiter to breach past the security.",
+      "Recruiter: Okay, I think I can get you through. Just one more encryption to decode and…",
+      "The Recruiter’s voice suddenly cuts off. Instead, you hear another voice blaring obtrusively inside your head.",
+      "???: You dare try to sabotage my realm?! You were foolish to jack yourselves into my domain!",
+      "A searing pain jolts across your brain, and your consciousness quickly fades away."
+    ],
+    "BGImage": [
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png",
+      "story_art/server_monitor.png"
+    ],
+    "speaker": [
+      null,
+      null,
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png",
+      null,
+      null,
+      null
+    ]
+  },
+  "act4Finale": {
+    "text": [
+      "You know what has to be done. V-city could’ve been a haven for Averites, but one person’s innocent desire had corrupted it’s core system, trapping all within this world. It has to be shut down.",
+      "Recruiter: I won’t get a chance to thank you once you press that button, so… thank you.",
+      "Recruiter: The corruption began because we were trying to cling on to old fond memories. Instead, we can choose to look forward, creating new and better memories.",
+      "Recruiter: Goodbye. Hopefully I’ll be able to see you on the other side."
+    ],
+    "BGImage": [
+      "story_art/final_button.png",
+      "story_art/final_button.png",
+      "story_art/final_button.png",
+      "story_art/final_button.png"
+    ],
+    "speaker": [
+      null,
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png",
+      "story_art/char_recruiter.png"
+    ]
+  }
+}

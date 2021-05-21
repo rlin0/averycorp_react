@@ -113,7 +113,7 @@ class Hallway1 extends Component {
     return (
       <>
         <img src={S3Url + "/er/Hallway1.png"} width="100%" />
-        <Link style={mainRoom} to="/er" />
+        <Link style={mainRoom} to="/er/main" />
         <Window style={window} link={S3Url + "/er/window_merchant.png"} />
         <Link style={library} to="/er/library" />
         <Window style={windowSpy} link={S3Url + "/er/spy_window.png"} />
